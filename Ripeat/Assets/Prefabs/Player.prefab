@@ -2270,7 +2270,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1
-  detectionRadius: 12
+  detectionRadius: 3
   showDetectionRadius: 1
   traversalTime: 0.5
   idleAnimName: Fight Stance
