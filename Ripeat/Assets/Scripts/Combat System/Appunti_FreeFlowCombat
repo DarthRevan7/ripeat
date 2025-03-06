@@ -1,0 +1,15 @@
+A cosa servono gli script attaccati all'oggetto Player?
+
+MovePlayer.cs
+
+Gestisce il movimento.
+Start:
+    1 - Prende riferimenti all'animator ed al character controller;
+    2 - Blocca il cursore al centro dello schermo (suppongo) e lo rende invisibile.
+
+Update:
+    1 - Costruisce un vettore movimento usando il vecchio inputsystem
+    2 - Usa controller.Move ed inserisce il vettore movimento * velocità * deltaTime come argomento
+    3 - Se il movimento è diverso da 0 allora setta il forward del player nel verso del movimento
+        e attiva l'animazione di run; altrimenti disattiva l'animazione di run.
+
