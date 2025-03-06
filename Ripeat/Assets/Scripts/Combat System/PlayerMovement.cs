@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Animator anim;
     //Settare true se siamo col PC, altrimenti settare FALSE
     //Ho messo true perché non ho il controller 
-    [SerializeField] private bool inputModePC = true;
+    public bool inputModePC = true;
     //Riferimento ai due oggetti InputAction 
     [SerializeField] private InputActionAsset inputActionPC, inputActionController;
 
@@ -65,7 +65,17 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            return Vector3.zero;
+            if(inputActionController == null)
+            {
+                Debug.Log("Assegnare input action x Controller!!");
+                return Vector3.zero;
+            }
+
+            InputActionMap inputActionMap = inputActionController.FindActionMap("Player");
+            Vector2 inputMovement = inputActionMap.FindAction("Move").ReadValue<Vector2>();
+
+            movement = new Vector3(inputMovement.x,0,inputMovement.y);
+            return movement;
         }
     }
 

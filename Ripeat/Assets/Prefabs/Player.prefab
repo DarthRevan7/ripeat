@@ -2315,7 +2315,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   inputModePC: 1
   inputActionPC: {fileID: -944628639613478452, guid: e57d84ca062c5b54e8d1952a0a0cc906, type: 3}
-  inputActionController: {fileID: 0}
+  inputActionController: {fileID: -944628639613478452, guid: 36f076fdd01203747943104cda6a9739, type: 3}
 --- !u!114 &7333246402594468127
 MonoBehaviour:
   m_ObjectHideFlags: 0

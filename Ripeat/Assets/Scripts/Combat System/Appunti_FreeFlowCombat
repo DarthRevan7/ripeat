@@ -13,3 +13,29 @@ Update:
     3 - Se il movimento è diverso da 0 allora setta il forward del player nel verso del movimento
         e attiva l'animazione di run; altrimenti disattiva l'animazione di run.
 
+SetInput.cs
+
+Redireziona l'input sul Freeflow Combat script e setta trail effect e alcuni suoni.
+
+Start:
+    1 - Ricava riferimento a FreeflowCombat script
+
+Update:
+    1 - Se ho premuto il pulsante sx del mouse, allora fai un attacco.
+    2 - Controlla ed esegue il "whoosh" sound
+    3 - Abilita il trail effect
+    4 - Setta l'input nel Freeflow Combat
+
+
+MoveCamera.cs
+
+Fa muovere la camera col giocatore. Dovremmo disabilitarlo (io lo rimuoverò), se vogliamo che la camera venga mossa da noi.
+
+LateUpdate:
+    1 - Riassegna la posizione della camera in base al transform dell'oggetto a cui è assegnato lo script.
+
+FlagAttack.cs
+
+Ha un booleano che viene settato e resettato da due metodi.
+Il booleano è pubblico e viene usato in HitEnemy.cs
+
