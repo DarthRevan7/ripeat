@@ -760,6 +760,8 @@ GameObject:
   - component: {fileID: 1202691640}
   - component: {fileID: 1202691641}
   - component: {fileID: 1202691642}
+  - component: {fileID: 1202691643}
+  - component: {fileID: 1202691644}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -896,6 +898,57 @@ MonoBehaviour:
   responseBox: {fileID: 1095528258}
   responseButtonTemplate: {fileID: 1317304180}
   responseContainer: {fileID: 1700165379}
+--- !u!114 &1202691643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202691635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af674be708e0dee45abafaf1e108711f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueObject: {fileID: 11400000, guid: 21a27695f278bad4c97975ca26b44cee, type: 2}
+  events:
+  - name: Option 1
+    onPickedResponse:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: Option 2
+    onPickedResponse:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: Option 3
+    onPickedResponse:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
+          m_MethodName: 
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1202691644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202691635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385465245009c644d88a99c460600595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Point: 0
 --- !u!1 &1317304179
 GameObject:
   m_ObjectHideFlags: 0

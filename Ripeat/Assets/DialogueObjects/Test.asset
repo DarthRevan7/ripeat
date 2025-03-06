@@ -22,7 +22,10 @@ MonoBehaviour:
   responses:
   - responseText: Option 1
     dialogueObject: {fileID: 11400000, guid: ca077c2cc2fe48c4d812c1de6705057a, type: 2}
+    pointValue: 5
   - responseText: Option 2
     dialogueObject: {fileID: 11400000, guid: 18cd6daa0c28bd8439a7d813e82df9c3, type: 2}
+    pointValue: 10
   - responseText: Option 3
     dialogueObject: {fileID: 11400000, guid: e16c4b9d70f75ed45ab863c3f61e140e, type: 2}
+    pointValue: 8
