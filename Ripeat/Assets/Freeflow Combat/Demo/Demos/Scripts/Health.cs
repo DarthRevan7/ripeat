@@ -10,14 +10,17 @@ namespace FreeflowCombatSpace
 
         Animator anim;
         Vector3 startPos;
-        bool isDead;
+        public bool isDead;
 
 
         void Start()
         {
-            healthUI.text = health.ToString();
+            healthUI.text = "Vita Nemico: " + health.ToString();
             anim = GetComponent<Animator>();
             startPos = transform.position;
+
+            
+
         }
 
 
@@ -26,7 +29,7 @@ namespace FreeflowCombatSpace
             health -= hitPoints;
             if (health < 0) health = 0;
 
-            healthUI.text = health.ToString();
+            healthUI.text = "Vita Nemico: " + health.ToString();
 
             if (health <= 0) {
                 Die();

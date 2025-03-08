@@ -27,9 +27,11 @@ public class SetPlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleInputActions();
-
-        
+        //Se non sono morto, allora gestisci gli input.
+        if(!GetComponent<CharacterStats>().isDead)
+        {
+            HandleInputActions();
+        }       
     }
 
     private void HandleInputActions()

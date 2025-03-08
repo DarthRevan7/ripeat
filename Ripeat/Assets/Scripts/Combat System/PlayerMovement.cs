@@ -28,17 +28,20 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 movement = BuildMovementVector(inputModePC);
-        controller.Move(movement * playerSpeed * Time.deltaTime);
+        if(!GetComponent<CharacterStats>().isDead)
+        {
+            Vector3 movement = BuildMovementVector(inputModePC);
+            controller.Move(movement * playerSpeed * Time.deltaTime);
         
-        if(movement != Vector3.zero)
-        {
-            gameObject.transform.forward = movement;
-            anim.SetBool("Run", true);
-        }
-        else
-        {
-            anim.SetBool("Run", false);
+            if(movement != Vector3.zero)
+            {
+                gameObject.transform.forward = movement;
+                anim.SetBool("Run", true);
+            }
+            else
+            {
+                anim.SetBool("Run", false);
+            }
         }
     }
 

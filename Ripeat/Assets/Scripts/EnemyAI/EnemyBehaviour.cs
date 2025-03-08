@@ -4,6 +4,8 @@ using System.Linq;
 using Unity.VisualScripting;
 using System.Collections;
 using System.Text.RegularExpressions;
+using System;
+using FreeflowCombatSpace;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -24,6 +26,11 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private float pauseAttack = 2.0f;
     [SerializeField] private bool hasAttacked = false;
 
+    //Danno del nemico
+    [SerializeField] private int damage = 10;
+
+    
+
     //Errore con la dicitura seguente:
     /*
     
@@ -40,6 +47,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Update()
     {
+        if(GetComponent<Health>().isDead || playerTransform.GetComponent<CharacterStats>().isDead) return;
 
         if(enemyStatus == EnemyStatus.FOLLOWING_PLAYER)
         {
@@ -50,12 +58,13 @@ public class EnemyBehaviour : MonoBehaviour
             AttackPlayer();
         }
 
-        UpdateAIStatus();
+        FollowAndAttack();
+        
         
 
     }
 
-    private void UpdateAIStatus()
+    private void FollowAndAttack()
     {   
 
         if(enemyStatus != EnemyStatus.FOLLOWING_PLAYER && Vector3.Distance(transform.position, playerTransform.position) > attackRange)
@@ -77,8 +86,8 @@ public class EnemyBehaviour : MonoBehaviour
         if(Vector3.Distance(transform.position, playerTransform.position) <= attackRange && !hasAttacked)
         {
             GetComponent<Animator>().SetInteger("AttackType", 1);
-            //freeflowCombat.Attack();
             StartCoroutine(AttackWaitingTime());
+            hasAttacked = true;
         }
 
         
@@ -86,8 +95,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     IEnumerator AttackWaitingTime()
     {
-        hasAttacked = true;
         GetComponent<Animator>().SetInteger("AttackType", 1);
+        yield return new WaitUntil( () => GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f );
+        playerTransform.GetComponent<CharacterStats>().HitTarget(damage);
         yield return new WaitUntil( () => GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f );
         GetComponent<Animator>().SetInteger("AttackType", 0);
         yield return new WaitForSeconds(pauseAttack);
@@ -98,12 +108,6 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, playerTransform.position) > attackRange)
         {
-            // Vector3 movement = transform.position - playerTransform.position;
-
-            // transform.Translate(movement.normalized * 2.5f * Time.deltaTime);
-            
-            // freeflowCombat.xInput = movement.normalized.x;
-            // freeflowCombat.yInput = movement.normalized.z;
             GetComponent<Animator>().SetBool("Run", true);
         }
         
