@@ -7,12 +7,6 @@ using System.Text.RegularExpressions;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    //Reference al component FreeflowCombat
-    [SerializeField] private FreeflowCombat freeflowCombat;
-
-    /*
-        //Implementazione a seguire
-    */
 
     //Riferimento al Player
     [SerializeField] private Transform playerTransform;
@@ -39,23 +33,11 @@ public class EnemyBehaviour : MonoBehaviour
 
     //Risolto eliminando l'evento in un duplicato dell'animazione ed usando quello.
 
-
-
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //freeflowCombat = GetComponent<FreeflowCombat>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    public void StopHit()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
 
@@ -74,11 +56,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     private void UpdateAIStatus()
-    {
-        // enemyStatus = EnemyStatus.IDLE; 
-        // GetComponent<Animator>().SetInteger("AttackType", 0);
-        // GetComponent<Animator>().SetBool("Run", false);
-        
+    {   
 
         if(enemyStatus != EnemyStatus.FOLLOWING_PLAYER && Vector3.Distance(transform.position, playerTransform.position) > attackRange)
         {
