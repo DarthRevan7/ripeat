@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CharacterStats : MonoBehaviour
 {
@@ -58,11 +59,20 @@ public class CharacterStats : MonoBehaviour
             vita = 0;
             GetComponent<Animator>().SetTrigger("Die");
             isDead = true;
+
+            Invoke("LoadNextScene", 3f);
         }
         UpdateUI();
 
         
     }
 
-
+    private void LoadNextScene()
+    {
+        
+        SceneManager.LoadScene("DialogueTest");
+    }
 }
+
+
+
