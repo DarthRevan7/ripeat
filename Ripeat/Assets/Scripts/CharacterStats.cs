@@ -11,6 +11,8 @@ public class CharacterStats : MonoBehaviour
     //User Interface
     [SerializeField] private TMP_Text healthText, manaText;
 
+    private RectTransform healthBarRect;
+    private float maxHealthBarWidth;
     public bool isDead = false;
 
 
@@ -20,6 +22,9 @@ public class CharacterStats : MonoBehaviour
     {
         healthText = GameObject.Find("Text_Vita").GetComponent<TMP_Text>();
         manaText = GameObject.Find("Text_Mana").GetComponent<TMP_Text>();
+
+        healthBarRect = GameObject.Find("HealthUI_PL").GetComponent<RectTransform>();
+        maxHealthBarWidth = healthBarRect.sizeDelta.x;
 
         UpdateUI();
     }
@@ -34,6 +39,13 @@ public class CharacterStats : MonoBehaviour
     {
         healthText.text = "Vita giocatore: " + vita.ToString();
         manaText.text = "Mana giocatore: " + mana.ToString();
+
+        // Calcola il rapporto tra vita corrente e vita massima
+        float normalizedHealth = (float)vita / 100f; // Assumendo che 100 sia la vita massima
+        // Aggiorna la larghezza della barra
+        Vector2 size = healthBarRect.sizeDelta;
+        size.x = maxHealthBarWidth * normalizedHealth;
+        healthBarRect.sizeDelta = size;
     }
 
     public void HitTarget(int damage)
