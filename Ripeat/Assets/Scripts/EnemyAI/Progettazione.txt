@@ -1,0 +1,11 @@
+Alla fine EnemyBehaviour.cs è più una rappresentazione di un tipo di IA che insegue il giocatore e 
+lo attacca.
+Potrei fare uno script che attacca e stacca i componenti dal nemico, in modo che posso fargli avere
+più comportamenti diversi tra loro.
+Ad esempio, sarebbe interessante avere queste funzionalità:
+- Sempre IDLE, ideale per i momenti di dialogo.
+- Rincorre il giocatore e poi si ferma a picchiarlo. [la ho già]
+- Fugge verso un punto preciso della mappa
+    (Alcuni arcade avevano il boss che scappava o si ritirava verso un punto specifico
+    dello schermo. Era una specie di "presentazione" del boss del livello).
+    [Questo magari sarebbe utile se evolvessimo il gioco in una storia arcade.]
