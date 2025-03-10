@@ -13,7 +13,8 @@ public class ResponseHandler : MonoBehaviour
     private ResponseEvent[] responseEvents; // Array di eventi di risposta
 
     private List<GameObject> tempResponseButtons = new List<GameObject>(); // Lista temporanea di pulsanti di risposta
-    private ScoreManager scoreManager;
+    private ScoreManager scoreManager; // Riferimento allo ScoreManager
+
     private void Start()
     {
         dialogueUI = GetComponent<DialogueUI>(); // Ottiene il componente DialogueUI
@@ -64,11 +65,11 @@ public class ResponseHandler : MonoBehaviour
         }
         if (scoreManager != null)
         {
-            scoreManager.AddPoints(response.PointValue);
+            scoreManager.AddPoints(response.PointValue); // Aggiunge i punti allo ScoreManager
         }
         else
         {
-            Debug.LogWarning("ScoreManager non trovato nella scena.");
+            Debug.LogWarning("ScoreManager non trovato nella scena."); // Avvisa se lo ScoreManager non è trovato
         }
         dialogueUI.ShowDialogue(response.DialogueObject); // Mostra il nuovo dialogo
     }

@@ -224,15 +224,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6150943, g: 0.44449264, b: 0.44449264, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e9c72518456011549a411c7405674242, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -258,14 +258,14 @@ RectTransform:
   m_GameObject: {fileID: 573099395}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 215.53125}
-  m_LocalScale: {x: 1.8356249, y: 5.4759374, z: 1}
+  m_LocalScale: {x: 1.4866359, y: 4.9170084, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1202691639}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 42.28125, y: -57.75}
+  m_AnchoredPosition: {x: 12, y: -57.75}
   m_SizeDelta: {x: -580, y: -863.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &577582749
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 615106477}
   - component: {fileID: 615106476}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
