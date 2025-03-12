@@ -17,8 +17,10 @@ MonoBehaviour:
       di alcol, una discussione, e bum-fine dei giochi. "
     speaker: MORTY
   - line: "Ma sai qual \xE8 la parte\r                                     divertente?
-      Lui \xE8 ancora l\xEC fuori, vivo, magari con la sbornia ancora da\r\nsmaltire,
-      mentre tu sei qui a farmi perdere tempo."
+      Lui \xE8 ancora l\xEC fuori, vivo... "
+    speaker: MORTY
+  - line: "...magari con la sbornia ancora da\r                                                        
+      smaltire, mentre tu sei qui a farmi perdere tempo."
     speaker: MORTY
   responses:
   - responseText: "Cos\xEC presto..."

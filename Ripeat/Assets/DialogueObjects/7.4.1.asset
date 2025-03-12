@@ -16,6 +16,15 @@ MonoBehaviour:
   - line: Ora si che ci capiamo. Sai, mi piacciono i giocatori che sanno cosa vogliono.
       Diciamo che potre... ignorare qualche regola.
     speaker: MORTY
-  - line: Ecco la mia proposta
+  - line: "Ecco la mia proposta, amico mio. Tornerai. Ma il tempo non sar\xE0 dalla
+      tua parte. E io sar\xF2 in attesa..."
     speaker: MORTY
-  responses: []
+  - line: Per vedere se giochi bene la tua partita...
+    speaker: MORTY
+  responses:
+  - responseText: "Lo annienter\xF2!"
+    dialogueObject: {fileID: 11400000, guid: 30a96da620e5ba04cabf208ea71aa01b, type: 2}
+    pointValue: 0
+  - responseText: "Lo uccider\xF2!"
+    dialogueObject: {fileID: 11400000, guid: 30a96da620e5ba04cabf208ea71aa01b, type: 2}
+    pointValue: 0

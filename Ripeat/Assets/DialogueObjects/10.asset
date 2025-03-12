@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f181d74f3580e724da90b1119b516743, type: 3}
-  m_Name: 7.4.2
+  m_Name: 10
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: Basta mi hai annoiato, non mi darai il divertimento che cercavo, addio.
+  - line: Vedremo mio caro, vedremo. Che il combattimento abbia inizio!
     speaker: MORTY
   responses: []
