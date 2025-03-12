@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     //Riferimento ai due oggetti InputAction 
     [SerializeField] private InputActionAsset inputActionPC, inputActionController;
 
+    //Per movement detection
+    public Vector3 movement;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!GetComponent<CharacterStats>().isDead)
         {
-            Vector3 movement = BuildMovementVector(inputModePC);
+            movement = BuildMovementVector(inputModePC);
             controller.Move(movement * playerSpeed * Time.deltaTime);
         
             if(movement != Vector3.zero)

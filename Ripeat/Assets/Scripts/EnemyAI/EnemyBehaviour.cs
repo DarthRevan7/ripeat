@@ -16,7 +16,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private float attackRange = 2.5f;
 
     //Espandere per futuri sviluppi
-    enum EnemyStatus {
+    public enum EnemyStatus {
         //Status dell'IA del nemico
         FOLLOWING_PLAYER, ATTACK, IDLE
     }
@@ -64,6 +64,11 @@ public class EnemyBehaviour : MonoBehaviour
         
         
 
+    }
+    
+    public EnemyStatus GetEnemyStatus()
+    {
+        return enemyStatus;
     }
 
     public void HitTarget()
