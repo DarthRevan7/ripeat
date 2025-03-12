@@ -10,8 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f181d74f3580e724da90b1119b516743, type: 3}
-  m_Name: Option2
+  m_Name: 9
   m_EditorClassIdentifier: 
-  dialogue:
-  - Hai scelto 2
+  dialogueLines:
+  - line: Ora si che parli bene.
+    speaker: MORTY
+  - line: "Molto bene. Giochiamo questa partita. Ma ricorda, il tempo \xE8 un lusso
+      che non ti conceder\xF2 generosamente."
+    speaker: MORTY
+  - line: Vediamo quanto vali davvero.
+    speaker: MORTY
   responses: []

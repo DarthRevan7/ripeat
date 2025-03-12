@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f181d74f3580e724da90b1119b516743, type: 3}
+  m_Name: 7
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - line: Oh! E cosa faresti se potessi tornare indietro? Supponiamo per assurdo
+      che io sia... incline ad aiutarti!
+    speaker: MORTY
+  responses:
+  - responseText: Ho una famiglia...
+    dialogueObject: {fileID: 11400000, guid: 80e5f7a92a23ec749ac8cc2c1bb8af7f, type: 2}
+    pointValue: 0
+  - responseText: Devo vendicarmi...
+    dialogueObject: {fileID: 11400000, guid: 167ce3ec4b180f54b8a2b8a8e7f7bbd6, type: 2}
+    pointValue: 0
+  - responseText: Devo finire la Game Jam...
+    dialogueObject: {fileID: 11400000, guid: af4c0b4d7a9c9aa4cbd36f69a811f7d4, type: 2}
+    pointValue: 0
+  - responseText: Non posso finire in questo modo...
+    dialogueObject: {fileID: 11400000, guid: 31befb065040c72409dc510937abab7d, type: 2}
+    pointValue: 0

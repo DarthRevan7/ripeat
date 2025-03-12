@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f181d74f3580e724da90b1119b516743, type: 3}
-  m_Name: Option3
+  m_Name: 7.1
   m_EditorClassIdentifier: 
-  dialogue:
-  - Hai scelto 3
+  dialogueLines:
+  - line: "Ho una famiglia, chi bader\xE0 a loro?"
+    speaker: TU
+  - line: Umm... patetico. Troppo melodrammatico. Non mi fai nemmeno un po' di brio!
+    speaker: MORTY
   responses: []

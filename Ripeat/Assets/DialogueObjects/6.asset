@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f181d74f3580e724da90b1119b516743, type: 3}
+  m_Name: 6
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - line: "Oh! Che meraviglia. La vendetta... ha sempre un sapore cos\xEC squisito. "
+    speaker: MORTY
+  - line: "Sai, potre... romperle, certe regole. Potrei offriti una seconda possibilit\xE0."
+    speaker: MORTY
+  - line: "Ma dimmi... Se ti ridessi il tempo che ti \xE8 stato tolto... lo useresti
+      bene? Sapresti rendermi fiero?"
+    speaker: MORTY
+  responses:
+  - responseText: "Lo far\xF2 soffrire!"
+    dialogueObject: {fileID: 11400000, guid: 38d96d2b92b34164d96de03a1cda5935, type: 2}
+    pointValue: 0
+  - responseText: "Far\xF2 del mio meglio!"
+    dialogueObject: {fileID: 11400000, guid: 742cbd5033c68884cbd86c3d8dab9e36, type: 2}
+    pointValue: 0

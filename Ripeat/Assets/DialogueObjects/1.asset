@@ -10,22 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f181d74f3580e724da90b1119b516743, type: 3}
-  m_Name: Test
+  m_Name: 1
   m_EditorClassIdentifier: 
-  dialogue:
-  - 'Dialogo 1 ciao ciao ciao
-
-    ciao ciao ciao ciao'
-  - 'Dialogo 2 ciao ciao ciao ciao
-
-    ciao ciao'
+  dialogueLines:
+  - line: "Ugh. Ancora uno. E ancora con quel aria confusa. Vuoi sapere\r\ndove ti
+      trovi, vero?\_\_\_\_\_\_\_"
+    speaker: MORTY
+  - line: "Lascia\r            che indovini\u2026 Ti sei svegliato in un ascensore,
+      non ricordi nulla e pensi che\r\nsia solo un sogno..."
+    speaker: MORTY
+  - line: ...Sbagliato!!
+    speaker: MORTY
   responses:
-  - responseText: Option 1
+  - responseText: ...
     dialogueObject: {fileID: 11400000, guid: ca077c2cc2fe48c4d812c1de6705057a, type: 2}
-    pointValue: 5
-  - responseText: Option 2
-    dialogueObject: {fileID: 11400000, guid: 18cd6daa0c28bd8439a7d813e82df9c3, type: 2}
-    pointValue: 10
-  - responseText: Option 3
-    dialogueObject: {fileID: 11400000, guid: e16c4b9d70f75ed45ab863c3f61e140e, type: 2}
-    pointValue: 8
+    pointValue: 0

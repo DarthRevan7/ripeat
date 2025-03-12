@@ -5,6 +5,7 @@ using TMPro;
 
 public class DialogueUI : MonoBehaviour
 {
+    [SerializeField] private TMP_Text speakerText;
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private DialogueObject testDialogue;
     [SerializeField] private GameObject dialogueBox;
@@ -17,7 +18,7 @@ public class DialogueUI : MonoBehaviour
         typewriterEffect = GetComponent<TypewriterEffect>();
         responseHandler = GetComponent<ResponseHandler>();
         CloseDialogueBox();
-        //ShowDialogue(testDialogue);
+        // ShowDialogue(testDialogue);
     }
 
     public void ShowDialogue(DialogueObject dialogueObject)
@@ -26,25 +27,24 @@ public class DialogueUI : MonoBehaviour
         StartCoroutine(StepThroughDialogue(dialogueObject));
     }
 
-    public void AddResponseEvents(ResponseEvent[] responseEvents)
-    {
-        responseHandler.AddResponseEvents(responseEvents);
-    }
-
     private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
     {
         yield return new WaitForSeconds(0.5f);
 
-        for (int i = 0; i < dialogueObject.Dialogue.Length; i++)
+        // Itera sull'array di DialogueLine
+        for (int i = 0; i < dialogueObject.DialogueLines.Length; i++)
         {
-            string dialogue = dialogueObject.Dialogue[i];
+            DialogueLine currentLine = dialogueObject.DialogueLines[i];
+            // Imposta il nome del parlante per la riga corrente
+            speakerText.text = currentLine.Speaker;
 
-            yield return RunTypingEffect(dialogue);
+            yield return RunTypingEffect(currentLine.Line);
+            
+            textLabel.text = currentLine.Line;
 
-            textLabel.text = dialogue;
-
-            if(i == dialogueObject.Dialogue.Length - 1 && dialogueObject.HasResponses) break;
-            yield return null;
+            // Se sull'ultima riga e sono presenti risposte, esci dal ciclo
+            if (i == dialogueObject.DialogueLines.Length - 1 && dialogueObject.HasResponses)
+                break;
 
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         }
@@ -56,7 +56,6 @@ public class DialogueUI : MonoBehaviour
         else
         {
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-
             CloseDialogueBox();
         }
     }
@@ -64,20 +63,16 @@ public class DialogueUI : MonoBehaviour
     private IEnumerator RunTypingEffect(string dialogue)
     {
         typewriterEffect.Run(dialogue, textLabel);
-
         while (typewriterEffect.IsRunning)
         {
             yield return null;
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                typewriterEffect.Stop();
-            }
         }
     }
+
     private void CloseDialogueBox()
     {
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
+        speakerText.text = string.Empty;
     }
 }

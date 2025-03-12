@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f181d74f3580e724da90b1119b516743, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - line: ...
+    speaker: TU
+  - line: ...
+    speaker: TU
+  - line: "S\xEC, s\xEC, \xE8 tutto molto tragico. Rissa tra colleghi, un colpo dopo
+      l\u2019altro e voil\xE0.\r\r\n"
+    speaker: MORTY
+  - line: "Ora sei qui, con me. Complimenti sei morto.\r\r\n"
+    speaker: MORTY
+  responses:
+  - responseText: "Non pu\xF2 essere!"
+    dialogueObject: {fileID: 11400000, guid: 18cd6daa0c28bd8439a7d813e82df9c3, type: 2}
+    pointValue: 0
+  - responseText: Non prendermi in giro!
+    dialogueObject: {fileID: 11400000, guid: 18cd6daa0c28bd8439a7d813e82df9c3, type: 2}
+    pointValue: 0

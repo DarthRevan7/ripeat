@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f181d74f3580e724da90b1119b516743, type: 3}
+  m_Name: 4.3
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - line: Un sogno che il mondo ha bisogno di vedere realizzato?
+    speaker: MORTY
+  - line: Un sogno che il mondo ha bisogno di vedere realizzato?
+    speaker: MORTY
+  responses:
+  - responseText: "Morir\xF2 per una misera rissa..."
+    dialogueObject: {fileID: 11400000, guid: 780c03f14f5a57b47905917d49836881, type: 2}
+    pointValue: 0
+  - responseText: "Sar\xF2 uno qualunque..."
+    dialogueObject: {fileID: 11400000, guid: 780c03f14f5a57b47905917d49836881, type: 2}
+    pointValue: 0

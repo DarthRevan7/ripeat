@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f181d74f3580e724da90b1119b516743, type: 3}
+  m_Name: 4.2
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - line: "Perch\xE8 voglio vendetta!"
+    speaker: TU
+  - line: Ora si che parli la mia lingua. Sai, mi piacciono le storie con una buona
+      chiusura.
+    speaker: MORTY
+  - line: E mi piacciono i giocatori che sanno cosa vogliono...
+    speaker: MORTY
+  - line: Diciamo che potrei... piegare qualche regola.
+    speaker: MORTY
+  - line: "Ecco la mia proposta amico mio. Tornerai. Ma il tempo non sar\xE0 dalla
+      tua parte. "
+    speaker: MORTY
+  - line: "E io sar\xF2 in attesa... per vedere se giochi bene la tua mano.. "
+    speaker: MORTY
+  - line: Che lo spettacolo abbia inizio!!
+    speaker: MORTY
+  responses:
+  - responseText: 
+    dialogueObject: {fileID: 0}
+    pointValue: 0
