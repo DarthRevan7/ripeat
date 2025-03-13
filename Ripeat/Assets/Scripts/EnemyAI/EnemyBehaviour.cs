@@ -43,6 +43,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     //Risolto eliminando l'evento in un duplicato dell'animazione ed usando quello.
 
+
+
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -67,6 +69,16 @@ public class EnemyBehaviour : MonoBehaviour
         
         
 
+    }
+    
+    public EnemyStatus GetEnemyStatus()
+    {
+        return enemyStatus;
+    }
+
+    public void HitTarget()
+    {
+        playerTransform.GetComponent<CharacterStats>().HitTarget(damage);
     }
 
     public void WaitBeforeFight()
@@ -113,7 +125,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         GetComponent<Animator>().SetInteger("AttackType", 1);
         yield return new WaitUntil( () => GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f );
-        playerTransform.GetComponent<CharacterStats>().HitTarget(damage);
+        // playerTransform.GetComponent<CharacterStats>().HitTarget(damage);
         yield return new WaitUntil( () => GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f );
         GetComponent<Animator>().SetInteger("AttackType", 0);
         yield return new WaitForSeconds(pauseAttack);
