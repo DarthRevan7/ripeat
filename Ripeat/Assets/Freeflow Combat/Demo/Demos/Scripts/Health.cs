@@ -7,6 +7,8 @@ namespace FreeflowCombatSpace
     {
         public int health = 100;
         public TextMeshProUGUI healthUI;
+        private RectTransform healthEnemyBarRect;
+        private float maxHealthEnemyBarWidth;
 
         Animator anim;
         Vector3 startPos;
@@ -19,7 +21,8 @@ namespace FreeflowCombatSpace
             anim = GetComponent<Animator>();
             startPos = transform.position;
 
-            
+            healthEnemyBarRect = GameObject.Find("HealthUI_EN").GetComponent<RectTransform>();
+            maxHealthEnemyBarWidth = healthEnemyBarRect.sizeDelta.x;
 
         }
 
@@ -28,6 +31,13 @@ namespace FreeflowCombatSpace
         {
             health -= hitPoints;
             if (health < 0) health = 0;
+
+            // Calcola il rapporto tra vita corrente e vita massima
+            float normalizedEnemyHealth = (float)health / 100f; // Assumendo che 100 sia la vita massima
+            // Aggiorna la larghezza della barra
+            Vector2 size = healthEnemyBarRect.sizeDelta;
+            size.x = maxHealthEnemyBarWidth * normalizedEnemyHealth;
+            healthEnemyBarRect.sizeDelta = size;
 
             healthUI.text = "Vita Nemico: " + health.ToString();
 
@@ -43,8 +53,9 @@ namespace FreeflowCombatSpace
             
             // play die animation
             anim.SetTrigger("Die");
+            
 
-            // set the enemy as not attackble
+            // set the enemy as not attackable
             GetComponent<FreeflowCombatEnemy>().isAttackable = false;
 
             // deactivate rotation script

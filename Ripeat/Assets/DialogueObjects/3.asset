@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f181d74f3580e724da90b1119b516743, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - line: "Oh, certo che pu\xF2 essere. \xC8 stato addirittura banale. Un po' di
+      alcol, una discussione e bum fine dei giochi!"
+    speaker: MORTY
+  - line: "\r\rMa sai quel \xE8 la parte divertente? Lui \xE8 ancora l\xEC fuori,
+      vivo... "
+    speaker: MORTY
+  - line: "\r...magari con la sbornia ancora da smaltire, mentre tu sei qui a farmi
+      perdere tempo."
+    speaker: MORTY
+  responses:
+  - responseText: "Cos\xEC presto..."
+    dialogueObject: {fileID: 11400000, guid: e15e63a450bad904a9483db9b715f9fa, type: 2}
+    pointValue: 0
+  - responseText: Non ancora ti prego...
+    dialogueObject: {fileID: 11400000, guid: 701cc08192a255e4ca6ef82217765600, type: 2}
+    pointValue: 0
+  isFinalDialogue: 0
+  finalDialogueType: 0

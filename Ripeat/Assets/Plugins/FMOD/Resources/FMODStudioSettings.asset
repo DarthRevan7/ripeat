@@ -536,8 +536,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../FMOD Studio/Ripeat FMOD/Ripeat FMOD.fspro
-  sourceBankPath: ../../FMOD Studio/Ripeat FMOD/Build
+  sourceProjectPath: ../../../Ripeat FMOD/Ripeat FMOD.fspro
+  sourceBankPath: ../../../Ripeat FMOD/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -558,7 +558,8 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
+  MasterBanks:
+  - Master
   Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264

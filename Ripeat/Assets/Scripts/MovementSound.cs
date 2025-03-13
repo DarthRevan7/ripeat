@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMOD.Studio;
+
 
 public class MovementSound : MonoBehaviour
 {
-
     [SerializeField] private Vector3 playerMovement;
-    [SerializeField] private EnemyBehaviour.EnemyStatus enemyStatus;
+    [SerializeField] public EnemyBehaviour.EnemyStatus enemyStatus;
 
+    private EventInstance playerFootsteps;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -14,24 +16,37 @@ public class MovementSound : MonoBehaviour
     {
         playerMovement = GameObject.FindAnyObjectByType<PlayerMovement>().movement;
         enemyStatus = GameObject.FindAnyObjectByType<EnemyBehaviour>().GetEnemyStatus();
+
+        playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.instance.playerFootsteps);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Ricavo lo stato attuale del giocatore e del nemico.
+        // Ricavo lo stato attuale del giocatore e del nemico.
         playerMovement = GameObject.FindAnyObjectByType<PlayerMovement>().movement;
         enemyStatus = GameObject.FindAnyObjectByType<EnemyBehaviour>().GetEnemyStatus();
 
-        if(playerMovement != Vector3.zero)
+        if (playerMovement != Vector3.zero)
         {
-            //Inserisci qui le righe x riprodurre l'audio dei passi DEL GIOCATORE
-            // Debug.Log("Il giocatore si muove. Senti il suono dei passi");
+            PLAYBACK_STATE playbackState;
+            playerFootsteps.getPlaybackState(out playbackState);
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                playerFootsteps.start();
+            }
+
+            Debug.Log("Il giocatore si muove. Senti il suono dei passi");
+        }
+        else
+        {
+            playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
         }
 
-        if(enemyStatus == EnemyBehaviour.EnemyStatus.FOLLOWING_PLAYER)
+
+        if (enemyStatus == EnemyBehaviour.EnemyStatus.FOLLOWING_PLAYER)
         {
-            //Inserisci qui le righe x riprodurre l'audio dei passi DEL NEMICO
+            // Inserisci qui le righe per riprodurre l'audio dei passi del nemico
             // Debug.Log("Il nemico si muove. Senti il suono dei passi");
         }
     }

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f181d74f3580e724da90b1119b516743, type: 3}
+  m_Name: 8
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - line: "Quanta bassezza... che spettacolo delizioso. Ti dir\xF2 una cosa... mi
+      piacciono le storie con un finale soddisfacente."
+    speaker: MORTY
+  - line: E le seconde occasioni hanno sempre un sapore... intrigante.
+    speaker: MORTY
+  - line: "Ma sei sicuro di meritartela? Convincimi. Perch\xE8 dovrei rimetterti
+      in gioco?"
+    speaker: MORTY
+  - line: "Perch\xE8 dovrei darti il lusso della vendetta?"
+    speaker: MORTY
+  responses:
+  - responseText: Io non dimentico...
+    dialogueObject: {fileID: 11400000, guid: bb5f77211c7c9d548b91381c32828fc7, type: 2}
+    pointValue: 0
+  - responseText: La giustizia non basta...
+    dialogueObject: {fileID: 11400000, guid: bb5f77211c7c9d548b91381c32828fc7, type: 2}
+    pointValue: 0
+  - responseText: Devo scrivere la mia storia...
+    dialogueObject: {fileID: 11400000, guid: bb5f77211c7c9d548b91381c32828fc7, type: 2}
+    pointValue: 0

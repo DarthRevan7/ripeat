@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f181d74f3580e724da90b1119b516743, type: 3}
+  m_Name: 7.4.1
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - line: Ora si che ci capiamo. Sai, mi piacciono i giocatori che sanno cosa vogliono.
+      Diciamo che potre... ignorare qualche regola.
+    speaker: MORTY
+  - line: "Ecco la mia proposta, amico mio. Tornerai. Ma il tempo non sar\xE0 dalla
+      tua parte. E io sar\xF2 in attesa..."
+    speaker: MORTY
+  - line: Per vedere se giochi bene la tua partita...
+    speaker: MORTY
+  responses:
+  - responseText: "Lo annienter\xF2!"
+    dialogueObject: {fileID: 11400000, guid: 30a96da620e5ba04cabf208ea71aa01b, type: 2}
+    pointValue: 0
+  - responseText: "Lo uccider\xF2!"
+    dialogueObject: {fileID: 11400000, guid: 30a96da620e5ba04cabf208ea71aa01b, type: 2}
+    pointValue: 0
