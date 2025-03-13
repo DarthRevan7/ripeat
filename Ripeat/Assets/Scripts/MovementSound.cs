@@ -6,7 +6,7 @@ using FMOD.Studio;
 public class MovementSound : MonoBehaviour
 {
     [SerializeField] private Vector3 playerMovement;
-    [SerializeField] private EnemyBehaviour.EnemyStatus enemyStatus;
+    [SerializeField] public EnemyBehaviour.EnemyStatus enemyStatus;
 
     private EventInstance playerFootsteps;
 
