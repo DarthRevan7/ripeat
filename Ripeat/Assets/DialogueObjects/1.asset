@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: "Ugh. Ancora uno. E ancora con quel aria confusa. Vuoi sapere\r                    
-      dove ti trovi, vero?\_\_\_\_\_\_\_"
+  - line: "Ugh. Ancora uno. E ancora con quell' aria confusa. Vuoi sapere dove ti
+      trovi vero?\_\_\_"
     speaker: MORTY
   - line: "Lascia\r            che indovini\u2026 Ti sei svegliato in un ascensore,
-      non ricordi nulla e pensi che\r\nsia solo un sogno..."
+      non ricordi nulla e pensi che sia solo un sogno..."
     speaker: MORTY
   - line: ...Sbagliato!!
     speaker: MORTY
