@@ -24,6 +24,6 @@ MonoBehaviour:
   - responseText: Davvero?
     dialogueObject: {fileID: 11400000, guid: e16c4b9d70f75ed45ab863c3f61e140e, type: 2}
     pointValue: 0
-  - responseText: Si ti prego?
+  - responseText: Si ti prego!
     dialogueObject: {fileID: 11400000, guid: e16c4b9d70f75ed45ab863c3f61e140e, type: 2}
     pointValue: 0
