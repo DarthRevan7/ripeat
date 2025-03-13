@@ -60,17 +60,18 @@ public class CharacterStats : MonoBehaviour
             GetComponent<Animator>().SetTrigger("Die");
             isDead = true;
 
-            Invoke("LoadNextScene", 3f);
+            // LoadNextScene();
         }
         UpdateUI();
 
-        
     }
 
     private void LoadNextScene()
     {
         
-        SceneManager.LoadScene("DialogueTest");
+        // SceneManager.LoadScene("DialogueTest");
+        GameObject.Find("FadingImage").GetComponent<MenuScript>().FadeIn();
+        Debug.Log("Fading to next scene!");
     }
 }
 
