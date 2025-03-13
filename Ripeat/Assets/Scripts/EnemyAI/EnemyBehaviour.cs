@@ -29,6 +29,9 @@ public class EnemyBehaviour : MonoBehaviour
     //Danno del nemico
     [SerializeField] private int damage = 10;
 
+    [SerializeField] private bool startFight = false;
+    [SerializeField] private float secondsToStartFight = 1.5f;
+
     
 
     //Errore con la dicitura seguente:
@@ -49,6 +52,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(GetComponent<Health>().isDead || playerTransform.GetComponent<CharacterStats>().isDead) return;
 
+        if(!startFight) return;
+
         if(enemyStatus == EnemyStatus.FOLLOWING_PLAYER)
         {
             MoveTowardsPlayer();
@@ -62,6 +67,17 @@ public class EnemyBehaviour : MonoBehaviour
         
         
 
+    }
+
+    public void WaitBeforeFight()
+    {
+        StartCoroutine(WaitBeforeFighting());
+    }
+
+    public IEnumerator WaitBeforeFighting()
+    {
+        yield return new WaitForSeconds(secondsToStartFight);
+        startFight = true;
     }
 
     private void FollowAndAttack()

@@ -9993,6 +9993,8 @@ MonoBehaviour:
   pauseAttack: 1
   hasAttacked: 0
   damage: 10
+  startFight: 0
+  secondsToStartFight: 1.5
 --- !u!4 &5937640052643170056
 Transform:
   m_ObjectHideFlags: 0
@@ -10782,6 +10784,10 @@ PrefabInstance:
     - target: {fileID: 1455711061811954104, guid: d40c54491d0150046a1a44e8a8ee7525, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256724735470544538, guid: d40c54491d0150046a1a44e8a8ee7525, type: 3}
+      propertyPath: secondsToStartFight
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7103739601263812011, guid: d40c54491d0150046a1a44e8a8ee7525, type: 3}
       propertyPath: healthUI

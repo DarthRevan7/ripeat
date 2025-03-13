@@ -102,6 +102,12 @@ public class MenuScript : MonoBehaviour
         }
 
         // Time.timeScale = 1f;
+
+        if(SceneManager.GetActiveScene().name.Equals("FightingScene_Try"))
+        {
+            GameObject.FindAnyObjectByType<EnemyBehaviour>().WaitBeforeFight();
+        }
+
     }
 }
 
