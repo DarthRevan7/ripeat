@@ -178,7 +178,7 @@ public class FreeflowCombat : MonoBehaviour
 
 
         attacked = true;
-        controller.enabled = false;
+        //controller.enabled = false;
         DisableScripts();
 
 
