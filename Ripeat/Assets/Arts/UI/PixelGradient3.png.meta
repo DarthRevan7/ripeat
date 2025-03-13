@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 87dec48f4f3bc5645a8b2c1b11a47e3e
+guid: 4f39dcb93005a17488f118c505f825ed
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,23 +97,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StartBottonDown_0
+      name: PixelGradient3_0
       rect:
         serializedVersion: 2
-        x: 59
-        y: 28
-        width: 132
-        height: 58
+        x: 0
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6106b23ae9e46e46b5ea71226d7c2d3
-      internalID: 1197537232
+      spriteID: 80d9b960da1cd9c409d8880e22082c01
+      internalID: 1805492863
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 51d406efa89dcbc48b0ef06ef041899b
+    spriteID: 598dc6229d93e294bb0b62cf0a4fe1da
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      StartBottonDown_0: 1197537232
+      PixelGradient3_0: 1805492863
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
