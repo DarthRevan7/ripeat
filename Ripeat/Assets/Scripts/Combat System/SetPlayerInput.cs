@@ -66,12 +66,12 @@ public class SetPlayerInput : MonoBehaviour
         }
 
         //Whoosh sound
-        if (freeFlowCombat.isTraversing) {
-            if (!whooshSound.isPlaying) whooshSound.Play();
-        }
-        else {
-            whooshSound.Stop();
-        }
+        // if (freeFlowCombat.isTraversing) {
+        //     if (!whooshSound.isPlaying) whooshSound.Play();
+        // }
+        // else {
+        //     whooshSound.Stop();
+        // }
 
         //Abilita il trail se si sta attraversando o attaccando
         if (freeFlowCombat.isTraversing || freeFlowCombat.isAttacking) tr.enabled = true;
