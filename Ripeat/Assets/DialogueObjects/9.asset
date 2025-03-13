@@ -21,3 +21,5 @@ MonoBehaviour:
   - line: Vediamo quanto vali davvero.
     speaker: MORTY
   responses: []
+  isFinalDialogue: 1
+  finalDialogueType: 1

@@ -16,3 +16,5 @@ MonoBehaviour:
   - line: Basta mi hai annoiato, non mi darai il divertimento che cercavo, addio.
     speaker: MORTY
   responses: []
+  isFinalDialogue: 1
+  finalDialogueType: 2

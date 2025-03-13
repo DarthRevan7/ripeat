@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DialogueUI : MonoBehaviour
 {
@@ -9,9 +10,11 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private DialogueObject testDialogue;
     [SerializeField] private GameObject dialogueBox;
+    [SerializeField] private GameObject negativeFinalImage;
 
     private ResponseHandler responseHandler;
     private TypewriterEffect typewriterEffect;
+    private CharacterStats characterStats;
 
     private void Start()
     {
@@ -56,7 +59,23 @@ public class DialogueUI : MonoBehaviour
         else
         {
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-            CloseDialogueBox();
+            
+            // Se il dialogo è finale e negativo, mostra l'immagine di finale negativo,
+            // altrimenti chiudi il dialogo normalmente
+            if (dialogueObject.IsFinalDialogue && dialogueObject.DialogueFinalType == FinalDialogueType.Negative)
+            {
+                yield return new WaitForSeconds(1f);
+                ShowNegativeFinalImage();
+            }
+            else if (dialogueObject.IsFinalDialogue && dialogueObject.DialogueFinalType == FinalDialogueType.Positive)
+            {
+                yield return new WaitForSeconds(1f);
+                SceneManager.LoadScene("FightingScene_Try");
+            }
+            else
+            {
+                CloseDialogueBox();
+            }
         }
     }
 
@@ -74,5 +93,13 @@ public class DialogueUI : MonoBehaviour
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
         speakerText.text = string.Empty;
+    }
+
+    private void ShowNegativeFinalImage()
+    {
+        if (negativeFinalImage != null)
+        {
+            negativeFinalImage.SetActive(true);
+        }
     }
 }

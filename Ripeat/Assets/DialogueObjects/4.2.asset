@@ -29,7 +29,6 @@ MonoBehaviour:
     speaker: MORTY
   - line: Che lo spettacolo abbia inizio!!
     speaker: MORTY
-  responses:
-  - responseText: 
-    dialogueObject: {fileID: 0}
-    pointValue: 0
+  responses: []
+  isFinalDialogue: 1
+  finalDialogueType: 1

@@ -18,3 +18,5 @@ MonoBehaviour:
   - line: Finalmente un motivo serio! Vai e non scordare gli insegnamenti di mazzaglia.
     speaker: TU
   responses: []
+  isFinalDialogue: 1
+  finalDialogueType: 1

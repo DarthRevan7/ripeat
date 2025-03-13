@@ -18,3 +18,5 @@ MonoBehaviour:
   - line: Che noia, non hai lo spirito giusto!
     speaker: MORTY
   responses: []
+  isFinalDialogue: 1
+  finalDialogueType: 2

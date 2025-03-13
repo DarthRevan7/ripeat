@@ -16,3 +16,5 @@ MonoBehaviour:
   - line: Vedremo mio caro, vedremo. Che il combattimento abbia inizio!
     speaker: MORTY
   responses: []
+  isFinalDialogue: 1
+  finalDialogueType: 1

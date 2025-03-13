@@ -19,3 +19,5 @@ MonoBehaviour:
       se saprai giocarti questa occasione."
     speaker: MORTY
   responses: []
+  isFinalDialogue: 1
+  finalDialogueType: 1

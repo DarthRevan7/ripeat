@@ -18,3 +18,5 @@ MonoBehaviour:
   - line: Umm... patetico. Troppo melodrammatico. Non mi fai nemmeno un po' di brio!
     speaker: MORTY
   responses: []
+  isFinalDialogue: 1
+  finalDialogueType: 2
