@@ -1,16 +1,20 @@
 using UnityEngine;
+using FMODUnity;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class FMODEvents : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [field: Header("Player SFX")]
+    [field: SerializeField] 
+    public EventReference playerFootsteps { get; private set; }
 
-    // Update is called once per frame
-    void Update()
+    public static FMODEvents instance { get; private set; }
+
+    private void Awake()
     {
-        
+        if (instance != null)
+        {
+            Debug.LogError("Found more than one FMOD Events instance in the scene.");
+        }
+        instance = this;
     }
 }
