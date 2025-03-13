@@ -29,6 +29,7 @@ public class ResponseHandler : MonoBehaviour
     public void ShowResponses(Response[] responses)
     {
         float responseBoxHeight = 0; // Altezza del box delle risposte
+        Vector2 initialPos = responseBox.anchoredPosition;
 
         for(int i = 0; i < responses.Length; i++)
         {
@@ -38,7 +39,7 @@ public class ResponseHandler : MonoBehaviour
             GameObject responseButton = Instantiate(responseButtonTemplate.gameObject, responseContainer); // Istanzia un nuovo pulsante di risposta
             responseButton.gameObject.SetActive(true);
             responseButton.GetComponent<TMP_Text>().text = response.ResponseText; // Imposta il testo del pulsante di risposta
-            responseButton.GetComponent<Button>().onClick.AddListener(() => OnPickedResponse(response, responseIndex)); // Aggiunge il listener per il click del pulsante
+            responseButton.GetComponent<Button>().onClick.AddListener(() => OnPickedResponse(response, responseIndex, initialPos)); // Aggiunge il listener per il click del pulsante
         
             tempResponseButtons.Add(responseButton); // Aggiunge il pulsante alla lista temporanea
 
@@ -46,12 +47,15 @@ public class ResponseHandler : MonoBehaviour
         }
 
         responseBox.sizeDelta = new Vector2(responseBox.sizeDelta.x, responseBoxHeight); // Imposta la dimensione del box delle risposte
+        responseBox.anchoredPosition = new Vector2(responseBox.anchoredPosition.x, responseBox.anchoredPosition.y - (responseBoxHeight-responseButtonTemplate.sizeDelta.y));
         responseBox.gameObject.SetActive(true); // Mostra il box delle risposte
     }
 
-    private void OnPickedResponse(Response response, int responseIndex)
+    private void OnPickedResponse(Response response, int responseIndex, Vector2 initialPos)
     {
         responseBox.gameObject.SetActive(false); // Nasconde il box delle risposte
+        
+         responseBox.anchoredPosition = initialPos;
 
         foreach (GameObject button in tempResponseButtons)
         {
