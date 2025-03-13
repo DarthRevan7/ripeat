@@ -14,7 +14,7 @@ namespace FreeflowCombatSpace
 
 
         void Start() {
-            hitSound = GetComponent<AudioSource>();
+            //hitSound = GetComponent<AudioSource>();
         }
 
         void Update()
@@ -41,7 +41,7 @@ namespace FreeflowCombatSpace
             
             foreach(var item in colliders) {
                 if (item.transform.GetComponent<FreeflowCombatEnemy>()) {
-                    if (!hitSound.isPlaying) hitSound.Play();
+                    //if (!hitSound.isPlaying) hitSound.Play();
 
                     item.GetComponent<Health>().Hit(10);
 
