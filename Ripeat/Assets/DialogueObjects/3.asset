@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: "Oh, certo che pu\xF2 essere. \xC8 stato addirittura banale. Un po\u2019\r                        
-      di alcol, una discussione, e bum-fine dei giochi. "
+  - line: "Oh, certo che pu\xF2 essere. \xC8 stato addirittura banale. Un po' di
+      alcol, una discussione e bum fine dei giochi!"
     speaker: MORTY
   - line: "Ma sai qual \xE8 la parte\r                                     divertente?
       Lui \xE8 ancora l\xEC fuori, vivo... "
