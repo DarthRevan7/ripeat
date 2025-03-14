@@ -309,7 +309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33, y: 160}
+  m_AnchoredPosition: {x: 33, y: 219}
   m_SizeDelta: {x: 1000, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &284116866
@@ -523,7 +523,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -23, y: -204}
+  m_AnchoredPosition: {x: -23, y: -139}
   m_SizeDelta: {x: 600, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &979332284
@@ -965,14 +965,14 @@ RectTransform:
   m_GameObject: {fileID: 2054049698}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7737401, y: 0.85111415, z: 0.7737401}
+  m_LocalScale: {x: 0.7737401, y: 0.8511142, z: 0.7737401}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 207826943}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -23, y: -404}
+  m_AnchoredPosition: {x: -22, y: -348}
   m_SizeDelta: {x: 600, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2054049700
@@ -1004,8 +1004,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: -1336566399, guid: 597c685f84ff11448a27e5cf2d84b1a4, type: 3}
-    m_PressedSprite: {fileID: -1724103364, guid: f503733c2f099bd4c9a01d3830ca7622, type: 3}
+    m_HighlightedSprite: {fileID: 284184670, guid: 36c7784b60c75514cacc54a18b07d70d, type: 3}
+    m_PressedSprite: {fileID: -1926203239, guid: 17982c767b737a54496bc4d18a12c8a0, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -1051,7 +1051,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1336566399, guid: 597c685f84ff11448a27e5cf2d84b1a4, type: 3}
+  m_Sprite: {fileID: 1284407818, guid: 1cbe23a05fcfc8941bc3c8d30b2ba564, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
