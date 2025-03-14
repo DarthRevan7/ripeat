@@ -23,7 +23,7 @@ public class MenuScript : MonoBehaviour
 
         if (button != null)
         {
-            button.onClick.AddListener(() => LoadScene(sceneToLoad));
+            button.onClick.AddListener(() => LoadScene());
         }
 
         string sceneName = SceneManager.GetActiveScene().name;
@@ -53,7 +53,7 @@ public class MenuScript : MonoBehaviour
 
 
 
-    public void LoadScene(string sceneName)
+    public void LoadScene()
     {
         // StartCoroutine(LoadSceneAfterDelay(sceneName));
         StartCoroutine(FadeIn());

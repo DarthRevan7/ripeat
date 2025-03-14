@@ -72,7 +72,9 @@ public class DialogueUI : MonoBehaviour
             else if (dialogueObject.IsFinalDialogue && dialogueObject.DialogueFinalType == FinalDialogueType.Positive)
             {
                 yield return new WaitForSeconds(1f);
-                SceneManager.LoadScene("FightingScene_Try");
+                // Finito il dialogo fa il fade in e passa alla scena successiva
+                // SceneManager.LoadScene("FightingScene_Try");
+                GameObject.Find("FadingImage").GetComponent<MenuScript>().LoadScene();
             }
             else
             {
