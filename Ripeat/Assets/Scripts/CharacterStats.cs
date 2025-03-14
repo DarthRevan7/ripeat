@@ -8,7 +8,7 @@ public class CharacterStats : MonoBehaviour
     //Vita e mana, nel caso avessimo degli attacchi speciali.
     [SerializeField] private int vita = 100, mana = 100;
     //Con la stessa logica in cui un personaggio più corazzato è lento, si potrebbe pensare di inserire una difesa in futuro.
-    [SerializeField] private int attacco = 10, difesa = 0;
+    public int attacco = 10, difesa = 0;
     //User Interface
     [SerializeField] private TMP_Text healthText, manaText;
 
