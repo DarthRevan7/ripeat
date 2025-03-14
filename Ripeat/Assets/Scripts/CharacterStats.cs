@@ -33,7 +33,10 @@ public class CharacterStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(!isDead)
+        {
+            CheckDeath();
+        }
     }
 
     private void UpdateUI()
@@ -49,19 +52,23 @@ public class CharacterStats : MonoBehaviour
         healthBarRect.sizeDelta = size;
     }
 
+    void CheckDeath()
+    {
+        if(vita <= 0){
+            vita = 0;
+            GetComponent<Animator>().SetTrigger("Die");
+            isDead = true;
+            // LoadNextScene();
+        }
+    }
+
     public void HitTarget(int damage)
     {
         
 
         vita -= damage;
 
-        if(vita <= 0){
-            vita = 0;
-            GetComponent<Animator>().SetTrigger("Die");
-            isDead = true;
-
-            // LoadNextScene();
-        }
+        CheckDeath();
         UpdateUI();
 
     }
