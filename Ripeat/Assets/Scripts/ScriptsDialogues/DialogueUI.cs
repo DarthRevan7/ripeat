@@ -66,6 +66,8 @@ public class DialogueUI : MonoBehaviour
             {
                 yield return new WaitForSeconds(1f);
                 ShowNegativeFinalImage();
+                yield return new WaitForSeconds(3f);
+                SceneManager.LoadScene("Menu");
             }
             else if (dialogueObject.IsFinalDialogue && dialogueObject.DialogueFinalType == FinalDialogueType.Positive)
             {
