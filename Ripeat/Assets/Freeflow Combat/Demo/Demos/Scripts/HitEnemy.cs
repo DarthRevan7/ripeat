@@ -12,9 +12,12 @@ namespace FreeflowCombatSpace
         bool coolDown = false;
         float timer = 0f;
 
+        public int playerDamage;
+
 
         void Start() {
             //hitSound = GetComponent<AudioSource>();
+            playerDamage = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().attacco;
         }
 
         void Update()
@@ -43,7 +46,7 @@ namespace FreeflowCombatSpace
                 if (item.transform.GetComponent<FreeflowCombatEnemy>()) {
                     //if (!hitSound.isPlaying) hitSound.Play();
 
-                    item.GetComponent<Health>().Hit(10);
+                    item.GetComponent<Health>().Hit(playerDamage);
 
                     enemyAnim = item.transform.GetComponent<Animator>();
                     enemyAnim.SetTrigger("Hit");
