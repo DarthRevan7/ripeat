@@ -26,6 +26,5 @@ MonoBehaviour:
   - responseText: Non ho concluso nulla...
     dialogueObject: {fileID: 11400000, guid: 0af70acd0eaed1145aef21bcfcb13420, type: 2}
     pointValue: 0
-  - responseText: Dai ti prego...
-    dialogueObject: {fileID: 0}
-    pointValue: 0
+  isFinalDialogue: 0
+  finalDialogueType: 0
