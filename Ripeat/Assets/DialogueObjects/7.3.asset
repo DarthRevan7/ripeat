@@ -15,7 +15,7 @@ MonoBehaviour:
   dialogueLines:
   - line: Devo finire la Game Jam!
     speaker: TU
-  - line: Finalmente un motivo serio! Vai e non scordare gli insegnamenti di mazzaglia.
+  - line: Finalmente un motivo serio! Vai e non scordare gli insegnamenti di Mazzaglia.
     speaker: TU
   responses: []
   isFinalDialogue: 1
