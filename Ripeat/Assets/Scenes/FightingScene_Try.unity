@@ -11466,7 +11466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 333328295148949851, guid: 2c4b5e14adf804d47b56c7e7917ed9a0, type: 3}
       propertyPath: attacco
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 333328295148949851, guid: 2c4b5e14adf804d47b56c7e7917ed9a0, type: 3}
       propertyPath: manaText
