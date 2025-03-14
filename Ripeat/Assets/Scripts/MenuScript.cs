@@ -28,7 +28,7 @@ public class MenuScript : MonoBehaviour
 
         string sceneName = SceneManager.GetActiveScene().name;
 
-        if(sceneName.Equals("FightingScene_Try") || sceneName.Equals("DialogueTest"))
+        if(sceneName.Equals("FightingScene_Try") || sceneName.Equals("DialogueTest") || sceneName.Equals("Elevator"))
         {
             StartCoroutine(FadeOut());
         }
