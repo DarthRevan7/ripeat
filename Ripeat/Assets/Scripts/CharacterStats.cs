@@ -37,6 +37,7 @@ public class CharacterStats : MonoBehaviour
         {
             CheckDeath();
         }
+        
     }
 
     private void UpdateUI()
@@ -56,8 +57,16 @@ public class CharacterStats : MonoBehaviour
     {
         if(vita <= 0){
             vita = 0;
-            GetComponent<Animator>().SetTrigger("Die");
             isDead = true;
+            
+            FreeflowCombat freeflowCombat = GetComponent<FreeflowCombat>();
+            SetPlayerInput setPlayerInput = GetComponent<SetPlayerInput>();
+            freeflowCombat.enabled = false;
+            setPlayerInput.enabled = false;
+
+            GetComponent<Animator>().Play("Die");
+            // GetComponent<Animator>().SetBool("IsDead", true);
+            // Debug.Log("Death!!");
             // LoadNextScene();
         }
     }

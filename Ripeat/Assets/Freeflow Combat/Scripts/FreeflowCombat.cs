@@ -136,6 +136,9 @@ public class FreeflowCombat : MonoBehaviour
         inputDirection = inputDirection.normalized;
         inputDirection = new Vector3(inputDirection.x, 0f, inputDirection.z);
 
+        if(FindAnyObjectByType<CharacterStats>().isDead) {
+            GetComponent<Animator>().SetTrigger("Die");
+        }
 
         if (attacked) {
             if (inputDirection.x == 0 && inputDirection.z == 0) {
@@ -179,6 +182,9 @@ public class FreeflowCombat : MonoBehaviour
 
         attacked = true;
         //controller.enabled = false;
+        if(FindAnyObjectByType<CharacterStats>().isDead) {
+            GetComponent<Animator>().SetTrigger("Die");
+        }
         DisableScripts();
 
 
@@ -355,7 +361,7 @@ public class FreeflowCombat : MonoBehaviour
         attacked = false;
         anim.applyRootMotion = defaultRootMotion;
         
-        if (nextEnemy) Attack();
+        if (nextEnemy && !FindAnyObjectByType<CharacterStats>().isDead) Attack();
     }
 
     // method for reenabling the disabled scripts during attacking

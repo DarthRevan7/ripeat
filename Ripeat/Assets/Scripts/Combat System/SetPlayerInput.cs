@@ -16,6 +16,7 @@ public class SetPlayerInput : MonoBehaviour
 
     //Riferimento alla variabile inputModePC di PlayerMovement
     [SerializeField] private bool inputModePC;
+    [SerializeField] private bool isDead;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,8 +28,9 @@ public class SetPlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isDead = GetComponent<CharacterStats>().isDead;
         //Se non sono morto, allora gestisci gli input.
-        if(!GetComponent<CharacterStats>().isDead)
+        if(!isDead)
         {
             HandleInputActions();
         }       
@@ -55,7 +57,7 @@ public class SetPlayerInput : MonoBehaviour
             InputAction attackButtonPressed = inputActionController.FindActionMap("Player").FindAction("Attack");
 
             //Attacco col pulsante sx del mouse
-            if (attackButtonPressed.WasPressedThisFrame()) {
+            if (attackButtonPressed.WasPressedThisFrame() && !isDead) {
                 freeFlowCombat.Attack();
                 Debug.Log("Attack!");
             }
