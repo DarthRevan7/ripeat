@@ -21,5 +21,5 @@ EditorBuildSettings:
     path: Assets/Scenes/DialogueTest.unity
     guid: a172a724889888640ac0929954c115e0
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: e57d84ca062c5b54e8d1952a0a0cc906, type: 3}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 36f076fdd01203747943104cda6a9739, type: 3}
   m_UseUCBPForAssetBundles: 0
