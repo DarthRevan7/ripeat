@@ -44,4 +44,5 @@ public class InGameMenu : MonoBehaviour
         }
         escPanel.SetActive(menuTriggered);
     }
+
 }
