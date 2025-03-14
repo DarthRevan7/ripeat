@@ -2782,7 +2782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.037112236, a: 1}
+  m_Color: {r: 0, g: 0.5245282, b: 0.018512728, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2862,7 +2862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.037112236, a: 1}
+  m_Color: {r: 0, g: 0.5254902, b: 0.019607844, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3561,7 +3561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1152916729
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4377,7 +4377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.4566037, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6065,7 +6065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.45490196, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10908,6 +10908,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3256724735470544538, guid: d40c54491d0150046a1a44e8a8ee7525, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256724735470544538, guid: d40c54491d0150046a1a44e8a8ee7525, type: 3}
+      propertyPath: pauseAttack
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256724735470544538, guid: d40c54491d0150046a1a44e8a8ee7525, type: 3}
       propertyPath: secondsToStartFight
       value: 1
       objectReference: {fileID: 0}
@@ -11550,6 +11558,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 333328295148949851, guid: 2c4b5e14adf804d47b56c7e7917ed9a0, type: 3}
+      propertyPath: vita
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 333328295148949851, guid: 2c4b5e14adf804d47b56c7e7917ed9a0, type: 3}
+      propertyPath: attacco
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 333328295148949851, guid: 2c4b5e14adf804d47b56c7e7917ed9a0, type: 3}
       propertyPath: manaText
       value: 
