@@ -35,7 +35,7 @@ public class MenuScript : MonoBehaviour
 
         characterStats = GameObject.FindAnyObjectByType<CharacterStats>();
         
-
+        // Time.timeScale = 1;
         
     }
 
@@ -55,7 +55,9 @@ public class MenuScript : MonoBehaviour
 
     public void LoadScene()
     {
+        Debug.Log("Called LoadScene()");
         // StartCoroutine(LoadSceneAfterDelay(sceneName));
+        StopAllCoroutines();
         StartCoroutine(FadeIn());
     }
 
@@ -69,6 +71,7 @@ public class MenuScript : MonoBehaviour
 
     public IEnumerator FadeIn()
     {
+        Debug.Log("Started Coroutine FadeIn()");
         float elapsedTime = 0f;
         Color color = targetImage.color;
         color.a = 0f; // Partiamo con alfa a 0 (trasparente)
@@ -82,7 +85,15 @@ public class MenuScript : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.LoadScene(sceneToLoad);
+        
+        if(SceneManager.GetSceneByName(sceneToLoad).isLoaded)
+        {
+            Debug.Log("Cambiamento di scena: " + SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneToLoad)).ToString());
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneToLoad);
+        }
     }
 
     public IEnumerator FadeOut()
