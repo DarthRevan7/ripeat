@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: ../../../FMOD Studio/Ripeat FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638775906911978304
+  lastModified: 638776419211689017
   FileSizes:
   - Name: Desktop
-    Value: 1019360
+    Value: 5071296
   Exists: 1
 --- !u!114 &-3400088951864832383
 MonoBehaviour:
@@ -35,10 +35,10 @@ MonoBehaviour:
   Path: ../../../FMOD Studio/Ripeat FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638775906911988269
+  lastModified: 638776419211699011
   FileSizes:
   - Name: Desktop
-    Value: 908
+    Value: 990
   Exists: 1
 --- !u!114 &-3342449098867889981
 MonoBehaviour:
@@ -87,13 +87,69 @@ MonoBehaviour:
   - {fileID: 8464990330952109853}
   - {fileID: 6200740755015113143}
   - {fileID: 7442188900631540466}
+  - {fileID: 5804885863011960051}
+  - {fileID: 33096329037457038}
   EditorParameters: []
   MasterBanks:
   - {fileID: -4350798352982218629}
   StringsBanks:
   - {fileID: -3400088951864832383}
-  cacheTime: 638775906911988269
+  cacheTime: 638776419211699011
   cacheVersion: 131846
+--- !u!114 &33096329037457038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/menu
+  m_EditorClassIdentifier: 
+  Path: event:/menu
+  Guid:
+    Data1: -1888884657
+    Data2: 1228172821
+    Data3: -3482981
+    Data4: -576108314
+  Banks:
+  - {fileID: -4350798352982218629}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 22752
+--- !u!114 &5804885863011960051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/combat
+  m_EditorClassIdentifier: 
+  Path: event:/combat
+  Guid:
+    Data1: -1491121104
+    Data2: 1280781173
+    Data3: -1502282848
+    Data4: 606056989
+  Banks:
+  - {fileID: -4350798352982218629}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 226500
 --- !u!114 &6200740755015113143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,11 +172,11 @@ MonoBehaviour:
   - {fileID: -4350798352982218629}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 20750
+  Length: 67500
 --- !u!114 &7442188900631540466
 MonoBehaviour:
   m_ObjectHideFlags: 0
