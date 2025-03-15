@@ -235,7 +235,7 @@ VideoPlayer:
   m_RenderMode: 1
   m_AspectRatio: 4
   m_DataSource: 0
-  m_TimeUpdateMode: 2
+  m_TimeUpdateMode: 1
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
   m_TargetAudioSources:
@@ -280,8 +280,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 0}
-  waitingSecondsBeforeMenuScene: 2
+  waitingSecondsBeforeMenuScene: 1
   menuSceneName: Menu
+  background: {fileID: 0}
 --- !u!1 &492216186
 GameObject:
   m_ObjectHideFlags: 0

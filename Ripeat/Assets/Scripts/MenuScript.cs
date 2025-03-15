@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class MenuScript : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class MenuScript : MonoBehaviour
         if (button != null)
         {
             button.onClick.AddListener(() => LoadScene());
+            EventSystem.current.firstSelectedGameObject = button.gameObject;
         }
 
         string sceneName = SceneManager.GetActiveScene().name;
@@ -36,6 +38,7 @@ public class MenuScript : MonoBehaviour
         characterStats = GameObject.FindAnyObjectByType<CharacterStats>();
         
         // Time.timeScale = 1;
+        
         
     }
 
@@ -58,7 +61,7 @@ public class MenuScript : MonoBehaviour
 
     public void LoadScene()
     {
-        Debug.Log("Called LoadScene()");
+        // Debug.Log("Called LoadScene()");
         // StartCoroutine(LoadSceneAfterDelay(sceneName));
         StopAllCoroutines();
         StartCoroutine(FadeIn());
@@ -74,7 +77,7 @@ public class MenuScript : MonoBehaviour
 
     public IEnumerator FadeIn()
     {
-        Debug.Log("Started Coroutine FadeIn()");
+        // Debug.Log("Started Coroutine FadeIn()");
         float elapsedTime = 0f;
         Color color = targetImage.color;
         color.a = 0f; // Partiamo con alfa a 0 (trasparente)
