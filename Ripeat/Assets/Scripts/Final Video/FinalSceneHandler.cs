@@ -10,6 +10,7 @@ public class FinalSceneHandler : MonoBehaviour
 
     [SerializeField] private float waitingSecondsBeforeMenuScene = 2f;
     [SerializeField] private string menuSceneName = "Menu";
+    [SerializeField] private GameObject background;
 
 
     void Awake()
@@ -17,6 +18,11 @@ public class FinalSceneHandler : MonoBehaviour
         videoPlayer = GetComponent<VideoPlayer>();
 
         videoPlayer.loopPointReached += ChangeScene;
+
+        enabled = true;
+
+        // background = GameObject.Find("Background");
+        // background.SetActive(true);
     }
 
     void ChangeScene(VideoPlayer vp)
