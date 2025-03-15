@@ -17,15 +17,17 @@ MonoBehaviour:
     speaker: TU
   - line: ...
     speaker: TU
-  - line: "S\xEC, s\xEC, \xE8 tutto molto tragico. Rissa tra colleghi, un colpo dopo
-      l\u2019altro e voil\xE0.\r\r\n"
+  - line: "Si', si', e' tutto molto tragico. Rissa tra colleghi, un colpo dopo l\u2019altro
+      e voil\xE0.\r\r\n"
     speaker: MORTY
   - line: "Ora sei qui, con me. Complimenti sei morto.\r\r\n"
     speaker: MORTY
   responses:
-  - responseText: "Non pu\xF2 essere!"
+  - responseText: Non puo' essere!
     dialogueObject: {fileID: 11400000, guid: 18cd6daa0c28bd8439a7d813e82df9c3, type: 2}
     pointValue: 0
   - responseText: Non prendermi in giro!
     dialogueObject: {fileID: 11400000, guid: 18cd6daa0c28bd8439a7d813e82df9c3, type: 2}
     pointValue: 0
+  isFinalDialogue: 0
+  finalDialogueType: 0

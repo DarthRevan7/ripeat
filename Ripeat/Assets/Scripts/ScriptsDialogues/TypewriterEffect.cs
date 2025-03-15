@@ -1,27 +1,21 @@
 using UnityEngine;
 using TMPro;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 
 // Questo script gestisce l'effetto "macchinetta da scrivere" che visualizza il testo gradualmente
 public class TypewriterEffect : MonoBehaviour
 {
-    // Velocità dell'effetto macchinetta da scrivere; più alto è il valore, più velocemente il testo viene visualizzato
     [SerializeField] private float typewriterSpeed = 50f;
 
     // Lista di punteggiatura con i relativi tempi di attesa per creare pause naturali tra le frasi
     private readonly List<Punctuation> punctuations = new List<Punctuation>()
     {
-        // Dopo punto, esclamativo o interrogativo, una pausa più lunga
         new Punctuation(new HashSet<char> { '.', '!', '?' }, 0.6f),
-        // Dopo virgola, punto e virgola o due punti, una pausa leggermente minore
         new Punctuation(new HashSet<char> { ',', ';', ':' }, 0.3f),
     };
 
-    // Flag per indicare se l'effetto è in esecuzione
     public bool IsRunning { get; private set; }
-
-    // Riferimento alla coroutine in esecuzione
     private Coroutine typingCoroutine;
 
     // Variabili per memorizzare il testo corrente e il textLabel
@@ -49,13 +43,13 @@ public class TypewriterEffect : MonoBehaviour
             StopCoroutine(typingCoroutine);
             typingCoroutine = null;
         }
-        if(currentTextLabel != null && !string.IsNullOrEmpty(currentTextToType))
+        if (currentTextLabel != null && !string.IsNullOrEmpty(currentTextToType))
             currentTextLabel.text = currentTextToType;
 
         IsRunning = false;
     }
 
-    // Coroutine che gestisce l'effetto di scrittura carattere per carattere
+    // Coroutine che gestisce l'effetto di scrittura carattere per carattere (senza salto via click)
     private IEnumerator TypeText(string textToType, TMP_Text textLabel)
     {
         IsRunning = true;
@@ -74,7 +68,7 @@ public class TypewriterEffect : MonoBehaviour
             yield return null;
         }
 
-        // Assicura che venga visualizzato l'intero testo
+        // Assicura che venga visualizzato l'intero testo al termine dell'animazione
         textLabel.text = textToType;
         IsRunning = false;
     }
@@ -92,5 +86,6 @@ public class TypewriterEffect : MonoBehaviour
         }
     }
 }
+
 
 

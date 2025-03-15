@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 7.4
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: "La mia vita non pu\xF2 finire cos\xEC miseramente!"
+  - line: La mia vita non puo' finire cosi' miseramente!
     speaker: TU
   - line: Patetico. Troppo melodrammatico. Non mi fai nemmeno venire la pelle d'oca,
       riprova.
@@ -25,3 +25,5 @@ MonoBehaviour:
   - responseText: Devo realizzare il mio sogno!
     dialogueObject: {fileID: 11400000, guid: 896f910e86fce674ba65e57973ae5583, type: 2}
     pointValue: 0
+  isFinalDialogue: 0
+  finalDialogueType: 0

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 3.1
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: "Non pensavo toccasse a me cos\xEC presto"
+  - line: Non pensavo toccasse a me cosi' presto
     speaker: TU
-  - line: "Oh, finalmente un po\u2019 di umilt\xE0 e di accettazione!"
+  - line: "Oh, finalmente un po\u2019 di umilta' e di accettazione!"
     speaker: MORTY
   - line: "E io che temevo di avere a che fare con l\u2019ennesima anima piagnucolosa.
       Potrei anche pensare di darti una seconda possibilit\xE0."
@@ -24,6 +24,8 @@ MonoBehaviour:
   - responseText: Davvero?
     dialogueObject: {fileID: 11400000, guid: e16c4b9d70f75ed45ab863c3f61e140e, type: 2}
     pointValue: 0
-  - responseText: Si ti prego!
+  - responseText: Si' ti prego!
     dialogueObject: {fileID: 11400000, guid: e16c4b9d70f75ed45ab863c3f61e140e, type: 2}
     pointValue: 0
+  isFinalDialogue: 0
+  finalDialogueType: 0

@@ -22,9 +22,11 @@ MonoBehaviour:
   - line: Per vedere se giochi bene la tua partita...
     speaker: MORTY
   responses:
-  - responseText: "Lo annienter\xF2!"
+  - responseText: Lo annientero'!
     dialogueObject: {fileID: 11400000, guid: 30a96da620e5ba04cabf208ea71aa01b, type: 2}
     pointValue: 0
-  - responseText: "Lo uccider\xF2!"
+  - responseText: Lo uccidero'!
     dialogueObject: {fileID: 11400000, guid: 30a96da620e5ba04cabf208ea71aa01b, type: 2}
     pointValue: 0
+  isFinalDialogue: 0
+  finalDialogueType: 0

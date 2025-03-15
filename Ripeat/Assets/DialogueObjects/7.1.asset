@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 7.1
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: "Ho una famiglia, chi bader\xE0 a loro?"
+  - line: Ho una famiglia, chi badera' a loro?
     speaker: TU
   - line: Umm... patetico. Troppo melodrammatico. Non mi fai nemmeno un po' di brio!
     speaker: MORTY

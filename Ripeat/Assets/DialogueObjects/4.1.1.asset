@@ -10,15 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f181d74f3580e724da90b1119b516743, type: 3}
-  m_Name: 4.4
+  m_Name: 4.1.1
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: "Patetico, basta \xE8 finita."
+  - line: 'Un motivo in piu'' per farti morire. Basta! '
     speaker: MORTY
-  responses:
-  - responseText: "Morir\xF2 per una misera rissa..."
-    dialogueObject: {fileID: 11400000, guid: 780c03f14f5a57b47905917d49836881, type: 2}
-    pointValue: 0
-  - responseText: "Sar\xF2 uno qualunque..."
-    dialogueObject: {fileID: 11400000, guid: 780c03f14f5a57b47905917d49836881, type: 2}
-    pointValue: 0
+  responses: []
+  isFinalDialogue: 1
+  finalDialogueType: 2

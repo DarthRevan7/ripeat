@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 4.2
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: "Perch\xE8 voglio vendetta!"
+  - line: Perche' voglio vendetta!
     speaker: TU
   - line: Ora si che parli la mia lingua. Sai, mi piacciono le storie con una buona
       chiusura.

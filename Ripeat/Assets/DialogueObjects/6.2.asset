@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 6.2
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: "Posso provarci, far\xF2 del mio meglio."
+  - line: Posso provarci, faro' del mio meglio.
     speaker: TU
   - line: Che noia, non hai lo spirito giusto!
     speaker: MORTY

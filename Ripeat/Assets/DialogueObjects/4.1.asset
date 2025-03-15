@@ -26,5 +26,11 @@ MonoBehaviour:
   - responseText: Non ho concluso nulla...
     dialogueObject: {fileID: 11400000, guid: 0af70acd0eaed1145aef21bcfcb13420, type: 2}
     pointValue: 0
+  - responseText: Devo finire la Game Jam...
+    dialogueObject: {fileID: 11400000, guid: af4c0b4d7a9c9aa4cbd36f69a811f7d4, type: 2}
+    pointValue: 0
+  - responseText: Moriro' vergine...
+    dialogueObject: {fileID: 11400000, guid: 0e3a6d8b9ec462149ae6c01736a2b092, type: 2}
+    pointValue: 0
   isFinalDialogue: 0
   finalDialogueType: 0

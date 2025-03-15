@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2d408c2884a0e47a040b2419886af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typewriterSpeed: 25
+  typewriterSpeed: 60
 --- !u!114 &1202691642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1194,6 +1194,8 @@ MonoBehaviour:
   menuSceneName: Menu
   menuTriggered: 0
   escPanel: {fileID: 0}
+  eventSystem: {fileID: 0}
+  inputActions: {fileID: 0}
 --- !u!1 &1337998485
 GameObject:
   m_ObjectHideFlags: 0

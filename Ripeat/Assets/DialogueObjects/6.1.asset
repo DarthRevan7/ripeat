@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 6.1
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: "Gli far\xF2 provare la stessa sofferenza che ha provato lui! Uccidendolo!"
+  - line: Gli faro' provare la stessa sofferenza che ho provato io! Uccidendolo!
     speaker: TU
-  - line: "Che spirito adorabile! Cos\xEC crudo, cos\xEC disperato... bene. Vediamo
+  - line: "Che spirito adorabile! Cosi' crudo, cos\xEC disperato... bene. Vediamo
       se saprai giocarti questa occasione."
     speaker: MORTY
   responses: []

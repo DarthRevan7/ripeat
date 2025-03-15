@@ -13,16 +13,18 @@ MonoBehaviour:
   m_Name: 5
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: 'AH! Ora si che iniziamo a ragionare. Non vuoi essere dimenticato. Non
+  - line: 'AH! Ora si'' che iniziamo a ragionare. Non vuoi essere dimenticato. Non
       vuoi essere solo un altro nome senza volto. '
     speaker: MORTY
   - line: Vuoi... lasciare il segno. E quale miglior modo di farlo se non con...
       Vendetta.
     speaker: MORTY
   responses:
-  - responseText: "S\xEC! Deve pagare"
+  - responseText: Si'! Deve pagare
     dialogueObject: {fileID: 11400000, guid: fab7142cb35049248a3720a39d5a405a, type: 2}
     pointValue: 0
   - responseText: Hai ragione!
     dialogueObject: {fileID: 11400000, guid: fab7142cb35049248a3720a39d5a405a, type: 2}
     pointValue: 0
+  isFinalDialogue: 0
+  finalDialogueType: 0

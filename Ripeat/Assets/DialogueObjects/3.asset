@@ -13,17 +13,16 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: "Oh, certo che pu\xF2 essere. \xC8 stato addirittura banale. Un po' di
-      alcol, una discussione e bum fine dei giochi!"
+  - line: Invece e' proprio cosi'. E' stato addirittura banale. Un po' di alcol,
+      una discussione e bum fine dei giochi!
     speaker: MORTY
-  - line: "\r\rMa sai quel \xE8 la parte divertente? Lui \xE8 ancora l\xEC fuori,
-      vivo... "
+  - line: "\r\rMa sai quel e' la parte divertente? Lui e' ancora li' fuori, vivo... "
     speaker: MORTY
   - line: "\r...magari con la sbornia ancora da smaltire, mentre tu sei qui a farmi
       perdere tempo."
     speaker: MORTY
   responses:
-  - responseText: "Cos\xEC presto..."
+  - responseText: Cosi' presto...
     dialogueObject: {fileID: 11400000, guid: e15e63a450bad904a9483db9b715f9fa, type: 2}
     pointValue: 0
   - responseText: Non ancora ti prego...

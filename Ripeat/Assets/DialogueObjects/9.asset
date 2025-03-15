@@ -15,8 +15,8 @@ MonoBehaviour:
   dialogueLines:
   - line: Ora si che parli bene.
     speaker: MORTY
-  - line: "Molto bene. Giochiamo questa partita. Ma ricorda, il tempo \xE8 un lusso
-      che non ti conceder\xF2 generosamente."
+  - line: Molto bene. Giochiamo questa partita. Ma ricorda, il tempo e' un lusso
+      che non ti concedero' generosamente.
     speaker: MORTY
   - line: Vediamo quanto vali davvero.
     speaker: MORTY

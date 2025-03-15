@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 4
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: "Dimmi, perch\xE8 dovrei darti un'altra possibilit\xE0? Perch\xE8 dovrei
-      rimetterti in gioco?"
+  - line: Dimmi, perche' dovrei darti un'altra possibilita'? Perche' dovrei rimetterti
+      in gioco?
     speaker: MORTY
   - line: Convincimi... Intrattienimi...
     speaker: MORTY
@@ -29,5 +29,7 @@ MonoBehaviour:
     dialogueObject: {fileID: 11400000, guid: 0af70acd0eaed1145aef21bcfcb13420, type: 2}
     pointValue: 0
   - responseText: Devo finire la Game Jam...
-    dialogueObject: {fileID: 11400000, guid: a084aff2f6c1ebc4b82b7584bd5b954f, type: 2}
+    dialogueObject: {fileID: 11400000, guid: af4c0b4d7a9c9aa4cbd36f69a811f7d4, type: 2}
     pointValue: 0
+  isFinalDialogue: 0
+  finalDialogueType: 0

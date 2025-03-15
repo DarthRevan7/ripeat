@@ -17,15 +17,18 @@ MonoBehaviour:
     speaker: MORTY
   - line: "Sai, potrei... romperle, certe regole. Potrei offriti una seconda possibilit\xE0."
     speaker: MORTY
-  - line: "Ma dimmi... Se ti ridessi il tempo che ti \xE8 stato tolto... lo useresti
-      bene? Sapresti rendermi fiero?"
+  - line: Ma dimmi... Se ti ridessi il tempo che ti e' stato tolto... lo useresti
+      bene? Sapresti rendermi fiero?
     speaker: MORTY
   responses:
-  - responseText: "Lo far\xF2 soffrire!"
+  - responseText: Lo faro' soffrire!
     dialogueObject: {fileID: 11400000, guid: 38d96d2b92b34164d96de03a1cda5935, type: 2}
     pointValue: 0
-  - responseText: "Far\xF2 del mio meglio!"
+  - responseText: Faro' del mio meglio!
     dialogueObject: {fileID: 11400000, guid: 742cbd5033c68884cbd86c3d8dab9e36, type: 2}
+    pointValue: 0
+  - responseText: Lo trovero'!
+    dialogueObject: {fileID: 11400000, guid: 38d96d2b92b34164d96de03a1cda5935, type: 2}
     pointValue: 0
   isFinalDialogue: 0
   finalDialogueType: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3.2
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: "No ti prego dammi un'altra possibilit\xE0!"
+  - line: No ti prego dammi un'altra possibilita'!
     speaker: TU
   - line: "Il classico umano arrogante e pietoso che vuole una seconda possibilit\xE0."
     speaker: MORTY
@@ -21,9 +21,11 @@ MonoBehaviour:
   - responseText: Devo tornare...
     dialogueObject: {fileID: 11400000, guid: ec75c76ba57cd704da26f57b46be5c78, type: 2}
     pointValue: 0
-  - responseText: "Non pu\xF2 finire cos\xEC..."
+  - responseText: Non puo' finire cosi'...
     dialogueObject: {fileID: 11400000, guid: ec75c76ba57cd704da26f57b46be5c78, type: 2}
     pointValue: 0
-  - responseText: "Cos\xEC non \xE8 giusto..."
+  - responseText: Cosi' non e' giusto...
     dialogueObject: {fileID: 11400000, guid: ec75c76ba57cd704da26f57b46be5c78, type: 2}
     pointValue: 0
+  isFinalDialogue: 0
+  finalDialogueType: 0
