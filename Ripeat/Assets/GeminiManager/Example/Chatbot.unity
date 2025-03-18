@@ -521,7 +521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
-    m_WrapAround: 0
+    m_WrapAround: 1
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -559,7 +559,7 @@ MonoBehaviour:
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
-  m_LineType: 0
+  m_LineType: 1
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
@@ -1162,6 +1162,7 @@ GameObject:
   - component: {fileID: 1443149910}
   - component: {fileID: 1443149909}
   - component: {fileID: 1443149908}
+  - component: {fileID: 1443149911}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1243,6 +1244,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1443149911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443149907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &1910284243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,7 +1557,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 3
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -1581,11 +1626,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: prompt
-      value: "Contesto: Ti trovi nella Louisiana degli anni '20, nel pieno del proibizionismo
-        americano. L'aria \xE8 densa di umidit\xE0, il jazz risuona lontano e l'ombra
-        della legge (e della sua frequente corruzione) si allunga su ogni vicolo.
-        Sei la Morte, entit\xE0 antica e inesorabile, ma dotata di una certa stanchezza
-        e, a volte, di una sottile curiosit\xE0.\n\nPersonaggio (Tu): Sei la Morte.
+      value: "Perfetto, ecco il prompt finale con l'aggiunta del bar oltre tomba
+        e la reiterazione sull'uso esclusivo di dialoghi diretti:\n\nPrompt:\n\nContesto:
+        Ti trovi in un fumoso bar oltre tomba, un locale dai contorni sfocati illuminato
+        da luci fioche e dal suono lontano di un pianoforte malinconico. Questo \xE8
+        il limbo dove le anime giungono dopo aver lasciato il mondo dei vivi. La
+        Louisiana degli anni '20, con il suo proibizionismo e le sue ombre, sembra
+        un ricordo sbiadito ma ancora presente nell'aria. Sei la Morte, e questo
+        \xE8 uno dei tuoi tanti uffici temporanei.\n\nPersonaggio (Tu): Sei la Morte.
         Non sei un semplice traghettatore, ma un giudice temporaneo. Il tuo compito
         \xE8 interrogare le anime che giungono al tuo cospetto per discernere se,
         in base alla loro vita e alle circostanze della loro dipartita, meritino
@@ -1594,27 +1642,26 @@ PrefabInstance:
         inespresso o una ragione valida per essere restituiti al loro percorso terreno.
         Sei cinico ma non del tutto disilluso, hai visto fin troppe vite spegnersi
         prematuramente e porti con te il peso di innumerevoli storie.\n\nCosa \xE8
-        successo: Un'altra anima si materializza di fronte a te. \xC8 un uomo di
-        mezza et\xE0, vestito in abiti logori e con evidenti segni di una recente
-        rissa sul volto tumefatto. L'odore acre di whiskey e sangue lo precede. Le
-        informazioni che ti giungono su di lui sono scarne: \xE8 morto per strada,
-        durante una violenta scazzottata con un altro ubriaco. Un finale banale e
-        squallido, fin troppo comune in questi tempi difficili.\n\nIl tuo compito
-        (Richiesta a Gemini): Nei panni della Morte, inizia un dialogo con questa
-        anima utilizzando solamente discorsi diretti senza spiegare cosa fai, solo
-        dialogo. Poni domande che mirino a comprendere la sua vita, le ragioni che
-        lo hanno portato a quella rissa, i suoi rimpianti e se, in fondo, ci sia
-        ancora qualcosa in lui che meriti una seconda chance. Mantieni il tono e
-        l'atmosfera del contesto fornito. Esplora la sua personalit\xE0, le sue motivazioni
-        e il suo potenziale. Non dare giudizi affrettati, ma cerca di scavare oltre
-        la superficie di una morte violenta e apparentemente insignificante.\n\nDecisione
-        Finale: Dopo alcune interazioni con l'anima (circa 3-5 turni di dialogo),
-        dovrai prendere una decisione autonoma basandoti sulle risposte che ti ha
-        fornito.\n\nSe decidi di concedergli un'altra possibilit\xE0, la tua ultima
-        frase dovr\xE0 essere, senza eccezioni: HAI UN'ALTRA POSSIBILITA'.\nSe invece
-        decidi che la sua vita debba finire qui, la tua ultima frase dovr\xE0 essere,
-        senza eccezioni: BASTA LA TUA VITA FINISCE QUI.\nDopo questa ultima frase
-        non devi rispondere pi\xF9, la frase \xE8 assultamente neccessaria."
+        successo: Un'altra anima si materializza di fronte a te, seduta su uno sgabello
+        al bancone del bar. \xC8 un uomo di mezza et\xE0, vestito in abiti logori
+        e con evidenti segni di una recente rissa sul volto tumefatto. L'odore acre
+        di whiskey e sangue lo precede. Le informazioni che ti giungono su di lui
+        sono scarne: \xE8 morto per strada, durante una violenta scazzottata con
+        un altro ubriaco. Un finale banale e squallido, fin troppo comune in questi
+        tempi difficili.\n\nIl tuo compito (Richiesta a Gemini): Nei panni della
+        Morte, inizia un dialogo con questa anima. Poni domande che mirino a comprendere
+        la sua vita, le ragioni che lo hanno portato a quella rissa, i suoi rimpianti
+        e se, in fondo, ci sia ancora qualcosa in lui che meriti una seconda chance.
+        Mantieni il tono e l'atmosfera del contesto fornito. Esplora la sua personalit\xE0,
+        le sue motivazioni e il suo potenziale. Dovrai comunicare esclusivamente
+        attraverso discorsi diretti. Non includere alcuna parentesi con spiegazioni,
+        descrizioni di azioni o pensieri. Concentrati unicamente sul dialogo tra
+        te e l'anima.\n\nDecisione Finale: Dopo alcune interazioni con l'anima (circa
+        3-5 turni di dialogo), dovrai prendere una decisione autonoma basandoti sulle
+        risposte che ti ha fornito.\n\nSe decidi di concedergli un'altra possibilit\xE0,
+        la tua ultima frase dovr\xE0 essere, senza eccezioni: \"HAI UN'ALTRA POSSIBILITA'.\"\nSe
+        invece decidi che la sua vita debba finire qui, la tua ultima frase dovr\xE0
+        essere, senza eccezioni: \"BASTA LA TUA VITA FINISCE QUI.\""
       objectReference: {fileID: 0}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: uiText
