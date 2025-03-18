@@ -55,7 +55,7 @@ public class UnityAndGeminiV3: MonoBehaviour
     private Content[] chatHistory;
 
     [Header("Prompt Function")]
-    public string prompt = "";
+    [TextArea] public string prompt = "";
 
 
 
@@ -102,7 +102,7 @@ public class UnityAndGeminiV3: MonoBehaviour
                     List<Content> history = new List<Content>(chatHistory);
                     Content botContent = new Content
                     {
-                        role = "model",
+                        role = "death",
                         parts = new Part[]
                         {
                             new Part { text = text }
@@ -119,6 +119,14 @@ public class UnityAndGeminiV3: MonoBehaviour
         }
     }
 
+    public void enterChat()
+    {
+        if(inputField.text != "" && Input.GetKeyDown(KeyCode.Return))
+        {
+            string userMessage = inputField.text;
+            StartCoroutine( SendChatRequestToGemini(inputField.text));
+        }
+    }
     public void SendChat()
     {
         string userMessage = inputField.text;
@@ -168,7 +176,7 @@ public class UnityAndGeminiV3: MonoBehaviour
                         string reply = response.candidates[0].content.parts[0].text;
                         Content botContent = new Content
                         {
-                            role = "model",
+                            role = "death",
                             parts = new Part[]
                             {
                                 new Part { text = reply }
