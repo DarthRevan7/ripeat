@@ -21,13 +21,15 @@ MonoBehaviour:
   m_OverrideGlobalSceneList: 1
   m_Scenes:
   - m_enabled: 1
-    m_path: Assets/Scenes/FightingScene_Try.unity
-  - m_enabled: 1
-    m_path: Assets/Scenes/DialogueTest.unity
-  - m_enabled: 1
     m_path: Assets/Scenes/Menu.unity
   - m_enabled: 1
+    m_path: Assets/Scenes/FightingScene_Try.unity
+  - m_enabled: 1
     m_path: Assets/Scenes/Elevator.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/DialogueWithAI.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/DialogueTest.unity
   - m_enabled: 1
     m_path: Assets/Scenes/FinalVideo.unity
   m_ScriptingDefines: []

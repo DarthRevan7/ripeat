@@ -120,7 +120,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
             return;
 
         // Aggiorna la cronologia con il messaggio utente
-        conversationHistory += "\nUser: " + userMessage;
+        conversationHistory += "\nAnswer: " + userMessage;
         StartCoroutine(SendChatRequestToGemini(conversationHistory));
         inputField.text = "";
     }
@@ -157,7 +157,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
                     Debug.Log("Death Reply: " + reply);
                     uiText.text = reply;
                     // Aggiorna la cronologia aggiungendo anche la risposta del modello
-                    conversationHistory += "\nBot: " + reply;
+                    conversationHistory += "\nQuestion: " + reply;
                     
                     // Controllo sull'output di Gemini
                     if(reply.Contains("BASTA LA TUA VITA FINISCE QUI."))
