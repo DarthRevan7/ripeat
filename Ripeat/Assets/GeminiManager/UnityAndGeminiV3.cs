@@ -56,6 +56,9 @@ public class UnityAndGeminiV3 : MonoBehaviour
     [Header("Prompt Function")]
     [TextArea] public string prompt = "";
 
+    // Aggiungi questo campo nella parte iniziale della classe, ad esempio dopo i campi già esistenti
+    public MenuScript menuScript;
+
     // Memorizza la cronologia della conversazione (parte fissa con il prompt iniziale + messaggi successivi)
     private string conversationHistory;
 

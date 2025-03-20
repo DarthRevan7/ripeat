@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class MenuScript : MonoBehaviour
 {
     private Button button;
-    [SerializeField] private string sceneToLoad = "FightingScene_Try"; 
+    [SerializeField] public string sceneToLoad = "FightingScene_Try"; 
 
     [SerializeField] private Image targetImage;
     [SerializeField] private float fadeDuration = 2f;
@@ -30,7 +30,7 @@ public class MenuScript : MonoBehaviour
 
         string sceneName = SceneManager.GetActiveScene().name;
 
-        if(sceneName.Equals("FightingScene_Try") || sceneName.Equals("DialogueTest") || sceneName.Equals("Elevator"))
+        if(sceneName.Equals("FightingScene_Try") || sceneName.Equals("DialogueWithAI") || sceneName.Equals("Elevator"))
         {
             StartCoroutine(FadeOut());
         }
