@@ -10,7 +10,7 @@ public class CombatSystem : MonoBehaviour
     };
 
     //Properties per gestire input e stato del personaggio (se non è morto!)
-    private Vector3 movementInput;
+    [SerializeField] private Vector3 movementInput;
 
     public Vector3 MovementInput
     {
@@ -24,7 +24,7 @@ public class CombatSystem : MonoBehaviour
         }
     }
 
-    private CharacterState currentState = CharacterState.IDLE;
+    [SerializeField] private CharacterState currentState = CharacterState.IDLE;
 
     public CharacterState CurrentState
     {
@@ -40,7 +40,7 @@ public class CombatSystem : MonoBehaviour
     }
 
     //Riferimento all'Animator del personaggio
-    private Animator animator;
+    [SerializeField] private Animator animator;
 
 
 
@@ -68,6 +68,11 @@ public class CombatSystem : MonoBehaviour
                 
                 break;
         }
+    }
+
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
