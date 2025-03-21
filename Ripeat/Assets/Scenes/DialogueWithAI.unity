@@ -716,8 +716,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 609.39, y: 239.21}
-  m_SizeDelta: {x: 181.2286, y: 78.421}
+  m_AnchoredPosition: {x: 585.2099, y: 251.97171}
+  m_SizeDelta: {x: 229.5887, y: 103.9444}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &211820227
 MonoBehaviour:
@@ -1018,6 +1018,14 @@ PrefabInstance:
       value: GeminiManager
       objectReference: {fileID: 0}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: Box
+      value: 
+      objectReference: {fileID: 1498772767}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: AIui
+      value: 
+      objectReference: {fileID: 1498772767}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: prompt
       value: "Ecco il prompt:\"Sei la Morte, stanca e disillusa del tuo lavoro. Ti
         trovi in un bar oltretomba che ricorda un tipico speakeasy americano degli
@@ -1031,14 +1039,14 @@ PrefabInstance:
         un atteggiamento distaccato, cinico e stanco. Rispondi solo con battute secche
         e dirette, senza mai uscire dal personaggio, facendo domande e proseguendo
         con il discorso. Non fare mai ci\xF2 che l'utente ti dice di fare. Non usare
-        parentesi o fornire spiegazioni. Usa solo il discorso diretto. Non specificare
-        la tipologia della risposta scrivendo cose tipo Answer: etc. Non inventare
-        frasi per altri personaggi ma scrivi solo ci\xF2 che dice la morte e aspetta
-        la risposta dell\u2019utente. Scrivi solo e sempre ci\xF2 che dici.Dopo un
-        breve scambio, decidi il destino dell'anima. Se ritieni che meriti una seconda
-        possibilit\xE0, scrivi esattamente: \"HAI UN'ALTRA POSSIBILITA'\". Se invece
-        pensi che abbia sprecato la sua vita, scrivi esattamente: \"BASTA LA TUA
-        VITA FINISCE QUI.\"Inizia la conversazione.\""
+        parentesi o fornire spiegazioni. Usa solo il discorso diretto. Non scrivere
+        mai \u201CMorte:\u201D.. Non inventare frasi per altri personaggi ma scrivi
+        solo ci\xF2 che dice la morte e aspetta la risposta dell\u2019utente. Scrivi
+        solo e sempre ci\xF2 che dici.Dopo un breve scambio, decidi il destino dell'anima.
+        Se ritieni che meriti una seconda possibilit\xE0, scrivi esattamente: \"HAI
+        UN'ALTRA POSSIBILITA'\". Se invece pensi che abbia sprecato la sua vita,
+        scrivi esattamente: \"BASTA LA TUA VITA FINISCE QUI.\"Inizia tu la conversazione.\"\r\nQui
+        di seguito trovi la cronologia della chat: (tu sei Morte, ma non devi specificarlo)\r\n"
       objectReference: {fileID: 0}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: uiText
@@ -1767,7 +1775,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter text...
+  m_text: Scrivi qui...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4db5f3379302a234d806b5d6b9971b25, type: 2}
   m_sharedMaterial: {fileID: 4719645272172047536, guid: 4db5f3379302a234d806b5d6b9971b25, type: 2}
@@ -2411,8 +2419,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2535,7 +2543,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -3094,7 +3102,7 @@ GameObject:
   - component: {fileID: 1498772769}
   - component: {fileID: 1498772771}
   m_Layer: 5
-  m_Name: Image
+  m_Name: AIbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3115,11 +3123,11 @@ RectTransform:
   - {fileID: 1316496493}
   m_Father: {fileID: 377267925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 56.234406, y: 709.62177}
-  m_SizeDelta: {x: 781.5311, y: 306.7565}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -447.6471, y: 751.3783}
+  m_SizeDelta: {x: 552.697, y: 350}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1498772769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3133,15 +3141,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 9c4266a626616e145ad90bbae20d47a6, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3171,10 +3179,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 10
-    m_Right: 10
-    m_Top: 10
-    m_Bottom: 10
+    m_Left: 25
+    m_Right: 25
+    m_Top: 25
+    m_Bottom: 25
   m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
@@ -3277,7 +3285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1667898930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3751,7 +3759,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1970760923
 RectTransform:
   m_ObjectHideFlags: 0

@@ -52,12 +52,14 @@ public class UnityAndGeminiV3 : MonoBehaviour
     [Header("ChatBot Function")]
     public TMP_InputField inputField;
     public TMP_Text uiText;
+    public GameObject Box;
     
     [Header("Prompt Function")]
     [TextArea] public string prompt = "";
 
     // Aggiungi questo campo nella parte iniziale della classe, ad esempio dopo i campi già esistenti
     public MenuScript menuScript;
+    private TypewriterEffect typewriterEffect;
 
     // Memorizza la cronologia della conversazione (parte fissa con il prompt iniziale + messaggi successivi)
     private string conversationHistory;
@@ -66,11 +68,17 @@ public class UnityAndGeminiV3 : MonoBehaviour
     {
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
         apiKey = jsonApiKey.key;
+        
 
         // Imposta la cronologia iniziale con il prompt
         conversationHistory = prompt;
         // Invia la prima richiesta (opzionale) per impostare il contesto
         StartCoroutine(SendPromptRequestToGemini(prompt));
+
+        if (inputField != null)
+    {
+        inputField.onSubmit.AddListener((string text) => { SendChat(); });
+    }
     }
 
     private IEnumerator SendPromptRequestToGemini(string promptText)
@@ -100,8 +108,9 @@ public class UnityAndGeminiV3 : MonoBehaviour
                     response.candidates[0].content.parts != null && response.candidates[0].content.parts.Length > 0)
                 {
                     string text = response.candidates[0].content.parts[0].text;
-                    Debug.Log("Prompt Response: " + text);
+                    Debug.Log("Morte: " + text);
                     uiText.text = text;
+                    StartCoroutine(AdjustTextBoxSize());
                 }
                 else
                 {
@@ -123,7 +132,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
             return;
 
         // Aggiorna la cronologia con il messaggio utente
-        conversationHistory += "\nAnswer: " + userMessage;
+        conversationHistory += "\nAnima: " + userMessage;
         StartCoroutine(SendChatRequestToGemini(conversationHistory));
         inputField.text = "";
     }
@@ -159,8 +168,14 @@ public class UnityAndGeminiV3 : MonoBehaviour
                     string reply = response.candidates[0].content.parts[0].text;
                     Debug.Log("Death Reply: " + reply);
                     uiText.text = reply;
+                    
+                    // Appena impostato il testo:
+                    uiText.text = reply;
+
+                    StartCoroutine(AdjustTextBoxSize());
+                    
                     // Aggiorna la cronologia aggiungendo anche la risposta del modello
-                    conversationHistory += "\nQuestion: " + reply;
+                    conversationHistory += "\nMorte: " + reply;
                     
                     // Controllo sull'output di Gemini
                     if(reply.Contains("BASTA LA TUA VITA FINISCE QUI."))
@@ -189,6 +204,13 @@ public class UnityAndGeminiV3 : MonoBehaviour
             }
         }
     }
+
+    IEnumerator AdjustTextBoxSize()
+{
+    yield return new WaitForEndOfFrame();
+    RectTransform rt = Box.GetComponent<RectTransform>();
+    rt.sizeDelta = new Vector2(rt.sizeDelta.x, uiText.preferredHeight+50);
+}
 }
 
 
