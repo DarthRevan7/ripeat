@@ -47,27 +47,8 @@ public class CombatSystem : MonoBehaviour
     //Aggiorna lo stato dell'Animator in base allo stato del personaggio (va chiamato in Update)
     void UpdateAnimationState()
     {
-        switch (currentState)
-        {
-            case CharacterState.IDLE:
-                
-                break;
-            case CharacterState.MOVING:
-                
-                break;
-            case CharacterState.PUNCH:
-                
-                break;
-            case CharacterState.KICK:
-                
-                break;
-            case CharacterState.BLOCK:
-                
-                break;
-            case CharacterState.DEAD:
-                
-                break;
-        }
+        //Se è morto, non faccio nulla.
+        
     }
 
     void Awake()

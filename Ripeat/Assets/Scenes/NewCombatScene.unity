@@ -11448,7 +11448,6 @@ GameObject:
   - component: {fileID: 6081975700208369756}
   - component: {fileID: 8500010838648538905}
   - component: {fileID: 8500010838648538904}
-  - component: {fileID: 8500010838648538903}
   m_Layer: 0
   m_Name: MyPlayerNew
   m_TagString: Player
@@ -16812,25 +16811,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8500010838648538903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4723758438375849703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dbf1d75826780a4e852b7e2401fdc5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vita: 50
-  mana: 100
-  attacco: 1
-  difesa: 0
-  healthText: {fileID: 4803026784413938168}
-  manaText: {fileID: 159064123444064222}
-  isDead: 0
 --- !u!114 &8500010838648538904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16848,7 +16828,10 @@ MonoBehaviour:
   inputAction: {fileID: 0}
   inputPathPC: 
   inputPathController: 
+  inputActionMapName: Player
+  inputActionMovementName: Move
   movement: {x: 0, y: 0, z: 0}
+  combatSystem: {fileID: 0}
 --- !u!114 &8500010838648538905
 MonoBehaviour:
   m_ObjectHideFlags: 0
