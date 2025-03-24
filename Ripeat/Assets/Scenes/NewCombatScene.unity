@@ -16847,6 +16847,9 @@ MonoBehaviour:
   movementInput: {x: 0, y: 0, z: 0}
   currentState: 0
   animator: {fileID: 0}
+  punchAnimationName: Punch
+  kickAnimationName: Kick
+  blockAnimationName: 
 --- !u!224 &8503758536553678278
 RectTransform:
   m_ObjectHideFlags: 0
