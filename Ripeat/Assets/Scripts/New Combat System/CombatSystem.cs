@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//Gestisce le animazioni e gli stati del personaggio.
 public class CombatSystem : MonoBehaviour
 {
 
@@ -9,7 +10,7 @@ public class CombatSystem : MonoBehaviour
         IDLE, MOVING, KICK, PUNCH, BLOCK, DEAD
     };
 
-    //Properties per gestire input e stato del personaggio (se non è morto!)
+    //Properties per gestire input e movimento del personaggio (se non è morto!)
     [SerializeField] private Vector3 movementInput;
 
     public Vector3 MovementInput
@@ -41,6 +42,8 @@ public class CombatSystem : MonoBehaviour
 
     //Riferimento all'Animator del personaggio
     [SerializeField] private Animator animator;
+    [SerializeField] private string punchAnimationName, kickAnimationName, blockAnimationName;
+    [SerializeField] private string movingParameterName;
 
 
 
@@ -48,6 +51,33 @@ public class CombatSystem : MonoBehaviour
     void UpdateAnimationState()
     {
         //Se è morto, non faccio nulla.
+        if(currentState == CharacterState.DEAD)
+            return;
+
+        //Se c'è un attacco o parata, il personaggio deve attaccare o parare
+        if(currentState == CharacterState.KICK || currentState == CharacterState.PUNCH || currentState == CharacterState.BLOCK)
+        {
+            switch(currentState)
+            {
+                case CharacterState.PUNCH:
+                    animator.Play(punchAnimationName);
+                break;
+                case CharacterState.KICK:
+                    animator.Play(kickAnimationName);
+                break;
+                case CharacterState.BLOCK:
+                    animator.Play(blockAnimationName);
+                break;
+                default:
+                    Debug.Log("Default in switch updateanimationstate");
+                break;
+            }
+        }
+        //Se c'è un input di movimento e non di attacco, devo solo muovermi
+        else if(currentState == CharacterState.MOVING)
+        {
+            animator.SetBool(movingParameterName, true);
+        }
         
     }
 
