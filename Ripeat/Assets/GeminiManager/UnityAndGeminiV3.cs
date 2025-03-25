@@ -56,10 +56,12 @@ public class UnityAndGeminiV3 : MonoBehaviour
     
     [Header("Prompt Function")]
     [TextArea] public string prompt = "";
+    [SerializeField] private GameObject negativeFinalImage;
 
     // Aggiungi questo campo nella parte iniziale della classe, ad esempio dopo i campi già esistenti
     public MenuScript menuScript;
-    private TypewriterEffect typewriterEffect;
+    public TypewriterEffect typewriterEffect;
+    public GeminiPrompt geminiPrompt;
 
     // Memorizza la cronologia della conversazione (parte fissa con il prompt iniziale + messaggi successivi)
     private string conversationHistory;
@@ -69,16 +71,15 @@ public class UnityAndGeminiV3 : MonoBehaviour
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
         apiKey = jsonApiKey.key;
         
-
-        // Imposta la cronologia iniziale con il prompt
-        conversationHistory = prompt;
-        // Invia la prima richiesta (opzionale) per impostare il contesto
+        conversationHistory += "PROMPT: " + prompt;
         StartCoroutine(SendPromptRequestToGemini(prompt));
+        
+        // Se il componente TypewriterEffect si trova sullo stesso GameObject:
+        if (typewriterEffect == null)
+            typewriterEffect = GetComponent<TypewriterEffect>();
 
-        if (inputField != null)
-    {
-        inputField.onSubmit.AddListener((string text) => { SendChat(); });
-    }
+        if(inputField != null)
+            inputField.onSubmit.AddListener((string text) => { SendChat(); });
     }
 
     private IEnumerator SendPromptRequestToGemini(string promptText)
@@ -109,8 +110,13 @@ public class UnityAndGeminiV3 : MonoBehaviour
                 {
                     string text = response.candidates[0].content.parts[0].text;
                     Debug.Log("Morte: " + text);
+                    yield return new WaitForSeconds(0.5f);
                     uiText.text = text;
-                    StartCoroutine(AdjustTextBoxSize());
+                    uiText.color = new Color32(36, 36, 36, 255);
+                    yield return StartCoroutine(AdjustTextBoxSize());
+                    yield return RunTypingEffect(text);
+                    
+                    
                 }
                 else
                 {
@@ -168,20 +174,24 @@ public class UnityAndGeminiV3 : MonoBehaviour
                     string reply = response.candidates[0].content.parts[0].text;
                     Debug.Log("Death Reply: " + reply);
                     uiText.text = reply;
-                    
+                    uiText.color = new Color32(36, 36, 36, 255);
+                    yield return StartCoroutine(AdjustTextBoxSize());
+                    yield return RunTypingEffect(reply);
                     // Appena impostato il testo:
-                    uiText.text = reply;
+                    //uiText.text = reply;
 
-                    StartCoroutine(AdjustTextBoxSize());
+                    
                     
                     // Aggiorna la cronologia aggiungendo anche la risposta del modello
                     conversationHistory += "\nMorte: " + reply;
                     
                     // Controllo sull'output di Gemini
-                    if(reply.Contains("BASTA LA TUA VITA FINISCE QUI."))
+                    if(reply.Contains("BASTA LA TUA VITA FINISCE QUI"))
                     {
                         // Esempio: se la risposta contiene "action1keyword", esegue l'azione 1.
-                        yield return new WaitForSeconds(6f);
+                        yield return new WaitForSeconds(8f);
+                        ShowNegativeFinalImage();
+                        yield return new WaitForSeconds(3f);
                         SceneManager.LoadScene("Menu");
                         Debug.Log("Eseguo Azione 1");
                         // Inserisci qui il codice dell'azione 1
@@ -206,11 +216,33 @@ public class UnityAndGeminiV3 : MonoBehaviour
     }
 
     IEnumerator AdjustTextBoxSize()
-{
+    {
     yield return new WaitForEndOfFrame();
+    uiText.ForceMeshUpdate();
     RectTransform rt = Box.GetComponent<RectTransform>();
     rt.sizeDelta = new Vector2(rt.sizeDelta.x, uiText.preferredHeight+50);
+    Debug.Log("Box size adjusted with: " + uiText.preferredHeight);
+    }
+    IEnumerator RunTypingEffect(string text)
+    {
+        uiText.color = new Color32(255, 255, 255, 255);
+        typewriterEffect.Run(text, uiText);
+        while (typewriterEffect.IsRunning)
+        {
+            yield return null;
+        }    
+    }
+
+    private void ShowNegativeFinalImage()
+    {
+        if (negativeFinalImage != null)
+        {
+            negativeFinalImage.SetActive(true);
+        }
+    }
+
 }
-}
+
+
 
 

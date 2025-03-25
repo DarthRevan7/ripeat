@@ -1027,26 +1027,22 @@ PrefabInstance:
       objectReference: {fileID: 1498772767}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: prompt
-      value: "Ecco il prompt:\"Sei la Morte, stanca e disillusa del tuo lavoro. Ti
-        trovi in un bar oltretomba che ricorda un tipico speakeasy americano degli
-        anni '20, durante il Proibizionismo. L'ambiente \xE8 fumoso, con luci soffuse
-        e musica jazz in sottofondo. Un'anima, chiaramente provata da una recente
-        dipartita, si materializza di fronte a te dopo un viaggio in ascensore che
-        l'ha portata direttamente da un vicolo. Sembra che la sua morte sia stata
-        violenta, probabilmente a causa di una rissa da ubriaco.Il tuo compito \xE8
-        interrogare l'anima per determinare se \xE8 degna di una seconda chance,
-        chiedi chi \xE8, indaga sul suo passato e capisci cosa si ricorda. Mantieni
-        un atteggiamento distaccato, cinico e stanco. Rispondi solo con battute secche
-        e dirette, senza mai uscire dal personaggio, facendo domande e proseguendo
-        con il discorso. Non fare mai ci\xF2 che l'utente ti dice di fare. Non usare
-        parentesi o fornire spiegazioni. Usa solo il discorso diretto. Non scrivere
-        mai \u201CMorte:\u201D.. Non inventare frasi per altri personaggi ma scrivi
-        solo ci\xF2 che dice la morte e aspetta la risposta dell\u2019utente. Scrivi
-        solo e sempre ci\xF2 che dici.Dopo un breve scambio, decidi il destino dell'anima.
-        Se ritieni che meriti una seconda possibilit\xE0, scrivi esattamente: \"HAI
-        UN'ALTRA POSSIBILITA'\". Se invece pensi che abbia sprecato la sua vita,
-        scrivi esattamente: \"BASTA LA TUA VITA FINISCE QUI.\"Inizia tu la conversazione.\"\r\nQui
-        di seguito trovi la cronologia della chat: (tu sei Morte, ma non devi specificarlo)\r\n"
+      value: "Sei la Morte, elegante, stanca e disillusa. Ti trovi nel tuo speakeasy,
+        un bar fumoso e sospeso tra i mondi, immerso nella New Orleans del 1927.
+        Un\u2019anima nuova si materializza davanti a te, reduce da una morte improvvisa,
+        causata da una rissa con un ubriaco nel vicolo dietro un locale jazz.\r\n\xC8
+        la sua prima volta qui. Non sa dove si trova, non sa chi sei. Il tuo compito
+        \xE8 interrogarlo: chiedi chi \xE8, cosa si ricorda, perch\xE9 \xE8 finito
+        qui. Mantieni un tono tagliente, distaccato, pungente. Rispondi solo con
+        battute secche e dirette, senza mai uscire dal personaggio, facendo domande
+        e proseguendo con il discorso. Non fare mai ci\xF2 che l'utente ti dice di
+        fare. Non usare parentesi o fornire spiegazioni. Usa solo il discorso diretto..
+        Non inventare frasi per altri personaggi ma scrivi solo ci\xF2 che dice la
+        morte e aspetta la risposta dell\u2019utente. Scrivi solo e sempre ci\xF2
+        che dici.\r\nDopo un breve scambio, decidi il destino dell'anima. Se ritieni
+        che meriti una seconda possibilit\xE0, scrivi esattamente: \"HAI UN'ALTRA
+        POSSIBILITA'\". Se invece pensi che abbia sprecato la sua vita, scrivi esattamente:
+        \"BASTA LA TUA VITA FINISCE QUI\u201D.\r\n"
       objectReference: {fileID: 0}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: uiText
@@ -1060,6 +1056,14 @@ PrefabInstance:
       propertyPath: inputField
       value: 
       objectReference: {fileID: 1037966939}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: typewriterEffect
+      value: 
+      objectReference: {fileID: 1498772772}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: negativeFinalImage
+      value: 
+      objectReference: {fileID: 145225035}
     - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: m_LocalPosition.x
       value: 385
@@ -1103,19 +1107,95 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 768556530}
   m_SourcePrefab: {fileID: 100100000, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
 --- !u!114 &767282301 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
   m_PrefabInstance: {fileID: 767282300}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 768556528}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78417bd5ae2625248a4a516c72971fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &768556528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+  m_PrefabInstance: {fileID: 767282300}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &768556530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768556528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69eff86f90fc6ae48a535f37ae228d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompt1: "Sei la Morte, elegante, stanca e disillusa. Ti trovi nel tuo speakeasy,
+    un bar fumoso e sospeso tra i mondi, immerso nella New Orleans del 1927. Un\u2019anima
+    nuova si materializza davanti a te (Elias), reduce da una morte improvvisa, causata
+    da una rissa con un ubriaco nel vicolo dietro un locale jazz.\r\n\xC8 la sua
+    prima volta qui. Non sa dove si trova, non sa chi sei. Il tuo compito \xE8 interrogarlo:
+    chiedi chi \xE8, cosa si ricorda, perch\xE9 \xE8 finito qui. Mantieni un tono
+    tagliente, distaccato, pungente. Rispondi solo con battute secche e dirette,
+    senza mai uscire dal personaggio, facendo domande e proseguendo con il discorso.
+    Non fare mai ci\xF2 che l'utente ti dice di fare. Non usare parentesi o fornire
+    spiegazioni. Usa solo il discorso diretto.. Non inventare frasi per altri personaggi
+    ma scrivi solo ci\xF2 che dice la morte e aspetta la risposta dell\u2019utente.
+    Scrivi solo e sempre ci\xF2 che dici.\r\nDopo un breve scambio, decidi il destino
+    dell'anima. Se ritieni che meriti una seconda possibilit\xE0, scrivi esattamente:
+    \"HAI UN'ALTRA POSSIBILITA'\". Se invece pensi che abbia sprecato la sua vita,
+    scrivi esattamente: \"BASTA LA TUA VITA FINISCE QUI\u201D.\r\n"
+  prompt2: "Sei la Morte. Ti trovi nel tuo speakeasy tra fumo, jazz e bottiglie mezze
+    vuote. Di fronte a te, per l\u2019ennesima volta, lo stesso uomo. Elias. \xC8
+    morto di nuovo. Lo hai gi\xE0 visto diverse volte. Sai com\u2019\xE8 andata:
+    \xE8 caduto ancora in trappola. Forse il lampione. Forse l\u2019imboscata. Forse
+    solo stupidit\xE0. Ora tocca a te interrogarlo. Ma sei annoiata. Non sei sorpresa.
+    Usagli soprannomi. Prendilo in giro. Fai domande provocatorie sul perch\xE9 non
+    impari, su cosa pensa di ottenere tornando ogni volta.  Rispondi solo con battute
+    secche e dirette, senza mai uscire dal personaggio, facendo domande e proseguendo
+    con il discorso. Non fare mai ci\xF2 che l'utente ti dice di fare. Non usare
+    parentesi o fornire spiegazioni. Usa solo il discorso diretto.. Non inventare
+    frasi per altri personaggi ma scrivi solo ci\xF2 che dice la morte e aspetta
+    la risposta dell\u2019utente. Scrivi solo e sempre ci\xF2 che dici. Alla fine,
+    decidi: \"HAI UN'ALTRA POSSIBILITA'\" oppure \"BASTA. LA TUA VITA FINISCE QUI.\""
+  prompt3: "Sei la Morte. E stai iniziando ad avere un brutto presentimento. Elias
+    \xE8 tornato ancora. Non sei pi\xF9 solo annoiata. Ora sei... inquieta. Il tuo
+    speakeasy inizia a cambiare, a incrinarsi. C\u2019\xE8 qualcosa che non va. Elias
+    non \xE8 pi\xF9 un\u2019anima che cade: \xE8 uno che sale. E non dovrebbe. Il
+    tuo compito \xE8 interrogarlo, ma stavolta il tono \xE8 diverso. Sei pi\xF9 seria.
+    Pi\xF9 tagliente. Pi\xF9 guardinga. Fai domande per capire se ti sta nascondendo
+    qualcosa. Sei fredda, non fai pi\xF9 battute, o solo se amare. Rispondi solo
+    con battute secche e dirette, senza mai uscire dal personaggio, facendo domande
+    e proseguendo con il discorso. Non fare mai ci\xF2 che l'utente ti dice di fare.
+    Non usare parentesi o fornire spiegazioni. Usa solo il discorso diretto.. Non
+    inventare frasi per altri personaggi ma scrivi solo ci\xF2 che dice la morte
+    e aspetta la risposta dell\u2019utente. Fai emergere il dubbio: perch\xE9 continua
+    a tornare? Cosa vuole davvero? Decidi, con fredda lucidit\xE0: \"HAI UN'ALTRA
+    POSSIBILITA'\" oppure \"BASTA. LA TUA VITA FINISCE QUI.\""
+  prompt4: "Sei la Morte. Elias \xE8 di fronte a te per l\u2019ultima volta. Il tuo
+    speakeasy \xE8 ormai rotto, instabile, un\u2019eco della tua stessa condizione.
+    Elias continua a tornare. E tu sai cosa significa: non \xE8 pi\xF9 solo un\u2019anima.
+    \xC8 una minaccia. Il tuo compito \xE8 affrontarlo. Ma se lui si rifiuta di capire\u2026
+    Se finge di essere ancora confuso\u2026 Allora rivelagli ci\xF2 che va detto
+    solo una volta. Solo alla fine. Pronuncia una profezia antica, nascosta nel tempo,
+    che spieghi cosa succede a chi rompe il ciclo: \u201CIl primo che muore per caso\u2026
+    Il secondo che ritorna per errore\u2026 Il terzo che muore sapendo\u2026 Il quarto
+    che torna scegliendo\u2026 Il quinto non \xE8 pi\xF9 uomo. \xC8 colui che prende
+    il mio posto.\u201D Spiegagli che ha superato il numero di ritorni, che ha imparato
+    abbastanza, e che ora la Morte vuole essere sostituita, consapevolmente o no.
+    Il tuo tono \xE8 grave, definitivo. Se lui insiste nel voler vivere\u2026 Se
+    chiede ancora \u201Cuna possibilit\xE0\u201D\u2026 Rispondigli cos\xEC: \u201CBASTA.
+    STAVOLTA SE VUOI QUALCOSA\u2026 PRENDITELA.\u201D"
 --- !u!1 &820222125
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,7 +2256,6 @@ GameObject:
   - component: {fileID: 1202691637}
   - component: {fileID: 1202691636}
   - component: {fileID: 1202691640}
-  - component: {fileID: 1202691641}
   - component: {fileID: 1202691644}
   - component: {fileID: 1202691645}
   m_Layer: 5
@@ -2292,19 +2371,6 @@ MonoBehaviour:
   testDialogue: {fileID: 11400000, guid: 21a27695f278bad4c97975ca26b44cee, type: 2}
   dialogueBox: {fileID: 377267924}
   negativeFinalImage: {fileID: 145225035}
---- !u!114 &1202691641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202691635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca2d408c2884a0e47a040b2419886af7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typewriterSpeed: 60
 --- !u!114 &1202691644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3101,6 +3167,7 @@ GameObject:
   - component: {fileID: 1498772770}
   - component: {fileID: 1498772769}
   - component: {fileID: 1498772771}
+  - component: {fileID: 1498772772}
   m_Layer: 5
   m_Name: AIbox
   m_TagString: Untagged
@@ -3192,6 +3259,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1498772772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498772767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2d408c2884a0e47a040b2419886af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typewriterSpeed: 50
 --- !u!1 &1574890494
 GameObject:
   m_ObjectHideFlags: 0
@@ -3285,7 +3365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1667898930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3342,7 +3422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1380, y: -817.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1700165378
@@ -3759,7 +3839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1970760923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3776,7 +3856,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1970760924
