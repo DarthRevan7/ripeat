@@ -6050,7 +6050,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856507321807226117}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1a7c785556aa6049a5ffcc2feb88786, type: 3}
   m_Name: 
@@ -6205,7 +6205,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4297285624395354191}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1384f5562ae1dc47b1c46c60f6130b0, type: 3}
   m_Name: 
@@ -9772,7 +9772,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835066170815524940}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1384f5562ae1dc47b1c46c60f6130b0, type: 3}
   m_Name: 
@@ -11448,6 +11448,7 @@ GameObject:
   - component: {fileID: 6081975700208369756}
   - component: {fileID: 8500010838648538905}
   - component: {fileID: 8500010838648538904}
+  - component: {fileID: 8500010838648538906}
   m_Layer: 0
   m_Name: MyPlayerNew
   m_TagString: Player
@@ -11478,7 +11479,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7027378928465028984}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1384f5562ae1dc47b1c46c60f6130b0, type: 3}
   m_Name: 
@@ -11950,7 +11951,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639281360789221289}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1384f5562ae1dc47b1c46c60f6130b0, type: 3}
   m_Name: 
@@ -12820,7 +12821,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856507321807226117}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1af1371973a6b274eb601a3f75a262b7, type: 3}
   m_Name: 
@@ -15641,7 +15642,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856507321807226117}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c057e9c91565e14cba223f46a8d34db, type: 3}
   m_Name: 
@@ -16826,7 +16827,7 @@ MonoBehaviour:
   playerSpeed: 5
   inputModePC: 1
   inputAction: {fileID: 0}
-  inputPathPC: 
+  inputPathPC: InputActions\InputSystem_PC
   inputPathController: 
   inputActionMapName: Player
   inputActionMovementName: Move
@@ -16850,6 +16851,21 @@ MonoBehaviour:
   punchAnimationName: Punch
   kickAnimationName: Kick
   blockAnimationName: 
+  movingParameterName: Run
+--- !u!114 &8500010838648538906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4723758438375849703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8ec0d4979b11f44b52136c99b107cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vita: 100
+  movementSpeed: 5
 --- !u!224 &8503758536553678278
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17180,7 +17196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &8781694545569724557
 GameObject:
   m_ObjectHideFlags: 0

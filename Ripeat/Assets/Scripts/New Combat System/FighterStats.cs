@@ -4,6 +4,7 @@ public class FighterStats : MonoBehaviour
 {
 
     public int vita;
+    public float movementSpeed = 5f;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

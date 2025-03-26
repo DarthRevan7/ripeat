@@ -45,6 +45,8 @@ public class CombatSystem : MonoBehaviour
     [SerializeField] private string punchAnimationName, kickAnimationName, blockAnimationName;
     [SerializeField] private string movingParameterName;
 
+    
+
 
 
     //Aggiorna lo stato dell'Animator in base allo stato del personaggio (va chiamato in Update)
@@ -74,9 +76,15 @@ public class CombatSystem : MonoBehaviour
             }
         }
         //Se c'è un input di movimento e non di attacco, devo solo muovermi
-        else if(currentState == CharacterState.MOVING)
+        else if(movementInput.magnitude > 0.2f)
         {
+            currentState = CharacterState.MOVING;
             animator.SetBool(movingParameterName, true);
+        }
+        else if(movementInput.magnitude <= 0.2f)
+        {
+            currentState = CharacterState.IDLE;
+            animator.SetBool(movingParameterName, false);
         }
         
     }
