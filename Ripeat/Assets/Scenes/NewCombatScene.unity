@@ -8056,6 +8056,7 @@ GameObject:
   - component: {fileID: 7641442848552295716}
   - component: {fileID: 152108249491670625}
   - component: {fileID: 5601314405256854864}
+  - component: {fileID: 8411124715728886387}
   m_Layer: 0
   m_Name: MyEnemyNew
   m_TagString: Untagged
@@ -16681,6 +16682,23 @@ Transform:
   - {fileID: 763534010160992236}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8411124715728886387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856507321807226117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8ec0d4979b11f44b52136c99b107cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vita: 100
+  movementSpeed: 5
+  attacco: 5
+  colliderRadiusPunch: 0.7
+  colliderRadiusKick: 0.9
 --- !u!1 &8420402967640606901
 GameObject:
   m_ObjectHideFlags: 0
@@ -16848,8 +16866,8 @@ MonoBehaviour:
   movementInput: {x: 0, y: 0, z: 0}
   currentState: 0
   animator: {fileID: 0}
-  punchAnimationName: Punch
-  kickAnimationName: Kick
+  punchAnimationName: New Punch
+  kickAnimationName: New Kick
   blockAnimationName: 
   movingParameterName: Run
 --- !u!114 &8500010838648538906
@@ -16866,6 +16884,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vita: 100
   movementSpeed: 5
+  attacco: 5
+  colliderRadiusPunch: 0.7
+  colliderRadiusKick: 0.9
 --- !u!224 &8503758536553678278
 RectTransform:
   m_ObjectHideFlags: 0
