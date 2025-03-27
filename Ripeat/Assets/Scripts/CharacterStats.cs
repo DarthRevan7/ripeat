@@ -16,6 +16,8 @@ public class CharacterStats : MonoBehaviour
     private float maxHealthBarWidth;
     public bool isDead = false;
 
+    private GeminiPrompt geminiPrompt;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,7 +28,8 @@ public class CharacterStats : MonoBehaviour
 
         healthBarRect = GameObject.Find("HealthUI_PL").GetComponent<RectTransform>();
         maxHealthBarWidth = healthBarRect.sizeDelta.x;
-
+        geminiPrompt = GetComponent<GeminiPrompt>();
+    
         UpdateUI();
     }
 
