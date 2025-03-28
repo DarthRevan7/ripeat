@@ -73,7 +73,7 @@ public class InputManager : MonoBehaviour
 
         
         //Se ho un movimento maggiore di 0.2f, come in CombatSystem.cs
-        if(movement.magnitude > 0.2f)
+        if(movement.magnitude > 0.2f && GetComponent<CombatSystem>().canMove)
         {
             //Aggiorno il forward del personaggio (lo ruota violentemente in una direzione)
             transform.forward = movement;

@@ -45,9 +45,15 @@ public class CombatSystem : MonoBehaviour
     [SerializeField] private string punchAnimationName, kickAnimationName, blockAnimationName;
     [SerializeField] private string movingParameterName;
 
+    //Sistema per evitare che il personaggio si muova mentre attacca
+    public bool canMove = true;
+
     
 
-
+    public void ToggleMove()
+    {
+        canMove = true;
+    }
 
     //Aggiorna lo stato dell'Animator in base allo stato del personaggio (va chiamato in Update)
     void UpdateAnimationState()
@@ -59,6 +65,7 @@ public class CombatSystem : MonoBehaviour
         //Se c'è un attacco o parata, il personaggio deve attaccare o parare
         if(currentState == CharacterState.KICK || currentState == CharacterState.PUNCH || currentState == CharacterState.BLOCK)
         {
+            canMove = false;
             switch(currentState)
             {
                 case CharacterState.PUNCH:
@@ -76,7 +83,7 @@ public class CombatSystem : MonoBehaviour
             }
         }
         //Se c'è un input di movimento e non di attacco, devo solo muovermi
-        else if(movementInput.magnitude > 0.2f)
+        else if(movementInput.magnitude > 0.2f && canMove)
         {
             currentState = CharacterState.MOVING;
             animator.SetBool(movingParameterName, true);

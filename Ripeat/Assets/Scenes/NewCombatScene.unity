@@ -16843,10 +16843,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
-  inputModePC: 1
+  inputModePC: 0
   inputAction: {fileID: 0}
   inputPathPC: InputActions\InputSystem_PC
-  inputPathController: 
+  inputPathController: InputActions\InputSystem_Controller
   inputActionMapName: Player
   inputActionMovementName: Move
   movement: {x: 0, y: 0, z: 0}
@@ -16870,6 +16870,7 @@ MonoBehaviour:
   kickAnimationName: New Kick
   blockAnimationName: 
   movingParameterName: Run
+  canMove: 1
 --- !u!114 &8500010838648538906
 MonoBehaviour:
   m_ObjectHideFlags: 0
