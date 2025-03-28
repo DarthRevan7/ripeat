@@ -39,8 +39,13 @@ public class GeminiPrompt : MonoBehaviour
         return prompt;
     }
 
-     public void incrementCicles(){
+    public void incrementCicles(){
         ciclesNumber++;
         Debug.Log("Cicles number: " + ciclesNumber);
+    }
+
+    public void resetCicles(){
+        ciclesNumber = 0;
+        Debug.Log("Cicles number reset: " + ciclesNumber);
     }
 }

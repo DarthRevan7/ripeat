@@ -194,6 +194,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
                         yield return new WaitForSeconds(8f);
                         ShowNegativeFinalImage();
                         yield return new WaitForSeconds(3f);
+                        geminiPrompt.resetCicles();
                         SceneManager.LoadScene("Menu");
                         
                     }
