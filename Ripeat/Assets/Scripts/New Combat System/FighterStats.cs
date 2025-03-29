@@ -7,15 +7,21 @@ public class FighterStats : MonoBehaviour
     public int vita;
     public float movementSpeed = 5f;
     public int attacco = 5;
-
+    public bool isDead;
     [SerializeField] private float colliderRadiusPunch = 0.7f, colliderRadiusKick = 0.9f;
+    [SerializeField] private string targetName = "MyEnemyNew";
+    [SerializeField] private CombatSystem combatSystem;
 
 
+
+    
     public void Hit()
     {
+        if(isDead) return;
+
         float colliderRadius;
         
-        if(GetComponent<CombatSystem>().CurrentState == CombatSystem.CharacterState.KICK)
+        if(combatSystem.CurrentState == CombatSystem.CharacterState.KICK)
         {
             colliderRadius = colliderRadiusKick;
         }
@@ -29,15 +35,19 @@ public class FighterStats : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            if(collider.gameObject.name.Equals("MyEnemyNew"))
+            if(collider.gameObject.name.Equals(targetName))
             {
                 collider.gameObject.GetComponent<FighterStats>().vita -= attacco;
                 Debug.Log("Nemico Colpito!!");
             }
         }
-        GetComponent<CombatSystem>().CurrentState = CombatSystem.CharacterState.IDLE;
+        combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
     }
 
+    void Awake()
+    {
+        combatSystem = GetComponent<CombatSystem>();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -48,6 +58,10 @@ public class FighterStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        isDead = vita <= 0;
+        if(isDead)
+        {
+            combatSystem.CurrentState = CombatSystem.CharacterState.DEAD;
+        }
     }
 }

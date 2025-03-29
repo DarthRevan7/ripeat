@@ -44,9 +44,10 @@ public class CombatSystem : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private string punchAnimationName, kickAnimationName, blockAnimationName;
     [SerializeField] private string movingParameterName;
+    [SerializeField] private string deathAnimationName;
 
     //Sistema per evitare che il personaggio si muova mentre attacca
-    public bool canMove = true;
+    public bool canMove = true, isDead = false;
 
     
 
@@ -60,7 +61,15 @@ public class CombatSystem : MonoBehaviour
     {
         //Se è morto, non faccio nulla.
         if(currentState == CharacterState.DEAD)
+        {
+            if(!isDead)
+            {
+                animator.Play(deathAnimationName);
+                isDead = true;
+            }
             return;
+        }
+            
 
         //Se c'è un attacco o parata, il personaggio deve attaccare o parare
         if(currentState == CharacterState.KICK || currentState == CharacterState.PUNCH || currentState == CharacterState.BLOCK)

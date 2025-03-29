@@ -62,6 +62,6 @@ public class InGameMenu : MonoBehaviour
         escPanel.SetActive(menuTriggered);
 
         eventSystem.firstSelectedGameObject = GameObject.Find("BackGameButton");
+        // eventSystem.currentSelectedGameObject.GetComponent<Button>()
     }
-
 }

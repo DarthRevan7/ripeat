@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
@@ -19,22 +20,15 @@ public class InputManager : MonoBehaviour
     //Riferimento al combat system
     [SerializeField] private CombatSystem combatSystem;
 
+    //Riferimento all'event System
+    [SerializeField] private EventSystem eventSystem;
+    [SerializeField] private GameObject firstSelectedEscMenu;
 
-    void Awake()
-    {
-        //Carico da Resources le input action in base al booleano
-        if(inputModePC)
-        {
-            inputAction = Resources.Load<InputActionAsset>(inputPathPC);
-        }
-        else
-        {
-            inputAction = Resources.Load<InputActionAsset>(inputPathController);
-        }
+    //Riferimento al Character Stats
+    [SerializeField] private FighterStats fighterStats;
 
-        //Trovo il combat system tra i component dell'oggetto
-        combatSystem = GetComponent<CombatSystem>();
-    }
+
+    
 
     CombatSystem.CharacterState HandleCharacterState()
     {
@@ -73,7 +67,8 @@ public class InputManager : MonoBehaviour
 
         
         //Se ho un movimento maggiore di 0.2f, come in CombatSystem.cs
-        if(movement.magnitude > 0.2f && GetComponent<CombatSystem>().canMove)
+        //E se posso muovere il personaggio
+        if(movement.magnitude > 0.2f && combatSystem.canMove)
         {
             //Aggiorno il forward del personaggio (lo ruota violentemente in una direzione)
             transform.forward = movement;
@@ -86,7 +81,29 @@ public class InputManager : MonoBehaviour
 
         return movement;
     }
+    void Awake()
+    {
+        //Carico da Resources le input action in base al booleano
+        if(inputModePC)
+        {
+            inputAction = Resources.Load<InputActionAsset>(inputPathPC);
+        }
+        else
+        {
+            inputAction = Resources.Load<InputActionAsset>(inputPathController);
+        }
 
+        //Trovo il combat system tra i component dell'oggetto
+        combatSystem = GetComponent<CombatSystem>();
+
+        //Imposto l'Event System come evento corrente.
+        eventSystem = EventSystem.current;
+        // eventSystem.SetSelectedGameObject(firstSelectedEscMenu);
+
+        fighterStats = GetComponent<FighterStats>();
+
+    }
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -96,6 +113,8 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(fighterStats.isDead)   return;
+
         //Passo al Combat System l'input tramite property
         combatSystem.MovementInput = BuildMovementVector();
 
