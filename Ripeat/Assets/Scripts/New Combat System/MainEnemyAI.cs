@@ -94,18 +94,28 @@ public class MainEnemyAI : MonoBehaviour
 
     private void FollowAndAttack()
     {   
-
-        if(enemyStatus != EnemyStatus.FOLLOWING_PLAYER && Vector3.Distance(transform.position, playerTransform.position) > attackRange)
+        float distance = Vector3.Distance(transform.position, playerTransform.position);
+        if(enemyStatus != EnemyStatus.FOLLOWING_PLAYER && distance > attackRange)
         {
             enemyStatus = EnemyStatus.FOLLOWING_PLAYER;
             // GetComponent<Animator>().SetInteger("AttackType", 0);
             combatSystem.CurrentState = CombatSystem.CharacterState.MOVING;
+            
         }
-        else if(enemyStatus != EnemyStatus.ATTACK && Vector3.Distance(transform.position, playerTransform.position) <= attackRange)
+        else if(enemyStatus != EnemyStatus.ATTACK && distance <= attackRange)
         {
             enemyStatus = EnemyStatus.ATTACK;
         }
-
+        if(distance > attackRange && enemyStatus==EnemyStatus.FOLLOWING_PLAYER)
+        {
+            Vector3 movement = transform.position - playerTransform.position;
+            movement.Normalize();
+            combatSystem.MovementInput = movement;
+        }
+        else
+        {
+            combatSystem.MovementInput = Vector3.zero;
+        }
     }
 
     private void AttackPlayer()
