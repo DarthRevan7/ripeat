@@ -9809,7 +9809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5328315110977764266, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
       propertyPath: inputModePC
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5328315110977764266, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
       propertyPath: firstSelectedEscMenu

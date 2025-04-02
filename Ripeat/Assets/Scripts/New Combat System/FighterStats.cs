@@ -48,6 +48,12 @@ public class FighterStats : MonoBehaviour
                     FighterStats other = collider.GetComponent<FighterStats>();
                     if(other != null)
                     {
+                        //Controllo di essere nella direzione del nemico
+                        Vector3 direzioneNemico = (other.transform.position - transform.position).normalized;
+                        if(Vector3.Dot(transform.forward, direzioneNemico) < 0.5f)
+                        {
+                            break;
+                        }
                         other.vita -= attacco;
                         //Senza questo break si potrebbero colpire più nemici alla volta
                         break;

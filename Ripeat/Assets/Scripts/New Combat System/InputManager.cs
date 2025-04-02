@@ -42,7 +42,8 @@ public class InputManager : MonoBehaviour
         //In ordine, faccio ritornare lo stato del character
         if(block)
         {
-            return CombatSystem.CharacterState.BLOCK;
+            //Decommentare quando avremo un'animazione x il blocco!!
+            // return CombatSystem.CharacterState.BLOCK;
         }
         if(punch)
         {
