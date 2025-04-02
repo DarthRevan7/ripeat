@@ -17,6 +17,7 @@ public class CharacterStats : MonoBehaviour
     public bool isDead = false;
 
     private GeminiPrompt geminiPrompt;
+    private MenuScript menuScript;
 
 
 
@@ -25,10 +26,12 @@ public class CharacterStats : MonoBehaviour
     {
         healthText = GameObject.Find("Text_Vita").GetComponent<TMP_Text>();
         manaText = GameObject.Find("Text_Mana").GetComponent<TMP_Text>();
+        menuScript = GameObject.Find("FadingImage").GetComponent<MenuScript>();
 
         healthBarRect = GameObject.Find("HealthUI_PL").GetComponent<RectTransform>();
         maxHealthBarWidth = healthBarRect.sizeDelta.x;
         geminiPrompt = GetComponent<GeminiPrompt>();
+        menuScript = GetComponent<MenuScript>();
     
         UpdateUI();
     }
@@ -68,6 +71,7 @@ public class CharacterStats : MonoBehaviour
             setPlayerInput.enabled = false;
 
             GetComponent<Animator>().Play("Die");
+            menuScript.LoadScene();
             // GetComponent<Animator>().SetBool("IsDead", true);
             // Debug.Log("Death!!");
             // LoadNextScene();

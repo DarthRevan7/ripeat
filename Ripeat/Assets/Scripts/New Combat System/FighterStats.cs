@@ -13,7 +13,6 @@ public class FighterStats : MonoBehaviour
     [SerializeField] private CombatSystem combatSystem;
 
 
-
     
     public void Hit()
     {

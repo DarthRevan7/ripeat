@@ -202,7 +202,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
                     {
                         PLBox.SetActive(false);
                         yield return new WaitForSeconds(8f);
-                        SceneManager.LoadScene("FightingScene_Try");
+                        SceneManager.LoadScene("NewCombatScene_2FightersTest");
                         
                     }
                     else

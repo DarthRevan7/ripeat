@@ -25,7 +25,7 @@ public class CombatSystem : MonoBehaviour
         }
     }
 
-    [SerializeField] private CharacterState currentState = CharacterState.IDLE;
+    [SerializeField] public CharacterState currentState = CharacterState.IDLE;
 
     public CharacterState CurrentState
     {
@@ -49,6 +49,8 @@ public class CombatSystem : MonoBehaviour
     //Sistema per evitare che il personaggio si muova mentre attacca
     public bool canMove = true, isDead = false;
 
+    private MenuScript menuScript;
+
     
 
     public void ToggleMove()
@@ -66,6 +68,7 @@ public class CombatSystem : MonoBehaviour
             {
                 animator.Play(deathAnimationName);
                 isDead = true;
+                menuScript.LoadScene();
             }
             return;
         }
@@ -108,6 +111,7 @@ public class CombatSystem : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
+        menuScript = GameObject.Find("FadingImage").GetComponent<MenuScript>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

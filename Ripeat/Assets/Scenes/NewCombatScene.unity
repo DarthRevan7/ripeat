@@ -6805,7 +6805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Elevator
-  targetImage: {fileID: 3562987153163072735}
+  targetImage: {fileID: 0}
   fadeDuration: 2
   characterStats: {fileID: 0}
   fading: 0
@@ -9809,7 +9809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5328315110977764266, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
       propertyPath: inputModePC
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5328315110977764266, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
       propertyPath: firstSelectedEscMenu
@@ -9854,6 +9854,10 @@ PrefabInstance:
     - target: {fileID: 6781222881275129503, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9103131793301019539, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
+      propertyPath: vita
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14278,7 +14282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vita: 100
   movementSpeed: 5
-  attacco: 1
+  attacco: 40
   isDead: 0
   colliderRadiusPunch: 0.8
   colliderRadiusKick: 0.8
@@ -14694,7 +14698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &8781694545569724557
 GameObject:
   m_ObjectHideFlags: 0
