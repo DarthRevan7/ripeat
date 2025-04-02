@@ -59,6 +59,7 @@ public class FighterStats : MonoBehaviour
     void Update()
     {
         isDead = vita <= 0;
+        if(vita < 0) vita = 0;
         if(isDead)
         {
             combatSystem.CurrentState = CombatSystem.CharacterState.DEAD;

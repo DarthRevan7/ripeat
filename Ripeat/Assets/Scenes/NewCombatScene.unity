@@ -9808,6 +9808,10 @@ PrefabInstance:
       value: Die
       objectReference: {fileID: 0}
     - target: {fileID: 5328315110977764266, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
+      propertyPath: inputModePC
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328315110977764266, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
       propertyPath: firstSelectedEscMenu
       value: 
       objectReference: {fileID: 1871870521104320222}
@@ -11301,6 +11305,7 @@ GameObject:
   - component: {fileID: 6968635872129532232}
   - component: {fileID: 4347566765527273302}
   - component: {fileID: 3824402369105330176}
+  - component: {fileID: 7791725534383936197}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -13594,6 +13599,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &7791725534383936197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5571298970478812070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faade52908a384f4ca4e5120cb96fa77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 0}
+  enemyStats: {fileID: 0}
 --- !u!114 &7804328998295077737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14259,7 +14278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vita: 100
   movementSpeed: 5
-  attacco: 35
+  attacco: 1
   isDead: 0
   colliderRadiusPunch: 0.8
   colliderRadiusKick: 0.8
