@@ -35,10 +35,43 @@ public class FighterStats : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            if(collider.gameObject.name.Equals(targetName))
+            //Controllo che il collider del combattente non sia rilevato nella stessa sfera
+            //In questo caso impersono il giocatore che non deve colpire sè stesso
+            if(gameObject.tag.Equals("Player"))
             {
-                collider.gameObject.GetComponent<FighterStats>().vita -= attacco;
-                Debug.Log("Nemico Colpito!!");
+                if(collider.gameObject.tag.Equals("Player"))
+                {
+                    continue;
+                }
+                else
+                {
+                    FighterStats other = collider.GetComponent<FighterStats>();
+                    if(other != null)
+                    {
+                        other.vita -= attacco;
+                        //Senza questo break si potrebbero colpire più nemici alla volta
+                        break;
+                    }
+                }
+            }
+            //In questo caso impersono il nemico che non deve colpire sè stesso
+            //oppure altri nemici
+            else
+            {
+                if(!collider.gameObject.tag.Equals("Player"))
+                {
+                    continue;
+                }
+                else
+                {
+                    FighterStats other = collider.GetComponent<FighterStats>();
+                    if(other != null)
+                    {
+                        other.vita -= attacco;
+                        //Senza questo break si potrebbero colpire più nemici alla volta
+                        break;
+                    }
+                }
             }
         }
         combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
