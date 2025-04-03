@@ -30,12 +30,12 @@ MonoBehaviour:
     m_path: Assets/Scenes/Elevator.unity
   - m_enabled: 1
     m_path: Assets/Scenes/DialogueWithAI.unity
-  - m_enabled: 0
-    m_path: Assets/Scenes/DialogueTest.unity
   - m_enabled: 1
     m_path: Assets/Scenes/NewCombatScene_2FightersTest.unity
   - m_enabled: 1
     m_path: Assets/Scenes/FinalVideo.unity
+  - m_enabled: 0
+    m_path: Assets/Scenes/DialogueTest.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings: []

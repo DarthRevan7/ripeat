@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private FighterStats playerStats, enemyStats;
+    [SerializeField] public FighterStats playerStats, enemyStats, secondEnemyStats;
 
-    private RectTransform healthBarRectPlayer, healthBarRectEnemy;
+    private RectTransform healthBarRectPlayer, healthBarRectEnemy, healthBarRectSecondEnemy;
     private float maxHealthBarWidth;
 
 
@@ -24,9 +24,12 @@ public class UIManager : MonoBehaviour
     {
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<FighterStats>();
         enemyStats = GameObject.Find("MyEnemyNew").GetComponent<FighterStats>();
+        secondEnemyStats = GameObject.Find("MySecondEnemyNew").GetComponent<FighterStats>();
 
         healthBarRectPlayer = GameObject.Find("HealthUI_PL").GetComponent<RectTransform>();
         healthBarRectEnemy = GameObject.Find("HealthUI_EN").GetComponent<RectTransform>();
+        healthBarRectSecondEnemy = GameObject.Find("HealthUI_EN2").GetComponent<RectTransform>();
+
 
         maxHealthBarWidth = healthBarRectPlayer.sizeDelta.x;
     }
@@ -41,5 +44,6 @@ public class UIManager : MonoBehaviour
     {
         UpdateUI(healthBarRectPlayer, playerStats);
         UpdateUI(healthBarRectEnemy, enemyStats);
+        UpdateUI(healthBarRectSecondEnemy, secondEnemyStats);
     }
 }

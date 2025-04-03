@@ -8,6 +8,8 @@ public class FighterStats : MonoBehaviour
     public float movementSpeed = 5f;
     public int attacco = 5;
     public bool isDead;
+
+    public static string lastKiller = "";
     [SerializeField] private float colliderRadiusPunch = 0.7f, colliderRadiusKick = 0.9f;
     [SerializeField] private string targetName = "MyEnemyNew";
     [SerializeField] private CombatSystem combatSystem;
@@ -54,6 +56,10 @@ public class FighterStats : MonoBehaviour
                             break;
                         }
                         other.vita -= attacco;
+                        if(other.gameObject.tag.Equals("Player"))
+                        {
+                            lastKiller = gameObject.name;
+                        }
                         //Senza questo break si potrebbero colpire più nemici alla volta
                         break;
                     }

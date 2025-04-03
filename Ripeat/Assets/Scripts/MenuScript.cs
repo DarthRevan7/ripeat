@@ -16,11 +16,14 @@ public class MenuScript : MonoBehaviour
     [SerializeField] private CharacterStats characterStats;
     [SerializeField] private bool fading = false;
     
-    
+    private GeminiPrompt geminiPrompt;
+
     private void Awake()
     {
         button = GetComponent<Button>();
         targetImage = GameObject.Find("FadingImage").GetComponent<Image>();
+
+        geminiPrompt = GetComponent<GeminiPrompt>();
 
         if (button != null)
         {
@@ -30,7 +33,7 @@ public class MenuScript : MonoBehaviour
 
         string sceneName = SceneManager.GetActiveScene().name;
 
-        if(sceneName.Equals("NewCombatScene") || sceneName.Equals("Menu") || sceneName.Equals("NewCombactScene_2FightersTest") || sceneName.Equals("DialogueWithAI") || sceneName.Equals("Elevator"))
+        if(sceneName.Equals("NewCombatScene") || sceneName.Equals("Menu") || sceneName.Equals("NewCombatScene_2FightersTest") || sceneName.Equals("DialogueWithAI") || sceneName.Equals("Elevator"))
         {
             StartCoroutine(FadeOut());
         }
@@ -119,6 +122,10 @@ public class MenuScript : MonoBehaviour
         }
 
         // Time.timeScale = 1f;
+        if(SceneManager.GetActiveScene().name.Equals("Menu"))
+        {
+            geminiPrompt.resetCicles();
+        }
 
         if(SceneManager.GetActiveScene().name.Equals("FightingScene_Try"))
         {

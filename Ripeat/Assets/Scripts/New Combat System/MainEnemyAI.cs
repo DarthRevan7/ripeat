@@ -65,9 +65,6 @@ public class MainEnemyAI : MonoBehaviour
             AttackPlayer();
         }
 
-        
-        
-        
 
     }
     

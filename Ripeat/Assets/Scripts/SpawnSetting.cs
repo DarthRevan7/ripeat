@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class SpawnSetting : MonoBehaviour
 {
@@ -6,16 +8,24 @@ public class SpawnSetting : MonoBehaviour
     private MainEnemyAI mainEnemyAI;
     private CombatSystem combatSystem;
     private InputManager inputManager;
+    
+
     public Collider rightCollider;              // Riferimento al collider "destro"
     public float moveSpeed = 5f;                 // Velocità di movimento verso destra
     public MonoBehaviour inputController;        // Script o componente che gestisce gli input
+    public Animator enemyAnimator;               // Animator per gestire l'animazione di camminata
+    public GameObject secondEnemyBar;            // Barra della vita del secondo nemico
 
-    // Animator per gestire l'animazione di camminata
-    public Animator enemyAnimator;
-    // Posizione verso cui il nemico deve guardare (impostata dall'Inspector)
-    public int targetPosition;
+    public int targetRotationY;
+    public float targetPositionVectorX;
+    public float targetPositionVectorY;
+    public float targetPositionVectorZ;
+
+   
+    public bool isPausedEnemy = false; 
 
     private bool hasRotated = false;
+    private static bool start = false;
 
     void Start()
     {
@@ -23,37 +33,67 @@ public class SpawnSetting : MonoBehaviour
         mainEnemyAI = GetComponent<MainEnemyAI>();  
         combatSystem = GetComponent<CombatSystem>();  
         inputManager = GetComponent<InputManager>();
+        secondEnemyBar.SetActive(false); // Disabilità la barra della vita del secondo nemico all'inizio
 
-        // Se l'animator non è assegnato, tenta di prenderlo dallo stesso GameObject
         if (enemyAnimator == null)
             enemyAnimator = GetComponent<Animator>();
+        if (isPausedEnemy)
+        {
+            inputController.enabled = false;
+            mainEnemyAI.enabled = false;
+        }
     }
 
     void Update()
     {
-        // Quando la vita scende al di sotto di 25
-        if (fighterStats.vita <= 25)
+        
+        if (fighterStats.vita <= 25 && !isPausedEnemy)
         {
-            // Disattiva componenti non necessari
+            start = true;
             rightCollider.enabled = false;
             inputController.enabled = false;
             mainEnemyAI.enabled = false;
 
-            // Ruota il nemico una sola volta per puntare verso la posizione target
-            if (!hasRotated)
-            {
-                float direction = (targetPosition - transform.eulerAngles.y);
-                transform.Rotate(0,direction,0);
-                hasRotated = true;
-            }
+            StartCoroutine(MoveToTargetPosition());
+        }
+        if (start){
+            ResumeMovement();
+        }
+    }
 
-            // Imposta lo stato MOVING e attiva l'animazione della camminata
-            combatSystem.currentState = CombatSystem.CharacterState.MOVING;
+    private IEnumerator MoveToTargetPosition()
+    {
+        if (!hasRotated)
+        {
+            float direction = (targetRotationY - transform.eulerAngles.y);
+            transform.Rotate(0, direction, 0);
+            hasRotated = true;
+        }
+        // Imposta lo stato MOVING
+        combatSystem.currentState = CombatSystem.CharacterState.MOVING;
+        while (Vector3.Distance(transform.position, new Vector3(targetPositionVectorX, targetPositionVectorY, targetPositionVectorZ)) > 0.1f)
+        {
             if (enemyAnimator != null)
                 enemyAnimator.SetBool("Run", true);
+            transform.position = Vector3.MoveTowards(transform.position, 
+                new Vector3(targetPositionVectorX, targetPositionVectorY, targetPositionVectorZ), 
+                moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+        if (enemyAnimator != null)
+            enemyAnimator.SetBool("Run", false);
+        rightCollider.enabled = true;
+    }
 
-            // Muove il nemico verso l'avanti (nella direzione locale, che ora punta verso targetPosition)
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+    // Metodo per sbloccare il nemico "pausato" mediante un comando esterno
+    public void ResumeMovement()
+    {
+        // In questo caso, annulla il flag che lo teneva in pausa e avvia il movimento
+        if(isPausedEnemy)
+        {
+            secondEnemyBar.SetActive(true); // Abilita la barra della vita del secondo nemico
+            inputController.enabled = true;
+            mainEnemyAI.enabled = true;
         }
     }
 }
