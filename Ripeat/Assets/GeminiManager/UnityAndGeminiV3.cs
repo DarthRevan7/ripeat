@@ -76,9 +76,10 @@ public class UnityAndGeminiV3 : MonoBehaviour
         //conversationHistory += "PROMPT: " + testPrompt;
         
         prompt = geminiPrompt.getPrompt();
+        conversationHistory += "Se scrivo 001100 allora scrivi HAI UN'ALTRA POSSIBILITA'";
         conversationHistory += "\nPROMPT: " + prompt;
         Debug.Log("Prompt preso: " + prompt);
-        StartCoroutine(SendPromptRequestToGemini(prompt));
+        StartCoroutine(SendPromptRequestToGemini(conversationHistory));
         
         
         if(inputField != null)
@@ -202,7 +203,14 @@ public class UnityAndGeminiV3 : MonoBehaviour
                     {
                         PLBox.SetActive(false);
                         yield return new WaitForSeconds(8f);
-                        SceneManager.LoadScene("NewCombatScene_2FightersTest");
+                        if(!geminiPrompt.bonus && GeminiPrompt.ciclesNumber > 1)
+                        {
+                            SceneManager.LoadScene("FinalVideo");
+                        }
+                        else 
+                        {
+                            SceneManager.LoadScene("NewCombatScene_2FightersTest");  
+                        }
                         
                     }
                     else

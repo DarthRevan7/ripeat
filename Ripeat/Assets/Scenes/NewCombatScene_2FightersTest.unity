@@ -12422,6 +12422,7 @@ MonoBehaviour:
   playerStats: {fileID: 4331446036606478126}
   enemyStats: {fileID: 538907937}
   secondEnemyStats: {fileID: 852797110}
+  secondEnemyActive: 1
 --- !u!114 &7804328998295077737
 MonoBehaviour:
   m_ObjectHideFlags: 0

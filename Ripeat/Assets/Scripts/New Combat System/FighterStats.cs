@@ -14,7 +14,7 @@ public class FighterStats : MonoBehaviour
     [SerializeField] private string targetName = "MyEnemyNew";
     [SerializeField] private CombatSystem combatSystem;
 
-
+    private bool hitted = false;
     
     public void Hit()
     {
@@ -56,10 +56,11 @@ public class FighterStats : MonoBehaviour
                             break;
                         }
                         other.vita -= attacco;
-                        if(other.gameObject.tag.Equals("Player"))
-                        {
-                            lastKiller = gameObject.name;
-                        }
+                        
+                        hitted = true;
+                        lastKiller = collider.gameObject.name;
+                        Debug.Log("Last killer: " + lastKiller);
+                        
                         //Senza questo break si potrebbero colpire più nemici alla volta
                         break;
                     }
@@ -106,7 +107,15 @@ public class FighterStats : MonoBehaviour
         if(vita < 0) vita = 0;
         if(isDead)
         {
-            combatSystem.CurrentState = CombatSystem.CharacterState.DEAD;
+            if(combatSystem != null){
+                if (!hitted)
+                {
+                    lastKiller = "MyEnemyNew";
+                    Debug.Log("Last killer: " + lastKiller);
+                }
+                combatSystem.CurrentState = CombatSystem.CharacterState.DEAD;
+            }
+            
         }
     }
 }

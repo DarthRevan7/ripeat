@@ -706,17 +706,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 211820225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.88495576, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1295473399}
-  m_Father: {fileID: 377267925}
+  m_Father: {fileID: 615106475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 585.2099, y: 251.97171}
+  m_AnchoredPosition: {x: 586.6601, y: 188.47058}
   m_SizeDelta: {x: 229.5887, y: 103.9444}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &211820227
@@ -846,7 +846,6 @@ RectTransform:
   - {fileID: 143643324}
   - {fileID: 615106475}
   - {fileID: 1498772768}
-  - {fileID: 211820226}
   m_Father: {fileID: 1202691639}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -960,6 +959,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1037966936}
+  - {fileID: 211820226}
   m_Father: {fileID: 377267925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1227,6 +1227,10 @@ MonoBehaviour:
     STAVOLTA SE VUOI QUALCOSA\u2026 PRENDITELA.\u201D\r\nNon scrivere messaggi troppo
     lunghi, sii conciso.\r\nQuesta \xE8 la cronologia della chat, tu sei \u201Cmorte\u201D,
     ma non specificarlo quando scrivi.\r\n"
+  promptBonus: "L\u2019uomo di prima torna di nuovo, ma \xE8 stato stupido, si \xE8
+    fatto uccidere e non ha superato il nuovo stadio. Prendilo in giro e rincara
+    la dose. sii pi\xF9 cattivo perch\xE8 \r\n"
+  bonus: 0
 --- !u!114 &767282304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1253,13 +1257,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vita: 0
-  movementSpeed: 5
-  attacco: 5
-  isDead: 0
-  lastKiller: 
-  colliderRadiusPunch: 0.7
-  colliderRadiusKick: 0.9
-  targetName: MyEnemyNew
+  movementSpeed: 0
+  attacco: 0
+  isDead: 1
+  colliderRadiusPunch: 0
+  colliderRadiusKick: 0
+  targetName: 
   combatSystem: {fileID: 0}
 --- !u!1 &820222125
 GameObject:

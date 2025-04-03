@@ -101,6 +101,10 @@ public class MenuScript : MonoBehaviour
         }
         else
         {
+            if (sceneToLoad.Equals("Menu"))
+            {
+                geminiPrompt.resetCicles();
+            }
             SceneManager.LoadScene(sceneToLoad);
         }
     }
@@ -122,10 +126,7 @@ public class MenuScript : MonoBehaviour
         }
 
         // Time.timeScale = 1f;
-        if(SceneManager.GetActiveScene().name.Equals("Menu"))
-        {
-            geminiPrompt.resetCicles();
-        }
+    
 
         if(SceneManager.GetActiveScene().name.Equals("FightingScene_Try"))
         {
