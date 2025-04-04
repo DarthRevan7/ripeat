@@ -48,6 +48,9 @@ public class UIManager : MonoBehaviour
     {
         UpdateUI(healthBarRectPlayer, playerStats);
         UpdateUI(healthBarRectEnemy, enemyStats);
-        UpdateUI(healthBarRectSecondEnemy, secondEnemyStats);
+        if (secondEnemyActive)
+        {
+            UpdateUI(healthBarRectSecondEnemy, secondEnemyStats);
+        }
     }
 }

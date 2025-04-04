@@ -5,33 +5,33 @@ using FMOD.Studio;
 
 public class MovementSound : MonoBehaviour
 {
-    [SerializeField] private Vector3 playerMovement;
-    [SerializeField] public EnemyBehaviour.EnemyStatus enemyStatus;
-
+   
     private EventInstance playerFootsteps;
-
+    [SerializeField] private CombatSystem player, mainEnemy, secondaryEnemy;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerMovement = GameObject.FindAnyObjectByType<PlayerMovement>().movement;
-        enemyStatus = GameObject.FindAnyObjectByType<EnemyBehaviour>().GetEnemyStatus();
+        player = GameObject.Find("MyPlayerNew").GetComponent<CombatSystem>();
+        mainEnemy = GameObject.Find("MyEnemyNew").GetComponent<CombatSystem>();
 
         playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.instance.playerFootsteps);
+       //MOD.ATTRIBUTES_3D aTTRIBUTES_3D = new FMOD.ATTRIBUTES_3D();
+      //playerFootsteps.set3DAttributes(aTTRIBUTES_3D);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         // Ricavo lo stato attuale del giocatore e del nemico.
-        playerMovement = GameObject.FindAnyObjectByType<PlayerMovement>().movement;
-        enemyStatus = GameObject.FindAnyObjectByType<EnemyBehaviour>().GetEnemyStatus();
-
-        if (playerMovement != Vector3.zero)
+       
+        if (player.currentState == CombatSystem.CharacterState.MOVING)
         {
             PLAYBACK_STATE playbackState;
             playerFootsteps.getPlaybackState(out playbackState);
-            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            //if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            if(playbackState == PLAYBACK_STATE.STOPPED)
             {
                 playerFootsteps.start();
             }
@@ -44,7 +44,7 @@ public class MovementSound : MonoBehaviour
         }
 
 
-        if (enemyStatus == EnemyBehaviour.EnemyStatus.FOLLOWING_PLAYER)
+        if (mainEnemy.currentState == CombatSystem.CharacterState.MOVING)
         {
             // Inserisci qui le righe per riprodurre l'audio dei passi del nemico
             // Debug.Log("Il nemico si muove. Senti il suono dei passi");
