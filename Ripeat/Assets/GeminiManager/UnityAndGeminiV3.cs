@@ -76,10 +76,10 @@ public class UnityAndGeminiV3 : MonoBehaviour
         //conversationHistory += "PROMPT: " + testPrompt;
         
         prompt = geminiPrompt.getPrompt();
-        conversationHistory += "Se scrivo 001100 allora scrivi HAI UN'ALTRA POSSIBILITA'";
+        prompt += "Se scrivo 001100 allora scrivi HAI UN'ALTRA POSSIBILITA'";
         conversationHistory += "\nPROMPT: " + prompt;
         Debug.Log("Prompt preso: " + prompt);
-        StartCoroutine(SendPromptRequestToGemini(conversationHistory));
+        StartCoroutine(SendPromptRequestToGemini(prompt));
         
         
         if(inputField != null)
@@ -196,6 +196,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
                         ShowNegativeFinalImage();
                         yield return new WaitForSeconds(3f);
                         geminiPrompt.resetCicles();
+                        conversationHistory = "";
                         SceneManager.LoadScene("Menu");
                         
                     }

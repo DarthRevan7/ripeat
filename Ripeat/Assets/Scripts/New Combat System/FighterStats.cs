@@ -80,6 +80,8 @@ public class FighterStats : MonoBehaviour
                     if(other != null)
                     {
                         other.vita -= attacco;
+                        lastKiller = gameObject.name;
+                        Debug.Log("Last killer: " + lastKiller);
                         //Senza questo break si potrebbero colpire più nemici alla volta
                         break;
                     }
