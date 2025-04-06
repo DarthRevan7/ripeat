@@ -132,7 +132,7 @@ MonoBehaviour:
   - {fileID: 3975635220057523332}
   StringsBanks:
   - {fileID: 7776198359231580797}
-  cacheTime: 638794546727170450
+  cacheTime: 638795583914066740
   cacheVersion: 131846
 --- !u!114 &593703732779836463
 MonoBehaviour:
@@ -161,7 +161,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 353
+  Length: 280
 --- !u!114 &1778109501272867561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Sfx.bank
   Name: Desktop/Sfx
   StudioPath: bank:/Sfx
-  lastModified: 638794546727170450
+  lastModified: 638795583914066740
   FileSizes: []
   Exists: 1
 --- !u!114 &3975635220057523332
@@ -195,7 +195,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.bank
   Name: Desktop/Master
   StudioPath: bank:/Master
-  lastModified: 638794546726194008
+  lastModified: 638795583913544746
   FileSizes: []
   Exists: 1
 --- !u!114 &6200740755015113143
@@ -267,7 +267,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.strings.bank
   Name: Desktop/Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638794546726234265
+  lastModified: 638795583913593588
   FileSizes:
   - Name: 
     Value: 1308
