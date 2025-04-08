@@ -65,7 +65,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
     private GeminiPrompt geminiPrompt;
 
     // Memorizza la cronologia della conversazione (parte fissa con il prompt iniziale + messaggi successivi)
-    private static string conversationHistory;
+    public static string conversationHistory;
     private string prompt = "";
     void Start()
     {
@@ -75,8 +75,9 @@ public class UnityAndGeminiV3 : MonoBehaviour
         geminiPrompt = GetComponent<GeminiPrompt>();
         //conversationHistory += "PROMPT: " + testPrompt;
         
+        prompt += "\nSe scrivo 001100 allora scrivi HAI UN'ALTRA POSSIBILITA'. Non parlare per troppo tempo con l'anima, solo pochi minuti e fai frasi brevi, fagli capire come tornare in vita, se parla troppo uccidilo, non uscire mai dal discorso e non farlo parlare troppo. Non scrivere mai chi sta parlando e quindi non scrivere mai \"morte:\"\n";
         prompt = geminiPrompt.getPrompt();
-        prompt += "Se scrivo 001100 allora scrivi HAI UN'ALTRA POSSIBILITA'";
+        
         conversationHistory += "\nPROMPT: " + prompt;
         Debug.Log("Prompt preso: " + prompt);
         StartCoroutine(SendPromptRequestToGemini(prompt));
@@ -114,7 +115,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
                 {
                     string text = response.candidates[0].content.parts[0].text;
                     Debug.Log("\nMorte: " + text);
-                    conversationHistory += "\nMorte: " + text;
+                    conversationHistory += "\n%" + text + "%\n";
                     yield return new WaitForSeconds(0.5f);
                     uiText.text = text;
                     uiText.color = new Color32(36, 36, 36, 255);
@@ -140,10 +141,10 @@ public class UnityAndGeminiV3 : MonoBehaviour
     {
         string userMessage = inputField.text;
         if (string.IsNullOrEmpty(userMessage))
-            return;
+            userMessage = "...";
 
         // Aggiorna la cronologia con il messaggio utente
-        conversationHistory += "\nAnima: " + userMessage;
+        conversationHistory += "\n" + userMessage;
         StartCoroutine(SendChatRequestToGemini(conversationHistory));
         inputField.text = "";
     }
@@ -185,10 +186,10 @@ public class UnityAndGeminiV3 : MonoBehaviour
                     // Appena impostato il testo:
                     //uiText.text = reply
                     // Aggiorna la cronologia aggiungendo anche la risposta del modello
-                    conversationHistory += "\nMorte: " + reply;
+                    conversationHistory += "\n%" + reply + "%\n";
                     
                     // Controllo sull'output di Gemini
-                    if(reply.Contains("BASTA LA TUA VITA FINISCE QUI"))
+                    if(reply.Contains("BASTA LA TUA VITA FINISCE QUI")||reply.Contains("Basta la tua vita finisce qui"))
                     {
                         
                         PLBox.SetActive(false);
@@ -196,11 +197,10 @@ public class UnityAndGeminiV3 : MonoBehaviour
                         ShowNegativeFinalImage();
                         yield return new WaitForSeconds(3f);
                         geminiPrompt.resetCicles();
-                        conversationHistory = "";
                         SceneManager.LoadScene("Menu");
                         
                     }
-                    else if(reply.Contains("HAI UN'ALTRA POSSIBILITA'"))
+                    else if(reply.Contains("HAI UN'ALTRA POSSIBILITA'")||reply.Contains("Hai un'altra possibilità"))
                     {
                         PLBox.SetActive(false);
                         yield return new WaitForSeconds(8f);

@@ -14428,7 +14428,7 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   attackRange: 1.8
   enemyStatus: 2
-  pauseAttack: 2
+  pauseAttack: 1.5
   hasAttacked: 0
   startFight: 1
   secondsToStartFight: 1.5

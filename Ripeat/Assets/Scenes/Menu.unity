@@ -505,6 +505,7 @@ GameObject:
   - component: {fileID: 979332286}
   - component: {fileID: 979332285}
   - component: {fileID: 979332284}
+  - component: {fileID: 979332289}
   - component: {fileID: 979332287}
   - component: {fileID: 979332288}
   m_Layer: 5
@@ -580,6 +581,18 @@ MonoBehaviour:
       - m_Target: {fileID: 979332287}
         m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
         m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+      - m_Target: {fileID: 979332289}
+        m_TargetAssemblyTypeName: GeminiPrompt, Assembly-CSharp
+        m_MethodName: resetCicles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -675,6 +688,24 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &979332289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979332282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69eff86f90fc6ae48a535f37ae228d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompt1: 
+  prompt2: 
+  prompt3: 
+  prompt4: 
+  promptBonus: 
+  bonus: 0
 --- !u!1 &1033260911
 GameObject:
   m_ObjectHideFlags: 0

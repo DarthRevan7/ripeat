@@ -106,6 +106,7 @@ public class GeminiPrompt : MonoBehaviour
 
     public void resetCicles(){
         ciclesNumber = 0;
+        UnityAndGeminiV3.conversationHistory = "";
         Debug.Log("Cicles number reset: " + ciclesNumber);
     }
 }
