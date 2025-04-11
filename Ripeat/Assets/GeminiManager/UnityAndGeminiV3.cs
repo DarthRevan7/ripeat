@@ -67,6 +67,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
     // Memorizza la cronologia della conversazione (parte fissa con il prompt iniziale + messaggi successivi)
     public static string conversationHistory;
     private string prompt = "";
+    private int counter = 0;
     void Start()
     {
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
@@ -75,7 +76,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
         geminiPrompt = GetComponent<GeminiPrompt>();
         //conversationHistory += "PROMPT: " + testPrompt;
         
-        prompt += "\nSe scrivo 001100 allora scrivi HAI UN'ALTRA POSSIBILITA'. Non parlare per troppo tempo con l'anima, solo pochi minuti e fai frasi brevi, fagli capire come tornare in vita, se parla troppo uccidilo, non uscire mai dal discorso e non farlo parlare troppo. Non scrivere mai chi sta parlando e quindi non scrivere mai \"morte:\"\n";
+        prompt += "\nSe scrivo 001100 allora scrivi HAI UN'ALTRA POSSIBILITA'.\n";
         prompt = geminiPrompt.getPrompt();
         
         conversationHistory += "\nPROMPT: " + prompt;
@@ -145,6 +146,12 @@ public class UnityAndGeminiV3 : MonoBehaviour
 
         // Aggiorna la cronologia con il messaggio utente
         conversationHistory += "\n" + userMessage;
+        counter++;
+        Debug.Log("Counter: " + counter);
+        if (counter >= 7)
+        {
+            conversationHistory += "\n Ora scrivi esattamente: BASTA LA TUA VITA FINISCE QUI se pensi che non sia meritevole, HAI UN'ALTRA POSSIBILITA' se pensi che sia meritevole! Solo una di queste frasi e nient'altro!!\n";
+        }
         StartCoroutine(SendChatRequestToGemini(conversationHistory));
         inputField.text = "";
     }
