@@ -940,8 +940,9 @@ GameObject:
   - component: {fileID: 1703796964181783868}
   - component: {fileID: 2776698070623258506}
   - component: {fileID: 4308557431070099511}
+  - component: {fileID: 353861274545984261}
   m_Layer: 0
-  m_Name: MyEnemyNew
+  m_Name: MainEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -963,7 +964,7 @@ Transform:
   - {fileID: 8844557630530329885}
   - {fileID: 6074349925918813400}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!95 &5302531934551656947
 Animator:
   serializedVersion: 7
@@ -1036,7 +1037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vita: 100
   movementSpeed: 5
-  attacco: 1
+  attacco: 10
   isDead: 0
   colliderRadiusPunch: 0.8
   colliderRadiusKick: 0.8
@@ -1057,10 +1058,10 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   attackRange: 1.8
   enemyStatus: 2
-  pauseAttack: 2
+  pauseAttack: 1
   hasAttacked: 0
   startFight: 1
-  secondsToStartFight: 1.5
+  secondsToStartFight: 10
   combatSystem: {fileID: 0}
   fighterStats: {fileID: 0}
   isRunning: 0
@@ -1086,6 +1087,28 @@ MonoBehaviour:
   deathAnimationName: Die
   canMove: 1
   isDead: 0
+--- !u!114 &353861274545984261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4057543240407661377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c3cb3f83c55444099bf795072dce9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightCollider: {fileID: 0}
+  moveSpeed: 0.3
+  inputController: {fileID: 0}
+  enemyAnimator: {fileID: 5302531934551656947}
+  secondEnemyBar: {fileID: 0}
+  targetRotationY: 90
+  targetPositionVectorX: 10.55
+  targetPositionVectorY: 0.4659995
+  targetPositionVectorZ: -6.81
+  isPausedEnemy: 0
 --- !u!1 &4221260564003395159
 GameObject:
   m_ObjectHideFlags: 0

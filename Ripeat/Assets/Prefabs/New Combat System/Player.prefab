@@ -189,12 +189,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6781222881275129503}
   - component: {fileID: 2382042256412366631}
+  - component: {fileID: 3966047733175626992}
   - component: {fileID: 5082268460191106341}
   - component: {fileID: 1887196256888914545}
   - component: {fileID: 5328315110977764266}
   - component: {fileID: 9103131793301019539}
   m_Layer: 0
-  m_Name: MyPlayerNew
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,7 +217,7 @@ Transform:
   - {fileID: 3155608897420289659}
   - {fileID: 8471865243575502124}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &2382042256412366631
 Animator:
   serializedVersion: 7
@@ -239,6 +240,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &3966047733175626992
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640526921101654571}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &5082268460191106341
 CharacterController:
   m_ObjectHideFlags: 0
@@ -283,7 +307,9 @@ MonoBehaviour:
   kickAnimationName: New Kick
   blockAnimationName: 
   movingParameterName: Run
+  deathAnimationName: Die
   canMove: 1
+  isDead: 0
 --- !u!114 &5328315110977764266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
-  inputModePC: 0
+  inputModePC: 1
   inputAction: {fileID: 0}
   inputPathPC: InputActions\InputSystem_PC
   inputPathController: InputActions\InputSystem_Controller
@@ -305,6 +331,9 @@ MonoBehaviour:
   inputActionMovementName: Move
   movement: {x: 0, y: 0, z: 0}
   combatSystem: {fileID: 0}
+  eventSystem: {fileID: 0}
+  firstSelectedEscMenu: {fileID: 0}
+  fighterStats: {fileID: 0}
 --- !u!114 &9103131793301019539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,8 +349,11 @@ MonoBehaviour:
   vita: 100
   movementSpeed: 5
   attacco: 5
+  isDead: 0
   colliderRadiusPunch: 0.7
   colliderRadiusKick: 0.9
+  targetName: MyEnemyNew
+  combatSystem: {fileID: 0}
 --- !u!1 &726351009397715125
 GameObject:
   m_ObjectHideFlags: 0

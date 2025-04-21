@@ -24,14 +24,14 @@ public class UIManager : MonoBehaviour
     void Awake()
     {
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<FighterStats>();
-        enemyStats = GameObject.Find("MyEnemyNew").GetComponent<FighterStats>();
+        enemyStats = GameObject.FindGameObjectWithTag("Main Enemy").GetComponent<FighterStats>();
         
 
         healthBarRectPlayer = GameObject.Find("HealthUI_PL").GetComponent<RectTransform>();
         healthBarRectEnemy = GameObject.Find("HealthUI_EN").GetComponent<RectTransform>();
         
         if(secondEnemyActive){
-            secondEnemyStats = GameObject.Find("MySecondEnemyNew").GetComponent<FighterStats>();
+            secondEnemyStats = GameObject.FindGameObjectWithTag("Secondary Enemy").GetComponent<FighterStats>();
         healthBarRectSecondEnemy = GameObject.Find("HealthUI_EN2").GetComponent<RectTransform>();
         }
 
