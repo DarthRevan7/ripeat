@@ -5,7 +5,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] public FighterStats playerStats, enemyStats, secondEnemyStats;
     public bool secondEnemyActive = false;
 
-    private RectTransform healthBarRectPlayer, healthBarRectEnemy, healthBarRectSecondEnemy;
+    public RectTransform healthBarRectPlayer, healthBarRectEnemy, healthBarRectSecondEnemy;
     private float maxHealthBarWidth;
 
 
@@ -30,10 +30,10 @@ public class UIManager : MonoBehaviour
         healthBarRectPlayer = GameObject.Find("HealthUI_PL").GetComponent<RectTransform>();
         healthBarRectEnemy = GameObject.Find("HealthUI_EN").GetComponent<RectTransform>();
         
-        if(secondEnemyActive){
-            secondEnemyStats = GameObject.FindGameObjectWithTag("Secondary Enemy").GetComponent<FighterStats>();
-        healthBarRectSecondEnemy = GameObject.Find("HealthUI_EN2").GetComponent<RectTransform>();
-        }
+        // if(secondEnemyActive){
+        //     secondEnemyStats = GameObject.FindGameObjectWithTag("Secondary Enemy").GetComponent<FighterStats>();
+        //     healthBarRectSecondEnemy = GameObject.Find("HealthUI_EN2").GetComponent<RectTransform>();
+        // }
 
         maxHealthBarWidth = healthBarRectPlayer.sizeDelta.x;
     }

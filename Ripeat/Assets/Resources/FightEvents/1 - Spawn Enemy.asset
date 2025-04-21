@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: 
   eventType: 0
-  triggerHealthPercentage: -1
+  triggerHealthPercentage: 80
   triggerTime: -1
   targetReference: {fileID: 0}
-  prefabToSpawn: {fileID: 0}
-  spawnPosition: {x: 0, y: 0, z: 0}
+  prefabToSpawn: {fileID: 6030350152631332872, guid: 9d27fffd13dc15043baae90e1cf86ee2, type: 3}
+  spawnPosition: {x: 14.62, y: 0.465, z: -6.81}
   boundaryDirection: 0
   explosionEffect: {fileID: 0}
   explosionRadius: 0

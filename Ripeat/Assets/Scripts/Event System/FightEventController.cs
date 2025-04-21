@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using FightEventNamespace;
 
 public class FightEventController : MonoBehaviour {
     public static FightEventController Instance { get; private set; }
@@ -11,6 +10,11 @@ public class FightEventController : MonoBehaviour {
     [SerializeField] private string resourcesDirectory = "FightEvents";
 
     [SerializeField] private FighterStats playerStats, enemyStats;
+    [SerializeField] private bool isTriggered = false;
+    [SerializeField] private EventHandler eventHandler;
+
+    [SerializeField] private int actualEventIndex;
+    [SerializeField] private static int globalEventIndex;
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -20,6 +24,11 @@ public class FightEventController : MonoBehaviour {
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        //Index for current event system
+        actualEventIndex = 0;
+
+        eventHandler = EventHandler.Instance;
 
         enemyStats = GameObject.Find("Enemy").GetComponent<FighterStats>();
         playerStats = GameObject.Find("Player").GetComponent<FighterStats>();
@@ -46,14 +55,16 @@ public class FightEventController : MonoBehaviour {
     }
 
     private void Update() {
-        if (!fightActive) return;
+        // if (!fightActive) return;
 
-        fightTimer += Time.deltaTime;
+        // fightTimer += Time.deltaTime;
 
-        foreach (var fightEvent in loadedEvents) {
-            if (ShouldTrigger(fightEvent, false)) {
-                TriggerEvent(fightEvent);
-            }
+        //Serve solo un controllo x l'evento all'indice N
+        FightEvent fightEvent = loadedEvents[actualEventIndex];
+
+        if (ShouldTrigger(fightEvent, false) && !isTriggered) {
+            isTriggered = true;
+            TriggerEvent(fightEvent);
         }
     }
 
@@ -65,7 +76,7 @@ public class FightEventController : MonoBehaviour {
         if(checkOnPlayer)
             healthCondition = fightEvent.triggerHealthPercentage >= 0f && CheckHealthCondition(playerStats,fightEvent.triggerHealthPercentage);
         else
-            healthCondition = fightEvent.triggerHealthPercentage >= 0f && CheckHealthCondition(playerStats,fightEvent.triggerHealthPercentage);
+            healthCondition = fightEvent.triggerHealthPercentage >= 0f && CheckHealthCondition(enemyStats,fightEvent.triggerHealthPercentage);
 
 
         bool timeCondition = fightEvent.triggerTime >= 0f && fightTimer >= fightEvent.triggerTime;
@@ -82,6 +93,12 @@ public class FightEventController : MonoBehaviour {
 
         // Si dovrebbe occupare di chiamare un altro script che si occupa della gestione 
         // degli eventi in game. FightEventHandler magari.
+
+        if(fightEvent.eventType.Equals(FightEvent.FightEventType.SpawnEnemy))
+        {
+            eventHandler.HandleSpawnEvent(fightEvent);
+        }
+        Debug.Log("Event Type: " + fightEvent.eventType.ToString());
 
         /*
         switch (fightEvent.eventType) {

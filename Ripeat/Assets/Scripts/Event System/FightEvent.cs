@@ -1,7 +1,6 @@
 using UnityEngine;
 
-namespace FightEventNamespace
-{
+
     [CreateAssetMenu(fileName = "NewFightEvent", menuName = "Fight/Fight Event")]
     public class FightEvent : ScriptableObject {
 
@@ -43,4 +42,4 @@ namespace FightEventNamespace
         public Vector3 explosionPosition;
 
     }
-}
+

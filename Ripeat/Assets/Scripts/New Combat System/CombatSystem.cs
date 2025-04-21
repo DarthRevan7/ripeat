@@ -68,7 +68,7 @@ public class CombatSystem : MonoBehaviour
             {
                 animator.Play(deathAnimationName);
                 isDead = true;
-                menuScript.LoadScene();
+                // menuScript.LoadScene();
             }
             return;
         }

@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEditor;
-using FightEventNamespace;
 
 [CustomEditor(typeof(FightEvent))]
 public class FightEventEditor : Editor {
