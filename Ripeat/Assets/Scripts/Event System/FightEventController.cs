@@ -10,7 +10,7 @@ public class FightEventController : MonoBehaviour {
     [SerializeField] private bool fightActive = false;
     [SerializeField] private string resourcesDirectory = "FightEvents";
 
-    [SerializeField] private CharacterStats playerStats, enemyStats;
+    [SerializeField] private FighterStats playerStats, enemyStats;
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -21,8 +21,8 @@ public class FightEventController : MonoBehaviour {
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        enemyStats = GameObject.Find("Enemy").GetComponent<CharacterStats>();
-        playerStats = GameObject.Find("Player").GetComponent<CharacterStats>();
+        enemyStats = GameObject.Find("Enemy").GetComponent<FighterStats>();
+        playerStats = GameObject.Find("Player").GetComponent<FighterStats>();
 
         LoadAllEvents();
     }
@@ -74,8 +74,8 @@ public class FightEventController : MonoBehaviour {
     }
 
     //Serve a fare il check della salute.
-    private bool CheckHealthCondition(CharacterStats stats, float healthThreshold) {
-        return stats.health <= healthThreshold;
+    private bool CheckHealthCondition(FighterStats stats, float healthThreshold) {
+        return (stats.vita/100) <= healthThreshold;
     }
 
     private void TriggerEvent(FightEvent fightEvent) {
