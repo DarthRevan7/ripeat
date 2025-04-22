@@ -26,7 +26,7 @@ public class InputManager : MonoBehaviour
 
     //Riferimento al Character Stats
     [SerializeField] private FighterStats fighterStats;
-
+    public bool isScriptActive = true;
 
     
 
@@ -84,6 +84,8 @@ public class InputManager : MonoBehaviour
     }
     void Awake()
     {
+        isScriptActive = true;
+
         //Carico da Resources le input action in base al booleano
         if(inputModePC)
         {
@@ -114,6 +116,8 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!isScriptActive) return;
+            
         if(fighterStats.isDead)   return;
 
         //Passo al Combat System l'input tramite property

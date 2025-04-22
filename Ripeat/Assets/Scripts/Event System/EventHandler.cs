@@ -17,7 +17,7 @@ public class EventHandler : MonoBehaviour
     [SerializeField] private GameObject[] secondaryEnemies;
     [SerializeField] private string playerTag = "Player", enemyTag = "Main Enemy",
     secondaryEnemyTag = "Secondary Enemy";
-    [SerializeField] private float mainEnemyXCoord = 20f, newEnemyXCoord = 0;
+    [SerializeField] private float mainEnemyXCoord = 20f, newEnemyXCoord = 6f;
     [SerializeField] private GameObject secondaryEnemyHealthBar;
 
 
@@ -34,9 +34,9 @@ public class EventHandler : MonoBehaviour
         // secondaryEnemies = GameObject.FindGameObjectsWithTag(secondaryEnemyTag);
 
         //Disable Enemy AI
-        mainEnemy.GetComponent<MainEnemyAI>().enabled = false;
+        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = false;
         //Disable Player Input
-        player.GetComponent<InputManager>().enabled = false;
+        player.GetComponent<InputManager>().isScriptActive = false;
         //Disable boundary in that direction
         Collider colliderToDisable;
         bool colliderFound = 
@@ -68,30 +68,36 @@ public class EventHandler : MonoBehaviour
             mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
             yield return null;
         }
-        mainEnemy.GetComponent<CombatSystem>().enabled = false;
+        // mainEnemy.GetComponent<CombatSystem>().enabled = false;
+
         //Spawn secondary enemy in position
         GameObject newEnemy = GameObject.Instantiate(fightEvent.prefabToSpawn, fightEvent.spawnPosition, Quaternion.identity);
+        
         //Bring the secondary enemy in the scene
-        while(newEnemy.transform.position.x >= mainEnemyXCoord)
+        while(newEnemy.transform.position.x >= newEnemyXCoord)
         {
             newEnemy.GetComponent<CombatSystem>().canMove = true;
             newEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
             yield return null;
         }
         yield return new WaitForSeconds(1.0f);
+
+
         //Enable Secondary Enemy Health Bar
         UIManager uIManager = GameObject.FindAnyObjectByType<UIManager>();
         secondaryEnemyHealthBar.SetActive(true);
-        uIManager.secondEnemyStats = GameObject.FindGameObjectWithTag("Secondary Enemy").GetComponent<FighterStats>();
+        uIManager.secondEnemyStats = newEnemy.GetComponent<FighterStats>();
         uIManager.healthBarRectSecondEnemy = GameObject.Find("HealthUI_EN2").GetComponent<RectTransform>();
         uIManager.secondEnemyActive = true;
         yield return new WaitForSeconds(1.0f);
         //Check secondary enemy position
         //Enable Player Input
-        player.GetComponent<CombatSystem>().enabled = true;
-        player.GetComponent<InputManager>().enabled = true;
+
+        // player.GetComponent<CombatSystem>().is = true;
+        player.GetComponent<InputManager>().isScriptActive = true;
+        Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
         //Enable secondary Enemy AI
-        newEnemy.GetComponent<MainEnemyAI>().enabled = true;
+        newEnemy.GetComponent<MainEnemyAI>().isScriptActive = true;
         //Enable Boundary again
         colliderToDisable.gameObject.SetActive(true);
 

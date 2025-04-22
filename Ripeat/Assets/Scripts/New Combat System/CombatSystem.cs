@@ -111,7 +111,7 @@ public class CombatSystem : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        menuScript = GameObject.Find("FadingImage").GetComponent<MenuScript>();
+        // menuScript = GameObject.Find("FadingImage").GetComponent<MenuScript>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -123,6 +123,7 @@ public class CombatSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         UpdateAnimationState();
     }
 }

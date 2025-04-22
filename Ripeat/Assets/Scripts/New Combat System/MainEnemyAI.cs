@@ -29,12 +29,15 @@ public class MainEnemyAI : MonoBehaviour
     [SerializeField] private CombatSystem combatSystem;
     [SerializeField] private FighterStats fighterStats;
     [SerializeField] private bool isRunning = false;
+    public bool isScriptActive = true;
 
 
 
     void Awake()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+        isScriptActive = true;
 
         combatSystem = GetComponent<CombatSystem>();
         fighterStats = GetComponent<FighterStats>();
@@ -47,6 +50,9 @@ public class MainEnemyAI : MonoBehaviour
 
     void Update()
     {
+        if(!isScriptActive) return;
+        
+
         if(fighterStats.isDead || playerTransform.GetComponent<FighterStats>().isDead) return;
 
         if(!startFight) return;

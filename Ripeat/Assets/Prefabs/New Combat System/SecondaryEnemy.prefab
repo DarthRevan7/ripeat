@@ -1555,7 +1555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vita: 100
   movementSpeed: 5
-  attacco: 50
+  attacco: 25
   isDead: 0
   colliderRadiusPunch: 0.8
   colliderRadiusKick: 0.8
@@ -1583,6 +1583,7 @@ MonoBehaviour:
   combatSystem: {fileID: 0}
   fighterStats: {fileID: 0}
   isRunning: 0
+  isScriptActive: 1
 --- !u!114 &4992915010542667309
 MonoBehaviour:
   m_ObjectHideFlags: 0
