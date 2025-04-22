@@ -55,6 +55,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 437
+--- !u!114 &-5524025760633561845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Menu/menu
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Menu/menu
+  Guid:
+    Data1: 2136199094
+    Data2: 1158540994
+    Data3: -1606531161
+    Data4: 707935877
+  Banks:
+  - {fileID: -5159447560387967205}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 30315
 --- !u!114 &-5408040338459372104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,7 +125,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Music.bank
   Name: Desktop/Music
   StudioPath: bank:/Music
-  lastModified: 638808284983830899
+  lastModified: 638809580457693371
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -126,13 +153,15 @@ MonoBehaviour:
   - {fileID: 593703732779836463}
   - {fileID: 8567099738288772578}
   - {fileID: -6285688937958315654}
+  - {fileID: -5524025760633561845}
+  - {fileID: 5585136995453554803}
   EditorParameters:
   - {fileID: -5408040338459372104}
   MasterBanks:
   - {fileID: 3975635220057523332}
   StringsBanks:
   - {fileID: 7776198359231580797}
-  cacheTime: 638808284983871564
+  cacheTime: 638809580458390743
   cacheVersion: 131846
 --- !u!114 &593703732779836463
 MonoBehaviour:
@@ -177,7 +206,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Sfx.bank
   Name: Desktop/Sfx
   StudioPath: bank:/Sfx
-  lastModified: 638808284983871564
+  lastModified: 638809580458390743
   FileSizes: []
   Exists: 1
 --- !u!114 &3975635220057523332
@@ -195,9 +224,36 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.bank
   Name: Desktop/Master
   StudioPath: bank:/Master
-  lastModified: 638808284983675274
+  lastModified: 638809580452384233
   FileSizes: []
   Exists: 1
+--- !u!114 &5585136995453554803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Bar/Lev 1 V 1
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Bar/Lev 1 V 1
+  Guid:
+    Data1: -334232851
+    Data2: 1233746824
+    Data3: 517577130
+    Data4: 1278100370
+  Banks:
+  - {fileID: -5159447560387967205}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 482832
 --- !u!114 &6200740755015113143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,10 +323,10 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.strings.bank
   Name: Desktop/Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638808284983723509
+  lastModified: 638809580452428280
   FileSizes:
   - Name: 
-    Value: 1308
+    Value: 1404
   Exists: 1
 --- !u!114 &8567099738288772578
 MonoBehaviour:
@@ -342,6 +398,6 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Ambience.bank
   Name: Desktop/Ambience
   StudioPath: bank:/Ambience
-  lastModified: 638808284983436187
+  lastModified: 638809580445833546
   FileSizes: []
   Exists: 1

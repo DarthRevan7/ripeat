@@ -2231,7 +2231,7 @@ MonoBehaviour:
     Path: event:/Music/Drums/Lev 1
   Event: 
   EventPlayTrigger: 1
-  EventStopTrigger: 0
+  EventStopTrigger: 2
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -13742,6 +13742,9 @@ MonoBehaviour:
   enemyStats: {fileID: 8411124715728886387}
   secondEnemyStats: {fileID: 0}
   secondEnemyActive: 0
+  healthBarRectPlayer: {fileID: 0}
+  healthBarRectEnemy: {fileID: 0}
+  healthBarRectSecondEnemy: {fileID: 0}
 --- !u!114 &7804328998295077737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14435,6 +14438,7 @@ MonoBehaviour:
   combatSystem: {fileID: 0}
   fighterStats: {fileID: 0}
   isRunning: 0
+  isScriptActive: 1
 --- !u!114 &8411124715728886390
 MonoBehaviour:
   m_ObjectHideFlags: 0
