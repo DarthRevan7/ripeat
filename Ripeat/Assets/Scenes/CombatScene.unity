@@ -2425,11 +2425,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1491121104
-      Data2: 1280781173
-      Data3: -1502282848
-      Data4: 606056989
-    Path: event:/combat
+      Data1: -697620696
+      Data2: 1211315811
+      Data3: -1710787150
+      Data4: 98940268
+    Path: event:/Music/Drums/Lev 1
   Event: 
   EventPlayTrigger: 1
   EventStopTrigger: 0
