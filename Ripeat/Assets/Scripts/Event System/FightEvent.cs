@@ -25,7 +25,7 @@ using UnityEngine;
         public float triggerTime = -1f; // -1 = disattivato
 
         
-        // se usi un placeholder nella scena per indicare il punto di spawn dell'oggetto/nemico
+        //Se uso un placeholder nella scena per indicare il punto di spawn dell'oggetto/nemico
         public Transform targetReference; 
 
         // Spawn Enemy/Object
@@ -34,6 +34,7 @@ using UnityEngine;
 
         //Spawn nemico
         public BoundaryDirection boundaryDirection;
+        public int firstEncounterAttack, ordinaryAttack;
 
 
         // Esplosione

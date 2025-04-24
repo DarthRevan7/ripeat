@@ -33,7 +33,7 @@ public class MenuScript : MonoBehaviour
 
         string sceneName = SceneManager.GetActiveScene().name;
 
-        if(sceneName.Equals("NewCombatScene") || sceneName.Equals("Menu") || sceneName.Equals("NewCombatScene_2FightersTest") || sceneName.Equals("DialogueWithAI") || sceneName.Equals("Elevator"))
+        if(sceneName.Equals("CombatScene") || sceneName.Equals("NewCombatScene") || sceneName.Equals("Menu") || sceneName.Equals("NewCombatScene_2FightersTest") || sceneName.Equals("DialogueWithAI") || sceneName.Equals("Elevator"))
         {
             StartCoroutine(FadeOut());
         }

@@ -7863,6 +7863,7 @@ MonoBehaviour:
   fightEvents: []
   currentEventIndex: 0
   globalEventIndex: 0
+  colliders: []
   mainEnemy: {fileID: 0}
   player: {fileID: 0}
   secondaryEnemies: []
@@ -7871,7 +7872,9 @@ MonoBehaviour:
   secondaryEnemyTag: Secondary Enemy
   mainEnemyXCoord: 10
   newEnemyXCoord: 4
+  comingBackCoord: 7
   secondaryEnemyHealthBar: {fileID: 186906761}
+  boundaryName: 
 --- !u!114 &2060060775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7891,8 +7894,11 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   enemyStats: {fileID: 0}
   isTriggered: 0
+  eventFinished: 0
   eventHandler: {fileID: 0}
   actualEventIndex: 0
+  secondaryEnemy: {fileID: 0}
+  loading: 0
 --- !u!4 &2060060776
 Transform:
   m_ObjectHideFlags: 0
@@ -8946,7 +8952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9007,8 +9013,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuSceneName: Menu
   menuTriggered: 0
-  escPanel: {fileID: 0}
-  eventSystem: {fileID: 0}
+  escPanel: {fileID: 8630384240217158540}
+  eventSystem: {fileID: 1733485448}
   inputActions: {fileID: -944628639613478452, guid: e57d84ca062c5b54e8d1952a0a0cc906, type: 3}
 --- !u!224 &3849109817368803389
 RectTransform:
@@ -10411,7 +10417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &8771921595924916337
 GameObject:
   m_ObjectHideFlags: 0
@@ -10430,7 +10436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &8782077719545880321
 MonoBehaviour:
   m_ObjectHideFlags: 0

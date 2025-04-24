@@ -81,7 +81,7 @@ public class FighterStats : MonoBehaviour
                     {
                         other.vita -= attacco;
                         lastKiller = gameObject.name;
-                        Debug.Log("Last killer: " + lastKiller);
+                        // Debug.Log("Last killer: " + lastKiller);
                         //Senza questo break si potrebbero colpire più nemici alla volta
                         break;
                     }
@@ -113,7 +113,7 @@ public class FighterStats : MonoBehaviour
                 if (!hitted)
                 {
                     lastKiller = "MyEnemyNew";
-                    Debug.Log("Last killer: " + lastKiller);
+                    // Debug.Log("Last killer: " + lastKiller);
                 }
                 combatSystem.CurrentState = CombatSystem.CharacterState.DEAD;
             }

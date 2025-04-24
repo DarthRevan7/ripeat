@@ -1555,7 +1555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vita: 100
   movementSpeed: 5
-  attacco: 25
+  attacco: 1
   isDead: 0
   colliderRadiusPunch: 0.8
   colliderRadiusKick: 0.8

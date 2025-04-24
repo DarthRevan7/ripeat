@@ -1,22 +1,52 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FightEventController : MonoBehaviour {
     public static FightEventController Instance { get; private set; }
 
-    [SerializeField] private List<FightEvent> loadedEvents = new List<FightEvent>();
+    public List<FightEvent> loadedEvents = new List<FightEvent>();
     [SerializeField] private float fightTimer;
     [SerializeField] private bool fightActive = false;
     [SerializeField] private string resourcesDirectory = "FightEvents";
 
     [SerializeField] private FighterStats playerStats, enemyStats;
-    [SerializeField] private bool isTriggered = false;
+    public bool isTriggered = false, eventFinished = false;
     [SerializeField] private EventHandler eventHandler;
 
-    [SerializeField] private int actualEventIndex;
-    [SerializeField] private static int globalEventIndex;
+    public int actualEventIndex;
+    public static int globalEventIndex;
+
+    public GameObject secondaryEnemy = null;
+    public bool loading = false;
+
+    
+
+    private void CheckEventFlow()
+    {
+
+        //If player is dead
+        if(playerStats.gameObject.GetComponent<CombatSystem>().isDead && !loading)
+        {
+            loading = true;
+            //If player dead because of the event
+            if(actualEventIndex > globalEventIndex)
+            {
+                //Update the global event index
+                globalEventIndex = actualEventIndex;
+            }
+
+            //Load Elevator Scene
+            GameObject.Find("FadingImage").GetComponent<MenuScript>().LoadScene();
+            Debug.Log("Loading elevator Scene");
+
+        }
+    }
 
     private void Awake() {
+
+        // GameObject.Find("FadingImage").GetComponent<MenuScript>().FadeOut();
+
         if (Instance != null && Instance != this) {
             Destroy(gameObject);
             return;
@@ -34,6 +64,29 @@ public class FightEventController : MonoBehaviour {
         playerStats = GameObject.Find("Player").GetComponent<FighterStats>();
 
         LoadAllEvents();
+
+        SceneManager.sceneLoaded += OnLoadScene;
+    }
+
+    public void OnLoadScene(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        if(scene.name.Equals("CombatScene"))
+        {
+            //Index for current event system
+            actualEventIndex = 0;
+
+            eventHandler = EventHandler.Instance;
+
+            enemyStats = GameObject.Find("Enemy").GetComponent<FighterStats>();
+            playerStats = GameObject.Find("Player").GetComponent<FighterStats>();
+
+            //Get the references to player and enemy stats
+            enemyStats = GameObject.Find("Enemy").GetComponent<FighterStats>();
+            playerStats = GameObject.Find("Player").GetComponent<FighterStats>();
+
+            // LoadAllEvents();
+        }
+        loading = false;
     }
 
     //Carica gli eventi dalla directory Resources/
@@ -59,13 +112,49 @@ public class FightEventController : MonoBehaviour {
 
         // fightTimer += Time.deltaTime;
 
-        //Serve solo un controllo x l'evento all'indice N
-        FightEvent fightEvent = loadedEvents[actualEventIndex];
-
-        if (ShouldTrigger(fightEvent, false) && !isTriggered) {
-            isTriggered = true;
-            TriggerEvent(fightEvent);
+        if(!SceneManager.GetActiveScene().name.Equals("CombatScene")) 
+        {
+            loading = false;
+            return;
         }
+
+        //If there are no events left
+        if(eventFinished)   return;
+
+        if(actualEventIndex == loadedEvents.Count)
+        {
+            eventFinished = true;
+        }
+
+        CheckEventFlow();
+        
+
+        FightEvent fightEvent = null;
+
+        //Serve solo un controllo x l'evento all'indice N
+        if(actualEventIndex < loadedEvents.Count)
+        {
+            fightEvent = loadedEvents[actualEventIndex];
+        }
+
+        if(fightEvent != null)
+        {
+            if (ShouldTrigger(fightEvent, false) && !isTriggered) {
+                isTriggered = true;
+                TriggerEvent(fightEvent);
+            }
+        }
+
+        if(secondaryEnemy != null)
+        {
+            if(secondaryEnemy.GetComponent<FighterStats>().vita <= 0)
+            {
+                EventHandler.Instance.TakeBackMainEnemy();
+            }
+        }
+
+        
+        
     }
 
     //Controlla le condizioni di trigger degli eventi. Per ora è impostato sul check di
@@ -96,9 +185,16 @@ public class FightEventController : MonoBehaviour {
 
         if(fightEvent.eventType.Equals(FightEvent.FightEventType.SpawnEnemy))
         {
-            eventHandler.HandleSpawnEvent(fightEvent);
+            Debug.Log("FightEvent: " + fightEvent.boundaryDirection.ToString());
+            EventHandler.Instance.HandleSpawnEvent(fightEvent);
+            //isTriggered = true;
         }
-        Debug.Log("Event Type: " + fightEvent.eventType.ToString());
+        // Debug.Log("Event Type: " + fightEvent.eventType.ToString());
+        else if(fightEvent.eventType.Equals(FightEvent.FightEventType.Explosion))
+        {
+            EventHandler.Instance.HandleExplosion(fightEvent);
+            //isTriggered = true;
+        }
 
         /*
         switch (fightEvent.eventType) {

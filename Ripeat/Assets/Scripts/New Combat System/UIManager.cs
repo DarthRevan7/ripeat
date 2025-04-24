@@ -29,6 +29,8 @@ public class UIManager : MonoBehaviour
 
         healthBarRectPlayer = GameObject.Find("HealthUI_PL").GetComponent<RectTransform>();
         healthBarRectEnemy = GameObject.Find("HealthUI_EN").GetComponent<RectTransform>();
+
+        // healthBarRectSecondEnemy = GameObject.Find("HealthUI_EN2").GetComponent<RectTransform>();
         
         // if(secondEnemyActive){
         //     secondEnemyStats = GameObject.FindGameObjectWithTag("Secondary Enemy").GetComponent<FighterStats>();

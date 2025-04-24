@@ -14,6 +14,7 @@ public class FightEventEditor : Editor {
     SerializedProperty explosionRadius;
     SerializedProperty explosionPosition;
     SerializedProperty boundaryDirection;
+    SerializedProperty firstEncounterAttack, ordinaryAttack;
 
     void OnEnable() {
         eventName = serializedObject.FindProperty("eventName");
@@ -27,6 +28,8 @@ public class FightEventEditor : Editor {
         explosionRadius = serializedObject.FindProperty("explosionRadius");
         explosionPosition = serializedObject.FindProperty("explosionPosition");
         boundaryDirection = serializedObject.FindProperty("boundaryDirection");
+        firstEncounterAttack = serializedObject.FindProperty("firstEncounterAttack");
+        ordinaryAttack = serializedObject.FindProperty("ordinaryAttack");
     }
 
     public override void OnInspectorGUI() {
@@ -51,6 +54,8 @@ public class FightEventEditor : Editor {
                 EditorGUILayout.PropertyField(targetReference);
                 EditorGUILayout.PropertyField(spawnPosition);
                 EditorGUILayout.PropertyField(boundaryDirection);
+                EditorGUILayout.PropertyField(firstEncounterAttack);
+                EditorGUILayout.PropertyField(ordinaryAttack);
                 break;
             case FightEvent.FightEventType.SpawnObject:
                 EditorGUILayout.PropertyField(prefabToSpawn);
