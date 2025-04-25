@@ -18,7 +18,9 @@ public class FightEventController : MonoBehaviour {
     public static int globalEventIndex;
 
     public GameObject secondaryEnemy = null;
-    public bool loading = false;
+    public bool loading = false, triggered = false;
+
+    public HashSet<int> triggeredEventIndices = new HashSet<int>();
 
     
 
@@ -29,12 +31,19 @@ public class FightEventController : MonoBehaviour {
         if(playerStats.gameObject.GetComponent<CombatSystem>().isDead && !loading)
         {
             loading = true;
-            //If player dead because of the event
-            if(actualEventIndex > globalEventIndex)
-            {
-                //Update the global event index
-                globalEventIndex = actualEventIndex;
-            }
+            // //If player dead because of the event
+            // if(actualEventIndex > globalEventIndex)
+            // {
+            //     //Update the global event index
+            //     globalEventIndex = actualEventIndex;
+            // }
+
+            loading = true;
+
+            // Registra l'evento come già visto
+            
+
+            
 
             //Load Elevator Scene
             GameObject.Find("FadingImage").GetComponent<MenuScript>().LoadScene();
@@ -83,6 +92,9 @@ public class FightEventController : MonoBehaviour {
             //Get the references to player and enemy stats
             enemyStats = GameObject.Find("Enemy").GetComponent<FighterStats>();
             playerStats = GameObject.Find("Player").GetComponent<FighterStats>();
+
+            isTriggered = false;
+            eventFinished = false;
 
             // LoadAllEvents();
         }
@@ -142,6 +154,7 @@ public class FightEventController : MonoBehaviour {
             if (ShouldTrigger(fightEvent, false) && !isTriggered) {
                 isTriggered = true;
                 TriggerEvent(fightEvent);
+                // actualEventIndex++;
             }
         }
 
@@ -170,7 +183,7 @@ public class FightEventController : MonoBehaviour {
 
         bool timeCondition = fightEvent.triggerTime >= 0f && fightTimer >= fightEvent.triggerTime;
 
-        return healthCondition || timeCondition;
+        return (healthCondition || timeCondition) && !triggered;
     }
 
     //Serve a fare il check della salute.
@@ -195,31 +208,6 @@ public class FightEventController : MonoBehaviour {
             EventHandler.Instance.HandleExplosion(fightEvent);
             //isTriggered = true;
         }
-
-        /*
-        switch (fightEvent.eventType) {
-            case FightEvent.FightEventType.SpawnEnemy:
-            case FightEvent.FightEventType.SpawnObject:
-                Vector3 position = fightEvent.targetReference != null ? 
-                    fightEvent.targetReference.position : fightEvent.spawnPosition;
-                Instantiate(fightEvent.prefabToSpawn, position, Quaternion.identity);
-                break;
-
-            case FightEvent.FightEventType.Explosion:
-                if (fightEvent.explosionEffect != null) {
-                    Vector3 explosionPos = fightEvent.targetReference != null ?
-                        fightEvent.targetReference.position : fightEvent.explosionPosition;
-                    ParticleSystem ps = Instantiate(fightEvent.explosionEffect, explosionPos, Quaternion.identity);
-                    ps.Play();
-
-                    // Applica danni o effetti nel raggio
-                    ApplyExplosionDamage(explosionPos, fightEvent.explosionRadius);
-                }
-                break;
-        }
-        */
-
-        // loadedEvents.Remove(fightEvent);
     }
 
     private void ApplyExplosionDamage(Vector3 position, float radius) {

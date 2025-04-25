@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,7 +11,7 @@ public class EventHandler : MonoBehaviour
     [SerializeField] private List<FightEvent> fightEvents;
 
     [SerializeField] public int currentEventIndex = 0;
-    [SerializeField] private int globalEventIndex;
+    [SerializeField] private int globalEventIndex = 0;
 
     [SerializeField] private Dictionary<string, Collider> entryPointColliders;
     [SerializeField] private List<GameObject> colliders;
@@ -73,6 +73,7 @@ public class EventHandler : MonoBehaviour
             //Find healthBar with Canvas parent transform.
             //DO NOT CHANGE THE CHILD'S POSITION!
             secondaryEnemyHealthBar = GameObject.Find("Canvas").transform.GetChild(3).gameObject;
+            
         }
     }
 
@@ -85,7 +86,7 @@ public class EventHandler : MonoBehaviour
 
     public bool FirstEncounter()
     {
-        return FightEventController.Instance.actualEventIndex >= FightEventController.globalEventIndex;
+        return !FightEventController.Instance.triggeredEventIndices.Contains(FightEventController.Instance.actualEventIndex);
     }
 
     private void AssignStats(GameObject newEnemy, FightEvent fightEvent)
@@ -103,6 +104,7 @@ public class EventHandler : MonoBehaviour
 
     public void HandleExplosion(FightEvent fightEvent)
     {
+        bool isFirstEncounter = FirstEncounter();
         //Disable Enemy AI
         mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = false;
         //Disable Player Input
@@ -117,7 +119,7 @@ public class EventHandler : MonoBehaviour
 
         //First time -> Kill player and halve enemy life
         //Other times -> Halve both character's life
-        if(FirstEncounter())
+        if(isFirstEncounter)
         {
             Debug.Log("Explosion Killer");
             player.GetComponent<FighterStats>().vita = 0;
@@ -134,29 +136,18 @@ public class EventHandler : MonoBehaviour
         mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = true;
         //Enable Player Input
         player.GetComponent<InputManager>().isScriptActive = true;
+
+
+        if(isFirstEncounter)
+        {
+            FightEventController.Instance.triggeredEventIndices.Add(FightEventController.Instance.actualEventIndex);
+        }
+
         FightEventController.Instance.isTriggered = false;
+        FightEventController.Instance.actualEventIndex++;
         
-
-        if(FirstEncounter())
-        {
-            FightEventController.globalEventIndex++;
-        }
-        else
-        {
-            //Next event
-            FightEventController.Instance.actualEventIndex++;
-        }
-
-        // StartCoroutine(HandleExplosionEvent(explosionPS));
+        
     }
-
-    // IEnumerator HandleExplosionEvent(ParticleSystem particleSystem)
-    // {
-
-    //     yield return new WaitUntil( () => !particleSystem.isPlaying );
-        
-    //     yield return null;
-    // }
 
     public void TakeBackMainEnemy()
     {
@@ -250,6 +241,8 @@ public class EventHandler : MonoBehaviour
         mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
         mainEnemy.GetComponent<CombatSystem>().enabled = true;
 
+        
+
         while(mainEnemy.transform.position.x <= mainEnemyXCoord)
         {
             mainEnemy.GetComponent<CombatSystem>().canMove = true;
@@ -289,14 +282,19 @@ public class EventHandler : MonoBehaviour
         colliderToDisable.gameObject.SetActive(true);
 
         FightEventController.Instance.secondaryEnemy = newEnemy;
-        FightEventController.Instance.isTriggered = false;
-        FightEventController.Instance.actualEventIndex++;
-
+        
+        Debug.Log("Is 1st encounter = " + FirstEncounter().ToString());
+        
         //Update Global Event Index
         if(FirstEncounter())
         {
             FightEventController.globalEventIndex++;
+            Debug.Log("GlobalEventIndex = " + FightEventController.globalEventIndex.ToString());
+            FightEventController.Instance.triggeredEventIndices.Add(FightEventController.Instance.actualEventIndex);
         }
+        
+        FightEventController.Instance.isTriggered = false;
+        FightEventController.Instance.actualEventIndex++;
 
         yield return null;
     }

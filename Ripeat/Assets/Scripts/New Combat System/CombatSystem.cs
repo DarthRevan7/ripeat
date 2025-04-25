@@ -90,7 +90,7 @@ public class CombatSystem : MonoBehaviour
             {
                 case CharacterState.PUNCH:
                     animator.Play(punchAnimationName);
-                    Debug.Log("Punch animation played");
+                    // Debug.Log("Punch animation played");
                 break;
                 case CharacterState.KICK:
                     animator.Play(kickAnimationName);
