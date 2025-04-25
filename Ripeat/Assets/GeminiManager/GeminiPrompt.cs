@@ -16,6 +16,7 @@ public class GeminiPrompt : MonoBehaviour
     public EventHandler eventHandler;
     private string killerName = "";
     public bool bonus = false;
+    int count = 0;
 
     void Start()
     {
@@ -25,79 +26,10 @@ public class GeminiPrompt : MonoBehaviour
     public string getPrompt()
     {
         
-        // fighterStats = GetComponent<FighterStats>();
-        // if(fighterStats == null)
-        // {
-        //     Debug.LogWarning("FighterStats non trovato su " + gameObject.name);
-        // }
-        // else
-        // {
-        //     Debug.Log("FighterStats trovato su " + gameObject.name);
-        // }
-        // // Legge la variabile lastKiller dal componente FighterStats (se presente)
-        // if(fighterStats != null)
-        // {
-        //     killerName = FighterStats.lastKiller;
-        // }
-        // else
-        // {
-        //     killerName = "unknown";
-        // }
-        // Debug.Log("Killer: " + killerName);
-
-        // // Incrementa il contatore dei prompt
-        // if((killerName != "MyEnemyNew" && ciclesNumber <= 1)  || ciclesNumber <= 1){
-        //    incrementCicles(); 
-        // }
-        
         string prompt = "";
-        // Debug.Log("Cicles number: " + ciclesNumber);
-
-        // if(ciclesNumber == 1)
-        // {
-        //     prompt = prompt1;
-        //     Debug.Log("Prompt 1");
-        // }
-        // else if(killerName == "MyEnemyNew"){
-        //     if(ciclesNumber == 2)
-        //     {
-        //         prompt = prompt2;
-        //         Debug.Log("Prompt 2");
-        //     }
-        //     else if(ciclesNumber == 3)
-        //     {
-        //         prompt = prompt3;
-        //         Debug.Log("Prompt 3");
-        //     }
-        //     else if(ciclesNumber == 4)
-        //     {
-        //         prompt = prompt4;
-        //         Debug.Log("Prompt 4");
-        //     }
-        //     prompt += promptBonus;
-        //     bonus = true;
-        //     Debug.Log("Prompt Bonus aggiunto ");
-        // }
-        // else
-        // {
-        //     if(ciclesNumber == 2)
-        //     {
-        //         prompt = prompt2;
-        //         Debug.Log("Prompt 2");
-        //     }
-        //     else if(ciclesNumber == 3)
-        //     {
-        //         prompt = prompt3;
-        //         Debug.Log("Prompt 3");
-        //     }
-        //     else if(ciclesNumber == 4)
-        //     {
-        //         prompt = prompt4;
-        //         Debug.Log("Prompt 4");
-        //     }   
-        // }
+    
         
-        switch(eventHandler.globalEventIndex)
+        switch(globalEventIndex)
         {
             case 0:
                 prompt = prompt1;
@@ -114,6 +46,7 @@ public class GeminiPrompt : MonoBehaviour
             default:
                 break;
         }
+        count++;
 
         return prompt;
     }

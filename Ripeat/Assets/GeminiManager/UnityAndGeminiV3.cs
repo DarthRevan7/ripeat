@@ -165,7 +165,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
         Debug.Log("Counter: " + counter);
         if (counter >= 12)
         {
-            conversationHistory += "\n Ora decidi cosa fare: scrivi BASTA LA TUA VITA FINISCE QUI se pensi che non sia meritevole, oppure HAI UN'ALTRA POSSIBILITA' se pensi che sia meritevole! Solo una di queste frasi e nient'altro!!\n";
+            conversationHistory += "\nPROMPT: Ora decidi cosa fare ma non essere troppo cattivo: scrivi BASTA LA TUA VITA FINISCE QUI se pensi che non sia meritevole, oppure HAI UN'ALTRA POSSIBILITA' se pensi che sia meritevole! Solo una di queste frasi e nient'altro!!\n";
         }
         StartCoroutine(SendChatRequestToGemini(conversationHistory));
         inputField.text = "";
