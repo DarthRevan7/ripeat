@@ -220,11 +220,11 @@
                 },
                 {
                     "name": "",
-                    "id": "8464ff5f-3bc9-45af-ad52-c1e97f94e201",
-                    "path": "<Keyboard>/b",
+                    "id": "ec45e9ea-8860-4fbd-8395-2b7c56333038",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
+                    "groups": "",
                     "action": "Punch",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -290,7 +290,7 @@
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Kick",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -302,6 +302,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c587d5f5-afab-4925-9860-bf4c79e1b3cb",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Block",
                     "isComposite": false,
                     "isPartOfComposite": false

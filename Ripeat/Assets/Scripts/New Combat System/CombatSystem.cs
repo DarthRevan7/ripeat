@@ -26,7 +26,7 @@ public class CombatSystem : MonoBehaviour
     }
 
     [SerializeField] public CharacterState currentState = CharacterState.IDLE;
-
+    
     public CharacterState CurrentState
     {
         get { return currentState; }
@@ -41,16 +41,16 @@ public class CombatSystem : MonoBehaviour
     }
 
     //Riferimento all'Animator del personaggio
-    [SerializeField] private Animator animator;
+    [SerializeField] public Animator animator;
     [SerializeField] private string punchAnimationName, kickAnimationName, blockAnimationName;
     [SerializeField] private string movingParameterName;
     [SerializeField] private string deathAnimationName;
 
     //Sistema per evitare che il personaggio si muova mentre attacca
-    public bool canMove = true, isDead = false;
+    public bool canMove = true, isDead = false, isBlocked = false, pauseBlock = false;
 
     private MenuScript menuScript;
-
+    
     
 
     public void ToggleMove()
@@ -59,7 +59,7 @@ public class CombatSystem : MonoBehaviour
     }
 
     //Aggiorna lo stato dell'Animator in base allo stato del personaggio (va chiamato in Update)
-    void UpdateAnimationState()
+    public void UpdateAnimationState()
     {
         //Se è morto, non faccio nulla.
         if(currentState == CharacterState.DEAD)
@@ -78,16 +78,31 @@ public class CombatSystem : MonoBehaviour
         if(currentState == CharacterState.KICK || currentState == CharacterState.PUNCH || currentState == CharacterState.BLOCK)
         {
             canMove = false;
+            isBlocked = false;
             switch(currentState)
             {
                 case CharacterState.PUNCH:
                     animator.Play(punchAnimationName);
+                    Debug.Log("Punch animation played");
                 break;
                 case CharacterState.KICK:
                     animator.Play(kickAnimationName);
                 break;
                 case CharacterState.BLOCK:
-                    animator.Play(blockAnimationName);
+                    isBlocked = true;
+                    if(!pauseBlock){
+                        Debug.Log("pauseBlock: " + pauseBlock);
+                        Debug.Log(isBlocked);
+                        if (!animator.GetCurrentAnimatorStateInfo(0).IsName(blockAnimationName))
+                        {
+                            animator.Play(blockAnimationName);
+                        }
+                        else 
+                        {
+                            currentState = CharacterState.IDLE;
+                        }
+                    }
+                    
                 break;
                 default:
                     Debug.Log("Default in switch updateanimationstate");
@@ -123,7 +138,6 @@ public class CombatSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         UpdateAnimationState();
     }
 }

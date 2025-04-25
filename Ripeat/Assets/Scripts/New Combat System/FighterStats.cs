@@ -1,5 +1,7 @@
 using System.Net.Mail;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class FighterStats : MonoBehaviour
 {
@@ -13,8 +15,10 @@ public class FighterStats : MonoBehaviour
     [SerializeField] private float colliderRadiusPunch = 0.7f, colliderRadiusKick = 0.9f;
     [SerializeField] private string targetName = "MyEnemyNew";
     [SerializeField] private CombatSystem combatSystem;
+    [SerializeField] private int hitCount = 0;
 
     private bool hitted = false;
+   
     
     public void Hit()
     {
@@ -31,8 +35,7 @@ public class FighterStats : MonoBehaviour
             colliderRadius = colliderRadiusPunch;
         }
 
-
-        Collider[] colliders = Physics.OverlapSphere(transform.position,colliderRadius);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, colliderRadius);
 
         foreach (Collider collider in colliders)
         {
@@ -55,9 +58,30 @@ public class FighterStats : MonoBehaviour
                         {
                             break;
                         }
-                        other.vita -= attacco;
+                        // La vita viene diminuita solo se non è in stato di block
+                        if(!other.combatSystem.isBlocked)
+                        {
+                            other.vita -= attacco;
+                            hitted = true;
+                            Debug.Log("Hitted: " + hitted);
+                            other.hitCount = 0;
+                        }
+                        else{
+                            if(other.hitCount >= 3){
+                                other.vita -= attacco;
+                                other.hitCount = 0;
+                                other.combatSystem.isBlocked = false;
+                                other.combatSystem.canMove = true;
+                                other.combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
+                                other.combatSystem.pauseBlock = true;
+                                WaitForSeconds(4);
+                                other.combatSystem.pauseBlock = false;
+                            }
+                            other.hitCount++;
+                            Debug.Log("HitCount: " + hitCount);
+                        }
                         
-                        hitted = true;
+                        
                         lastKiller = collider.gameObject.name;
                         Debug.Log("Last killer: " + lastKiller);
                         
@@ -79,9 +103,28 @@ public class FighterStats : MonoBehaviour
                     FighterStats other = collider.GetComponent<FighterStats>();
                     if(other != null)
                     {
-                        other.vita -= attacco;
+                        if(!other.combatSystem.isBlocked)
+                        {
+                            other.vita -= attacco;
+                            hitted = true;
+                            Debug.Log("Hitted: " + hitted);
+                            other.hitCount = 0;
+                        }
+                        else{
+                            if(other.hitCount >= 3){
+                                other.vita -= attacco;
+                                other.hitCount = 0;
+                                other.combatSystem.isBlocked = false;
+                                other.combatSystem.canMove = true;
+                                other.combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
+                                other.combatSystem.pauseBlock = true;
+                                WaitForSeconds(4);
+                                other.combatSystem.pauseBlock = false;
+                            }
+                            other.hitCount++;
+                            Debug.Log("HitCount: " + hitCount);
+                        }
                         lastKiller = gameObject.name;
-                        // Debug.Log("Last killer: " + lastKiller);
                         //Senza questo break si potrebbero colpire più nemici alla volta
                         break;
                     }
@@ -100,6 +143,11 @@ public class FighterStats : MonoBehaviour
     void Start()
     {
         
+    }
+
+    public IEnumerator WaitForSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
     }
 
     // Update is called once per frame
