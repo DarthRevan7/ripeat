@@ -6051,6 +6051,10 @@ PrefabInstance:
       value: MyPlayerNew
       objectReference: {fileID: 0}
     - target: {fileID: 1887196256888914545, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
+      propertyPath: blockAnimationName
+      value: New Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887196256888914545, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
       propertyPath: deathAnimationName
       value: Die
       objectReference: {fileID: 0}
@@ -10565,6 +10569,7 @@ MonoBehaviour:
   isDead: 0
   isBlocked: 0
   pauseBlock: 0
+  blockHeld: 0
 --- !u!1 &8420402967640606901
 GameObject:
   m_ObjectHideFlags: 0
