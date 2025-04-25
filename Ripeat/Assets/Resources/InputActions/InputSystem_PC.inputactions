@@ -310,7 +310,7 @@
                     "name": "",
                     "id": "c587d5f5-afab-4925-9860-bf4c79e1b3cb",
                     "path": "<Keyboard>/b",
-                    "interactions": "",
+                    "interactions": "Hold(duration=1)",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Block",

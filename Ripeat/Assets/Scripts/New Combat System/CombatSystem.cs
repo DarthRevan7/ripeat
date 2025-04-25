@@ -48,8 +48,10 @@ public class CombatSystem : MonoBehaviour
 
     //Sistema per evitare che il personaggio si muova mentre attacca
     public bool canMove = true, isDead = false, isBlocked = false, pauseBlock = false;
+    public bool blockHeld = false; // This flag must be set externally when block is held down
 
     private MenuScript menuScript;
+    private InputManager inputManager;
     
     
 
@@ -57,6 +59,11 @@ public class CombatSystem : MonoBehaviour
     {
         canMove = true;
     }
+    public void ToggleBlock()
+    {
+        blockHeld = false;
+    }
+
 
     //Aggiorna lo stato dell'Animator in base allo stato del personaggio (va chiamato in Update)
     public void UpdateAnimationState()
@@ -90,19 +97,24 @@ public class CombatSystem : MonoBehaviour
                 break;
                 case CharacterState.BLOCK:
                     isBlocked = true;
-                    if(!pauseBlock){
-                        Debug.Log("pauseBlock: " + pauseBlock);
-                        Debug.Log(isBlocked);
-                        if (!animator.GetCurrentAnimatorStateInfo(0).IsName(blockAnimationName))
-                        {
-                            animator.Play(blockAnimationName);
-                        }
-                        else 
-                        {
-                            currentState = CharacterState.IDLE;
-                        }
+                    // Start the block animation at its halfway point if it's not already playing
+                    if (!animator.GetCurrentAnimatorStateInfo(0).IsName(blockAnimationName))
+                    {
+                        animator.Play(blockAnimationName, 0, 0.5f);
                     }
-                    
+                    // While the block button is held, freeze the animation
+                    if (blockHeld)
+                    {
+                        animator.speed = 0;
+                    }
+                    else
+                    {
+                        // If the block button is clicked again (blockHeld toggled externally to false),
+                        // resume the animation and finish it to end the block state.
+                        animator.speed = 1;
+                        animator.Play(blockAnimationName, 0, 1f);
+                        currentState = CharacterState.IDLE;
+                    }
                 break;
                 default:
                     Debug.Log("Default in switch updateanimationstate");

@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Vector3 movement;
 
     //Riferimento al combat system
-    [SerializeField] private CombatSystem combatSystem;
+    [SerializeField] public CombatSystem combatSystem;
 
     //Riferimento all'event System
     [SerializeField] private EventSystem eventSystem;
@@ -30,7 +30,7 @@ public class InputManager : MonoBehaviour
 
     
 
-    CombatSystem.CharacterState HandleCharacterState()
+    public CombatSystem.CharacterState HandleCharacterState()
     {
         bool punch, kick, block;
         
@@ -43,14 +43,26 @@ public class InputManager : MonoBehaviour
         if(block)
         {
             Debug.Log("Block pressed!");
+            if(combatSystem.blockHeld)
+            {
+                combatSystem.blockHeld = false;
+            }
+            else
+            {
+                combatSystem.blockHeld = true;
+            }
             return CombatSystem.CharacterState.BLOCK;
         }
         if(punch)
         {
+            combatSystem.blockHeld = false;
+            combatSystem.animator.speed = 1;
             return CombatSystem.CharacterState.PUNCH;
         }
         if(kick)
         {
+            combatSystem.blockHeld = false;
+            combatSystem.animator.speed = 1;
             return CombatSystem.CharacterState.KICK;
         }
 

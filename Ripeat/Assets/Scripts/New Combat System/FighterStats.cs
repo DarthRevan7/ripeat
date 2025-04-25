@@ -73,9 +73,8 @@ public class FighterStats : MonoBehaviour
                                 other.combatSystem.isBlocked = false;
                                 other.combatSystem.canMove = true;
                                 other.combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
-                                other.combatSystem.pauseBlock = true;
-                                WaitForSeconds(4);
-                                other.combatSystem.pauseBlock = false;
+                                other.combatSystem.blockHeld = false;
+                                other.combatSystem.animator.speed = 1;
                             }
                             other.hitCount++;
                             Debug.Log("HitCount: " + hitCount);
@@ -117,9 +116,8 @@ public class FighterStats : MonoBehaviour
                                 other.combatSystem.isBlocked = false;
                                 other.combatSystem.canMove = true;
                                 other.combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
-                                other.combatSystem.pauseBlock = true;
-                                WaitForSeconds(4);
-                                other.combatSystem.pauseBlock = false;
+                                other.combatSystem.blockHeld = false;
+                                other.combatSystem.animator.speed = 1;
                             }
                             other.hitCount++;
                             Debug.Log("HitCount: " + hitCount);
@@ -145,10 +143,7 @@ public class FighterStats : MonoBehaviour
         
     }
 
-    public IEnumerator WaitForSeconds(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-    }
+    
 
     // Update is called once per frame
     void Update()
