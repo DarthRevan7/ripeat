@@ -10,7 +10,7 @@ public class EventHandler : MonoBehaviour
 
     [SerializeField] private List<FightEvent> fightEvents;
 
-    [SerializeField] private int currentEventIndex = 0;
+    [SerializeField] public int currentEventIndex = 0;
     [SerializeField] private int globalEventIndex;
 
     [SerializeField] private Dictionary<string, Collider> entryPointColliders;

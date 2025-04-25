@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5631b7d3481224a829c3bfb6556d0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: CombatScene
+  sceneToLoad: DialogueWithAI
   targetImage: {fileID: 0}
   fadeDuration: 1.45
   characterStats: {fileID: 0}
@@ -958,7 +958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondsToStartVideo: 1.5
   videoPlayer: {fileID: 0}
-  menuScript: {fileID: 0}
+  menuScript: {fileID: 1308935607}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

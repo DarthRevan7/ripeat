@@ -58,6 +58,19 @@ public class UnityAndGeminiV3 : MonoBehaviour
     [Header("Prompt Function")]
     [TextArea] public string testPrompt = "";
     [SerializeField] private GameObject negativeFinalImage;
+    [SerializeField] private GameObject clock1;
+    [SerializeField] private GameObject clock2;
+    [SerializeField] private GameObject clock3;
+    [SerializeField] private GameObject clock4;
+    [SerializeField] private GameObject clock5;
+    [SerializeField] private GameObject clock6;
+    [SerializeField] private GameObject clock7;
+    [SerializeField] private GameObject clock8;
+    [SerializeField] private GameObject clock9;
+    [SerializeField] private GameObject clock10;
+    [SerializeField] private GameObject clock11;
+    [SerializeField] private GameObject clock12;
+    [SerializeField] private GameObject clock13;
 
     // Aggiungi questo campo nella parte iniziale della classe, ad esempio dopo i campi già esistenti
     public MenuScript menuScript;
@@ -67,9 +80,10 @@ public class UnityAndGeminiV3 : MonoBehaviour
     // Memorizza la cronologia della conversazione (parte fissa con il prompt iniziale + messaggi successivi)
     public static string conversationHistory;
     private string prompt = "";
-    private int counter = 0;
+    private int counter = 1;
     void Start()
     {
+        ChangeClock(0);
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
         apiKey = jsonApiKey.key;
         typewriterEffect = GetComponent<TypewriterEffect>();
@@ -147,10 +161,11 @@ public class UnityAndGeminiV3 : MonoBehaviour
         // Aggiorna la cronologia con il messaggio utente
         conversationHistory += "\n" + userMessage;
         counter++;
+        ChangeClock(counter);
         Debug.Log("Counter: " + counter);
-        if (counter >= 7)
+        if (counter >= 12)
         {
-            conversationHistory += "\n Ora scrivi esattamente: BASTA LA TUA VITA FINISCE QUI se pensi che non sia meritevole, HAI UN'ALTRA POSSIBILITA' se pensi che sia meritevole! Solo una di queste frasi e nient'altro!!\n";
+            conversationHistory += "\n Ora decidi cosa fare: scrivi BASTA LA TUA VITA FINISCE QUI se pensi che non sia meritevole, oppure HAI UN'ALTRA POSSIBILITA' se pensi che sia meritevole! Solo una di queste frasi e nient'altro!!\n";
         }
         StartCoroutine(SendChatRequestToGemini(conversationHistory));
         inputField.text = "";
@@ -206,9 +221,12 @@ public class UnityAndGeminiV3 : MonoBehaviour
                         geminiPrompt.resetCicles();
                         SceneManager.LoadScene("Menu");
                         
+                        
+                        
                     }
                     else if(reply.Contains("HAI UN'ALTRA POSSIBILITA'")||reply.Contains("Hai un'altra possibilità"))
                     {
+                        
                         PLBox.SetActive(false);
                         yield return new WaitForSeconds(8f);
                         if(!geminiPrompt.bonus && GeminiPrompt.ciclesNumber > 1)
@@ -234,6 +252,64 @@ public class UnityAndGeminiV3 : MonoBehaviour
         }
     }
 
+    public void ChangeClock(int count){
+        switch (count)
+        {
+            case 0:
+                clock1.SetActive(true);
+                clock2.SetActive(false);
+                clock3.SetActive(false);
+                clock4.SetActive(false);
+                clock5.SetActive(false);
+                clock6.SetActive(false);
+                clock7.SetActive(false);
+                clock8.SetActive(false);
+                clock9.SetActive(false);
+                clock10.SetActive(false);
+                clock11.SetActive(false);
+                clock12.SetActive(false);
+                clock13.SetActive(false);
+                
+                break;
+
+            case 2:
+                clock2.SetActive(true);
+                break;
+            case 3:
+                clock3.SetActive(true);
+                break;
+            case 4:
+                clock4.SetActive(true);
+                break;
+            case 5:
+                clock5.SetActive(true);
+                break;
+            case 6:
+                clock6.SetActive(true);
+                break;
+            case 7:
+                clock7.SetActive(true);
+                break;
+            case 8:
+                clock8.SetActive(true);
+                break;
+            case 9:
+                clock9.SetActive(true);
+                break;
+            case 10:
+                clock10.SetActive(true);
+                break;
+            case 11:
+                clock11.SetActive(true);
+                break;
+            case 12:
+                clock12.SetActive(true);
+                break;
+            case 13:
+                clock13.SetActive(true);
+                break;
+        }
+    }
     IEnumerator AdjustTextBoxSize()
     {
     yield return new WaitForEndOfFrame();
