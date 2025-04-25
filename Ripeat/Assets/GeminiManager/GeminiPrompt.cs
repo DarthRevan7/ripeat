@@ -29,7 +29,7 @@ public class GeminiPrompt : MonoBehaviour
         string prompt = "";
     
         
-        switch(globalEventIndex)
+        switch(FightEventController.globalEventIndex)
         {
             case 0:
                 prompt = prompt1;
