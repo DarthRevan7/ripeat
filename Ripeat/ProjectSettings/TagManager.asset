@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Main Enemy
   - Secondary Enemy
+  - Boundary
   layers:
   - Default
   - TransparentFX
