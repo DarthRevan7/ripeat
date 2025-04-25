@@ -22,6 +22,6 @@ MonoBehaviour:
   boundaryDirection: 0
   firstEncounterAttack: 0
   ordinaryAttack: 0
-  explosionEffect: {fileID: 5211884335779849545, guid: d92d317b96c045b499fd3bbddeedebc5, type: 3}
+  explosionEffect: {fileID: 5211884335779849545, guid: a82c58380860f8848b7e3868369a3e60, type: 3}
   explosionRadius: 0
   explosionPosition: {x: 4, y: 2, z: -7}

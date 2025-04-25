@@ -113,8 +113,10 @@ public class EventHandler : MonoBehaviour
         player.GetComponent<InputManager>().isScriptActive = false;
 
         //Instantiate the Particle System
+        Vector3 instancePosition = streetlamp.transform.position;
+        instancePosition.y=2f;
         ParticleSystem explosionPS =
-        GameObject.Instantiate(fightEvent.explosionEffect, streetlamp.transform.position, Quaternion.identity);
+        GameObject.Instantiate(fightEvent.explosionEffect, instancePosition, Quaternion.identity);
 
         //Play the particle system explosion
         explosionPS.Play();
