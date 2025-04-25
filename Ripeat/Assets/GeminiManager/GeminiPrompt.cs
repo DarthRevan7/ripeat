@@ -97,7 +97,7 @@ public class GeminiPrompt : MonoBehaviour
         //     }   
         // }
         
-        switch(eventHandler.currentEventIndex)
+        switch(eventHandler.globalEventIndex)
         {
             case 0:
                 prompt = prompt1;
