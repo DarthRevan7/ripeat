@@ -58,6 +58,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
     [Header("Prompt Function")]
     [TextArea] public string testPrompt = "";
     [SerializeField] private GameObject negativeFinalImage;
+    [SerializeField] private GameObject positiveFinalImage;
     [SerializeField] private GameObject clock1;
     [SerializeField] private GameObject clock2;
     [SerializeField] private GameObject clock3;
@@ -163,7 +164,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
         counter++;
         ChangeClock(counter);
         Debug.Log("Counter: " + counter);
-        if (counter >= 12)
+        if (counter >= 13)
         {
             conversationHistory += "\nPROMPT: Ora decidi cosa fare ma non essere troppo cattivo: scrivi BASTA LA TUA VITA FINISCE QUI se pensi che non sia meritevole, oppure HAI UN'ALTRA POSSIBILITA' se pensi che sia meritevole! Solo una di queste frasi e nient'altro!!\n";
         }
@@ -229,9 +230,12 @@ public class UnityAndGeminiV3 : MonoBehaviour
                         
                         PLBox.SetActive(false);
                         yield return new WaitForSeconds(8f);
-                        if(!geminiPrompt.bonus && GeminiPrompt.ciclesNumber > 1)
+                        if(FightEventController.globalEventIndex > 2)
                         {
-                            SceneManager.LoadScene("FinalVideo");
+                            ShowPositiveFinalImage();
+                            yield return new WaitForSeconds(3f);
+                            geminiPrompt.resetCicles();
+                            SceneManager.LoadScene("Menu");
                         }
                         else 
                         {
@@ -334,6 +338,14 @@ public class UnityAndGeminiV3 : MonoBehaviour
         if (negativeFinalImage != null)
         {
             negativeFinalImage.SetActive(true);
+        }
+    }
+
+    private void ShowPositiveFinalImage()
+    {
+        if (positiveFinalImage != null)
+        {
+            positiveFinalImage.SetActive(false);
         }
     }
 
