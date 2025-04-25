@@ -235,7 +235,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
                         }
                         else 
                         {
-                            SceneManager.LoadScene("NewCombatScene_2FightersTest");  
+                            SceneManager.LoadScene("CombatScene");  
                         }
                         
                     }

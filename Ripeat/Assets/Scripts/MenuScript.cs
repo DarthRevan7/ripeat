@@ -45,6 +45,11 @@ public class MenuScript : MonoBehaviour
         
     }
 
+    public void Stop()
+    {
+        button.onClick.RemoveAllListeners();
+    }
+
     void Update()
     {
         if(characterStats != null)
