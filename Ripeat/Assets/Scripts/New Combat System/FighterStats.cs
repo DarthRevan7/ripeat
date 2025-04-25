@@ -111,7 +111,7 @@ public class FighterStats : MonoBehaviour
                             other.hitCount = 0;
                         }
                         else{
-                            if(other.hitCount >= 3){
+                            if(other.hitCount >= 2){
                                 other.vita -= attacco;
                                 other.hitCount = 0;
                                 other.combatSystem.isBlocked = false;
