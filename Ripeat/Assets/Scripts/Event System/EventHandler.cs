@@ -23,6 +23,8 @@ public class EventHandler : MonoBehaviour
     [SerializeField] private float mainEnemyXCoord = 20f, newEnemyXCoord = 6f, comingBackCoord = 7f;
     [SerializeField] private GameObject secondaryEnemyHealthBar;
     [SerializeField] private string boundaryName;
+
+    public GameObject streetlamp, brokenStreetlampPrefab;
     
 
     
@@ -112,10 +114,15 @@ public class EventHandler : MonoBehaviour
 
         //Instantiate the Particle System
         ParticleSystem explosionPS =
-        GameObject.Instantiate(fightEvent.explosionEffect, fightEvent.explosionPosition, Quaternion.identity);
+        GameObject.Instantiate(fightEvent.explosionEffect, streetlamp.transform.position, Quaternion.identity);
 
         //Play the particle system explosion
         explosionPS.Play();
+        
+        //Instantiate prefab of broken streetlamp and disable the normal one.
+        GameObject brokenInstance = GameObject.Instantiate(brokenStreetlampPrefab, streetlamp.transform.position, Quaternion.identity);
+        streetlamp.SetActive(false);
+
 
         //First time -> Kill player and halve enemy life
         //Other times -> Halve both character's life
