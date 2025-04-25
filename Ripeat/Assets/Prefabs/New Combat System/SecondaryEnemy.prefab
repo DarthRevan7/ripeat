@@ -1459,6 +1459,7 @@ GameObject:
   - component: {fileID: 4036361513097607122}
   - component: {fileID: 4992915010542667309}
   - component: {fileID: 417598531851272170}
+  - component: {fileID: 6847616837217230240}
   m_Layer: 0
   m_Name: SecondaryEnemy
   m_TagString: Untagged
@@ -1561,6 +1562,7 @@ MonoBehaviour:
   colliderRadiusKick: 0.8
   targetName: MyPlayerNew
   combatSystem: {fileID: 0}
+  hitCount: 0
 --- !u!114 &4036361513097607122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1606,6 +1608,8 @@ MonoBehaviour:
   deathAnimationName: Die
   canMove: 1
   isDead: 0
+  isBlocked: 0
+  pauseBlock: 0
 --- !u!114 &417598531851272170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,6 +1632,19 @@ MonoBehaviour:
   targetPositionVectorY: 0.4659995
   targetPositionVectorZ: -6.81
   isPausedEnemy: 1
+--- !u!114 &6847616837217230240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6030350152631332872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e42b540b2cc3d640ba38907a826ad29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatSystem: {fileID: 0}
 --- !u!1 &6035312168610673376
 GameObject:
   m_ObjectHideFlags: 0
