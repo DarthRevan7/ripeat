@@ -8064,7 +8064,7 @@ MonoBehaviour:
   playerTag: Player
   enemyTag: Main Enemy
   secondaryEnemyTag: Secondary Enemy
-  mainEnemyXCoord: 10
+  mainEnemyXCoord: 30
   newEnemyXCoord: 4
   comingBackCoord: 7
   secondaryEnemyHealthBar: {fileID: 186906761}
@@ -8093,6 +8093,7 @@ MonoBehaviour:
   actualEventIndex: 0
   secondaryEnemy: {fileID: 0}
   loading: 0
+  triggered: 0
 --- !u!4 &2060060776
 Transform:
   m_ObjectHideFlags: 0
