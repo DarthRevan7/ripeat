@@ -117,13 +117,15 @@ public class EventHandler : MonoBehaviour
 
         //First time -> Kill player and halve enemy life
         //Other times -> Halve both character's life
-        if(FightEventController.globalEventIndex == 0)
+        if(FirstEncounter())
         {
+            Debug.Log("Explosion Killer");
             player.GetComponent<FighterStats>().vita = 0;
             mainEnemy.GetComponent<FighterStats>().vita = 20;
         }
         else
         {
+            Debug.Log("Explosion halver");
             player.GetComponent<FighterStats>().vita /= 2;
             mainEnemy.GetComponent<FighterStats>().vita /= 2;
         }
@@ -144,7 +146,17 @@ public class EventHandler : MonoBehaviour
             //Next event
             FightEventController.Instance.actualEventIndex++;
         }
+
+        // StartCoroutine(HandleExplosionEvent(explosionPS));
     }
+
+    // IEnumerator HandleExplosionEvent(ParticleSystem particleSystem)
+    // {
+
+    //     yield return new WaitUntil( () => !particleSystem.isPlaying );
+        
+    //     yield return null;
+    // }
 
     public void TakeBackMainEnemy()
     {
@@ -270,7 +282,7 @@ public class EventHandler : MonoBehaviour
 
         //Enable Player Input
         player.GetComponent<InputManager>().isScriptActive = true;
-        Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
+        // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
         //Enable secondary Enemy AI
         newEnemy.GetComponent<MainEnemyAI>().isScriptActive = true;
         //Enable Boundary again
