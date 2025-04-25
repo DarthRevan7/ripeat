@@ -6106,6 +6106,10 @@ PrefabInstance:
       propertyPath: vita
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 9103131793301019539, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
+      propertyPath: attacco
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
