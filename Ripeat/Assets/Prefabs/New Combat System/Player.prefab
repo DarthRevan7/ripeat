@@ -310,6 +310,9 @@ MonoBehaviour:
   deathAnimationName: Die
   canMove: 1
   isDead: 0
+  isBlocked: 0
+  pauseBlock: 0
+  blockHeld: 0
 --- !u!114 &5328315110977764266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +337,7 @@ MonoBehaviour:
   eventSystem: {fileID: 0}
   firstSelectedEscMenu: {fileID: 0}
   fighterStats: {fileID: 0}
+  isScriptActive: 1
 --- !u!114 &9103131793301019539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +358,7 @@ MonoBehaviour:
   colliderRadiusKick: 0.9
   targetName: MyEnemyNew
   combatSystem: {fileID: 0}
+  hitCount: 0
 --- !u!1 &726351009397715125
 GameObject:
   m_ObjectHideFlags: 0
@@ -2298,7 +2303,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: 1ab7e88b726fbd74fb95bc8d6344bd20, type: 2}
   - {fileID: 2100000, guid: 67e6c4d66fbb46641b643b59716e69a8, type: 2}
   - {fileID: 2100000, guid: ba37f31748589b34784ea0df92a5589c, type: 2}
-  - {fileID: 2100000, guid: 7669e79ad87e08e498cb7081c4e6afe7, type: 2}
+  - {fileID: 2100000, guid: 2b7a235b63a9d8f4c848b12381397513, type: 2}
   - {fileID: 2100000, guid: ff07c4981ddb9ff4b81a1d9345c55fce, type: 2}
   - {fileID: -1898866065923900264, guid: 8873ddeeab63b4d4e8a44fc8a3a27b20, type: 3}
   m_StaticBatchInfo:
