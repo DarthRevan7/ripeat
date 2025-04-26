@@ -2738,7 +2738,7 @@ Transform:
   m_GameObject: {fileID: 540479293}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.41, y: 5.8199997, z: 8.900001}
+  m_LocalPosition: {x: 3.41, y: 5.8199997, z: 12.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2759,7 +2759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfe1cbfcd596e94995baec4818745f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxFactor: 0.1
+  parallaxFactor: 0.2
 --- !u!1 &557806675
 GameObject:
   m_ObjectHideFlags: 0
@@ -4987,7 +4987,7 @@ Transform:
   m_GameObject: {fileID: 973233885}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 37.965782, y: 5.8199997, z: 9}
+  m_LocalPosition: {x: 37.965782, y: 5.8199997, z: 14.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5008,7 +5008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfe1cbfcd596e94995baec4818745f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxFactor: 0.4
+  parallaxFactor: 0.5
 --- !u!1 &977872714
 GameObject:
   m_ObjectHideFlags: 0
@@ -6999,7 +6999,7 @@ Transform:
   m_GameObject: {fileID: 1347878657}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.1, y: 3, z: -4.7}
+  m_LocalPosition: {x: 3.1, y: 4.7, z: -4.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7640,7 +7640,7 @@ Transform:
   m_GameObject: {fileID: 1505003992}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 37.96579, y: 5.8199997, z: 8.800001}
+  m_LocalPosition: {x: 37.96579, y: 5.8199997, z: 11.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9258,7 +9258,7 @@ Transform:
   m_GameObject: {fileID: 1970499730}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 37.965794, y: 5.8199997, z: 9.1}
+  m_LocalPosition: {x: 37.965794, y: 5.8199997, z: 16.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9279,7 +9279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfe1cbfcd596e94995baec4818745f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxFactor: 0.6
+  parallaxFactor: 0.7
 --- !u!1001 &1991386651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11732,7 +11732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &5695653127825496573
 GameObject:
   m_ObjectHideFlags: 0

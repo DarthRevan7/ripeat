@@ -1554,7 +1554,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 0.543349, g: 0.6736041, b: 0.949, a: 1}
+  m_Color: {r: 0.7106918, g: 0.37205392, b: 0, a: 1}
   m_Intensity: 1.2
   m_Range: 10
   m_SpotAngle: 30
@@ -12427,6 +12427,9 @@ MonoBehaviour:
   enemyStats: {fileID: 538907937}
   secondEnemyStats: {fileID: 852797110}
   secondEnemyActive: 1
+  healthBarRectPlayer: {fileID: 0}
+  healthBarRectEnemy: {fileID: 0}
+  healthBarRectSecondEnemy: {fileID: 0}
 --- !u!114 &7804328998295077737
 MonoBehaviour:
   m_ObjectHideFlags: 0
