@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GeminiPrompt : MonoBehaviour
 {
@@ -22,6 +23,23 @@ public class GeminiPrompt : MonoBehaviour
     {
         eventHandler = GetComponent<EventHandler>();
     }
+    
+    private int SwitchImplementation()
+    {
+        if(FightEventController.Instance == null)
+        {
+            return 0;
+        }
+
+        if(FightEventController.Instance.triggeredEventIndices.Count == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return FightEventController.Instance.triggeredEventIndices.Count%FightEventController.Instance.loadedEvents.Count +1;
+        }
+    }
    
     public string getPrompt()
     {
@@ -29,7 +47,7 @@ public class GeminiPrompt : MonoBehaviour
         string prompt = "";
     
         
-        switch(FightEventController.Instance.triggeredEventIndices.Count%FightEventController.Instance.loadedEvents.Count)
+        switch(SwitchImplementation())
         {
             case 0:
                 prompt = prompt1;
