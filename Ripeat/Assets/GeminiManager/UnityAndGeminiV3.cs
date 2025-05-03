@@ -1,8 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using System.Collections.Generic;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class UnityAndGeminiKey
@@ -16,6 +17,7 @@ public class Risposta
     public Candidate[] candidates;
 }
 
+[System.Serializable]
 public class ChatRequest
 {
     public Content[] contents;
@@ -30,7 +32,7 @@ public class Candidate
 [System.Serializable]
 public class Content
 {
-    public string role; 
+    public string role;
     public Part[] parts;
 }
 
@@ -40,38 +42,72 @@ public class Part
     public string text;
 }
 
-
-public class UnityAndGeminiV3: MonoBehaviour
+public class UnityAndGeminiV3 : MonoBehaviour
 {
     [Header("JSON API Configuration")]
     public TextAsset jsonApi;
-    private string apiKey = ""; 
-    private string apiEndpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"; // Edit it and choose your prefer model
-
+    private string apiKey = "";
+    private string apiEndpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
     [Header("ChatBot Function")]
     public TMP_InputField inputField;
     public TMP_Text uiText;
-    private Content[] chatHistory;
-
+    public GameObject AIBox;
+    public GameObject PLBox;
+    
     [Header("Prompt Function")]
-    [TextArea] public string prompt = "";
+    [TextArea] public string testPrompt = "";
+    [SerializeField] private GameObject negativeFinalImage;
+    [SerializeField] private GameObject positiveFinalImage;
+    [SerializeField] private GameObject clock1;
+    [SerializeField] private GameObject clock2;
+    [SerializeField] private GameObject clock3;
+    [SerializeField] private GameObject clock4;
+    [SerializeField] private GameObject clock5;
+    [SerializeField] private GameObject clock6;
+    [SerializeField] private GameObject clock7;
+    [SerializeField] private GameObject clock8;
+    [SerializeField] private GameObject clock9;
+    [SerializeField] private GameObject clock10;
+    [SerializeField] private GameObject clock11;
+    [SerializeField] private GameObject clock12;
+    [SerializeField] private GameObject clock13;
 
+    // Aggiungi questo campo nella parte iniziale della classe, ad esempio dopo i campi già esistenti
+    public MenuScript menuScript;
+    private TypewriterEffect typewriterEffect;
+    private GeminiPrompt geminiPrompt;
 
-
+    // Memorizza la cronologia della conversazione (parte fissa con il prompt iniziale + messaggi successivi)
+    public static string conversationHistory;
+    private string prompt = "";
+    private int counter = 1;
     void Start()
     {
+        ChangeClock(0);
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
-        apiKey = jsonApiKey.key;   
-        chatHistory = new Content[] { };
-        StartCoroutine( SendPromptRequestToGemini(prompt));        
+        apiKey = jsonApiKey.key;
+        typewriterEffect = GetComponent<TypewriterEffect>();
+        geminiPrompt = GetComponent<GeminiPrompt>();
+        //conversationHistory += "PROMPT: " + testPrompt;
+        
+        prompt += "\nSe scrivo 001100 allora scrivi HAI UN'ALTRA POSSIBILITA'.\n";
+        prompt = geminiPrompt.getPrompt();
+        
+        conversationHistory += "\nPROMPT: " + prompt;
+        Debug.Log("Prompt preso: " + prompt);
+        StartCoroutine(SendPromptRequestToGemini(prompt));
+        
+        
+        if(inputField != null)
+            inputField.onSubmit.AddListener((string text) => { SendChat(); });
     }
 
     private IEnumerator SendPromptRequestToGemini(string promptText)
     {
         string url = $"{apiEndpoint}?key={apiKey}";
-        // Costruisce il JSON senza le graffe in eccesso
-        string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"" + promptText + "\"}]}]}";
+        // Invia soltanto il prompt iniziale
+        string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"" + EscapeJson(promptText) + "\"}]}]}";
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
 
         using (UnityWebRequest www = new UnityWebRequest(url, "POST"))
@@ -84,119 +120,237 @@ public class UnityAndGeminiV3: MonoBehaviour
 
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError(www.error);
+                Debug.LogError("Prompt Request Error: " + www.error);
             }
             else
             {
-                Debug.Log("Request complete!");
+                Debug.Log("Prompt request complete!");
                 Risposta response = JsonUtility.FromJson<Risposta>(www.downloadHandler.text);
-                if (response.candidates.Length > 0 && response.candidates[0].content.parts.Length > 0)
+                if (response != null && response.candidates != null && response.candidates.Length > 0 &&
+                    response.candidates[0].content.parts != null && response.candidates[0].content.parts.Length > 0)
                 {
-                    // Questa è la risposta iniziale di Gemini
                     string text = response.candidates[0].content.parts[0].text;
-                    Debug.Log(text);
-                    // Mostra la risposta nel canvas
+                    Debug.Log("\nMorte: " + text);
+                    conversationHistory += "\n%" + text + "%\n";
+                    yield return new WaitForSeconds(0.5f);
                     uiText.text = text;
+                    uiText.color = new Color32(36, 36, 36, 255);
+                    yield return StartCoroutine(AdjustTextBoxSize());
+                    yield return RunTypingEffect(text);
                     
-                    // (Opzionale) Aggiorna la cronologia della chat se necessario
-                    List<Content> history = new List<Content>(chatHistory);
-                    Content botContent = new Content
-                    {
-                        role = "death",
-                        parts = new Part[]
-                        {
-                            new Part { text = text }
-                        }
-                    };
-                    history.Add(botContent);
-                    chatHistory = history.ToArray();
+                    
                 }
                 else
                 {
-                    Debug.Log("No text found.");
+                    Debug.Log("No text found in prompt response.");
                 }
             }
         }
     }
 
-    public void enterChat()
+    private string EscapeJson(string text)
     {
-        if(inputField.text != "" && Input.GetKeyDown(KeyCode.Return))
-        {
-            string userMessage = inputField.text;
-            StartCoroutine( SendChatRequestToGemini(inputField.text));
-        }
+        return text.Replace("\\", "\\\\").Replace("\"", "\\\"");
     }
+
     public void SendChat()
     {
         string userMessage = inputField.text;
-        StartCoroutine( SendChatRequestToGemini(userMessage));
+        if (string.IsNullOrEmpty(userMessage))
+            userMessage = "...";
+
+        // Aggiorna la cronologia con il messaggio utente
+        conversationHistory += "\n" + userMessage;
+        counter++;
+        ChangeClock(counter);
+        Debug.Log("Counter: " + counter);
+        if (counter >= 13)
+        {
+            conversationHistory += "\nPROMPT: Ora decidi cosa fare ma non essere troppo cattivo: scrivi BASTA LA TUA VITA FINISCE QUI se pensi che non sia meritevole, oppure HAI UN'ALTRA POSSIBILITA' se pensi che sia meritevole! Solo una di queste frasi e nient'altro!!\n";
+        }
+        StartCoroutine(SendChatRequestToGemini(conversationHistory));
+        inputField.text = "";
     }
 
-    private IEnumerator SendChatRequestToGemini(string newMessage)
+    private IEnumerator SendChatRequestToGemini(string compositeMessage)
     {
-
         string url = $"{apiEndpoint}?key={apiKey}";
-     
-        Content userContent = new Content
-        {
-            role = "user",
-            parts = new Part[]
-            {
-                new Part { text = newMessage }
-            }
-        };
 
-        List<Content> contentsList = new List<Content>(chatHistory);
-        contentsList.Add(userContent);
-        chatHistory = contentsList.ToArray(); 
-
-        ChatRequest chatRequest = new ChatRequest { contents = chatHistory };
-
-        string jsonData = JsonUtility.ToJson(chatRequest);
-
+        // Costruisci il JSON con la cronologia completa
+        string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"" + EscapeJson(compositeMessage) + "\"}]}]}";
+        Debug.Log("Chat Request JSON: " + jsonData);
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
 
-        // Create a UnityWebRequest with the JSON data
-        using (UnityWebRequest www = new UnityWebRequest(url, "POST")){
+        using (UnityWebRequest www = new UnityWebRequest(url, "POST"))
+        {
             www.uploadHandler = new UploadHandlerRaw(jsonToSend);
             www.downloadHandler = new DownloadHandlerBuffer();
             www.SetRequestHeader("Content-Type", "application/json");
 
             yield return www.SendWebRequest();
 
-            if (www.result != UnityWebRequest.Result.Success) {
-                Debug.LogError(www.error);
-            } else {
-                Debug.Log("Request complete!");
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Chat Request Error: " + www.error);
+            }
+            else
+            {
+                Debug.Log("Chat request complete!");
                 Risposta response = JsonUtility.FromJson<Risposta>(www.downloadHandler.text);
-                if (response.candidates.Length > 0 && response.candidates[0].content.parts.Length > 0)
+                if (response != null && response.candidates != null && response.candidates.Length > 0 &&
+                    response.candidates[0].content.parts != null && response.candidates[0].content.parts.Length > 0)
+                {
+                    string reply = response.candidates[0].content.parts[0].text;
+                    Debug.Log("Death Reply: " + reply);
+                    uiText.text = reply;
+                    uiText.color = new Color32(36, 36, 36, 255);
+                    yield return StartCoroutine(AdjustTextBoxSize());
+                    yield return RunTypingEffect(reply);
+                    // Appena impostato il testo:
+                    //uiText.text = reply
+                    // Aggiorna la cronologia aggiungendo anche la risposta del modello
+                    conversationHistory += "\n%" + reply + "%\n";
+                    
+                    // Controllo sull'output di Gemini
+                    if(reply.Contains("BASTA LA TUA VITA FINISCE QUI")||reply.Contains("Basta la tua vita finisce qui"))
                     {
-                        //This is the response to your request
-                        string reply = response.candidates[0].content.parts[0].text;
-                        Content botContent = new Content
-                        {
-                            role = "death",
-                            parts = new Part[]
-                            {
-                                new Part { text = reply }
-                            }
-                        };
-
-                        Debug.Log(reply);
-                        //This part shows the text in the Canvas
-                        uiText.text = reply;
-                        //This part adds the response to the chat history, for your next message
-                        contentsList.Add(botContent);
-                        chatHistory = contentsList.ToArray();
+                        
+                        PLBox.SetActive(false);
+                        yield return new WaitForSeconds(8f);
+                        ShowNegativeFinalImage();
+                        yield return new WaitForSeconds(3f);
+                        geminiPrompt.resetCicles();
+                        SceneManager.LoadScene("Menu");
+                        
+                        
+                        
                     }
+                    else if(reply.Contains("HAI UN'ALTRA POSSIBILITA'")||reply.Contains("Hai un'altra possibilità"))
+                    {
+                        
+                        PLBox.SetActive(false);
+                        yield return new WaitForSeconds(8f);
+                        if(FightEventController.globalEventIndex > 2)
+                        {
+                            ShowPositiveFinalImage();
+                            yield return new WaitForSeconds(3f);
+                            geminiPrompt.resetCicles();
+                            SceneManager.LoadScene("Menu");
+                        }
+                        else 
+                        {
+                            SceneManager.LoadScene("CombatScene");  
+                        }
+                        
+                    }
+                    else
+                    {
+                        Debug.Log("Output non rilevante, nessuna azione eseguita.");
+                    }
+                }
                 else
                 {
-                    Debug.Log("No text found.");
+                    Debug.Log("No text found in chat response.");
                 }
-             }
-        }  
+            }
+        }
     }
+
+    public void ChangeClock(int count){
+        switch (count)
+        {
+            case 0:
+                clock1.SetActive(true);
+                clock2.SetActive(false);
+                clock3.SetActive(false);
+                clock4.SetActive(false);
+                clock5.SetActive(false);
+                clock6.SetActive(false);
+                clock7.SetActive(false);
+                clock8.SetActive(false);
+                clock9.SetActive(false);
+                clock10.SetActive(false);
+                clock11.SetActive(false);
+                clock12.SetActive(false);
+                clock13.SetActive(false);
+                
+                break;
+
+            case 2:
+                clock2.SetActive(true);
+                break;
+            case 3:
+                clock3.SetActive(true);
+                break;
+            case 4:
+                clock4.SetActive(true);
+                break;
+            case 5:
+                clock5.SetActive(true);
+                break;
+            case 6:
+                clock6.SetActive(true);
+                break;
+            case 7:
+                clock7.SetActive(true);
+                break;
+            case 8:
+                clock8.SetActive(true);
+                break;
+            case 9:
+                clock9.SetActive(true);
+                break;
+            case 10:
+                clock10.SetActive(true);
+                break;
+            case 11:
+                clock11.SetActive(true);
+                break;
+            case 12:
+                clock12.SetActive(true);
+                break;
+            case 13:
+                clock13.SetActive(true);
+                break;
+        }
+    }
+    IEnumerator AdjustTextBoxSize()
+    {
+    yield return new WaitForEndOfFrame();
+    uiText.ForceMeshUpdate();
+    RectTransform rt = AIBox.GetComponent<RectTransform>();
+    rt.sizeDelta = new Vector2(rt.sizeDelta.x, uiText.preferredHeight+50);
+    Debug.Log("Box size adjusted with: " + uiText.preferredHeight);
+    }
+    IEnumerator RunTypingEffect(string text)
+    {
+        uiText.color = new Color32(255, 255, 255, 255);
+        typewriterEffect.Run(text, uiText);
+        while (typewriterEffect.IsRunning)
+        {
+            yield return null;
+        }    
+    }
+
+    private void ShowNegativeFinalImage()
+    {
+        
+        if (negativeFinalImage != null)
+        {
+            negativeFinalImage.SetActive(true);
+        }
+    }
+
+    private void ShowPositiveFinalImage()
+    {
+        if (positiveFinalImage != null)
+        {
+            positiveFinalImage.SetActive(false);
+        }
+    }
+
 }
+
+
 
 

@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class MenuScript : MonoBehaviour
 {
     private Button button;
-    [SerializeField] private string sceneToLoad = "FightingScene_Try"; 
+    [SerializeField] public string sceneToLoad = "FightingScene_Try"; 
 
     [SerializeField] private Image targetImage;
     [SerializeField] private float fadeDuration = 2f;
@@ -16,11 +16,14 @@ public class MenuScript : MonoBehaviour
     [SerializeField] private CharacterStats characterStats;
     [SerializeField] private bool fading = false;
     
-    
+    private GeminiPrompt geminiPrompt;
+
     private void Awake()
     {
         button = GetComponent<Button>();
         targetImage = GameObject.Find("FadingImage").GetComponent<Image>();
+
+        geminiPrompt = GetComponent<GeminiPrompt>();
 
         if (button != null)
         {
@@ -30,7 +33,7 @@ public class MenuScript : MonoBehaviour
 
         string sceneName = SceneManager.GetActiveScene().name;
 
-        if(sceneName.Equals("FightingScene_Try") || sceneName.Equals("DialogueTest") || sceneName.Equals("Elevator"))
+        if(sceneName.Equals("CombatScene") || sceneName.Equals("NewCombatScene") || sceneName.Equals("Menu") || sceneName.Equals("NewCombatScene_2FightersTest") || sceneName.Equals("DialogueWithAI") || sceneName.Equals("Elevator"))
         {
             StartCoroutine(FadeOut());
         }
@@ -40,6 +43,11 @@ public class MenuScript : MonoBehaviour
         // Time.timeScale = 1;
         
         
+    }
+
+    public void Stop()
+    {
+        button.onClick.RemoveAllListeners();
     }
 
     void Update()
@@ -98,6 +106,10 @@ public class MenuScript : MonoBehaviour
         }
         else
         {
+            if (sceneToLoad.Equals("Menu"))
+            {
+                geminiPrompt.resetCicles();
+            }
             SceneManager.LoadScene(sceneToLoad);
         }
     }
@@ -119,6 +131,7 @@ public class MenuScript : MonoBehaviour
         }
 
         // Time.timeScale = 1f;
+    
 
         if(SceneManager.GetActiveScene().name.Equals("FightingScene_Try"))
         {
