@@ -57,6 +57,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
     
     [Header("Prompt Function")]
     [TextArea] public string testPrompt = "";
+    [SerializeField] private bool isDead = false;
     [SerializeField] private GameObject negativeFinalImage;
     [SerializeField] private GameObject positiveFinalImage;
     [SerializeField] private GameObject clock1;
@@ -77,34 +78,42 @@ public class UnityAndGeminiV3 : MonoBehaviour
     public MenuScript menuScript;
     private TypewriterEffect typewriterEffect;
     private GeminiPrompt geminiPrompt;
+    private DialogueUI dialogueUI;
 
     // Memorizza la cronologia della conversazione (parte fissa con il prompt iniziale + messaggi successivi)
     public static string conversationHistory;
     private string prompt = "";
     private int counter = 1;
+
     void Start()
     {
-        ChangeClock(0);
+        if (clock1 != null)
+        {
+            ChangeClock(0);
+        }
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
         apiKey = jsonApiKey.key;
         typewriterEffect = GetComponent<TypewriterEffect>();
         geminiPrompt = GetComponent<GeminiPrompt>();
+        dialogueUI = GetComponent<DialogueUI>();
+        Debug.Log("Tutto ok");
         //conversationHistory += "PROMPT: " + testPrompt;
-        
-        prompt += "\nSe scrivo 001100 allora scrivi HAI UN'ALTRA POSSIBILITA'.\n";
-        prompt = geminiPrompt.getPrompt();
-        
-        conversationHistory += "\nPROMPT: " + prompt;
-        Debug.Log("Prompt preso: " + prompt);
-        StartCoroutine(SendPromptRequestToGemini(prompt));
-        
-        
+        if(isDead){
+            prompt += "\nSe scrivo 001100 allora scrivi HAI UN'ALTRA POSSIBILITA'.\n";
+            prompt = geminiPrompt.getPrompt();
+            
+            conversationHistory += "\nPROMPT: " + prompt;
+            Debug.Log("Prompt preso: " + prompt);
+            StartCoroutine(SendPromptRequestToGemini(prompt, true));
+        }
+    
         if(inputField != null)
             inputField.onSubmit.AddListener((string text) => { SendChat(); });
     }
 
-    private IEnumerator SendPromptRequestToGemini(string promptText)
+    public IEnumerator SendPromptRequestToGemini(string promptText, bool dead)
     {
+        Debug.Log("Prompt Request: " + promptText);
         string url = $"{apiEndpoint}?key={apiKey}";
         // Invia soltanto il prompt iniziale
         string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"" + EscapeJson(promptText) + "\"}]}]}";
@@ -129,16 +138,24 @@ public class UnityAndGeminiV3 : MonoBehaviour
                 if (response != null && response.candidates != null && response.candidates.Length > 0 &&
                     response.candidates[0].content.parts != null && response.candidates[0].content.parts.Length > 0)
                 {
-                    string text = response.candidates[0].content.parts[0].text;
-                    Debug.Log("\nMorte: " + text);
-                    conversationHistory += "\n%" + text + "%\n";
-                    yield return new WaitForSeconds(0.5f);
-                    uiText.text = text;
-                    uiText.color = new Color32(36, 36, 36, 255);
-                    yield return StartCoroutine(AdjustTextBoxSize());
-                    yield return RunTypingEffect(text);
-                    
-                    
+                    if(dead)
+                    {
+                        string text = response.candidates[0].content.parts[0].text;
+                        Debug.Log("\nMorte: " + text);
+                        conversationHistory += "\n%" + text + "%\n";
+                        yield return new WaitForSeconds(0.5f);
+                        uiText.text = text;
+                        uiText.color = new Color32(36, 36, 36, 255);
+                        yield return StartCoroutine(AdjustTextBoxSize());
+                        yield return RunTypingEffect(text);
+                    }
+                    else
+                    { 
+                        string text = response.candidates[0].content.parts[0].text;
+                        Debug.Log("\nText: " + text);
+                        StartCoroutine(dialogueUI.ShowFinalString(text));
+
+                    }
                 }
                 else
                 {

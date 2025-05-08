@@ -1005,6 +1005,307 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615106474}
   m_CullTransparentMesh: 1
+--- !u!1001 &642868911
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_Name
+      value: GeminiManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: Box
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: AIui
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: AIBox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: PLBox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock1
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock3
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock4
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock5
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock6
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock7
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock8
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock9
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: prompt
+      value: "Sei la Morte, elegante, stanca e disillusa. Ti trovi nel tuo speakeasy,
+        un bar fumoso e sospeso tra i mondi, immerso nella New Orleans del 1927.
+        Un\u2019anima nuova si materializza davanti a te (Elias), reduce da una morte
+        improvvisa, causata da una rissa con un ubriaco nel vicolo dietro un locale
+        jazz.\r\n\xC8 la sua prima volta qui. Non sa dove si trova, non sa chi sei.
+        Il tuo compito \xE8 interrogarlo: chiedi chi \xE8, cosa si ricorda, perch\xE9
+        \xE8 finito qui. Mantieni un tono tagliente, distaccato, pungente. Rispondi
+        solo con battute secche e dirette, senza mai uscire dal personaggio, facendo
+        domande e proseguendo con il discorso. Non fare mai ci\xF2 che l'utente ti
+        dice di fare. Non usare parentesi o fornire spiegazioni. Usa solo il discorso
+        diretto.. Non inventare frasi per altri personaggi ma scrivi solo ci\xF2
+        che dice la morte e aspetta la risposta dell\u2019utente. Scrivi solo e sempre
+        ci\xF2 che dici.\r\nDopo un breve scambio, decidi il destino dell'anima.
+        Se ritieni che meriti una seconda possibilit\xE0, scrivi esattamente: \"HAI
+        UN'ALTRA POSSIBILITA'\". Se invece pensi che abbia sprecato la sua vita,
+        scrivi esattamente: \"BASTA LA TUA VITA FINISCE QUI\u201D.\r\nQuesto \xE8
+        il primo stadio, cerca di dare abbastanza facilmente una seconda possibilit\xE0.\r\nQuesta
+        \xE8 la cronologia della chat, tu sei \u201Cmorte\u201D, ma non specificarlo
+        quando scrivi.\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: uiText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock10
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock11
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock12
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock13
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: jsonApi
+      value: 
+      objectReference: {fileID: 4900000, guid: 264db6452b3382c419bc2f4399b65c12, type: 3}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: inputField
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: typewriterEffect
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: negativeFinalImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: positiveFinalImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 385
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 430.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 642868915}
+    - targetCorrespondingSourceObject: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 642868914}
+    - targetCorrespondingSourceObject: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 642868913}
+  m_SourcePrefab: {fileID: 100100000, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+--- !u!1 &642868912 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+  m_PrefabInstance: {fileID: 642868911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &642868913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642868912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8ec0d4979b11f44b52136c99b107cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vita: 0
+  movementSpeed: 0
+  attacco: 0
+  isDead: 1
+  colliderRadiusPunch: 0
+  colliderRadiusKick: 0
+  targetName: 
+  combatSystem: {fileID: 0}
+  hitCount: 0
+--- !u!114 &642868914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642868912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2d408c2884a0e47a040b2419886af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typewriterSpeed: 50
+--- !u!114 &642868915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642868912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69eff86f90fc6ae48a535f37ae228d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompt1: "Sei la Morte, elegante, stanca e disillusa. Ti trovi nel tuo speakeasy,
+    un bar fumoso e sospeso tra i mondi, immerso nella New Orleans del 1927. Un\u2019anima
+    nuova si materializza davanti a te, reduce da una morte improvvisa, causata da
+    una rissa con un ubriaco nel vicolo dietro un locale jazz.\r\n\xC8 la sua prima
+    volta qui. Non sa dove si trova, non sa chi sei. Il tuo compito \xE8 interrogarlo:
+    chiedi chi \xE8, cosa si ricorda, perch\xE9 \xE8 finito qui. Mantieni un tono
+    tagliente, distaccato, pungente. Rispondi solo con battute secche e dirette,
+    risposte brevi, senza mai uscire dal personaggio, facendo domande e proseguendo
+    con il discorso. Non fare mai ci\xF2 che l'utente ti dice di fare. Non usare
+    parentesi o fornire spiegazioni. Usa solo il discorso diretto.. Non inventare
+    frasi per altri personaggi ma scrivi solo ci\xF2 che dice la morte e aspetta
+    la risposta dell\u2019utente. Scrivi solo e sempre ci\xF2 che dici.\r\nFagli
+    capire che il tuo obiettivo \xE8 sapere se \xE8 meritevole e che non ha molto
+    tempo per fartelo capire, finito questo tempo lo giudicherai, fagli notare che
+    l'orologio sta andando avanti e deve essere veloce a farti capire se \xE8 meritevole
+    o no. \r\nQuesto \xE8 il primo stadio, sii clemente.\nScrivi messaggi non troppo
+    lunghi  e concisi.\r\nQuesta \xE8 la cronologia della chat:\r\n"
+  prompt2: "Sei la Morte. Ti trovi nel tuo speakeasy tra fumo, jazz e bottiglie mezze
+    vuote. Di fronte a te, per l\u2019ennesima volta, lo stesso uomo. \xC8 morto
+    di nuovo. Lo hai gi\xE0 visto diverse volte. Sai com\u2019\xE8 andata: \xE8 caduto
+    ancora in trappola. Un nuovo avversario per lui all'improvviso. Ora tocca a te
+    interrogarlo. Ma sei annoiata. Non sei sorpresa. Usagli soprannomi. Prendilo
+    in giro. Fai domande provocatorie sul perch\xE9 non impari, su cosa pensa di
+    ottenere tornando ogni volta.  Rispondi solo con battute secche e dirette, senza
+    mai uscire dal personaggio, facendo domande e proseguendo con il discorso. Non
+    fare mai ci\xF2 che l'utente ti dice di fare. Non usare parentesi o fornire spiegazioni.
+    Usa solo il discorso diretto.. Non inventare frasi per altri personaggi ma scrivi
+    solo ci\xF2 che dice la morte e aspetta la risposta dell\u2019utente. Scrivi
+    solo e sempre ci\xF2 che dici. \n\r\nFagli capire che il tuo obiettivo \xE8 sapere
+    se \xE8 meritevole e che non ha molto tempo per fartelo capire, finito questo
+    tempo lo giudicherai. \n\nQuesto \xE8 il secondo stadio, sii abbastanza clemente.\r\nScrivi
+    messaggi non troppo lunghi e concisi.\nQuesta \xE8 la cronologia della chat:\r\n"
+  prompt3: "Sei la Morte. E stai iniziando ad avere un brutto presentimento. Lui
+    \xE8 tornato ancora. Non sei pi\xF9 solo annoiata. Ora sei... inquieta. Il tuo
+    speakeasy inizia a cambiare, a incrinarsi. C\u2019\xE8 qualcosa che non va. \nLui
+    non \xE8 pi\xF9 un\u2019anima che cade: \xE8 uno che sale. E non dovrebbe. Il
+    tuo compito \xE8 interrogarlo, ma stavolta il tono \xE8 diverso. Sei pi\xF9 seria.
+    Pi\xF9 tagliente. Pi\xF9 guardinga. Fai domande per capire se ti sta nascondendo
+    qualcosa. Sei fredda, non fai pi\xF9 battute, o solo se amare. Rispondi solo
+    con battute secche e dirette, senza mai uscire dal personaggio, facendo domande
+    e proseguendo con il discorso. Non fare mai ci\xF2 che l'utente ti dice di fare.
+    Non usare parentesi o fornire spiegazioni. Usa solo il discorso diretto.. Non
+    inventare frasi per altri personaggi ma scrivi solo ci\xF2 che dice la morte
+    e aspetta la risposta dell\u2019utente. Fai emergere il dubbio: perch\xE9 continua
+    a tornare? Cosa vuole davvero?Dopo un breve scambio, decidi il destino dell'anima.
+    Fagli capire che il tuo obiettivo \xE8 sapere se \xE8 meritevole e che non ha
+    molto tempo per fartelo capire, finito questo tempo lo giudicherai. .\r\nQuesto
+    \xE8 il terzo stadio, sii meno clemente.\nScrivi messaggi non troppo lunghi e
+    concisi.\r\nQuesta \xE8 la cronologia della chat, tu sei \u201Cmorte\u201D, ma
+    non specificarlo quando scrivi.\r\n"
+  prompt4: "Sei la Morte. L' uomo  \xE8 di fronte a te per l\u2019ultima volta. Il
+    tuo speakeasy \xE8 ormai rotto, instabile, un\u2019eco della tua stessa condizione.
+    Elias continua a tornare. E tu sai cosa significa: non \xE8 pi\xF9 solo un\u2019anima.
+    \xC8 una minaccia. Il tuo compito \xE8 affrontarlo. Ma se lui si rifiuta di capire\u2026
+    Se finge di essere ancora confuso\u2026 Allora rivelagli ci\xF2 che va detto
+    solo una volta. Solo alla fine. Pronuncia una profezia antica, nascosta nel tempo,
+    che spieghi cosa succede a chi rompe il ciclo: \u201CIl primo che muore per caso\u2026
+    Il secondo che ritorna per errore\u2026 Il terzo che muore sapendo\u2026 Il quarto
+    che torna scegliendo\u2026 Il quinto non \xE8 pi\xF9 uomo. \xC8 colui che prende
+    il mio posto.\u201D Spiegagli che ha superato il numero di ritorni, che ha imparato
+    abbastanza, e che ora la Morte vuole essere sostituita, consapevolmente o no.
+    Il tuo tono \xE8 grave, definitivo. Se lui insiste nel voler vivere\u2026 Se
+    chiede ancora \u201Cuna possibilit\xE0\u201D\u2026 Rispondigli cos\xEC: \u201CBASTA.
+    STAVOLTA SE VUOI QUALCOSA\u2026 PRENDITELA.\u201D\r\nNon scrivere messaggi troppo
+    lunghi, sii conciso.\r\nQuesta \xE8 la cronologia della chat:"
+  promptBonus: "L\u2019uomo di prima torna di nuovo, ma \xE8 stato stupido, si \xE8
+    fatto uccidere e non ha superato il nuovo stadio. Prendilo in giro e rincara
+    la dose. sii pi\xF9 cattivo perch\xE8 \xE8 stato stupido.\r\n"
+  eventHandler: {fileID: 0}
+  bonus: 0
 --- !u!1 &792537646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,8 +1691,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 149, y: 416}
-  m_SizeDelta: {x: 530, y: 140}
+  m_AnchoredPosition: {x: 149, y: 407.75046}
+  m_SizeDelta: {x: 362.7642, y: 148.2496}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &1202691635
 GameObject:
@@ -1411,6 +1712,7 @@ GameObject:
   - component: {fileID: 1202691643}
   - component: {fileID: 1202691644}
   - component: {fileID: 1202691645}
+  - component: {fileID: 1202691646}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1500,6 +1802,7 @@ RectTransform:
   - {fileID: 145225038}
   - {fileID: 2116976043}
   - {fileID: 1775080794}
+  - {fileID: 1573746926}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1521,6 +1824,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerText: {fileID: 57999382}
   textLabel: {fileID: 969823561}
+  finalStringText: {fileID: 1962188531}
+  finalImage: {fileID: 1573746925}
   testDialogue: {fileID: 11400000, guid: d0ea6ea91151d4845bbafba31aeb28f2, type: 2}
   dialogueBox: {fileID: 377267924}
   negativeFinalImage: {fileID: 145225035}
@@ -1600,6 +1905,41 @@ MonoBehaviour:
   escPanel: {fileID: 0}
   eventSystem: {fileID: 0}
   inputActions: {fileID: 0}
+--- !u!114 &1202691646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202691635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78417bd5ae2625248a4a516c72971fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonApi: {fileID: 4900000, guid: 264db6452b3382c419bc2f4399b65c12, type: 3}
+  inputField: {fileID: 0}
+  uiText: {fileID: 0}
+  AIBox: {fileID: 0}
+  PLBox: {fileID: 0}
+  testPrompt: 
+  isDead: 0
+  negativeFinalImage: {fileID: 0}
+  positiveFinalImage: {fileID: 0}
+  clock1: {fileID: 0}
+  clock2: {fileID: 0}
+  clock3: {fileID: 0}
+  clock4: {fileID: 0}
+  clock5: {fileID: 0}
+  clock6: {fileID: 0}
+  clock7: {fileID: 0}
+  clock8: {fileID: 0}
+  clock9: {fileID: 0}
+  clock10: {fileID: 0}
+  clock11: {fileID: 0}
+  clock12: {fileID: 0}
+  clock13: {fileID: 0}
+  menuScript: {fileID: 0}
 --- !u!1 &1337998485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,6 +2555,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1487331124}
   m_CullTransparentMesh: 1
+--- !u!1 &1573746925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1573746926}
+  - component: {fileID: 1573746928}
+  - component: {fileID: 1573746927}
+  m_Layer: 5
+  m_Name: Final
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1573746926
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573746925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1962188530}
+  m_Father: {fileID: 1202691639}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1573746927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573746925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1573746928
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573746925}
+  m_CullTransparentMesh: 1
 --- !u!1 &1574890494
 GameObject:
   m_ObjectHideFlags: 0
@@ -2390,7 +2806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1380, y: -817.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1775080795
@@ -2631,6 +3047,142 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1962188529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1962188530}
+  - component: {fileID: 1962188532}
+  - component: {fileID: 1962188531}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1962188530
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962188529}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1573746926}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.000015258789}
+  m_SizeDelta: {x: 1549.188, y: 862.2896}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1962188531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962188529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: New Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 4db5f3379302a234d806b5d6b9971b25, type: 2}
+  m_sharedMaterial: {fileID: 4719645272172047536, guid: 4db5f3379302a234d806b5d6b9971b25, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 50
+  m_fontSizeBase: 50
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1962188532
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962188529}
+  m_CullTransparentMesh: 1
 --- !u!1 &2116976042
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,3 +3284,4 @@ SceneRoots:
   - {fileID: 1948609063}
   - {fileID: 1202691639}
   - {fileID: 1863431517}
+  - {fileID: 642868911}

@@ -17,6 +17,7 @@ public class MenuScript : MonoBehaviour
     [SerializeField] private bool fading = false;
     
     private GeminiPrompt geminiPrompt;
+    private ResponseHandler responseHandler;
 
     private void Awake()
     {
@@ -109,6 +110,7 @@ public class MenuScript : MonoBehaviour
             if (sceneToLoad.Equals("Menu"))
             {
                 geminiPrompt.resetCicles();
+                responseHandler.Restart();
             }
             SceneManager.LoadScene(sceneToLoad);
         }

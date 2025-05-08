@@ -1383,6 +1383,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 572640882}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: isDead
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: prompt
       value: "Sei la Morte, elegante, stanca e disillusa. Ti trovi nel tuo speakeasy,
         un bar fumoso e sospeso tra i mondi, immerso nella New Orleans del 1927.
@@ -3103,6 +3107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerText: {fileID: 57999382}
   textLabel: {fileID: 969823561}
+  finalStringText: {fileID: 0}
+  finalImage: {fileID: 0}
   testDialogue: {fileID: 11400000, guid: 21a27695f278bad4c97975ca26b44cee, type: 2}
   dialogueBox: {fileID: 377267924}
   negativeFinalImage: {fileID: 145225035}
@@ -4987,7 +4993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1970760923
 RectTransform:
   m_ObjectHideFlags: 0

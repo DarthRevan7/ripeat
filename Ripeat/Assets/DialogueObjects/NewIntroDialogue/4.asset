@@ -18,13 +18,13 @@ MonoBehaviour:
     speaker: Barista
   responses:
   - responseText: Osservo. Il silenzio paga.
-    dialogueObject: {fileID: 0}
+    dialogueObject: {fileID: 11400000, guid: 64f7edafb538db2469eeb97329f111fc, type: 2}
     pointValue: 0
   - responseText: Voglio il rumore.
-    dialogueObject: {fileID: 0}
+    dialogueObject: {fileID: 11400000, guid: 64f7edafb538db2469eeb97329f111fc, type: 2}
     pointValue: 0
   - responseText: Mi nascondo.
-    dialogueObject: {fileID: 0}
+    dialogueObject: {fileID: 11400000, guid: 64f7edafb538db2469eeb97329f111fc, type: 2}
     pointValue: 0
   isFinalDialogue: 0
   finalDialogueType: 0

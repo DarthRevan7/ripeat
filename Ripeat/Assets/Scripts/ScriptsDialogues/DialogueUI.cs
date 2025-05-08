@@ -8,18 +8,27 @@ public class DialogueUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text speakerText;
     [SerializeField] private TMP_Text textLabel;
+    [SerializeField] private TMP_Text finalStringText;
+    [SerializeField] private GameObject finalImage;
     [SerializeField] private DialogueObject testDialogue;
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private GameObject negativeFinalImage;
+    
 
     private ResponseHandler responseHandler;
     private TypewriterEffect typewriterEffect;
     private CharacterStats characterStats;
+    private MenuScript menuScript;
+    
+
 
     private void Start()
     {
         typewriterEffect = GetComponent<TypewriterEffect>();
         responseHandler = GetComponent<ResponseHandler>();
+        menuScript = GetComponent<MenuScript>();
+
+        
         CloseDialogueBox();
         ShowDialogue(testDialogue);
     }
@@ -49,7 +58,7 @@ public class DialogueUI : MonoBehaviour
             if (i == dialogueObject.DialogueLines.Length - 1 && dialogueObject.HasResponses)
                 break;
 
-            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            
         }
 
         if (dialogueObject.HasResponses)
@@ -58,23 +67,14 @@ public class DialogueUI : MonoBehaviour
         }
         else
         {
-            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            
             
             // Se il dialogo è finale e negativo, mostra l'immagine di finale negativo,
             // altrimenti chiudi il dialogo normalmente
-            if (dialogueObject.IsFinalDialogue && dialogueObject.DialogueFinalType == FinalDialogueType.Negative)
+
+            if (dialogueObject.IsFinalDialogue)
             {
-                yield return new WaitForSeconds(1f);
-                ShowNegativeFinalImage();
-                yield return new WaitForSeconds(3f);
-                SceneManager.LoadScene("Menu");
-            }
-            else if (dialogueObject.IsFinalDialogue && dialogueObject.DialogueFinalType == FinalDialogueType.Positive)
-            {
-                yield return new WaitForSeconds(1f);
-                // Finito il dialogo fa il fade in e passa alla scena successiva
-                // SceneManager.LoadScene("FightingScene_Try");
-                GameObject.Find("FadingImage").GetComponent<MenuScript>().LoadScene();
+                responseHandler.SendHistoryToGemini();
             }
             else
             {
@@ -105,5 +105,14 @@ public class DialogueUI : MonoBehaviour
         {
             negativeFinalImage.SetActive(true);
         }
+    }
+
+    public IEnumerator ShowFinalString(string finalString)
+    {
+        finalImage.SetActive(true);
+        typewriterEffect.Run(finalString, finalStringText);
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        SceneManager.LoadScene("NewCombatScene"); // Carica la scena del menu principale
     }
 }

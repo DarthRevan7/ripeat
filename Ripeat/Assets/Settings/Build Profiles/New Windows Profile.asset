@@ -23,6 +23,8 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/Scenes/Menu.unity
   - m_enabled: 1
+    m_path: Assets/Scenes/BNwrite.unity
+  - m_enabled: 1
     m_path: Assets/Scenes/NewIntro.unity
   - m_enabled: 0
     m_path: Assets/Scenes/FightingScene_Try.unity
