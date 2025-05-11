@@ -39,18 +39,11 @@ public class InputManager : MonoBehaviour
         kick = inputAction.FindActionMap("Player").FindAction("Kick").IsPressed();
         block = inputAction.FindActionMap("Player").FindAction("Block").IsPressed();
 
+        combatSystem.isBlocked = block;
+
         //In ordine, faccio ritornare lo stato del character
         if(block)
         {
-            Debug.Log("Block pressed!");
-            if(combatSystem.blockHeld)
-            {
-                combatSystem.blockHeld = false;
-            }
-            else
-            {
-                combatSystem.blockHeld = true;
-            }
             return CombatSystem.CharacterState.BLOCK;
         }
         if(punch)

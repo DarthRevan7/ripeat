@@ -13,6 +13,14 @@ public class NewEnemyAI : MonoBehaviour
     [Tooltip("Velocità di movimento del nemico.")]
     public float moveSpeed = 2.0f;
 
+    [Tooltip("Layer del player. Usato per filtrare l'overlap sphere.")]
+    [SerializeField]
+    private LayerMask playerLayer; // <-- AGGIUNGERE QUESTA
+
+    [Tooltip("Raggio della sfera interna. Se il player è dentro o su questa soglia, il nemico si fermerà (soglia interna per isteresi).")]
+    [SerializeField] // Parametro aggiunto per l'isteresi con overlap
+    public float stopMovingDistance = 1.0f; // <-- AGGIUNGERE QUESTA
+
     [Header("Difficulty")]
     [Tooltip("Tempo minimo (in secondi) tra una decisione e l'altra dell'IA.")]
     [SerializeField]
@@ -32,6 +40,8 @@ public class NewEnemyAI : MonoBehaviour
     private CombatSystem enemyCombatSystem; 
 
     private float lastDecisionTime;
+
+    
 
     void Awake()
     {
@@ -63,6 +73,13 @@ public class NewEnemyAI : MonoBehaviour
             return;
         }
 
+        if (stopMovingDistance > attackRange) // <-- AGGIUNGERE QUESTE RIGHE
+        {
+            Debug.LogWarning("NewEnemyAI: stopMovingDistance should not be greater than attackRange. Adjusting stopMovingDistance to equal attackRange.");
+            stopMovingDistance = attackRange;
+        }
+
+
         // Inizia il tempo per la prima decisione
         lastDecisionTime = Time.time;
     }
@@ -85,6 +102,10 @@ public class NewEnemyAI : MonoBehaviour
             MakeDecision();
             lastDecisionTime = Time.time; // Resetta il timer
         }
+
+        // Debug visuale delle sfere di range
+        Debug.DrawLine(transform.position, transform.position + transform.forward * attackRange, Color.red);
+        Debug.DrawLine(transform.position, transform.position + transform.forward * stopMovingDistance, Color.blue);
         
     }
 
@@ -92,32 +113,82 @@ public class NewEnemyAI : MonoBehaviour
     {
         // Ottieni lo stato attuale del player e la distanza
         CombatSystem.CharacterState playerState = playerCombatSystem.currentState;
-        Vector3 playerDistance = transform.position - playerGameObject.transform.position;
         float distanceToPlayer = Vector3.Distance(transform.position, playerGameObject.transform.position);
 
-        // Priorità 1: Il player sta attaccando? Prova a bloccare.
-        if (playerState == CombatSystem.CharacterState.KICK || playerState == CombatSystem.CharacterState.PUNCH)
+        // Calcola la direzione verso il player per il movimento
+        Vector3 directionToPlayer = (playerGameObject.transform.position - transform.position).normalized;
+        directionToPlayer.y = 0; // Assumi movimento su un piano XZ
+        if (directionToPlayer.magnitude > 0.01f)
         {
-            // Controlla se il player è abbastanza vicino per l'attacco e se la probabilità di blocco si verifica
-            if (distanceToPlayer <= attackRange && Random.value < blockChance) // Moltiplica attackRange per dare un piccolo margine
-            {
-                enemyCombatSystem.currentState = CombatSystem.CharacterState.BLOCK;
-                return; // Decisione presa, esci
-            }
+             directionToPlayer.Normalize();
+        } else {
+             directionToPlayer = Vector3.forward; // O Vector3.zero
         }
 
-        // Priorità 2: Gestisci movimento e attacco
+        // Determina se il player sta attualmente "minacciando" con un attacco o blocco nel raggio reazione del blocco
+        bool playerThreateningBlock = (playerState == CombatSystem.CharacterState.KICK || playerState == CombatSystem.CharacterState.PUNCH || playerState == CombatSystem.CharacterState.BLOCK) &&
+                                      distanceToPlayer <= attackRange * 1.2f; // Usiamo un range leggermente più ampio per reagire in difesa
+
+
+        // --- Gestione Stato Blocco ---
+
+        // Se l'IA è attualmente nello stato di BLOCCO
+        if (enemyCombatSystem.currentState == CombatSystem.CharacterState.BLOCK)
+        {
+            // L'IA dovrebbe smettere di bloccare?
+            // Sì, se il player NON sta più "minacciando" con un attacco nel raggio di blocco.
+            if (!playerThreateningBlock)
+            {
+                enemyCombatSystem.blockHeld = false; // Segnala al CombatSystem di smettere di "tenere" il blocco
+                // Il CombatSystem, in base alla tua logica, dovrebbe poi gestire la fine dell'animazione di blocco
+                // e la transizione allo stato IDLE quando blockHeld diventa false.
+                // L'IA prenderà una nuova decisione (Muovi/Attacca/Idle) nel *prossimo* ciclo di MakeDecision,
+                // trovandosi nello stato IDLE.
+            }
+            // Se playerThreateningBlock è ancora true, l'IA continua a rimanere nello stato di BLOCCO,
+            // e blockHeld rimane true, mantenendo l'animazione di blocco ferma.
+            return; // Decisione presa per questo ciclo: gestire lo stato di blocco. Non fare altre decisioni (Move/Attack/Idle).
+        }
+        // --- Fine Gestione Stato Blocco ---
+
+
+        // --- Se l'IA NON è attualmente nello stato di BLOCCO, decidere se DEVE ENTRARE IN BLOCCO o fare altro ---
+
+        // Se il player STA "minacciando" con un attacco/blocco nel raggio
+        // E la probabilità di blocco casuale ha successo
+        if (playerThreateningBlock && Random.value < blockChance)
+        {
+            // Decide di ENTRARE nello stato di BLOCCO
+            enemyCombatSystem.currentState = CombatSystem.CharacterState.BLOCK;
+            enemyCombatSystem.blockHeld = true; // Segnala al CombatSystem di iniziare a "tenere" il blocco
+            enemyCombatSystem.MovementInput = Vector3.zero; // Smetti di muoverti quando blocchi
+            return; // Decisione presa per questo ciclo: ENTRARE NEL BLOCCO.
+        }
+        // Se il player NON STA "minacciando" OPPURE la probabilità di blocco non è successa,
+        // l'IA continua a decidere tra Muovi/Attacca/Idle.
+
+
+        // --- Logica di Decisone: Muovi / Attacca / Idle (solo se non in/entrando in Blocco) ---
+
+        // Assicurati che blockHeld sia falso se non stiamo nello stato di BLOCCO in questo ciclo.
+        // Questo è importante per coprire transizioni da altri stati (es. fine attacco)
+        // che non portano direttamente al blocco.
+        enemyCombatSystem.blockHeld = false;
+
+        // Logica di isteresi basata sulla distanza per Muovi/Attacca/Idle
+        // Caso 1: Player lontano (distanza > attackRange) -> DECIDI DI MUOVERE VERSO DI LUI
         if (distanceToPlayer > attackRange)
         {
-            // Il player è lontano, muovi verso di lui
-            //enemyCombatSystem.currentState = CombatSystem.CharacterState.MOVING;
-            //GetComponent<Animator>().SetBool("Run", true);
-            // combatSystem.CurrentState = CombatSystem.CharacterState.MOVING;
-            enemyCombatSystem.MovementInput = playerDistance.normalized;
+            enemyCombatSystem.currentState = CombatSystem.CharacterState.MOVING;
+            enemyCombatSystem.MovementInput = directionToPlayer; // Usa la direzione CORRETTA
         }
-        else // Il player è a distanza di attacco o molto vicino
+        // Caso 2: Player molto vicino (distanza <= stopMovingDistance) -> DECIDI DI FERMARTI e Attacca/Idle
+        // stopMovingDistance è la soglia INFERIORE per SMETTERE di muovere e iniziare a considerare attacco/idle.
+        else if (distanceToPlayer <= stopMovingDistance)
         {
-            // Decidi se attaccare
+            enemyCombatSystem.MovementInput = Vector3.zero; // Azzera l'input di movimento
+
+            // Ora decidi tra Attacco e IDLE
             if (Random.value < attackChance)
             {
                 // Scegli a caso tra calcio e pugno
@@ -132,12 +203,30 @@ public class NewEnemyAI : MonoBehaviour
             }
             else
             {
-                // Non attaccare questa volta, sta fermo (o gestisci leggero riposizionamento)
-                 enemyCombatSystem.currentState = CombatSystem.CharacterState.IDLE;
-                 // Potresti aggiungere qui logica per muoversi leggermente o arretrare
-                 // if (Random.value < 0.3f) ChangeState(MOVING, direction = AwayFromPlayer)
+                enemyCombatSystem.currentState = CombatSystem.CharacterState.IDLE;
             }
+            // L'input di movimento è già stato azzerato sopra in questo blocco.
         }
+        // Caso 3: Player a distanza intermedia (stopMovingDistance < distanza <= attackRange)
+        // Questa è la banda di isteresi. L'IA NON CAMBIA la sua decisione principale di movimento/azione
+        // presa nel ciclo di decisione precedente se è entrata nella banda.
+        else // (distanceToPlayer > stopMovingDistance && distanceToPlayer <= attackRange)
+        {
+            // Se lo stato attuale NON è MOVING (cioè, eri IDLE, un Attacco è finito, BLOCK, ecc. prima di entrare nella banda)
+            // assicurati che l'input sia zero.
+            if (enemyCombatSystem.currentState != CombatSystem.CharacterState.MOVING)
+            {
+                 enemyCombatSystem.MovementInput = Vector3.zero;
+                 // Lo stato (IDLE, o quello che era) si mantiene.
+             }
+             // Se currentState È MOVING (cioè sei entrato nella banda mentre stavi muovendo),
+             // l'input è già impostato correttamente dal blocco (distanceToPlayer > attackRange) in un ciclo precedente
+             // e verrà mantenuto finché non si scende <= stopMovingDistance.
+        }
+
+        // Non aggiungere un catch-all finale per MovementInput = zero identico a quello sopra,
+        // perché la logica dentro l'else della banda di isteresi e l'impostazione
+        // blockHeld=false all'inizio del blocco Move/Attack/Idle già gestiscono l'azzeramento necessario.
     }
 
     void MoveTowardsPlayer()
