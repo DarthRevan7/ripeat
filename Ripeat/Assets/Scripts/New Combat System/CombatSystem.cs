@@ -25,7 +25,7 @@ public class CombatSystem : MonoBehaviour
         }
     }
 
-    [SerializeField] public CharacterState currentState = CharacterState.IDLE;
+    public CharacterState currentState = CharacterState.IDLE;
     
     public CharacterState CurrentState
     {
@@ -75,7 +75,6 @@ public class CombatSystem : MonoBehaviour
             {
                 animator.Play(deathAnimationName);
                 isDead = true;
-                // menuScript.LoadScene();
             }
             return;
         }
@@ -139,12 +138,6 @@ public class CombatSystem : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         // menuScript = GameObject.Find("FadingImage").GetComponent<MenuScript>();
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
