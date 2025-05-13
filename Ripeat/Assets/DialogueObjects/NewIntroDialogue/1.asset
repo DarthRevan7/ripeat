@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: "Faccia nuova da queste parti, o la mia memoria fa cilecca pi\xF9 del gin
-      della settimana scorsa? Cosa la porta nel mio umile buco, amico?"
+  - line: Cosa la porta nel mio umile buco, amico?
     speaker: Barista
   responses:
   - responseText: Voglio solo bere.
@@ -26,5 +25,7 @@ MonoBehaviour:
   - responseText: Amici, buona compagnia.
     dialogueObject: {fileID: 11400000, guid: 5ff81c10e95d379408d2bf308970990a, type: 2}
     pointValue: 0
+  isFreeResponse: 0
   isFinalDialogue: 0
   finalDialogueType: 0
+  nextDialogue: {fileID: 0}

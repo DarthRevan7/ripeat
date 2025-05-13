@@ -83,6 +83,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
     // Memorizza la cronologia della conversazione (parte fissa con il prompt iniziale + messaggi successivi)
     public static string conversationHistory;
     private string prompt = "";
+    public static string backStory = "";
     private int counter = 1;
 
     void Start()
@@ -99,8 +100,9 @@ public class UnityAndGeminiV3 : MonoBehaviour
         Debug.Log("Tutto ok");
         //conversationHistory += "PROMPT: " + testPrompt;
         if(isDead){
-            prompt += "\nSe scrivo 001100 allora scrivi HAI UN'ALTRA POSSIBILITA'.\n";
-            prompt = geminiPrompt.getPrompt();
+            prompt += "\nSOLO se scrivo 001100 allora scrivi HAI UN'ALTRA POSSIBILITA'.\n";
+            prompt += geminiPrompt.getPrompt();
+            prompt += "\nBackstory dell' anima: " + backStory + "\n";
             
             conversationHistory += "\nPROMPT: " + prompt;
             Debug.Log("Prompt preso: " + prompt);
@@ -152,6 +154,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
                     else
                     { 
                         string text = response.candidates[0].content.parts[0].text;
+                        backStory = text;
                         Debug.Log("\nText: " + text);
                         StartCoroutine(dialogueUI.ShowFinalString(text));
 
@@ -181,7 +184,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
         counter++;
         ChangeClock(counter);
         Debug.Log("Counter: " + counter);
-        if (counter >= 13)
+        if (counter >= 7)
         {
             conversationHistory += "\nPROMPT: Ora decidi cosa fare ma non essere troppo cattivo: scrivi BASTA LA TUA VITA FINISCE QUI se pensi che non sia meritevole, oppure HAI UN'ALTRA POSSIBILITA' se pensi che sia meritevole! Solo una di queste frasi e nient'altro!!\n";
         }
