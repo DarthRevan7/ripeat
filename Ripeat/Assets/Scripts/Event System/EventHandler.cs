@@ -54,13 +54,6 @@ public class EventHandler : MonoBehaviour
 
         SceneManager.sceneLoaded += OnLoadScene;
     }
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
     
     private void OnLoadScene(Scene scene, LoadSceneMode loadSceneMode)
     {
@@ -77,15 +70,7 @@ public class EventHandler : MonoBehaviour
             //Find healthBar with Canvas parent transform.
             //DO NOT CHANGE THE CHILD'S POSITION!
             secondaryEnemyHealthBar = GameObject.Find("Canvas").transform.GetChild(3).gameObject;
-            
         }
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public bool FirstEncounter()
@@ -110,7 +95,7 @@ public class EventHandler : MonoBehaviour
     {
         bool isFirstEncounter = FirstEncounter();
         //Disable Enemy AI
-        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = false;
+        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
         //Disable Player Input
         player.GetComponent<InputManager>().isScriptActive = false;
 
@@ -144,7 +129,7 @@ public class EventHandler : MonoBehaviour
         }
 
         //Enable Enemy AI
-        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = true;
+        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
         //Enable Player Input
         player.GetComponent<InputManager>().isScriptActive = true;
 
@@ -163,7 +148,7 @@ public class EventHandler : MonoBehaviour
     public void TakeBackMainEnemy()
     {
         //Disable Enemy AI
-        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = false;
+        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
         //Disable Player Input
         player.GetComponent<InputManager>().isScriptActive = false;
         //Disable boundary in that direction
@@ -195,13 +180,15 @@ public class EventHandler : MonoBehaviour
         player.GetComponent<InputManager>().isScriptActive = true;
         // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
         //Enable secondary Enemy AI
-        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = true;
+        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
         //Enable Boundary again
         colliderToDisable.gameObject.SetActive(true);
     }
 
     public void HandleSpawnEvent(FightEvent fightEvent)
     {
+        if(SceneManager.GetActiveScene().name != "CombatScene")
+
         //Maybe insert here a check for event type
         boundaryName = fightEvent.boundaryDirection.ToString();
         // Debug.Log(boundaryName);
@@ -210,7 +197,7 @@ public class EventHandler : MonoBehaviour
         mainEnemy = GameObject.FindGameObjectWithTag(enemyTag);
 
         //Disable Enemy AI
-        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = false;
+        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
         //Disable Player Input
         player.GetComponent<InputManager>().isScriptActive = false;
         //Disable boundary in that direction
@@ -288,7 +275,7 @@ public class EventHandler : MonoBehaviour
         player.GetComponent<InputManager>().isScriptActive = true;
         // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
         //Enable secondary Enemy AI
-        newEnemy.GetComponent<MainEnemyAI>().isScriptActive = true;
+        newEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
         //Enable Boundary again
         colliderToDisable.gameObject.SetActive(true);
 
