@@ -99,7 +99,7 @@ public class ResponseHandler : MonoBehaviour
             Debug.LogError("UnityAndGeminiV3 non trovato!"); // Avvisa se UnityAndGeminiV3 non è trovato
             return;
         }
-        StartCoroutine(unityAndGeminiV3.SendPromptRequestToGemini(history, false)); // Invia la storia a Gemini
+        StartCoroutine(unityAndGeminiV3.SendPromptRequestToGemini(history, 1)); // Invia la storia a Gemini
         Debug.Log("Storia inviata a Gemini: " + history);
     }
 }

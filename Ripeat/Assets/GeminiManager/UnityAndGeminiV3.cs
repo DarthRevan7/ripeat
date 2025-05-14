@@ -83,7 +83,10 @@ public class UnityAndGeminiV3 : MonoBehaviour
     // Memorizza la cronologia della conversazione (parte fissa con il prompt iniziale + messaggi successivi)
     public static string conversationHistory;
     private string prompt = "";
+    private string feedback = "";
+    private string messages = "";
     public static string backStory = "";
+    
     private int counter = 1;
 
     void Start()
@@ -100,20 +103,21 @@ public class UnityAndGeminiV3 : MonoBehaviour
         Debug.Log("Tutto ok");
         //conversationHistory += "PROMPT: " + testPrompt;
         if(isDead){
-            prompt += "\nSOLO se scrivo 001100 allora scrivi HAI UN'ALTRA POSSIBILITA'.\n";
+            prompt += "SOLO se scrivo 001100 allora rispondimi subito HAI UN'ALTRA POSSIBILITA'.\nNon scrivere mai questo simbolo %. \n";
             prompt += geminiPrompt.getPrompt();
             prompt += "\nBackstory dell' anima: " + backStory + "\n";
             
-            conversationHistory += "\nPROMPT: " + prompt;
+            conversationHistory += "PROMPT: " + prompt + "\n\nCronologia della conversazione:";
             Debug.Log("Prompt preso: " + prompt);
-            StartCoroutine(SendPromptRequestToGemini(prompt, true));
+            StartCoroutine(SendPromptRequestToGemini(prompt, 0));
+            feedback = "Giudica la risposta con un voto da 1 a 3 dove 3 vuol dire che l'anima è meritevole e 1 non meritevole. Scrivi solo il numero.\n";
         }
     
         if(inputField != null)
             inputField.onSubmit.AddListener((string text) => { SendChat(); });
     }
 
-    public IEnumerator SendPromptRequestToGemini(string promptText, bool dead)
+    public IEnumerator SendPromptRequestToGemini(string promptText, int type)
     {
         Debug.Log("Prompt Request: " + promptText);
         string url = $"{apiEndpoint}?key={apiKey}";
@@ -140,29 +144,51 @@ public class UnityAndGeminiV3 : MonoBehaviour
                 if (response != null && response.candidates != null && response.candidates.Length > 0 &&
                     response.candidates[0].content.parts != null && response.candidates[0].content.parts.Length > 0)
                 {
-                    if(dead)
+                    switch(type)
                     {
-                        string text = response.candidates[0].content.parts[0].text;
-                        Debug.Log("\nMorte: " + text);
-                        conversationHistory += "\n%" + text + "%\n";
-                        yield return new WaitForSeconds(0.5f);
-                        uiText.text = text;
-                        uiText.color = new Color32(36, 36, 36, 255);
-                        yield return StartCoroutine(AdjustTextBoxSize());
-                        yield return RunTypingEffect(text);
-                    }
-                    else
-                    { 
-                        string text = response.candidates[0].content.parts[0].text;
-                        backStory = text;
-                        Debug.Log("\nText: " + text);
-                        StartCoroutine(dialogueUI.ShowFinalString(text));
+                        case 0:
+                            string text0 = response.candidates[0].content.parts[0].text;
+                            Debug.Log("\nMorte: " + text0);
+                            conversationHistory += "\n%" + text0 + "%\n";
+                            yield return new WaitForSeconds(0.5f);
+                            uiText.text = text0;
+                            uiText.color = new Color32(36, 36, 36, 255);
+                            yield return StartCoroutine(AdjustTextBoxSize());
+                            yield return RunTypingEffect(text0);
+                            break;
+                        case 1:
+                            string text1 = response.candidates[0].content.parts[0].text;
+                            backStory = text1;
+                            Debug.Log("\nText: " + text1);
+                            StartCoroutine(dialogueUI.ShowFinalString(text1));
+                            break;
+                        case 2:
+                            string text2 = response.candidates[0].content.parts[0].text;
+                            int intValue;
+                            int.TryParse(text2, out intValue);
+                            switch (intValue)
+                            {
+                                case 1:
+                                    Debug.Log("Risposta 1");
+                                    
+                                    break;
+                                case 2:
+                                    Debug.Log("Risposta 2");
+                                    
+                                    break;
+                                case 3:
+                                    Debug.Log("Risposta 3");
+                                    
+                                    break;
+                                default:
+                                    Debug.Log("Risposta non valida: " + text2);
+                                    break;
+                            }
+                            break;
+                        default:
+                            break;
+                    }      
 
-                    }
-                }
-                else
-                {
-                    Debug.Log("No text found in prompt response.");
                 }
             }
         }
@@ -180,7 +206,9 @@ public class UnityAndGeminiV3 : MonoBehaviour
             userMessage = "...";
 
         // Aggiorna la cronologia con il messaggio utente
-        conversationHistory += "\n" + userMessage;
+        messages += userMessage + "\n";
+        feedback += messages;;
+        conversationHistory += "\n" + userMessage + "\n";
         counter++;
         ChangeClock(counter);
         Debug.Log("Counter: " + counter);
@@ -265,7 +293,10 @@ public class UnityAndGeminiV3 : MonoBehaviour
                     }
                     else
                     {
+                        Debug.Log("Feedback: " + feedback);
+                        StartCoroutine(SendPromptRequestToGemini(feedback, 2));
                         Debug.Log("Output non rilevante, nessuna azione eseguita.");
+                        feedback = "Giudica la risposta con un voto da 1 a 3 dove 3 vuol dire che l'anima è meritevole e 1 non meritevole. Scrivi solo il numero.\n";
                     }
                 }
                 else
