@@ -16,6 +16,7 @@ public class GeminiPrompt : MonoBehaviour
     private FighterStats fighterStats;
     public EventHandler eventHandler;
     private string killerName = "";
+    public static string mainName = "";
     public bool bonus = false;
     int count = 0;
 
@@ -40,26 +41,31 @@ public class GeminiPrompt : MonoBehaviour
             return FightEventController.Instance.triggeredEventIndices.Count%FightEventController.Instance.loadedEvents.Count +1;
         }
     }
+
+    public void SetName(string name)
+    {
+        mainName = name;
+    }
    
     public string getPrompt()
     {
         
-        string prompt = "";
+        string prompt = "Il nome dell'anima è: " + mainName + "\n\n";
     
         
         switch(SwitchImplementation())
         {
             case 0:
-                prompt = prompt1;
+                prompt += prompt1;
                 break;
             case 1:
-                prompt = prompt2;
+                prompt += prompt2;
                 break;
             case 2:
-                prompt = prompt3;
+                prompt += prompt3;
                 break;
             case 3:
-                prompt = prompt4;
+                prompt += prompt4;
                 break;
             default:
                 break;
@@ -77,6 +83,7 @@ public class GeminiPrompt : MonoBehaviour
     public void resetCicles(){
         ciclesNumber = 0;
         UnityAndGeminiV3.conversationHistory = "";
+        mainName = "";
         Debug.Log("Cicles number reset: " + ciclesNumber);
     }
 }

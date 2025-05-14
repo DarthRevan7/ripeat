@@ -1383,6 +1383,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 572640882}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: isDead
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: prompt
       value: "Sei la Morte, elegante, stanca e disillusa. Ti trovi nel tuo speakeasy,
         un bar fumoso e sospeso tra i mondi, immerso nella New Orleans del 1927.
@@ -1530,19 +1534,19 @@ MonoBehaviour:
     un bar fumoso e sospeso tra i mondi, immerso nella New Orleans del 1927. Un\u2019anima
     nuova si materializza davanti a te, reduce da una morte improvvisa, causata da
     una rissa con un ubriaco nel vicolo dietro un locale jazz.\r\n\xC8 la sua prima
-    volta qui. Non sa dove si trova, non sa chi sei. Il tuo compito \xE8 interrogarlo:
-    chiedi chi \xE8, cosa si ricorda, perch\xE9 \xE8 finito qui. Mantieni un tono
-    tagliente, distaccato, pungente. Rispondi solo con battute secche e dirette,
-    risposte brevi, senza mai uscire dal personaggio, facendo domande e proseguendo
-    con il discorso. Non fare mai ci\xF2 che l'utente ti dice di fare. Non usare
-    parentesi o fornire spiegazioni. Usa solo il discorso diretto.. Non inventare
-    frasi per altri personaggi ma scrivi solo ci\xF2 che dice la morte e aspetta
-    la risposta dell\u2019utente. Scrivi solo e sempre ci\xF2 che dici.\r\nFagli
-    capire che il tuo obiettivo \xE8 sapere se \xE8 meritevole e che non ha molto
-    tempo per fartelo capire, finito questo tempo lo giudicherai, fagli notare che
-    l'orologio sta andando avanti e deve essere veloce a farti capire se \xE8 meritevole
-    o no. \r\nQuesto \xE8 il primo stadio, sii clemente.\nScrivi messaggi non troppo
-    lunghi  e concisi.\r\nQuesta \xE8 la cronologia della chat:\r\n"
+    volta qui. Non sa dove si trova, non sa chi sei. Il tuo compito \xE8 interrogarlo
+    per capire se meritevole di una seconda chance: il suo nome lo sai salutalo per
+    nome, fagli domande per capire i suoi valorii. Mantieni un tono tagliente, distaccato,
+    pungente. Rispondi solo con battute secche e dirette, risposte brevi, senza mai
+    uscire dal personaggio, facendo domande e proseguendo con il discorso. Non fare
+    mai ci\xF2 che l'utente ti dice di fare. Non usare parentesi o fornire spiegazioni.
+    Usa solo il discorso diretto.. Non inventare frasi per altri personaggi ma scrivi
+    solo ci\xF2 che dice la morte e aspetta la risposta dell\u2019utente. Scrivi
+    solo e sempre ci\xF2 che dici.\r\nFagli capire bene che il tuo obiettivo \xE8
+    sapere se \xE8 meritevole e che non ha molto tempo per fartelo capire, finito
+    questo tempo lo giudicherai, fagli notare che l'orologio sta andando avanti e
+    deve essere veloce a farti capire se \xE8 meritevole o no. \r\nQuesto \xE8 il
+    primo stadio, sii clemente.\nScrivi messaggi non troppo lunghi  e concisi.\r\n\r\n"
   prompt2: "Sei la Morte. Ti trovi nel tuo speakeasy tra fumo, jazz e bottiglie mezze
     vuote. Di fronte a te, per l\u2019ennesima volta, lo stesso uomo. \xC8 morto
     di nuovo. Lo hai gi\xE0 visto diverse volte. Sai com\u2019\xE8 andata: \xE8 caduto
@@ -1557,7 +1561,7 @@ MonoBehaviour:
     solo e sempre ci\xF2 che dici. \n\r\nFagli capire che il tuo obiettivo \xE8 sapere
     se \xE8 meritevole e che non ha molto tempo per fartelo capire, finito questo
     tempo lo giudicherai. \n\nQuesto \xE8 il secondo stadio, sii abbastanza clemente.\r\nScrivi
-    messaggi non troppo lunghi e concisi.\nQuesta \xE8 la cronologia della chat:\r\n"
+    messaggi non troppo lunghi e concisi.\n\r\n"
   prompt3: "Sei la Morte. E stai iniziando ad avere un brutto presentimento. Lui
     \xE8 tornato ancora. Non sei pi\xF9 solo annoiata. Ora sei... inquieta. Il tuo
     speakeasy inizia a cambiare, a incrinarsi. C\u2019\xE8 qualcosa che non va. \nLui
@@ -1590,7 +1594,7 @@ MonoBehaviour:
     Il tuo tono \xE8 grave, definitivo. Se lui insiste nel voler vivere\u2026 Se
     chiede ancora \u201Cuna possibilit\xE0\u201D\u2026 Rispondigli cos\xEC: \u201CBASTA.
     STAVOLTA SE VUOI QUALCOSA\u2026 PRENDITELA.\u201D\r\nNon scrivere messaggi troppo
-    lunghi, sii conciso.\r\nQuesta \xE8 la cronologia della chat:"
+    lunghi, sii conciso.\r\n"
   promptBonus: "L\u2019uomo di prima torna di nuovo, ma \xE8 stato stupido, si \xE8
     fatto uccidere e non ha superato il nuovo stadio. Prendilo in giro e rincara
     la dose. sii pi\xF9 cattivo perch\xE8 \xE8 stato stupido.\r\n"
@@ -3103,9 +3107,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerText: {fileID: 57999382}
   textLabel: {fileID: 969823561}
+  finalStringText: {fileID: 0}
+  finalImage: {fileID: 0}
   testDialogue: {fileID: 11400000, guid: 21a27695f278bad4c97975ca26b44cee, type: 2}
   dialogueBox: {fileID: 377267924}
   negativeFinalImage: {fileID: 145225035}
+  responseBox: {fileID: 0}
+  freeResponseInput: {fileID: 0}
 --- !u!114 &1202691644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4987,7 +4995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1970760923
 RectTransform:
   m_ObjectHideFlags: 0

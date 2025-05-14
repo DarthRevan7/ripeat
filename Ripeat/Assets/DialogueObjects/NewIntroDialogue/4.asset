@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f181d74f3580e724da90b1119b516743, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - line: "Questa citt\xE0 non dorme mai, eh? Ma dimmi, sei pi\xF9 tipo da fare rumore
+      o da muoverti nell'ombra?"
+    speaker: Barista
+  responses:
+  - responseText: Osservo. Il silenzio paga.
+    dialogueObject: {fileID: 11400000, guid: 64f7edafb538db2469eeb97329f111fc, type: 2}
+    pointValue: 0
+  - responseText: Voglio il rumore.
+    dialogueObject: {fileID: 11400000, guid: 64f7edafb538db2469eeb97329f111fc, type: 2}
+    pointValue: 0
+  - responseText: Mi nascondo.
+    dialogueObject: {fileID: 11400000, guid: 64f7edafb538db2469eeb97329f111fc, type: 2}
+    pointValue: 0
+  isFinalDialogue: 0
+  finalDialogueType: 0

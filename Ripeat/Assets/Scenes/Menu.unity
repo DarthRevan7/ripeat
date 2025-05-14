@@ -695,7 +695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5631b7d3481224a829c3bfb6556d0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: NewCombatScene
+  sceneToLoad: BNwrite
   targetImage: {fileID: 1108352819}
   fadeDuration: 2
   characterStats: {fileID: 0}
