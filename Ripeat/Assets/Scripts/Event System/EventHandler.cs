@@ -358,7 +358,7 @@ public class EventHandler : MonoBehaviour
             //Obtain the player position and instantiate the lightning FX
             Vector3 position = new Vector3(player.transform.position.x, yCoordinate, player.transform.position.z);
             ParticleSystem lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
-
+            float lightningRadius = 5f;
             //Activate signal so the player knows where the lightning bolt will land
 
             //Wait for some seconds
@@ -368,9 +368,14 @@ public class EventHandler : MonoBehaviour
             lightningPS.Play();
 
             //Check if the player is in the striked area
-            //If the player is in the striked area, he will die
+            foreach(Collider c in Physics.OverlapSphere(position, lightningRadius)){
+                //If the player is in the striked area, he will die
+                if(c.gameObject.tag.Equals("Player")) {
+                    player.GetComponent<FighterStats>().vita = 0;
+                    player.GetComponent<CombatSystem>().CurrentState = CombatSystem.CharacterState.DEAD;
+                }
+            }
             //Otherwise the strike will fall to the ground and the battle will continue.
-
         }
 
 
