@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using AI;
 
 public class FightEventController : MonoBehaviour {
     public static FightEventController Instance { get; private set; }
@@ -37,8 +38,6 @@ public class FightEventController : MonoBehaviour {
             //     //Update the global event index
             //     globalEventIndex = actualEventIndex;
             // }
-
-            loading = true;
 
             // Registra l'evento come già visto
             
@@ -120,9 +119,6 @@ public class FightEventController : MonoBehaviour {
     }
 
     private void Update() {
-        // if (!fightActive) return;
-
-        // fightTimer += Time.deltaTime;
 
         if(!SceneManager.GetActiveScene().name.Equals("CombatScene")) 
         {
@@ -196,6 +192,10 @@ public class FightEventController : MonoBehaviour {
         // Si dovrebbe occupare di chiamare un altro script che si occupa della gestione 
         // degli eventi in game. FightEventHandler magari.
 
+        if(SceneManager.GetActiveScene().name != "CombatScene") {
+            return;
+        }
+
         if(fightEvent.eventType.Equals(FightEvent.FightEventType.SpawnEnemy))
         {
             Debug.Log("FightEvent: " + fightEvent.boundaryDirection.ToString());
@@ -207,6 +207,9 @@ public class FightEventController : MonoBehaviour {
         {
             EventHandler.Instance.HandleExplosion(fightEvent);
             //isTriggered = true;
+        }
+        else if(fightEvent.eventType.Equals(FightEvent.FightEventType.Storm)) {
+            EventHandler.Instance.HandleStorm(fightEvent);
         }
     }
 

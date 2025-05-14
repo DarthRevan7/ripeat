@@ -25,6 +25,8 @@ public class EventHandler : MonoBehaviour
     [SerializeField] private string boundaryName;
 
     public GameObject streetlamp, brokenStreetlampPrefab;
+
+    [SerializeField] private float remainingTime = 0;
     
 
     
@@ -52,13 +54,6 @@ public class EventHandler : MonoBehaviour
 
         SceneManager.sceneLoaded += OnLoadScene;
     }
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
     
     private void OnLoadScene(Scene scene, LoadSceneMode loadSceneMode)
     {
@@ -75,15 +70,7 @@ public class EventHandler : MonoBehaviour
             //Find healthBar with Canvas parent transform.
             //DO NOT CHANGE THE CHILD'S POSITION!
             secondaryEnemyHealthBar = GameObject.Find("Canvas").transform.GetChild(3).gameObject;
-            
         }
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public bool FirstEncounter()
@@ -108,7 +95,7 @@ public class EventHandler : MonoBehaviour
     {
         bool isFirstEncounter = FirstEncounter();
         //Disable Enemy AI
-        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = false;
+        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
         //Disable Player Input
         player.GetComponent<InputManager>().isScriptActive = false;
 
@@ -142,7 +129,7 @@ public class EventHandler : MonoBehaviour
         }
 
         //Enable Enemy AI
-        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = true;
+        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
         //Enable Player Input
         player.GetComponent<InputManager>().isScriptActive = true;
 
@@ -161,7 +148,7 @@ public class EventHandler : MonoBehaviour
     public void TakeBackMainEnemy()
     {
         //Disable Enemy AI
-        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = false;
+        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
         //Disable Player Input
         player.GetComponent<InputManager>().isScriptActive = false;
         //Disable boundary in that direction
@@ -193,13 +180,15 @@ public class EventHandler : MonoBehaviour
         player.GetComponent<InputManager>().isScriptActive = true;
         // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
         //Enable secondary Enemy AI
-        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = true;
+        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
         //Enable Boundary again
         colliderToDisable.gameObject.SetActive(true);
     }
 
     public void HandleSpawnEvent(FightEvent fightEvent)
     {
+        if(SceneManager.GetActiveScene().name != "CombatScene")
+
         //Maybe insert here a check for event type
         boundaryName = fightEvent.boundaryDirection.ToString();
         // Debug.Log(boundaryName);
@@ -208,7 +197,7 @@ public class EventHandler : MonoBehaviour
         mainEnemy = GameObject.FindGameObjectWithTag(enemyTag);
 
         //Disable Enemy AI
-        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = false;
+        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
         //Disable Player Input
         player.GetComponent<InputManager>().isScriptActive = false;
         //Disable boundary in that direction
@@ -286,7 +275,7 @@ public class EventHandler : MonoBehaviour
         player.GetComponent<InputManager>().isScriptActive = true;
         // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
         //Enable secondary Enemy AI
-        newEnemy.GetComponent<MainEnemyAI>().isScriptActive = true;
+        newEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
         //Enable Boundary again
         colliderToDisable.gameObject.SetActive(true);
 
@@ -306,5 +295,76 @@ public class EventHandler : MonoBehaviour
         FightEventController.Instance.actualEventIndex++;
 
         yield return null;
+    }
+
+    public void HandleStorm(FightEvent fightEvent) {
+        //Set remaining time
+        if(remainingTime <= 0.0 && fightEvent.triggerTime != -1) {
+            remainingTime = fightEvent.triggerTime;
+        }
+
+        //Instantiate the storm PS
+        ParticleSystem stormPS = Instantiate(fightEvent.stormParticle).GetComponent<ParticleSystem>();
+        //Play the storm PS
+        stormPS.Play();
+        
+        StartCoroutine(StormHandler(fightEvent));
+    }
+
+    IEnumerator StormHandler(FightEvent fightEvent) {
+
+        float yCoordinate = 40f;
+        float secondsToWait = 7f;
+
+        //Wait for remaining time seconds
+        while(remainingTime > 0) {
+            remainingTime -= Time.deltaTime;
+            yield return null;
+        }
+        
+        //First time of lightning strike
+        if(FirstEncounter()) {
+            //Obtain the player position and instantiate the lightning FX
+            Vector3 position = new Vector3(player.transform.position.x, yCoordinate, player.transform.position.z);
+            ParticleSystem lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
+
+            //Play the lightning FX
+            lightningPS.Play();
+
+            //Kill the player.
+            player.GetComponent<FighterStats>().vita = 0;
+            player.GetComponent<CombatSystem>().CurrentState = CombatSystem.CharacterState.DEAD;
+
+            //Badly injure the enemy
+            mainEnemy.GetComponent<FighterStats>().vita = 10;
+
+
+        }
+        else
+        {
+            //Obtain the player position and instantiate the lightning FX
+            Vector3 position = new Vector3(player.transform.position.x, yCoordinate, player.transform.position.z);
+            ParticleSystem lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
+            float lightningRadius = 5f;
+            //Activate signal so the player knows where the lightning bolt will land
+
+            //Wait for some seconds
+            yield return new WaitForSeconds(secondsToWait);
+
+            //Play the lightning FX
+            lightningPS.Play();
+
+            //Check if the player is in the striked area
+            foreach(Collider c in Physics.OverlapSphere(position, lightningRadius)){
+                //If the player is in the striked area, he will die
+                if(c.gameObject.tag.Equals("Player")) {
+                    player.GetComponent<FighterStats>().vita = 0;
+                    player.GetComponent<CombatSystem>().CurrentState = CombatSystem.CharacterState.DEAD;
+                }
+            }
+            //Otherwise the strike will fall to the ground and the battle will continue.
+        }
+
+
     }
 }
