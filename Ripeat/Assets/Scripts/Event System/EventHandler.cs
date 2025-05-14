@@ -25,6 +25,8 @@ public class EventHandler : MonoBehaviour
     [SerializeField] private string boundaryName;
 
     public GameObject streetlamp, brokenStreetlampPrefab;
+
+    [SerializeField] private float remainingTime = 0;
     
 
     
@@ -306,5 +308,71 @@ public class EventHandler : MonoBehaviour
         FightEventController.Instance.actualEventIndex++;
 
         yield return null;
+    }
+
+    public void HandleStorm(FightEvent fightEvent) {
+        //Set remaining time
+        if(remainingTime <= 0.0 && fightEvent.triggerTime != -1) {
+            remainingTime = fightEvent.triggerTime;
+        }
+
+        //Instantiate the storm PS
+        ParticleSystem stormPS = Instantiate(fightEvent.stormParticle).GetComponent<ParticleSystem>();
+        //Play the storm PS
+        stormPS.Play();
+        
+        StartCoroutine(StormHandler(fightEvent));
+    }
+
+    IEnumerator StormHandler(FightEvent fightEvent) {
+
+        float yCoordinate = 40f;
+        float secondsToWait = 7f;
+
+        //Wait for remaining time seconds
+        while(remainingTime > 0) {
+            remainingTime -= Time.deltaTime;
+            yield return null;
+        }
+        
+        //First time of lightning strike
+        if(FirstEncounter()) {
+            //Obtain the player position and instantiate the lightning FX
+            Vector3 position = new Vector3(player.transform.position.x, yCoordinate, player.transform.position.z);
+            ParticleSystem lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
+
+            //Play the lightning FX
+            lightningPS.Play();
+
+            //Kill the player.
+            player.GetComponent<FighterStats>().vita = 0;
+            player.GetComponent<CombatSystem>().CurrentState = CombatSystem.CharacterState.DEAD;
+
+            //Badly injure the enemy
+            mainEnemy.GetComponent<FighterStats>().vita = 10;
+
+
+        }
+        else
+        {
+            //Obtain the player position and instantiate the lightning FX
+            Vector3 position = new Vector3(player.transform.position.x, yCoordinate, player.transform.position.z);
+            ParticleSystem lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
+
+            //Activate signal so the player knows where the lightning bolt will land
+
+            //Wait for some seconds
+            yield return new WaitForSeconds(secondsToWait);
+
+            //Play the lightning FX
+            lightningPS.Play();
+
+            //Check if the player is in the striked area
+            //If the player is in the striked area, he will die
+            //Otherwise the strike will fall to the ground and the battle will continue.
+
+        }
+
+
     }
 }

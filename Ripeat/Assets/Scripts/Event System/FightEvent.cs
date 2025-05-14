@@ -9,7 +9,7 @@ using UnityEngine;
             SpawnEnemy,
             SpawnObject,
             Explosion,
-            Snow
+            Storm
         }
 
         public enum BoundaryDirection
@@ -43,8 +43,8 @@ using UnityEngine;
         public float explosionRadius;
         public Vector3 explosionPosition;
 
-        //Snow
-        public ParticleSystem snowParticle;
+        //Storm
+        public ParticleSystem stormParticle, lightningStrikeFX;
         
 
     }
