@@ -9,6 +9,9 @@ namespace FreeflowCombatSpace
         // Update is called once per frame
         void Update()
         {
+            if(player == null) {
+                player = GameObject.FindGameObjectWithTag("Player").transform;
+            }
             transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
         }
     }

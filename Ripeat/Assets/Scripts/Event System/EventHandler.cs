@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using FreeflowCombatSpace;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -189,7 +190,7 @@ public class EventHandler : MonoBehaviour
 
     public void HandleSpawnEvent(FightEvent fightEvent)
     {
-        if(SceneManager.GetActiveScene().name != "CombatScene")
+        //if(SceneManager.GetActiveScene().name != "CombatScene")
 
         //Maybe insert here a check for event type
         boundaryName = fightEvent.boundaryDirection.ToString();
@@ -256,12 +257,14 @@ public class EventHandler : MonoBehaviour
         //Spawn secondary enemy in position
         GameObject newEnemy = GameObject.Instantiate(fightEvent.prefabToSpawn, fightEvent.spawnPosition, Quaternion.identity);
         AssignStats(newEnemy, fightEvent);
+        newEnemy.transform.LookAt(player.transform.position);
 
         //Bring the secondary enemy in the scene
-        while(newEnemy.transform.position.x >= newEnemyXCoord)
+        while(Vector3.Distance(player.transform.position, newEnemy.transform.position) >= 2.0f)
         {
             newEnemy.GetComponent<CombatSystem>().canMove = true;
             newEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
+            // newEnemy.GetComponent<LookAtPlayer>().enabled = true;
             yield return null;
         }
 
@@ -278,6 +281,7 @@ public class EventHandler : MonoBehaviour
         // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
         //Enable secondary Enemy AI
         newEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
+        // newEnemy.GetComponent<LookAtPlayer>().enabled = false;
         //Enable Boundary again
         colliderToDisable.gameObject.SetActive(true);
 

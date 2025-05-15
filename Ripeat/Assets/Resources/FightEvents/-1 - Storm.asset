@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0863b4fd5306d904ebf9c269d3cc7a4e, type: 3}
-  m_Name: 0 - Explosion
+  m_Name: -1 - Storm
   m_EditorClassIdentifier: 
   eventName: 
-  eventType: 2
-  triggerHealthPercentage: 20
+  eventType: 0
+  triggerHealthPercentage: -1
   triggerTime: -1
   targetReference: {fileID: 0}
   prefabToSpawn: {fileID: 0}
@@ -22,6 +22,8 @@ MonoBehaviour:
   boundaryDirection: 0
   firstEncounterAttack: 0
   ordinaryAttack: 0
-  explosionEffect: {fileID: 5211884335779849545, guid: a82c58380860f8848b7e3868369a3e60, type: 3}
+  explosionEffect: {fileID: 0}
   explosionRadius: 0
-  explosionPosition: {x: 4, y: 2, z: -7}
+  explosionPosition: {x: 0, y: 0, z: 0}
+  stormParticle: {fileID: 0}
+  lightningStrikeFX: {fileID: 0}

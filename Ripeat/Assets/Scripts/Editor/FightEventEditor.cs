@@ -16,6 +16,8 @@ public class FightEventEditor : Editor {
     SerializedProperty boundaryDirection;
     SerializedProperty firstEncounterAttack, ordinaryAttack;
 
+    SerializedProperty stormParticle, lightningStrikeFX;
+
     void OnEnable() {
         eventName = serializedObject.FindProperty("eventName");
         eventType = serializedObject.FindProperty("eventType");
@@ -30,6 +32,9 @@ public class FightEventEditor : Editor {
         boundaryDirection = serializedObject.FindProperty("boundaryDirection");
         firstEncounterAttack = serializedObject.FindProperty("firstEncounterAttack");
         ordinaryAttack = serializedObject.FindProperty("ordinaryAttack");
+
+        stormParticle = serializedObject.FindProperty("stormParticle");
+        lightningStrikeFX =  serializedObject.FindProperty("lightningStrikeFX");
     }
 
     public override void OnInspectorGUI() {
@@ -69,6 +74,10 @@ public class FightEventEditor : Editor {
                 EditorGUILayout.PropertyField(explosionPosition);
                 EditorGUILayout.PropertyField(targetReference);
                 break;
+            case FightEvent.FightEventType.Storm:
+                EditorGUILayout.PropertyField(stormParticle);
+                EditorGUILayout.PropertyField(lightningStrikeFX);
+            break;
         }
 
         serializedObject.ApplyModifiedProperties();
