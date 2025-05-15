@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0863b4fd5306d904ebf9c269d3cc7a4e, type: 3}
-  m_Name: 1 - Spawn Enemy
+  m_Name: 2 - Storm
   m_EditorClassIdentifier: 
   eventName: 
   eventType: 0
-  triggerHealthPercentage: 60
+  triggerHealthPercentage: -1
   triggerTime: -1
   targetReference: {fileID: 0}
-  prefabToSpawn: {fileID: 6030350152631332872, guid: 9d27fffd13dc15043baae90e1cf86ee2, type: 3}
-  spawnPosition: {x: 21.7, y: 0.71078897, z: -8.01}
+  prefabToSpawn: {fileID: 0}
+  spawnPosition: {x: 0, y: 0, z: 0}
   boundaryDirection: 0
-  firstEncounterAttack: 30
-  ordinaryAttack: 5
+  firstEncounterAttack: 0
+  ordinaryAttack: 0
   explosionEffect: {fileID: 0}
   explosionRadius: 0
   explosionPosition: {x: 0, y: 0, z: 0}

@@ -1456,8 +1456,8 @@ GameObject:
   - component: {fileID: 1668544700706876099}
   - component: {fileID: 4610392323404088718}
   - component: {fileID: 1034383930656064974}
-  - component: {fileID: 4036361513097607122}
   - component: {fileID: 4992915010542667309}
+  - component: {fileID: -8485659198762577731}
   - component: {fileID: 417598531851272170}
   - component: {fileID: 6847616837217230240}
   m_Layer: 0
@@ -1563,29 +1563,6 @@ MonoBehaviour:
   targetName: MyPlayerNew
   combatSystem: {fileID: 0}
   hitCount: 0
---- !u!114 &4036361513097607122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6030350152631332872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea4484b9c6d12f4ea2b075eb1beb525, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
-  attackRange: 1.8
-  enemyStatus: 2
-  pauseAttack: 1
-  hasAttacked: 0
-  startFight: 1
-  secondsToStartFight: 1.5
-  combatSystem: {fileID: 0}
-  fighterStats: {fileID: 0}
-  isRunning: 0
-  isScriptActive: 1
 --- !u!114 &4992915010542667309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1610,6 +1587,30 @@ MonoBehaviour:
   isDead: 0
   isBlocked: 0
   pauseBlock: 0
+  blockHeld: 0
+--- !u!114 &-8485659198762577731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6030350152631332872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dbce7a533669c74389d06da4f2ae37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  attackRange: 1.5
+  moveSpeed: 2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  stopMovingDistance: 1
+  decisionResponseTime: 1
+  attackChance: 0.9
+  blockChance: 0.3
+  isScriptActive: 0
 --- !u!114 &417598531851272170
 MonoBehaviour:
   m_ObjectHideFlags: 0

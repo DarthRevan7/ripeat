@@ -63,7 +63,7 @@ public class FighterStats : MonoBehaviour
                         {
                             other.vita -= attacco;
                             hitted = true;
-                            Debug.Log("Hitted: " + hitted);
+                            // Debug.Log("Hitted: " + hitted);
                             other.hitCount = 0;
                         }
                         else{
@@ -77,12 +77,12 @@ public class FighterStats : MonoBehaviour
                                 other.combatSystem.animator.speed = 1;
                             }
                             other.hitCount++;
-                            Debug.Log("HitCount: " + hitCount);
+                            // Debug.Log("HitCount: " + hitCount);
                         }
                         
                         
                         lastKiller = collider.gameObject.name;
-                        Debug.Log("Last killer: " + lastKiller);
+                        // Debug.Log("Last killer: " + lastKiller);
                         
                         //Senza questo break si potrebbero colpire più nemici alla volta
                         break;
@@ -106,7 +106,7 @@ public class FighterStats : MonoBehaviour
                         {
                             other.vita -= attacco;
                             hitted = true;
-                            Debug.Log("Hitted: " + hitted);
+                            // Debug.Log("Hitted: " + hitted);
                             other.hitCount = 0;
                         }
                         else{

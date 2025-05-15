@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 176114187}
   m_Layer: 0
   m_Name: Left
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4812,6 +4812,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4599841966193424410, guid: d5f05c1413b99004b8de1cc3e6dfa943, type: 3}
   m_PrefabInstance: {fileID: 47458098}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &952612233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 952612234}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &952612234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952612233}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.7, y: 0.71078897, z: -8.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &961755928
 GameObject:
   m_ObjectHideFlags: 0
@@ -5515,7 +5546,7 @@ GameObject:
   - component: {fileID: 1046958800}
   m_Layer: 0
   m_Name: Right
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8022,6 +8053,7 @@ MonoBehaviour:
   decisionResponseTime: 0.5
   attackChance: 0.8
   blockChance: 0.6
+  isScriptActive: 1
 --- !u!1 &1634589948
 GameObject:
   m_ObjectHideFlags: 0
@@ -9687,9 +9719,10 @@ MonoBehaviour:
   newEnemyXCoord: 4
   comingBackCoord: 7
   secondaryEnemyHealthBar: {fileID: 186906761}
-  boundaryName: 
+  boundaryName: Right
   streetlamp: {fileID: 0}
   brokenStreetlampPrefab: {fileID: 6032444477516088360, guid: 3ceab3eb5c2018e43a9d0649fbe4e9fd, type: 3}
+  remainingTime: 0
 --- !u!114 &2060060775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10427,7 +10460,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2776698070623258506, guid: c688de9c39b13714a87e2cad27dd821b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -12932,3 +12966,4 @@ SceneRoots:
   - {fileID: 961755930}
   - {fileID: 1347878658}
   - {fileID: 501522595}
+  - {fileID: 952612234}

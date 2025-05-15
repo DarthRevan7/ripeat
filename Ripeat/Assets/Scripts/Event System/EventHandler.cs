@@ -1,4 +1,4 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -70,6 +70,8 @@ public class EventHandler : MonoBehaviour
             //Find healthBar with Canvas parent transform.
             //DO NOT CHANGE THE CHILD'S POSITION!
             secondaryEnemyHealthBar = GameObject.Find("Canvas").transform.GetChild(3).gameObject;
+            mainEnemy = GameObject.FindGameObjectWithTag("Main Enemy");
+            player = GameObject.FindGameObjectWithTag("Player");
         }
     }
 
