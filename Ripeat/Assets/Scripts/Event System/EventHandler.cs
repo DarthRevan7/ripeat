@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DigitalRuby.LightningBolt;
 using FreeflowCombatSpace;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -331,11 +332,13 @@ public class EventHandler : MonoBehaviour
         //First time of lightning strike
         if(FirstEncounter()) {
             //Obtain the player position and instantiate the lightning FX
-            Vector3 position = new Vector3(player.transform.position.x, yCoordinate, player.transform.position.z);
-            ParticleSystem lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
+            Vector3 position = new Vector3(player.transform.position.x, fightEvent.spawnPosition.y, player.transform.position.z);
+            GameObject lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
 
             //Play the lightning FX
-            lightningPS.Play();
+            //lightningPS.Play();
+            lightningPS.GetComponent<LightningBoltScript>().Trigger();
+
 
             //Kill the player.
             player.GetComponent<FighterStats>().vita = 0;
@@ -350,7 +353,7 @@ public class EventHandler : MonoBehaviour
         {
             //Obtain the player position and instantiate the lightning FX
             Vector3 position = new Vector3(player.transform.position.x, yCoordinate, player.transform.position.z);
-            ParticleSystem lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
+            GameObject lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
             float lightningRadius = 5f;
             //Activate signal so the player knows where the lightning bolt will land
 
@@ -358,12 +361,15 @@ public class EventHandler : MonoBehaviour
             yield return new WaitForSeconds(secondsToWait);
 
             //Play the lightning FX
-            lightningPS.Play();
+            //lightningPS.Play();
+            lightningPS.GetComponent<LightningBoltScript>().Trigger();
 
             //Check if the player is in the striked area
-            foreach(Collider c in Physics.OverlapSphere(position, lightningRadius)){
+            foreach (Collider c in Physics.OverlapSphere(position, lightningRadius))
+            {
                 //If the player is in the striked area, he will die
-                if(c.gameObject.tag.Equals("Player")) {
+                if (c.gameObject.tag.Equals("Player"))
+                {
                     player.GetComponent<FighterStats>().vita = 0;
                     player.GetComponent<CombatSystem>().CurrentState = CombatSystem.CharacterState.DEAD;
                 }

@@ -8,7 +8,7 @@ public class FightEventController : MonoBehaviour {
 
     public List<FightEvent> loadedEvents = new List<FightEvent>();
     [SerializeField] private float fightTimer;
-    [SerializeField] private bool fightActive = false;
+    [SerializeField] private bool fightTimerActive = false;
     [SerializeField] private string resourcesDirectory = "FightEvents";
 
     [SerializeField] private FighterStats playerStats, enemyStats;
@@ -107,74 +107,84 @@ public class FightEventController : MonoBehaviour {
     }
 
 
-    //Fa partire il timer nel caso di condizioni dettate dal tempo
-    public void StartFight() {
-        fightTimer = 0f;
-        fightActive = true;
-    }
 
-    //Stoppa il timer
-    public void StopFight() {
-        fightActive = false;
-    }
 
-    private void Update() {
+    private void Update()
+    {
 
-        if(!SceneManager.GetActiveScene().name.Equals("CombatScene")) 
+        if (!SceneManager.GetActiveScene().name.Equals("CombatScene"))
         {
             loading = false;
             return;
         }
 
         //If there are no events left
-        if(eventFinished)   return;
+        if (eventFinished) return;
 
-        if(actualEventIndex == loadedEvents.Count)
+        if (actualEventIndex == loadedEvents.Count)
         {
             eventFinished = true;
         }
 
         CheckEventFlow();
-        
+
 
         FightEvent fightEvent = null;
 
         //Serve solo un controllo x l'evento all'indice N
-        if(actualEventIndex < loadedEvents.Count)
+        if (actualEventIndex < loadedEvents.Count)
         {
             fightEvent = loadedEvents[actualEventIndex];
         }
 
-        if(fightEvent != null)
+        if (fightEvent != null)
         {
-            if (ShouldTrigger(fightEvent, false) && !isTriggered) {
+            if (TriggeredByTime(fightEvent) && !fightTimerActive)
+            {
+                fightTimer = 0;
+                fightTimerActive = true;
+            }
+            if (fightTimerActive)
+            {
+                fightTimer += Time.deltaTime;
+            }
+            if (ShouldTrigger(fightEvent, false) && !isTriggered)
+            {
                 isTriggered = true;
                 TriggerEvent(fightEvent);
                 // actualEventIndex++;
             }
         }
 
-        if(secondaryEnemy != null)
+        if (secondaryEnemy != null)
         {
-            if(secondaryEnemy.GetComponent<FighterStats>().vita <= 0)
+            if (secondaryEnemy.GetComponent<FighterStats>().vita <= 0)
             {
                 EventHandler.Instance.TakeBackMainEnemy();
             }
         }
+        
+        
 
         
         
     }
+    //Controlla che l'evento debba essere triggerato dal tempo
+    private bool TriggeredByTime(FightEvent fightEvent)
+    {
+        return fightEvent.triggerTime > 0;
+    }
 
     //Controlla le condizioni di trigger degli eventi. Per ora è impostato sul check di
     //Salute e tempo. Quando una delle due condizioni si verifica, allora il metodo ritorna true.
-    private bool ShouldTrigger(FightEvent fightEvent, bool checkOnPlayer) {
+    private bool ShouldTrigger(FightEvent fightEvent, bool checkOnPlayer)
+    {
 
         bool healthCondition = false;
-        if(checkOnPlayer)
-            healthCondition = fightEvent.triggerHealthPercentage >= 0f && CheckHealthCondition(playerStats,fightEvent.triggerHealthPercentage);
+        if (checkOnPlayer)
+            healthCondition = fightEvent.triggerHealthPercentage >= 0f && CheckHealthCondition(playerStats, fightEvent.triggerHealthPercentage);
         else
-            healthCondition = fightEvent.triggerHealthPercentage >= 0f && CheckHealthCondition(enemyStats,fightEvent.triggerHealthPercentage);
+            healthCondition = fightEvent.triggerHealthPercentage >= 0f && CheckHealthCondition(enemyStats, fightEvent.triggerHealthPercentage);
 
 
         bool timeCondition = fightEvent.triggerTime >= 0f && fightTimer >= fightEvent.triggerTime;

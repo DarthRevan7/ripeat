@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0863b4fd5306d904ebf9c269d3cc7a4e, type: 3}
   m_Name: -1 - Storm
   m_EditorClassIdentifier: 
-  eventName: 
-  eventType: 0
+  eventName: Storm
+  eventType: 3
   triggerHealthPercentage: -1
-  triggerTime: -1
+  triggerTime: 3
   targetReference: {fileID: 0}
   prefabToSpawn: {fileID: 0}
-  spawnPosition: {x: 0, y: 0, z: 0}
+  spawnPosition: {x: 2.35, y: 7.631652, z: -15.586596}
   boundaryDirection: 0
   firstEncounterAttack: 0
   ordinaryAttack: 0
   explosionEffect: {fileID: 0}
   explosionRadius: 0
   explosionPosition: {x: 0, y: 0, z: 0}
-  stormParticle: {fileID: 0}
-  lightningStrikeFX: {fileID: 0}
+  stormParticle: {fileID: 6498121403550107087, guid: 8403795323293f340af02e4fcb61b388, type: 3}
+  lightningStrikeFX: {fileID: 178460, guid: 920701633edd286408783ec388ad8662, type: 3}

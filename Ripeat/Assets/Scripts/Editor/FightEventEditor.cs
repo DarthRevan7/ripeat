@@ -67,7 +67,6 @@ public class FightEventEditor : Editor {
                 EditorGUILayout.PropertyField(targetReference);
                 EditorGUILayout.PropertyField(spawnPosition);
                 break;
-
             case FightEvent.FightEventType.Explosion:
                 EditorGUILayout.PropertyField(explosionEffect);
                 EditorGUILayout.PropertyField(explosionRadius);
@@ -77,6 +76,7 @@ public class FightEventEditor : Editor {
             case FightEvent.FightEventType.Storm:
                 EditorGUILayout.PropertyField(stormParticle);
                 EditorGUILayout.PropertyField(lightningStrikeFX);
+                EditorGUILayout.PropertyField(spawnPosition);
             break;
         }
 

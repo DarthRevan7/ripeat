@@ -43,8 +43,9 @@ using UnityEngine;
         public float explosionRadius;
         public Vector3 explosionPosition;
 
-        //Storm
-        public ParticleSystem stormParticle, lightningStrikeFX;
+    //Storm
+    public ParticleSystem stormParticle;
+    public GameObject lightningStrikeFX;
         
 
     }
