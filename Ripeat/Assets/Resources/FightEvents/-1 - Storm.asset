@@ -18,7 +18,7 @@ MonoBehaviour:
   triggerTime: 3
   targetReference: {fileID: 0}
   prefabToSpawn: {fileID: 0}
-  spawnPosition: {x: 2.35, y: 7.631652, z: -15.586596}
+  spawnPosition: {x: -3.65, y: 6.1, z: -6.82}
   boundaryDirection: 0
   firstEncounterAttack: 0
   ordinaryAttack: 0
