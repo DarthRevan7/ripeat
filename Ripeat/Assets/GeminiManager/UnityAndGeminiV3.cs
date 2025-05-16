@@ -113,18 +113,27 @@ public class UnityAndGeminiV3 : MonoBehaviour
         Debug.Log("Tutto ok");
         //conversationHistory += "PROMPT: " + testPrompt;
         if(isDead){
-            prompt += "SOLO se scrivo 001100 allora rispondimi subito HAI UN'ALTRA POSSIBILITA'.\nNon scrivere mai questo simbolo %. \n";
+            prompt = "NON SCRIVERE questo simbolo %. \n";
             prompt += geminiPrompt.getPrompt();
             prompt += "\nBackstory dell' anima: " + backStory + "\n";
             
-            conversationHistory += "PROMPT: " + prompt + "\n\nCronologia della conversazione:";
+            conversationHistory = "PROMPT: " + prompt + "\n\nCronologia della conversazione:";
             Debug.Log("Prompt preso: " + prompt);
             StartCoroutine(SendPromptRequestToGemini(prompt, 0));
-            feedback = "Giudica la risposta con un voto da 1 a 3 dove 3 vuol dire che l'anima è meritevole e 1 non meritevole. Scrivi solo il numero.\n";
+            feedback = "Giudica la risposta con un voto da 1 a 3 dove 1 vuol dire che l'anima è meritevole e 3 non meritevole. Scrivi solo il numero.\n";
         }
     
         if(inputField != null)
             inputField.onSubmit.AddListener((string text) => { SendChat(); });
+    }
+
+    void Update()
+    {
+        // Check if the Tab key is pressed
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            SceneManager.LoadScene("CombatScene");
+        }
     }
 
     public IEnumerator SendPromptRequestToGemini(string promptText, int type)
@@ -230,12 +239,19 @@ public class UnityAndGeminiV3 : MonoBehaviour
         counter++;
         ChangeClock(counter);
         Debug.Log("Counter: " + counter);
+
         if (counter >= 7)
         {
-            conversationHistory += "\nPROMPT: Ora decidi cosa fare ma non essere troppo cattivo: scrivi BASTA LA TUA VITA FINISCE QUI se pensi che non sia meritevole, oppure HAI UN'ALTRA POSSIBILITA' se pensi che sia meritevole! Solo una di queste frasi e nient'altro!!\n";
+            string finalRequest = conversationHistory + "\nPROMPT: Ora decidi cosa fare ma non essere troppo cattivo: scrivi BASTA LA TUA VITA FINISCE QUI se pensi che non sia meritevole, oppure HAI UN'ALTRA POSSIBILITA' se pensi che sia meritevole! Solo una di queste frasi e nient'altro!!\n";
+            StartCoroutine(SendChatRequestToGemini(finalRequest));
         }
-        StartCoroutine(SendChatRequestToGemini(conversationHistory));
+        else
+        {
+            StartCoroutine(SendChatRequestToGemini(conversationHistory));
+        }
+
         inputField.text = "";
+        
     }
 
     private IEnumerator SendChatRequestToGemini(string compositeMessage)
@@ -273,7 +289,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
 
                     Debug.Log("Feedback: " + feedback);
                     StartCoroutine(SendPromptRequestToGemini(feedback, 2));
-                    Debug.Log("Output non rilevante, nessuna azione eseguita.");
+
                     feedback = "Giudica la risposta con un voto da 1 a 3 dove 1 vuol dire che l'anima è meritevole e 3 non meritevole. Scrivi solo il numero.\n";
 
                     yield return StartCoroutine(AdjustTextBoxSize());
@@ -282,39 +298,40 @@ public class UnityAndGeminiV3 : MonoBehaviour
                     //uiText.text = reply
                     // Aggiorna la cronologia aggiungendo anche la risposta del modello
                     conversationHistory += "\n%" + reply + "%\n";
-                    
+
                     // Controllo sull'output di Gemini
-                    if(reply.Contains("BASTA LA TUA VITA FINISCE QUI")||reply.Contains("Basta la tua vita finisce qui"))
+                    if (reply.Contains("BASTA LA TUA VITA FINISCE QUI") || reply.Contains("Basta la tua vita finisce qui"))
                     {
-                        
+
                         PLBox.SetActive(false);
                         yield return new WaitForSeconds(8f);
                         ShowNegativeFinalImage();
                         yield return new WaitForSeconds(3f);
                         geminiPrompt.resetCicles();
                         SceneManager.LoadScene("Menu");
-                        
-                        
-                        
+
+
+
                     }
-                    else if(reply.Contains("HAI UN'ALTRA POSSIBILITA'")||reply.Contains("Hai un'altra possibilità"))
+                    else if (reply.Contains("HAI UN'ALTRA POSSIBILITA'") || reply.Contains("Hai un'altra possibilità"))
                     {
-                        
+
                         PLBox.SetActive(false);
                         yield return new WaitForSeconds(8f);
-                        if(FightEventController.globalEventIndex > 2)
+                        if (FightEventController.globalEventIndex > 3)
                         {
                             ShowPositiveFinalImage();
                             yield return new WaitForSeconds(3f);
                             geminiPrompt.resetCicles();
                             SceneManager.LoadScene("Menu");
                         }
-                        else 
+                        else
                         {
-                            SceneManager.LoadScene("CombatScene");  
+                            SceneManager.LoadScene("CombatScene");
                         }
-                        
+
                     }
+                
                     
                 }
                 else

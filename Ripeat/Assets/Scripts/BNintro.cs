@@ -35,7 +35,11 @@ public class BNintro : MonoBehaviour
     private IEnumerator Write1Coroutine()
     {
         typewriterEffect.Run(string1, write1);
-        yield return new WaitForSeconds(10f);
+        // Wait until user clicks (mouse button down or screen tap)
+        while (!Input.GetMouseButtonDown(0))
+        {
+            yield return null;
+        }
         SceneManager.LoadScene("NewIntro");
         
     }

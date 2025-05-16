@@ -1301,7 +1301,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f7c1240b7d6709d4197393f2c091054a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5995ce198aacb604091e571f02832f41, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1824,9 +1824,8 @@ MonoBehaviour:
     il mio posto.\u201D Spiegagli che ha superato il numero di ritorni, che ha imparato
     abbastanza, e che ora la Morte vuole essere sostituita, consapevolmente o no.
     Il tuo tono \xE8 grave, definitivo. Se lui insiste nel voler vivere\u2026 Se
-    chiede ancora \u201Cuna possibilit\xE0\u201D\u2026 Rispondigli cos\xEC: \u201CBASTA.
-    STAVOLTA SE VUOI QUALCOSA\u2026 PRENDITELA.\u201D\r\nNon scrivere messaggi troppo
-    lunghi, sii conciso.\r\n"
+    chiede ancora \u201Cuna possibilit\xE0\u201D\u2026 infuriati!!!\r\nNon scrivere
+    messaggi troppo lunghi, sii conciso.\r\n"
   promptBonus: "L\u2019uomo di prima torna di nuovo, ma \xE8 stato stupido, si \xE8
     fatto uccidere e non ha superato il nuovo stadio. Prendilo in giro e rincara
     la dose. sii pi\xF9 cattivo perch\xE8 \xE8 stato stupido.\r\n"
