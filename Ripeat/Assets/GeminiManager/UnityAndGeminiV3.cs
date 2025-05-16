@@ -73,6 +73,9 @@ public class UnityAndGeminiV3 : MonoBehaviour
     [SerializeField] private GameObject clock11;
     [SerializeField] private GameObject clock12;
     [SerializeField] private GameObject clock13;
+    [SerializeField] private GameObject death1;
+    [SerializeField] private GameObject death2;
+    [SerializeField] private GameObject death3;
 
     // Aggiungi questo campo nella parte iniziale della classe, ad esempio dopo i campi già esistenti
     public MenuScript menuScript;
@@ -95,6 +98,10 @@ public class UnityAndGeminiV3 : MonoBehaviour
         {
             ChangeClock(0);
         }
+        death2.SetActive(false);
+        death3.SetActive(false);
+        death1.SetActive(true);
+
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
         apiKey = jsonApiKey.key;
         typewriterEffect = GetComponent<TypewriterEffect>();
@@ -164,25 +171,29 @@ public class UnityAndGeminiV3 : MonoBehaviour
                             break;
                         case 2:
                             string text2 = response.candidates[0].content.parts[0].text;
-                            int intValue;
-                            int.TryParse(text2, out intValue);
-                            switch (intValue)
+                            if (text2.Contains("1"))
                             {
-                                case 1:
-                                    Debug.Log("Risposta 1");
-                                    
-                                    break;
-                                case 2:
-                                    Debug.Log("Risposta 2");
-                                    
-                                    break;
-                                case 3:
-                                    Debug.Log("Risposta 3");
-                                    
-                                    break;
-                                default:
-                                    Debug.Log("Risposta non valida: " + text2);
-                                    break;
+                                Debug.Log("Risposta 1");
+                                death2.SetActive(false);
+                                death3.SetActive(false);
+                                death1.SetActive(true);
+                            }
+                            else if (text2.Contains("2"))
+                            {
+                                Debug.Log("Risposta 2");
+                                death1.SetActive(false);
+                                death3.SetActive(false);
+                                death2.SetActive(true);
+                            }
+                            else if (text2.Contains("3"))
+                            {
+                                Debug.Log("Risposta 3");
+                                death1.SetActive(false);
+                                death2.SetActive(false);
+                                death3.SetActive(true);
+                            }
+                            else {
+                                Debug.Log("Risposta non valida: " + text2);
                             }
                             break;
                         default:
@@ -252,6 +263,12 @@ public class UnityAndGeminiV3 : MonoBehaviour
                     Debug.Log("Death Reply: " + reply);
                     uiText.text = reply;
                     uiText.color = new Color32(36, 36, 36, 255);
+
+                    Debug.Log("Feedback: " + feedback);
+                    StartCoroutine(SendPromptRequestToGemini(feedback, 2));
+                    Debug.Log("Output non rilevante, nessuna azione eseguita.");
+                    feedback = "Giudica la risposta con un voto da 1 a 3 dove 1 vuol dire che l'anima è meritevole e 3 non meritevole. Scrivi solo il numero.\n";
+
                     yield return StartCoroutine(AdjustTextBoxSize());
                     yield return RunTypingEffect(reply);
                     // Appena impostato il testo:
@@ -291,13 +308,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
                         }
                         
                     }
-                    else
-                    {
-                        Debug.Log("Feedback: " + feedback);
-                        StartCoroutine(SendPromptRequestToGemini(feedback, 2));
-                        Debug.Log("Output non rilevante, nessuna azione eseguita.");
-                        feedback = "Giudica la risposta con un voto da 1 a 3 dove 3 vuol dire che l'anima è meritevole e 1 non meritevole. Scrivi solo il numero.\n";
-                    }
+                    
                 }
                 else
                 {
