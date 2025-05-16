@@ -893,7 +893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b448c4914456f6348aa97f1d86d1ab1e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9153dc6a34002f14db5d2f4f1ba84779, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2309,6 +2309,9 @@ MonoBehaviour:
   clock11: {fileID: 0}
   clock12: {fileID: 0}
   clock13: {fileID: 0}
+  death1: {fileID: 0}
+  death2: {fileID: 0}
+  death3: {fileID: 0}
   menuScript: {fileID: 0}
 --- !u!114 &1202691647
 MonoBehaviour:
