@@ -320,9 +320,9 @@ public class EventHandler : MonoBehaviour
 
     IEnumerator StormHandler(FightEvent fightEvent)
     {
-
-        float yCoordinate = 40f;
         float secondsToWait = 7f;
+        Light lightningLight = GameObject.Find("LightningLight").GetComponent<Light>();
+        Debug.Log("Luce trovata!");
 
         //Wait for remaining time seconds
         while (remainingTime > 0)
@@ -350,24 +350,40 @@ public class EventHandler : MonoBehaviour
             //Badly injure the enemy
             mainEnemy.GetComponent<FighterStats>().vita = 10;
 
-
+            Debug.Log("Lightning Strike 1st Time!");
         }
         else
         {
             //Obtain the player position and instantiate the lightning FX
-            Vector3 position = new Vector3(player.transform.position.x, yCoordinate, player.transform.position.z);
+            Vector3 position = new Vector3(player.transform.position.x, fightEvent.spawnPosition.y, player.transform.position.z);
             ParticleSystem lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
             float lightningRadius = 5f;
             //Activate signal so the player knows where the lightning bolt will land
+            float timer = 0;
+            lightningLight.transform.position = new Vector3(player.transform.position.x, lightningLight.transform.position.y, player.transform.position.z);
+            
 
             //Wait for some seconds
-            yield return new WaitForSeconds(secondsToWait);
+            // yield return new WaitForSeconds(secondsToWait);
+            while (timer <= secondsToWait)
+            {
+                lightningLight.enabled = !lightningLight.enabled;
+
+                //Update time
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
 
             //Play the lightning FX
             lightningPS.Play();
+            lightningLight.enabled = true;
             //lightningPS.GetComponent<LightningBoltScript>().Trigger();
+            yield return new WaitForSeconds(0.3f);
+            lightningLight.enabled = false;
 
             //Check if the player is in the striked area
+            position.y = 0.5f;
             foreach (Collider c in Physics.OverlapSphere(position, lightningRadius))
             {
                 //If the player is in the striked area, he will die
@@ -378,8 +394,9 @@ public class EventHandler : MonoBehaviour
                 }
             }
             //Otherwise the strike will fall to the ground and the battle will continue.
+            Debug.Log("Lightning Strike N_th Time!");
         }
-        Debug.Log("Lightning Strike " + FightEventController.Instance.actualEventIndex.ToString());
+        
         
         if (FirstEncounter())
         {
