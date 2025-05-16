@@ -54,10 +54,10 @@ public class EventHandler : MonoBehaviour
 
         SceneManager.sceneLoaded += OnLoadScene;
     }
-    
+
     private void OnLoadScene(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if(SceneManager.GetActiveScene().name.Equals("CombatScene"))
+        if (SceneManager.GetActiveScene().name.Equals("CombatScene"))
         {
             entryPointColliders = new Dictionary<string, Collider>();
             GameObject colliderToAdd = GameObject.Find("Right");
@@ -73,6 +73,7 @@ public class EventHandler : MonoBehaviour
             mainEnemy = GameObject.FindGameObjectWithTag("Main Enemy");
             player = GameObject.FindGameObjectWithTag("Player");
         }
+        StopAllCoroutines();
     }
 
     public bool FirstEncounter()

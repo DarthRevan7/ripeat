@@ -100,6 +100,7 @@ public class FightEventController : MonoBehaviour {
             // LoadAllEvents();
         }
         loading = false;
+        StopAllCoroutines();
     }
 
     //Carica gli eventi dalla directory Resources/

@@ -1623,10 +1623,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1106678570}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
-      propertyPath: isDead
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: prompt
       value: "Sei la Morte, elegante, stanca e disillusa. Ti trovi nel tuo speakeasy,
         un bar fumoso e sospeso tra i mondi, immerso nella New Orleans del 1927.
@@ -1668,10 +1664,6 @@ PrefabInstance:
       propertyPath: clock13
       value: 
       objectReference: {fileID: 1617833020}
-    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
-      propertyPath: jsonApi
-      value: 
-      objectReference: {fileID: 4900000, guid: 264db6452b3382c419bc2f4399b65c12, type: 3}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: inputField
       value: 

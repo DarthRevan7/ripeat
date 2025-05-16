@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 152f5def3b025734aae02b936f196d20
   - enabled: 1
+    path: Assets/Scenes/BNwrite.unity
+    guid: 6c8f388098e69fb4c896e6154a5d4390
+  - enabled: 1
+    path: Assets/Scenes/NewIntro.unity
+    guid: a172a724889888640ac0929954c115e0
+  - enabled: 1
     path: Assets/Scenes/NewCombatScene.unity
     guid: 8e442795f713d534aa81306934ceef53
   - enabled: 1

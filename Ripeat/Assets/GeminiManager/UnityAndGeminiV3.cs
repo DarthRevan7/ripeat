@@ -98,9 +98,12 @@ public class UnityAndGeminiV3 : MonoBehaviour
         {
             ChangeClock(0);
         }
-        death2.SetActive(false);
-        death3.SetActive(false);
-        death1.SetActive(true);
+        if (death1 != null)
+        {
+            death2.SetActive(false);
+            death3.SetActive(false);
+            death1.SetActive(true);
+        }
 
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
         apiKey = jsonApiKey.key;
@@ -142,6 +145,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
 
             if (www.result != UnityWebRequest.Result.Success)
             {
+                Debug.LogError("Prompt Request Error: " + www.error + ", Response Code: " + www.responseCode);
                 Debug.LogError("Prompt Request Error: " + www.error);
             }
             else
@@ -158,8 +162,11 @@ public class UnityAndGeminiV3 : MonoBehaviour
                             Debug.Log("\nMorte: " + text0);
                             conversationHistory += "\n%" + text0 + "%\n";
                             yield return new WaitForSeconds(0.5f);
-                            uiText.text = text0;
-                            uiText.color = new Color32(36, 36, 36, 255);
+                            if (uiText != null)
+                            {
+                                uiText.text = text0;
+                                uiText.color = new Color32(36, 36, 36, 255);
+                            }
                             yield return StartCoroutine(AdjustTextBoxSize());
                             yield return RunTypingEffect(text0);
                             break;
@@ -379,19 +386,25 @@ public class UnityAndGeminiV3 : MonoBehaviour
     IEnumerator AdjustTextBoxSize()
     {
     yield return new WaitForEndOfFrame();
-    uiText.ForceMeshUpdate();
-    RectTransform rt = AIBox.GetComponent<RectTransform>();
-    rt.sizeDelta = new Vector2(rt.sizeDelta.x, uiText.preferredHeight+50);
-    Debug.Log("Box size adjusted with: " + uiText.preferredHeight);
+    if(uiText != null && AIBox != null) {
+        uiText.ForceMeshUpdate();
+        RectTransform rt = AIBox.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(rt.sizeDelta.x, uiText.preferredHeight+50);
+        Debug.Log("Box size adjusted with: " + uiText.preferredHeight);
+    }
+    
     }
     IEnumerator RunTypingEffect(string text)
     {
-        uiText.color = new Color32(255, 255, 255, 255);
-        typewriterEffect.Run(text, uiText);
-        while (typewriterEffect.IsRunning)
+        if (uiText != null)
         {
-            yield return null;
-        }    
+            uiText.color = new Color32(255, 255, 255, 255);
+            typewriterEffect.Run(text, uiText);
+            while (typewriterEffect.IsRunning)
+            {
+                yield return null;
+            }
+        }
     }
 
     private void ShowNegativeFinalImage()

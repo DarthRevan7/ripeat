@@ -44,7 +44,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78417bd5ae2625248a4a516c72971fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonApi: {fileID: 0}
+  jsonApi: {fileID: 4900000, guid: 264db6452b3382c419bc2f4399b65c12, type: 3}
   inputField: {fileID: 0}
   uiText: {fileID: 0}
-  prompt: 
+  AIBox: {fileID: 0}
+  PLBox: {fileID: 0}
+  testPrompt: 
+  isDead: 1
+  negativeFinalImage: {fileID: 0}
+  positiveFinalImage: {fileID: 0}
+  clock1: {fileID: 0}
+  clock2: {fileID: 0}
+  clock3: {fileID: 0}
+  clock4: {fileID: 0}
+  clock5: {fileID: 0}
+  clock6: {fileID: 0}
+  clock7: {fileID: 0}
+  clock8: {fileID: 0}
+  clock9: {fileID: 0}
+  clock10: {fileID: 0}
+  clock11: {fileID: 0}
+  clock12: {fileID: 0}
+  clock13: {fileID: 0}
+  death1: {fileID: 0}
+  death2: {fileID: 0}
+  death3: {fileID: 0}
+  menuScript: {fileID: 0}
