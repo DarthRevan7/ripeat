@@ -45,7 +45,7 @@ using UnityEngine;
 
     //Storm
     public ParticleSystem stormParticle;
-    public GameObject lightningStrikeFX;
+    public ParticleSystem lightningStrikeFX;
         
 
     }

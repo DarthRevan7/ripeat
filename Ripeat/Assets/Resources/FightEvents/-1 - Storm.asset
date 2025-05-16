@@ -26,4 +26,4 @@ MonoBehaviour:
   explosionRadius: 0
   explosionPosition: {x: 0, y: 0, z: 0}
   stormParticle: {fileID: 6498121403550107087, guid: 8403795323293f340af02e4fcb61b388, type: 3}
-  lightningStrikeFX: {fileID: 178460, guid: 920701633edd286408783ec388ad8662, type: 3}
+  lightningStrikeFX: {fileID: 3294252897374930237, guid: 6c1890393719bc34c9d630fb7e3fec5d, type: 3}

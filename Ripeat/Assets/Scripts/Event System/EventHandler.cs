@@ -318,26 +318,29 @@ public class EventHandler : MonoBehaviour
         StartCoroutine(StormHandler(fightEvent));
     }
 
-    IEnumerator StormHandler(FightEvent fightEvent) {
+    IEnumerator StormHandler(FightEvent fightEvent)
+    {
 
         float yCoordinate = 40f;
         float secondsToWait = 7f;
 
         //Wait for remaining time seconds
-        while(remainingTime > 0) {
+        while (remainingTime > 0)
+        {
             remainingTime -= Time.deltaTime;
             yield return null;
         }
-        
+
         //First time of lightning strike
-        if(FirstEncounter()) {
+        if (FirstEncounter())
+        {
             //Obtain the player position and instantiate the lightning FX
             Vector3 position = new Vector3(player.transform.position.x, fightEvent.spawnPosition.y, player.transform.position.z);
-            GameObject lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
+            ParticleSystem lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
 
             //Play the lightning FX
-            //lightningPS.Play();
-            lightningPS.GetComponent<LightningBoltScript>().Trigger();
+            lightningPS.Play();
+            //lightningPS.GetComponent<LightningBoltScript>().Trigger();
 
 
             //Kill the player.
@@ -353,7 +356,7 @@ public class EventHandler : MonoBehaviour
         {
             //Obtain the player position and instantiate the lightning FX
             Vector3 position = new Vector3(player.transform.position.x, yCoordinate, player.transform.position.z);
-            GameObject lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
+            ParticleSystem lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
             float lightningRadius = 5f;
             //Activate signal so the player knows where the lightning bolt will land
 
@@ -361,8 +364,8 @@ public class EventHandler : MonoBehaviour
             yield return new WaitForSeconds(secondsToWait);
 
             //Play the lightning FX
-            //lightningPS.Play();
-            lightningPS.GetComponent<LightningBoltScript>().Trigger();
+            lightningPS.Play();
+            //lightningPS.GetComponent<LightningBoltScript>().Trigger();
 
             //Check if the player is in the striked area
             foreach (Collider c in Physics.OverlapSphere(position, lightningRadius))
@@ -376,7 +379,16 @@ public class EventHandler : MonoBehaviour
             }
             //Otherwise the strike will fall to the ground and the battle will continue.
         }
-
-
+        Debug.Log("Lightning Strike " + FightEventController.Instance.actualEventIndex.ToString());
+        
+        if (FirstEncounter())
+        {
+            FightEventController.globalEventIndex++;
+            Debug.Log("GlobalEventIndex = " + FightEventController.globalEventIndex.ToString());
+            FightEventController.Instance.triggeredEventIndices.Add(FightEventController.Instance.actualEventIndex);
+        }
+        
+        FightEventController.Instance.isTriggered = false;
+        FightEventController.Instance.actualEventIndex++;
     }
 }

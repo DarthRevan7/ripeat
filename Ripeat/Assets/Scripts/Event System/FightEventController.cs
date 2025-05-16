@@ -78,7 +78,7 @@ public class FightEventController : MonoBehaviour {
 
     public void OnLoadScene(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if(scene.name.Equals("CombatScene"))
+        if (scene.name.Equals("CombatScene"))
         {
             //Index for current event system
             actualEventIndex = 0;
@@ -94,6 +94,8 @@ public class FightEventController : MonoBehaviour {
 
             isTriggered = false;
             eventFinished = false;
+
+            fightTimer = 0;
 
             // LoadAllEvents();
         }
