@@ -14,6 +14,7 @@ public class MenuScript : MonoBehaviour
     [SerializeField] private float fadeDuration = 2f;
 
     [SerializeField] private CharacterStats characterStats;
+    [SerializeField] private FighterStats enemyStats;
     [SerializeField] private bool fading = false;
     
     private GeminiPrompt geminiPrompt;
@@ -34,16 +35,27 @@ public class MenuScript : MonoBehaviour
 
         string sceneName = SceneManager.GetActiveScene().name;
 
-        if(sceneName.Equals("CombatScene") || sceneName.Equals("NewCombatScene") || sceneName.Equals("Menu") || sceneName.Equals("NewCombatScene_2FightersTest") || sceneName.Equals("DialogueWithAI") || sceneName.Equals("Elevator"))
+        if (sceneName.Equals("CombatScene") || sceneName.Equals("NewCombatScene") || sceneName.Equals("Menu") || sceneName.Equals("NewCombatScene_2FightersTest") || sceneName.Equals("DialogueWithAI") || sceneName.Equals("Elevator"))
         {
             StartCoroutine(FadeOut());
         }
 
         characterStats = GameObject.FindAnyObjectByType<CharacterStats>();
+
+        SceneManager.sceneLoaded += OnLoadScene;
+        
         
         // Time.timeScale = 1;
-        
-        
+
+
+    }
+
+    private void OnLoadScene(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        if (SceneManager.GetActiveScene().name.Equals("CombatScene"))
+        {
+            enemyStats = GameObject.FindGameObjectWithTag("Main Enemy").GetComponent<FighterStats>();
+        }
     }
 
     public void Stop()
@@ -53,11 +65,20 @@ public class MenuScript : MonoBehaviour
 
     void Update()
     {
-        if(characterStats != null)
+        if (characterStats != null)
         {
-            if(characterStats.isDead && !fading)
+            if (characterStats.isDead && !fading)
             {
                 fading = true;
+                StartCoroutine(FadeIn());
+            }
+        }
+
+        if (enemyStats != null)
+        {
+            if (enemyStats.isDead && !fading)
+            {
+                sceneToLoad = "FinalVideo";
                 StartCoroutine(FadeIn());
             }
         }
