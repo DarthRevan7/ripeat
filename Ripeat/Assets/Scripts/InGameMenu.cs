@@ -15,11 +15,13 @@ public class InGameMenu : MonoBehaviour
 
     [SerializeField] private InputActionAsset inputActions;
 
+    [SerializeField] private GameObject player, enemy, secondEnemy;
+
     void Awake()
     {
         escPanel = GameObject.Find("EscPanel");
-        escPanel.transform.Find("BackGameButton").GetComponent<Button>().onClick.AddListener( () => TriggerMenu() );
-        escPanel.transform.Find("BackMenuButton").GetComponent<Button>().onClick.AddListener( () => BackToMainMenu() );
+        escPanel.transform.Find("BackGameButton").GetComponent<Button>().onClick.AddListener(() => { Debug.Log("Menu triggerato"); TriggerMenu(); });
+        escPanel.transform.Find("BackMenuButton").GetComponent<Button>().onClick.AddListener(() => BackToMainMenu());
         escPanel.SetActive(false);
 
         eventSystem = EventSystem.current;
@@ -28,6 +30,16 @@ public class InGameMenu : MonoBehaviour
 
         inputActions.FindActionMap("Player").FindAction("Start").performed += MenuTrigger;
         enabled = true;
+
+
+        if (SceneManager.GetActiveScene().name.Equals("CombatScene"))
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            enemy = GameObject.FindGameObjectWithTag("Main Enemy");
+            secondEnemy = GameObject.FindGameObjectWithTag("Secondary Enemy");
+        }
+
+
     }
 
 
@@ -40,10 +52,12 @@ public class InGameMenu : MonoBehaviour
     public void MenuTrigger(InputAction.CallbackContext context)
     {
         TriggerMenu();
+        Debug.Log("Menu triggerato");
     }
 
     public void BackToMainMenu()
     {
+        Debug.Log("Menu triggerato");
         Time.timeScale = 1;
         SceneManager.LoadScene(menuSceneName);
     }
@@ -51,13 +65,28 @@ public class InGameMenu : MonoBehaviour
     public void TriggerMenu()
     {
         menuTriggered = !menuTriggered;
-        if(menuTriggered)
+        Debug.Log("Menu triggerato");
+        if (menuTriggered)
         {
-            Time.timeScale = 0;
+            // Time.timeScale = 0;
+            player.GetComponent<InputManager>().isScriptActive = false;
+            enemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
+            enemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
+            if (secondEnemy != null)
+            {
+                secondEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
+                secondEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
+            }
         }
         else
         {
-            Time.timeScale = 1;
+            // Time.timeScale = 1;
+            player.GetComponent<InputManager>().isScriptActive = true;
+            enemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
+            if (secondEnemy != null)
+            {
+                secondEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
+            }
         }
         escPanel.SetActive(menuTriggered);
 

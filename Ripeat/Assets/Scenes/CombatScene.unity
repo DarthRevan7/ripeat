@@ -10429,6 +10429,7 @@ MonoBehaviour:
   targetImage: {fileID: 3562987153163072735}
   fadeDuration: 2
   characterStats: {fileID: 0}
+  enemyStats: {fileID: 0}
   fading: 0
 --- !u!1 &1034781345239635384
 GameObject:
@@ -11116,6 +11117,9 @@ MonoBehaviour:
   escPanel: {fileID: 8630384240217158540}
   eventSystem: {fileID: 1733485448}
   inputActions: {fileID: -944628639613478452, guid: e57d84ca062c5b54e8d1952a0a0cc906, type: 3}
+  player: {fileID: 0}
+  enemy: {fileID: 0}
+  secondEnemy: {fileID: 0}
 --- !u!224 &3849109817368803389
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12273,7 +12277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12403,7 +12407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12593,9 +12597,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3824402369105330176}
         m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: TriggerMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13021,9 +13025,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5571298970478812070}
+      - m_Target: {fileID: 3824402369105330176}
         m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: BackToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
