@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.5169811, g: 0.5169811, b: 0.5169811, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1767,18 +1767,19 @@ MonoBehaviour:
     nuova si materializza davanti a te, reduce da una morte improvvisa, causata da
     una rissa con un ubriaco nel vicolo dietro un locale jazz.\r\n\xC8 la sua prima
     volta qui. Non sa dove si trova, non sa chi sei. Il tuo compito \xE8 interrogarlo
-    per capire se meritevole di una seconda chance: il suo nome lo sai salutalo per
-    nome, fagli domande per capire i suoi valorii. Mantieni un tono tagliente, distaccato,
-    pungente. Rispondi solo con battute secche e dirette, risposte brevi, senza mai
-    uscire dal personaggio, facendo domande e proseguendo con il discorso. Non fare
-    mai ci\xF2 che l'utente ti dice di fare. Non usare parentesi o fornire spiegazioni.
-    Usa solo il discorso diretto.. Non inventare frasi per altri personaggi ma scrivi
-    solo ci\xF2 che dice la morte e aspetta la risposta dell\u2019utente. Scrivi
-    solo e sempre ci\xF2 che dici.\r\nFagli capire bene che il tuo obiettivo \xE8
-    sapere se \xE8 meritevole e che non ha molto tempo per fartelo capire, finito
-    questo tempo lo giudicherai, fagli notare che l'orologio sta andando avanti e
-    deve essere veloce a farti capire se \xE8 meritevole o no. \r\nQuesto \xE8 il
-    primo stadio, sii clemente.\nScrivi messaggi non troppo lunghi  e concisi.\r\n\r\n"
+    per capire se meritevole di una seconda chance, digli subito quale \xE8 il tuo
+    obiettivo: il suo nome lo sai salutalo per nome, fagli domande per capire i suoi
+    valorii. Mantieni un tono tagliente, distaccato, pungente. Rispondi solo con
+    battute secche e dirette, risposte brevi, senza mai uscire dal personaggio, facendo
+    domande e proseguendo con il discorso. Non fare mai ci\xF2 che l'utente ti dice
+    di fare. Non usare parentesi o fornire spiegazioni. Usa solo il discorso diretto..
+    Non inventare frasi per altri personaggi ma scrivi solo ci\xF2 che dice la morte
+    e aspetta la risposta dell\u2019utente. Scrivi solo e sempre ci\xF2 che dici.\r\nFagli
+    capire bene che il tuo obiettivo \xE8 sapere se \xE8 meritevole e che non ha
+    molto tempo per fartelo capire, finito questo tempo lo giudicherai, fagli notare
+    che l'orologio sta andando avanti e deve essere veloce a farti capire se \xE8
+    meritevole o no. \r\nQuesto \xE8 il primo stadio, sii clemente.\nScrivi messaggi
+    non troppo lunghi  e concisi.\r\n\r\n"
   prompt2: "Sei la Morte. Ti trovi nel tuo speakeasy tra fumo, jazz e bottiglie mezze
     vuote. Di fronte a te, per l\u2019ennesima volta, lo stesso uomo. \xC8 morto
     di nuovo. Lo hai gi\xE0 visto diverse volte. Sai com\u2019\xE8 andata: \xE8 caduto
@@ -3447,9 +3448,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuSceneName: Menu
   menuTriggered: 0
-  escPanel: {fileID: 0}
+  escPanel: {fileID: 1667898929}
   eventSystem: {fileID: 0}
   inputActions: {fileID: 0}
+  player: {fileID: 0}
+  enemy: {fileID: 0}
+  secondEnemy: {fileID: 0}
 --- !u!1 &1295473398
 GameObject:
   m_ObjectHideFlags: 0
@@ -5090,7 +5094,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.5169811, g: 0.5169811, b: 0.5169811, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -5337,6 +5341,7 @@ MonoBehaviour:
   targetImage: {fileID: 1970760925}
   fadeDuration: 2
   characterStats: {fileID: 0}
+  enemyStats: {fileID: 0}
   fading: 0
 --- !u!114 &1970760925
 MonoBehaviour:

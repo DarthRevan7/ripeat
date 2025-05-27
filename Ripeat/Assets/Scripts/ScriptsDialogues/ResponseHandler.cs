@@ -28,7 +28,7 @@ public class ResponseHandler : MonoBehaviour
 
     public void Restart()
     {
-        history = "Utilizzando le parole scelte dal giocatore, descrivi brevemente un inizio di combattimento tra un uomo al bar e un'altra persona. Utilizza le parole che il giocatore ha scelto per capire la sua indole. Stampa solo la breve descrizione dando del tu all'uomo al barista senza niente altro.\n"; // Inizializza la storia delle risposte
+        history = "Utilizzando le parole scelte dal giocatore, descrivi brevemente un inizio di combattimento tra un uomo al bar e un'altra persona casuale. Il contesto è 'america anni 20'. Utilizza le parole che il giocatore ha scelto per capire la sua indole. Stampa solo la breve descrizione spiegando cosa succede nel bar senza niente altro.\n"; // Inizializza la storia delle risposte
     }
 
     public void AddResponseEvents(ResponseEvent[] responseEvents)

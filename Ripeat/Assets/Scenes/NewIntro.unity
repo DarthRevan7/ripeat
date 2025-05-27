@@ -1744,8 +1744,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 149, y: 407.75046}
-  m_SizeDelta: {x: 362.7642, y: 148.2496}
+  m_AnchoredPosition: {x: -867, y: 411}
+  m_SizeDelta: {x: 338.8696, y: 148.2496}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &1143751206
 GameObject:
@@ -2275,6 +2275,9 @@ MonoBehaviour:
   escPanel: {fileID: 0}
   eventSystem: {fileID: 0}
   inputActions: {fileID: 0}
+  player: {fileID: 0}
+  enemy: {fileID: 0}
+  secondEnemy: {fileID: 0}
 --- !u!114 &1202691646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3750,7 +3753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2116976043
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3782,10 +3785,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5631b7d3481224a829c3bfb6556d0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: NewCombatScene
+  sceneToLoad: CombatScene
   targetImage: {fileID: 2116976045}
   fadeDuration: 2
   characterStats: {fileID: 0}
+  enemyStats: {fileID: 0}
   fading: 0
 --- !u!114 &2116976045
 MonoBehaviour:

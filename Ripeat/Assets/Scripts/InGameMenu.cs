@@ -31,7 +31,6 @@ public class InGameMenu : MonoBehaviour
         inputActions.FindActionMap("Player").FindAction("Start").performed += MenuTrigger;
         enabled = true;
 
-
         if (SceneManager.GetActiveScene().name.Equals("CombatScene"))
         {
             player = GameObject.FindGameObjectWithTag("Player");
@@ -68,24 +67,30 @@ public class InGameMenu : MonoBehaviour
         Debug.Log("Menu triggerato");
         if (menuTriggered)
         {
-            // Time.timeScale = 0;
-            player.GetComponent<InputManager>().isScriptActive = false;
-            enemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
-            enemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
-            if (secondEnemy != null)
+            Time.timeScale = 0;
+            if (SceneManager.GetActiveScene().name.Equals("CombatScene"))
             {
-                secondEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
-                secondEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
+                player.GetComponent<InputManager>().isScriptActive = false;
+                enemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
+                enemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
+                if (secondEnemy != null)
+                {
+                    secondEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
+                    secondEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
+                }
             }
         }
         else
-        {
-            // Time.timeScale = 1;
-            player.GetComponent<InputManager>().isScriptActive = true;
-            enemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
-            if (secondEnemy != null)
             {
-                secondEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
+            Time.timeScale = 1;
+            if (SceneManager.GetActiveScene().name.Equals("CombatScene"))
+            {
+                player.GetComponent<InputManager>().isScriptActive = true;
+                enemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
+                if (secondEnemy != null)
+                {
+                    secondEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
+                }
             }
         }
         escPanel.SetActive(menuTriggered);
