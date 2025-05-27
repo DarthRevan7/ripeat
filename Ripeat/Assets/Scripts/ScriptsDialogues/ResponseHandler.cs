@@ -16,7 +16,7 @@ public class ResponseHandler : MonoBehaviour
     private ScoreManager scoreManager; // Riferimento allo ScoreManager
     private UnityAndGeminiV3 unityAndGeminiV3; // Riferimento a UnityAndGeminiV3
 
-    public static string history = "Utilizzando le parole scelte dal giocatore, descrivi brevemente un inizio di combattimento tra un uomo al bar e un'altra persona. Utilizza le parole che il giocatore ha scelto per capire la sua indole. Stampa solo la breve descrizione dando del tu all'uomo al barista senza niente altro.\n "; // Storia delle risposte selezionate
+    public static string history = "Utilizzando le parole scelte dal giocatore, descrivi brevemente un inizio di combattimento tra un uomo al bar e un'altra persona casuale, descrivala parlando all'uomo. Il contesto è 'america anni 20'. Utilizza le parole che il giocatore ha scelto per capire la sua indole. Stampa solo la breve descrizione spiegando cosa succede nel bar senza niente altro.\n"; // Storia delle risposte
 
     private void Start()
     {
