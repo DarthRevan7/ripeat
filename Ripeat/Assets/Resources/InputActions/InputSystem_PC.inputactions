@@ -213,7 +213,7 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "Press",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
+                    "groups": "",
                     "action": "Punch",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -222,6 +222,17 @@
                     "name": "",
                     "id": "ec45e9ea-8860-4fbd-8395-2b7c56333038",
                     "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Punch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4e3c399-0eeb-4483-8d54-89fdd9233179",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -279,7 +290,7 @@
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
+                    "groups": "",
                     "action": "Kick",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -288,6 +299,17 @@
                     "name": "",
                     "id": "12be8f71-9c5b-41ab-846d-34df55e04489",
                     "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Kick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dcb4ddcc-792c-4eae-84e3-e33f3abfaacc",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",

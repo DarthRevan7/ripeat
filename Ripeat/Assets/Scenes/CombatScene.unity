@@ -10504,6 +10504,10 @@ PrefabInstance:
       propertyPath: blockAnimationName
       value: New Block
       objectReference: {fileID: 0}
+    - target: {fileID: 5302531934551656947, guid: c688de9c39b13714a87e2cad27dd821b, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6130528355364702734, guid: c688de9c39b13714a87e2cad27dd821b, type: 3}
       propertyPath: player
       value: 
@@ -11344,6 +11348,10 @@ PrefabInstance:
     - target: {fileID: 5054525182709391387, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082268460191106341, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5280674016461000275, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
       propertyPath: m_Layer

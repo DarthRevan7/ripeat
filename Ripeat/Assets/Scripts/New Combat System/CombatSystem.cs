@@ -104,7 +104,7 @@ public class CombatSystem : MonoBehaviour
                     // While the block button is held, freeze the animation
                     if (blockHeld)
                     {
-                        animator.speed = 0;
+                        animator.speed = 0.001f;
                     }
                     else
                     {

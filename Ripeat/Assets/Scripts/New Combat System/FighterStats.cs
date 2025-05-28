@@ -18,7 +18,7 @@ public class FighterStats : MonoBehaviour
     [SerializeField] private int hitCount = 0;
 
     private bool hitted = false;
-   
+    
     
     public void Hit()
     {
