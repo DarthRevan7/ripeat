@@ -91,6 +91,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
     public static string backStory = "";
     
     private int counter = 1;
+    private int sum = 0;
 
     void Start()
     {
@@ -113,14 +114,14 @@ public class UnityAndGeminiV3 : MonoBehaviour
         Debug.Log("Tutto ok");
         //conversationHistory += "PROMPT: " + testPrompt;
         if(isDead){
-            prompt = "NON SCRIVERE questo simbolo %. \n";
+            prompt = "NON SCRIVERE MAI questo simbolo %. \n";
             prompt += geminiPrompt.getPrompt();
             prompt += "\nBackstory dell' anima: " + backStory + "\n";
             
             conversationHistory = "PROMPT: " + prompt + "\n\nCronologia della conversazione:";
             Debug.Log("Prompt preso: " + prompt);
             StartCoroutine(SendPromptRequestToGemini(prompt, 0));
-            feedback = "Giudica la risposta con un voto da 1 a 3 dove 1 vuol dire che l'anima è meritevole e 3 non meritevole. Scrivi solo il numero.\n";
+            feedback = "Tu sei la morte. Giudica la risposta con un voto da 1 a 3 dove 1 vuol dire che l'anima è meritevole e 3 non meritevole. Scrivi solo il numero.\n";
         }
     
         if(inputField != null)
@@ -187,6 +188,9 @@ public class UnityAndGeminiV3 : MonoBehaviour
                             break;
                         case 2:
                             string text2 = response.candidates[0].content.parts[0].text;
+                            int n = int.Parse(text2);
+                            sum += n;
+                            Debug.Log("Sum: " + sum);
                             if (text2.Contains("1"))
                             {
                                 Debug.Log("Risposta 1");
@@ -208,7 +212,8 @@ public class UnityAndGeminiV3 : MonoBehaviour
                                 death2.SetActive(false);
                                 death3.SetActive(true);
                             }
-                            else {
+                            else
+                            {
                                 Debug.Log("Risposta non valida: " + text2);
                             }
                             break;
@@ -242,7 +247,15 @@ public class UnityAndGeminiV3 : MonoBehaviour
 
         if (counter >= 7)
         {
-            string finalRequest = conversationHistory + "\nPROMPT: Ora decidi cosa fare ma non essere troppo cattivo: scrivi BASTA LA TUA VITA FINISCE QUI se pensi che non sia meritevole, oppure HAI UN'ALTRA POSSIBILITA' se pensi che sia meritevole! Solo una di queste frasi e nient'altro!!\n";
+            string finalRequest = "";
+            if (sum < 15)
+            {
+                finalRequest = "\nPROMPT: Ora scrivi HAI UN'ALTRA POSSIBILITA'\n";
+            }
+            else
+            {
+                finalRequest = "\nPROMPT: Ora scrivi NON AVRAI ALTRE POSSIBILITA'!\n";
+            }
             StartCoroutine(SendChatRequestToGemini(finalRequest));
         }
         else
@@ -313,7 +326,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
 
 
                     }
-                    else if (reply.Contains("HAI UN'ALTRA POSSIBILITA'") || reply.Contains("Hai un'altra possibilità"))
+                    else if (reply.Contains("NON AVRAI ALTRE POSSIBILITA'") || reply.Contains("non avrai altre possibilità"))
                     {
 
                         PLBox.SetActive(false);
