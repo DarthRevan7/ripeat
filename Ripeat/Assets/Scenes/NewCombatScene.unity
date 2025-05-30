@@ -4551,6 +4551,7 @@ MonoBehaviour:
   targetImage: {fileID: 0}
   fadeDuration: 2
   characterStats: {fileID: 0}
+  enemyStats: {fileID: 0}
   fading: 0
 --- !u!4 &899930250504762543
 Transform:
@@ -7231,6 +7232,9 @@ MonoBehaviour:
   escPanel: {fileID: 0}
   eventSystem: {fileID: 0}
   inputActions: {fileID: -944628639613478452, guid: e57d84ca062c5b54e8d1952a0a0cc906, type: 3}
+  player: {fileID: 0}
+  enemy: {fileID: 0}
+  secondEnemy: {fileID: 0}
 --- !u!95 &3845434425282578247
 Animator:
   serializedVersion: 7
@@ -9398,8 +9402,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Torna al menu'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4db5f3379302a234d806b5d6b9971b25, type: 2}
-  m_sharedMaterial: {fileID: 4719645272172047536, guid: 4db5f3379302a234d806b5d6b9971b25, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 00d5e53d4c9cdf148bacf952d2ebb392, type: 2}
+  m_sharedMaterial: {fileID: 4874348941259099112, guid: 00d5e53d4c9cdf148bacf952d2ebb392, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9897,8 +9901,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Torna al gioco
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4db5f3379302a234d806b5d6b9971b25, type: 2}
-  m_sharedMaterial: {fileID: 4719645272172047536, guid: 4db5f3379302a234d806b5d6b9971b25, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 00d5e53d4c9cdf148bacf952d2ebb392, type: 2}
+  m_sharedMaterial: {fileID: 4874348941259099112, guid: 00d5e53d4c9cdf148bacf952d2ebb392, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
