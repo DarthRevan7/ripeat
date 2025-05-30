@@ -43,9 +43,36 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Music.bank
   Name: Desktop/Music
   StudioPath: bank:/Music
-  lastModified: 638812331473361814
+  lastModified: 638842278361272162
   FileSizes: []
   Exists: 1
+--- !u!114 &-8022614515116774627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Drums/drums full track
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Drums/drums full track
+  Guid:
+    Data1: -896713942
+    Data2: 1174724495
+    Data3: 1591767221
+    Data4: 199980768
+  Banks:
+  - {fileID: -8098549840540284915}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 234057
 --- !u!114 &-6285688937958315654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,9 +115,37 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Ambience.bank
   Name: Desktop/Ambience
   StudioPath: bank:/Ambience
-  lastModified: 638805713362880360
+  lastModified: 638842278360164760
   FileSizes: []
   Exists: 1
+--- !u!114 &-5645881528575274427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambient/CityTone
+  m_EditorClassIdentifier: 
+  Path: event:/Ambient/CityTone
+  Guid:
+    Data1: -397860437
+    Data2: 1334867598
+    Data3: 519412887
+    Data4: 215804123
+  Banks:
+  - {fileID: -5688160595051112152}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 7427092277285405922}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 223708
 --- !u!114 &-5408040338459372104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,9 +261,37 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Sfx.bank
   Name: Desktop/Sfx
   StudioPath: bank:/Sfx
-  lastModified: 638812331473372052
+  lastModified: 638842278361543733
   FileSizes: []
   Exists: 1
+--- !u!114 &-2094028478945778181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerFootsteps
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerFootsteps
+  Guid:
+    Data1: 1020387519
+    Data2: 1246091433
+    Data3: 916312745
+    Data4: 1311324220
+  Banks:
+  - {fileID: 5168978584546076334}
+  - {fileID: -2125630020812130836}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 280
 --- !u!114 &-1389405112415601317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +319,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 482832
+--- !u!114 &-952406170023982669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Drums/Lev 2
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Drums/Lev 2
+  Guid:
+    Data1: -217874478
+    Data2: 1328485516
+    Data3: 1471152789
+    Data4: -1605399520
+  Banks:
+  - {fileID: -8098549840540284915}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 12000
 --- !u!114 &-900895688546567571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,18 +395,23 @@ MonoBehaviour:
   - {fileID: -4051592866858303844}
   - {fileID: -900895688546567571}
   - {fileID: 8203353574870038977}
-  - {fileID: 1936410334541228855}
   - {fileID: 2565080055132758501}
   - {fileID: -4883919643289436700}
   - {fileID: -1389405112415601317}
-  - {fileID: 958378856693227636}
+  - {fileID: -5645881528575274427}
+  - {fileID: -2094028478945778181}
+  - {fileID: 8829013008987480699}
+  - {fileID: -8022614515116774627}
+  - {fileID: 4242073472547703838}
+  - {fileID: 8097592245483022220}
+  - {fileID: -952406170023982669}
   EditorParameters:
   - {fileID: 1872025994861259128}
   MasterBanks:
   - {fileID: 5168978584546076334}
   StringsBanks:
   - {fileID: 2006080830259155267}
-  cacheTime: 638812331473372052
+  cacheTime: 638842278361543733
   cacheVersion: 131846
 --- !u!114 &593703732779836463
 MonoBehaviour:
@@ -326,33 +441,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 280
---- !u!114 &958378856693227636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Sfx/PleyerFootsteps3d
-  m_EditorClassIdentifier: 
-  Path: event:/Sfx/PleyerFootsteps3d
-  Guid:
-    Data1: -1176191407
-    Data2: 1189972924
-    Data3: -547704427
-    Data4: 1884837461
-  Banks:
-  - {fileID: -2125630020812130836}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 437
 --- !u!114 &1778109501272867561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,34 +487,6 @@ MonoBehaviour:
   - Third time
   - Fourth time
   Exists: 1
---- !u!114 &1936410334541228855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Sfx/PlayerFootsteps
-  m_EditorClassIdentifier: 
-  Path: event:/Sfx/PlayerFootsteps
-  Guid:
-    Data1: 1020387519
-    Data2: 1246091433
-    Data3: 916312745
-    Data4: 1311324220
-  Banks:
-  - {fileID: 5168978584546076334}
-  - {fileID: -2125630020812130836}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 280
 --- !u!114 &2006080830259155267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,10 +502,10 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.strings.bank
   Name: Desktop/Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638812331472853519
+  lastModified: 638842278360463317
   FileSizes:
   - Name: 
-    Value: 1404
+    Value: 1650
   Exists: 1
 --- !u!114 &2565080055132758501
 MonoBehaviour:
@@ -493,6 +553,33 @@ MonoBehaviour:
   lastModified: 638812277343977654
   FileSizes: []
   Exists: 1
+--- !u!114 &4242073472547703838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Drums/Lev 4
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Drums/Lev 4
+  Guid:
+    Data1: -1056346512
+    Data2: 1209199490
+    Data3: 1379053975
+    Data4: -611867963
+  Banks:
+  - {fileID: -8098549840540284915}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 12000
 --- !u!114 &5168978584546076334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,7 +595,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.bank
   Name: Desktop/Master
   StudioPath: bank:/Master
-  lastModified: 638812331472841947
+  lastModified: 638842278360448264
   FileSizes: []
   Exists: 1
 --- !u!114 &6200740755015113143
@@ -538,6 +625,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &7427092277285405922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/CityTone/volume
+  m_EditorClassIdentifier: 
+  Name: volume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3190272680
+    data2: 1799389958
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &7442188900631540466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,6 +724,33 @@ MonoBehaviour:
   - Third time
   - Fourth time
   Exists: 1
+--- !u!114 &8097592245483022220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Drums/Lev 3
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Drums/Lev 3
+  Guid:
+    Data1: -894370429
+    Data2: 1236094153
+    Data3: 1032623791
+    Data4: 768025850
+  Banks:
+  - {fileID: -8098549840540284915}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 12000
 --- !u!114 &8203353574870038977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,6 +833,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &8829013008987480699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/EnemyFootsteps
+  m_EditorClassIdentifier: 
+  Path: event:/EnemyFootsteps
+  Guid:
+    Data1: 1118979050
+    Data2: 1163332082
+    Data3: 854549901
+    Data4: 1324253625
+  Banks:
+  - {fileID: 5168978584546076334}
+  - {fileID: -2125630020812130836}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 280
 --- !u!114 &8868460930833443903
 MonoBehaviour:
   m_ObjectHideFlags: 0

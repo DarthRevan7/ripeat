@@ -628,7 +628,7 @@ MonoBehaviour:
       Data2: 1132022400
       Data3: -2063418235
       Data4: 617878720
-    Path: event:/New Event 2
+    Path: event:/cupo
   Event: 
   EventPlayTrigger: 1
   EventStopTrigger: 0
