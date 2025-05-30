@@ -424,7 +424,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 26}
+  m_AnchoredPosition: {x: -0.000061035156, y: -49.11}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &145225035
@@ -2517,6 +2517,7 @@ MonoBehaviour:
   responseBox: {fileID: 1095528258}
   responseButtonTemplate: {fileID: 155316770}
   responseContainer: {fileID: 1700165379}
+  maxResponseBoxHeight: 640
 --- !u!114 &1202691643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2602,6 +2603,20 @@ MonoBehaviour:
   clock11: {fileID: 0}
   clock12: {fileID: 0}
   clock13: {fileID: 0}
+  clockLight1: {fileID: 0}
+  clockLight2: {fileID: 0}
+  clockLight3: {fileID: 0}
+  clockLight4: {fileID: 0}
+  clockLight5: {fileID: 0}
+  clockLight6: {fileID: 0}
+  clockLight7: {fileID: 0}
+  clockLight8: {fileID: 0}
+  clockLight9: {fileID: 0}
+  clockLight10: {fileID: 0}
+  clockLight11: {fileID: 0}
+  clockLight12: {fileID: 0}
+  clockLight13: {fileID: 0}
+  clockLight14: {fileID: 0}
   death1: {fileID: 0}
   death2: {fileID: 0}
   death3: {fileID: 0}
@@ -3970,7 +3985,7 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 00d5e53d4c9cdf148bacf952d2ebb392, type: 2}
-  m_sharedMaterial: {fileID: 4719645272172047536, guid: 4db5f3379302a234d806b5d6b9971b25, type: 2}
+  m_sharedMaterial: {fileID: 4874348941259099112, guid: 00d5e53d4c9cdf148bacf952d2ebb392, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
