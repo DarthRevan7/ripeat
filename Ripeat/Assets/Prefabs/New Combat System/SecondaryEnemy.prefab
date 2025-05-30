@@ -1497,7 +1497,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 54aae92468d8f2d4281d00772acd69c5, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -1588,6 +1588,7 @@ MonoBehaviour:
   isBlocked: 0
   pauseBlock: 0
   blockHeld: 0
+  enemy: 0
 --- !u!114 &-8485659198762577731
 MonoBehaviour:
   m_ObjectHideFlags: 0

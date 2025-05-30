@@ -27,13 +27,14 @@ public class InputManager : MonoBehaviour
     //Riferimento al Character Stats
     [SerializeField] private FighterStats fighterStats;
     public bool isScriptActive = true;
+    [SerializeField] private FightingSystem fightingSystem;
 
     
 
     public CombatSystem.CharacterState HandleCharacterState()
     {
         bool punch, kick, block;
-        
+
         //Ricavo i booleani che indicano se il pulsante è stato premuto
         punch = inputAction.FindActionMap("Player").FindAction("Punch").IsPressed();
         kick = inputAction.FindActionMap("Player").FindAction("Kick").IsPressed();
@@ -42,17 +43,17 @@ public class InputManager : MonoBehaviour
         combatSystem.isBlocked = block;
 
         //In ordine, faccio ritornare lo stato del character
-        if(block)
+        if (block)
         {
             return CombatSystem.CharacterState.BLOCK;
         }
-        if(punch)
+        if (punch)
         {
             combatSystem.blockHeld = false;
             combatSystem.animator.speed = 1;
             return CombatSystem.CharacterState.PUNCH;
         }
-        if(kick)
+        if (kick)
         {
             combatSystem.blockHeld = false;
             combatSystem.animator.speed = 1;
@@ -92,7 +93,7 @@ public class InputManager : MonoBehaviour
         isScriptActive = true;
 
         //Carico da Resources le input action in base al booleano
-        if(inputModePC)
+        if (inputModePC)
         {
             inputAction = Resources.Load<InputActionAsset>(inputPathPC);
         }
@@ -110,6 +111,8 @@ public class InputManager : MonoBehaviour
 
         fighterStats = GetComponent<FighterStats>();
 
+        fightingSystem = GetComponent<FightingSystem>();
+
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -121,15 +124,20 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isScriptActive) return;
-            
-        if(fighterStats.isDead)   return;
+        if (!isScriptActive) return;
+
+        if (fighterStats.isDead) return;
 
         //Passo al Combat System l'input tramite property
         combatSystem.MovementInput = BuildMovementVector();
 
         //Mi occupo di settare lo stato del personaggio tramite la property
         combatSystem.CurrentState = HandleCharacterState();
+
+        if (fightingSystem != null)
+        {
+            fightingSystem.MovementInput = BuildMovementVector();
+        }
     }
 
 

@@ -1,7 +1,8 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 //Gestisce le animazioni e gli stati del personaggio.
-public class CombatSystem : MonoBehaviour
+public class FightingSystem : MonoBehaviour
 {
 
     //Enum x gli stati in cui si trova il personaggio
@@ -42,9 +43,6 @@ public class CombatSystem : MonoBehaviour
 
     //Riferimento all'Animator del personaggio
     [SerializeField] public Animator animator;
-    [SerializeField] private string punchAnimationName, kickAnimationName, blockAnimationName;
-    [SerializeField] private string movingParameterName;
-    [SerializeField] private string deathAnimationName;
 
     //Sistema per evitare che il personaggio si muova mentre attacca
     public bool canMove = true, isDead = false, isBlocked = false, pauseBlock = false;
@@ -52,11 +50,8 @@ public class CombatSystem : MonoBehaviour
 
     private MenuScript menuScript;
     private InputManager inputManager;
-
-    [SerializeField] private bool enemy = false;
     
     
-
     public void ToggleMove()
     {
         canMove = true;
@@ -75,7 +70,7 @@ public class CombatSystem : MonoBehaviour
         {
             if(!isDead)
             {
-                animator.Play(deathAnimationName);
+                animator.SetInteger("State", 5);
                 isDead = true;
             }
             return;
@@ -90,33 +85,34 @@ public class CombatSystem : MonoBehaviour
             switch(currentState)
             {
                 case CharacterState.PUNCH:
-                    animator.Play(punchAnimationName);
+                    animator.SetInteger("State", 3);
                     // Debug.Log("Punch animation played");
                 break;
                 case CharacterState.KICK:
-                    animator.Play(kickAnimationName);
+                    animator.SetInteger("State", 2);
                 break;
                 case CharacterState.BLOCK:
                     isBlocked = true;
+                    animator.SetInteger("State", 4);
                     // Start the block animation at its halfway point if it's not already playing
-                    if (!animator.GetCurrentAnimatorStateInfo(0).IsName(blockAnimationName))
-                    {
-                        animator.Play(blockAnimationName, 0, 0.5f);
-                    }
-                    // While the block button is held, freeze the animation
-                    if (blockHeld)
-                    {
-                        animator.speed = 0.001f;
-                    }
-                    else
-                    {
-                        // If the block button is clicked again (blockHeld toggled externally to false),
-                        // resume the animation and finish it to end the block state.
-                        animator.speed = 1;
-                        animator.Play(blockAnimationName, 0, 1f);
-                        currentState = CharacterState.IDLE;
-                    }
-                break;
+                    // if (!animator.GetCurrentAnimatorStateInfo(0).IsName(blockAnimationName))
+                    // {
+                    //     animator.Play(blockAnimationName, 0, 0.5f);
+                    // }
+                    // // While the block button is held, freeze the animation
+                    // if (blockHeld)
+                    // {
+                    //     animator.speed = 0.001f;
+                    // }
+                    // else
+                    // {
+                    //     // If the block button is clicked again (blockHeld toggled externally to false),
+                    //     // resume the animation and finish it to end the block state.
+                    //     animator.speed = 1;
+                    //     animator.Play(blockAnimationName, 0, 1f);
+                    //     currentState = CharacterState.IDLE;
+                    // }
+                    break;
                 default:
                     Debug.Log("Default in switch updateanimationstate");
                 break;
@@ -126,12 +122,12 @@ public class CombatSystem : MonoBehaviour
         else if(movementInput.magnitude > 0.2f && canMove)
         {
             currentState = CharacterState.MOVING;
-            animator.SetBool(movingParameterName, true);
+            animator.SetInteger("State", 1);
         }
         else if(movementInput.magnitude <= 0.2f)
         {
             currentState = CharacterState.IDLE;
-            animator.SetBool(movingParameterName, false);
+            animator.SetInteger("State", 0);
         }
         
     }
@@ -146,18 +142,5 @@ public class CombatSystem : MonoBehaviour
     void Update()
     {
         UpdateAnimationState();
-        // if (enemy)
-        // {
-        //     transform.Translate(movementInput * Time.deltaTime);
-        // }
-
-        // if (GetComponent<AI.MainEnemyAI>() != null)
-        // {
-        //     if (!GetComponent<AI.MainEnemyAI>().isScriptActive)
-        //     {
-        //         transform.forward = Vector3.right;
-        //         transform.Translate(movementInput * 3.5f * Time.deltaTime, Space.World);
-        //     }
-        // }
     }
 }

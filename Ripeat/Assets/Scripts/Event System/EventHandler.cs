@@ -175,7 +175,9 @@ public class EventHandler : MonoBehaviour
         while(mainEnemy.transform.position.x >= comingBackCoord)
         {
             mainEnemy.GetComponent<CombatSystem>().canMove = true;
-            mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
+            // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
+            mainEnemy.transform.forward = Vector3.left;
+            mainEnemy.transform.Translate(Vector3.left * 3.5f * Time.deltaTime, Space.World);
             yield return null;
         }
 
@@ -243,11 +245,12 @@ public class EventHandler : MonoBehaviour
         mainEnemy.GetComponent<CombatSystem>().enabled = true;
 
         
-
+        //Allontana il main enemy
         while(mainEnemy.transform.position.x <= mainEnemyXCoord)
         {
             mainEnemy.GetComponent<CombatSystem>().canMove = true;
-            mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
+            mainEnemy.transform.forward = Vector3.right;
+            mainEnemy.transform.Translate(Vector3.right * 3.5f * Time.deltaTime, Space.World);
             yield return null;
         }
 
@@ -263,7 +266,12 @@ public class EventHandler : MonoBehaviour
         while(Vector3.Distance(player.transform.position, newEnemy.transform.position) >= 2.0f)
         {
             newEnemy.GetComponent<CombatSystem>().canMove = true;
+            newEnemy.GetComponent<CombatSystem>().CurrentState = CombatSystem.CharacterState.MOVING;
             newEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
+            newEnemy.transform.forward = Vector3.left;
+            newEnemy.transform.Translate(Vector3.left * 3.5f * Time.deltaTime, Space.World);
+
+            // newEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
             // newEnemy.GetComponent<LookAtPlayer>().enabled = true;
             yield return null;
         }

@@ -109,6 +109,12 @@ namespace AI
                 lastDecisionTime = Time.time; // Resetta il timer
             }
 
+            if (enemyCombatSystem.CurrentState == CombatSystem.CharacterState.MOVING)
+            {
+                MoveTowardsPlayer();
+                transform.Translate(enemyCombatSystem.MovementInput * moveSpeed * Time.deltaTime, Space.World);
+            }
+
             // Debug visuale delle sfere di range
             Debug.DrawLine(transform.position, transform.position + transform.forward * attackRange, Color.red);
             Debug.DrawLine(transform.position, transform.position + transform.forward * stopMovingDistance, Color.blue);
@@ -122,14 +128,14 @@ namespace AI
             float distanceToPlayer = Vector3.Distance(transform.position, playerGameObject.transform.position);
 
             // Calcola la direzione verso il player per il movimento
-            Vector3 directionToPlayer = (playerGameObject.transform.position - transform.position).normalized;
-            directionToPlayer.y = 0; // Assumi movimento su un piano XZ
-            if (directionToPlayer.magnitude > 0.01f)
-            {
-                directionToPlayer.Normalize();
-            } else {
-                directionToPlayer = Vector3.forward; // O Vector3.zero
-            }
+            // Vector3 directionToPlayer = (playerGameObject.transform.position - transform.position).normalized;
+            // directionToPlayer.y = 0; // Assumi movimento su un piano XZ
+            // if (directionToPlayer.magnitude > 0.01f)
+            // {
+            //     directionToPlayer.Normalize();
+            // } else {
+            //     directionToPlayer = Vector3.forward; // O Vector3.zero
+            // }
 
             // Determina se il player sta attualmente "minacciando" con un attacco o blocco nel raggio reazione del blocco
             bool playerThreateningBlock = (playerState == CombatSystem.CharacterState.KICK || playerState == CombatSystem.CharacterState.PUNCH || playerState == CombatSystem.CharacterState.BLOCK) &&
@@ -186,8 +192,7 @@ namespace AI
             if (distanceToPlayer > attackRange)
             {
                 enemyCombatSystem.currentState = CombatSystem.CharacterState.MOVING;
-                enemyCombatSystem.MovementInput = directionToPlayer; // Usa la direzione CORRETTA
-                MoveTowardsPlayer();
+                // enemyCombatSystem.MovementInput = directionToPlayer; // Usa la direzione CORRETTA
             }
             // Caso 2: Player molto vicino (distanza <= stopMovingDistance) -> DECIDI DI FERMARTI e Attacca/Idle
             // stopMovingDistance è la soglia INFERIORE per SMETTERE di muovere e iniziare a considerare attacco/idle.
@@ -250,24 +255,7 @@ namespace AI
 
 
                 // Muovi il nemico
-                transform.Translate(direction * moveSpeed * Time.deltaTime);
-
-                // // Opzionale: fai guardare il nemico verso il player
-                // if (direction.magnitude > 0.01f) // Evita di guardare in direzioni non definite
-                // {
-                //     // Per un gioco 3D: Quaternion lookRotation = Quaternion.LookRotation(direction);
-                //     // transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed); // Aggiungi rotationSpeed
-
-                //     // Per un gioco 2D su un piano: Controlla solo lo scaling sull'asse X o Y per flip
-                //     if (direction.x > 0 && transform.localScale.x < 0)
-                //     {
-                //         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-                //     }
-                //     else if (direction.x < 0 && transform.localScale.x > 0)
-                //     {
-                //         transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-                //     }
-                // }
+                enemyCombatSystem.MovementInput = direction;
             }
         }
 
