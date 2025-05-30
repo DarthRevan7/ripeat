@@ -8,6 +8,7 @@ public class ResponseHandler : MonoBehaviour
     [SerializeField] private RectTransform responseBox; // Riferimento al box delle risposte
     [SerializeField] private RectTransform responseButtonTemplate; // Template per i pulsanti delle risposte
     [SerializeField] private RectTransform responseContainer; // Contenitore per i pulsanti delle risposte
+    [SerializeField] private float maxResponseBoxHeight = 640f; // Altezza massima del box delle risposte
 
     private DialogueUI dialogueUI;
     private ResponseEvent[] responseEvents; // Array di eventi di risposta
@@ -16,7 +17,7 @@ public class ResponseHandler : MonoBehaviour
     private ScoreManager scoreManager; // Riferimento allo ScoreManager
     private UnityAndGeminiV3 unityAndGeminiV3; // Riferimento a UnityAndGeminiV3
 
-    public static string history = "Utilizzando le parole scelte dal giocatore, descrivi brevemente un inizio di combattimento tra un uomo al bar e un'altra persona casuale, descrivala parlando all'uomo. Il contesto è 'america anni 20'. Utilizza le parole che il giocatore ha scelto per capire la sua indole. Stampa solo la breve descrizione spiegando cosa succede nel bar senza niente altro.\n"; // Storia delle risposte
+    public static string history = "Utilizzando le parole scelte dal giocatore, descrivi brevemente un inizio di combattimento tra un uomo al bar e un'altra persona casuale, descrivila parlando all'uomo. Il contesto è 'america anni 20'. Utilizza le parole che il giocatore ha scelto per capire la sua indole. Stampa solo la breve descrizione spiegando cosa succede nel bar senza niente altro.\n"; // Storia delle risposte
 
     private void Start()
     {
@@ -48,7 +49,8 @@ public class ResponseHandler : MonoBehaviour
 
             GameObject responseButton = Instantiate(responseButtonTemplate.gameObject, responseContainer); // Istanzia un nuovo pulsante di risposta
             responseButton.gameObject.SetActive(true);
-            responseButton.GetComponent<TMP_Text>().text = response.ResponseText; // Imposta il testo del pulsante di risposta
+            TMP_Text buttonText = responseButton.GetComponent<TMP_Text>();
+            buttonText.text = response.ResponseText; // Imposta il testo del pulsante di risposta
             responseButton.GetComponent<Button>().onClick.AddListener(() => OnPickedResponse(response, responseIndex, initialPos)); // Aggiunge il listener per il click del pulsante
         
             tempResponseButtons.Add(responseButton); // Aggiunge il pulsante alla lista temporanea
@@ -56,8 +58,18 @@ public class ResponseHandler : MonoBehaviour
             responseBoxHeight += responseButtonTemplate.sizeDelta.y; // Aggiorna l'altezza del box delle risposte
         }
 
+        // Limita l'altezza del response box
+        responseBoxHeight = Mathf.Min(responseBoxHeight, maxResponseBoxHeight);
         responseBox.sizeDelta = new Vector2(responseBox.sizeDelta.x, responseBoxHeight); // Imposta la dimensione del box delle risposte
-        responseBox.anchoredPosition = new Vector2(responseBox.anchoredPosition.x, responseBox.anchoredPosition.y - (responseBoxHeight-responseButtonTemplate.sizeDelta.y));
+
+        // Abilita lo scrolling se l'altezza del contenuto supera l'altezza massima
+        ScrollRect scrollRect = responseBox.GetComponent<ScrollRect>();
+        if (scrollRect != null)
+        {
+            scrollRect.vertical = responseBoxHeight < maxResponseBoxHeight;
+        }
+
+        responseBox.anchoredPosition = new Vector2(responseBox.anchoredPosition.x, initialPos.y - (responseBoxHeight - responseButtonTemplate.sizeDelta.y) / 2);
         responseBox.gameObject.SetActive(true); // Mostra il box delle risposte
     }
 

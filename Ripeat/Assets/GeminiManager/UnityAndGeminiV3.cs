@@ -73,6 +73,21 @@ public class UnityAndGeminiV3 : MonoBehaviour
     [SerializeField] private GameObject clock11;
     [SerializeField] private GameObject clock12;
     [SerializeField] private GameObject clock13;
+    [SerializeField] private GameObject clockLight1;
+    [SerializeField] private GameObject clockLight2;
+    [SerializeField] private GameObject clockLight3;
+    [SerializeField] private GameObject clockLight4;
+    [SerializeField] private GameObject clockLight5;
+    [SerializeField] private GameObject clockLight6;
+    [SerializeField] private GameObject clockLight7;
+    [SerializeField] private GameObject clockLight8;
+    [SerializeField] private GameObject clockLight9;
+    [SerializeField] private GameObject clockLight10;
+    [SerializeField] private GameObject clockLight11;
+    [SerializeField] private GameObject clockLight12;
+    [SerializeField] private GameObject clockLight13;
+    [SerializeField] private GameObject clockLight14;
+  
     [SerializeField] private GameObject death1;
     [SerializeField] private GameObject death2;
     [SerializeField] private GameObject death3;
@@ -93,11 +108,38 @@ public class UnityAndGeminiV3 : MonoBehaviour
     private int counter = 1;
     private int sum = 0;
 
-    void Start()
+    IEnumerator Start()
     {
         if (clock1 != null)
         {
-            ChangeClock(0);
+            Debug.Log("Clock1 found, starting with it active.");
+            clock2.SetActive(false);
+            clock3.SetActive(false);
+            clock4.SetActive(false);
+            clock5.SetActive(false);
+            clock6.SetActive(false);
+            clock7.SetActive(false);
+            clock8.SetActive(false);
+            clock9.SetActive(false);
+            clock10.SetActive(false);
+            clock11.SetActive(false);
+            clock12.SetActive(false);
+            clock13.SetActive(false);
+            clockLight1.SetActive(false);
+            clockLight2.SetActive(false);
+            clockLight3.SetActive(false);
+            clockLight4.SetActive(false);
+            clockLight5.SetActive(false);
+            clockLight6.SetActive(false);
+            clockLight7.SetActive(false);
+            clockLight8.SetActive(false);
+            clockLight9.SetActive(false);
+            clockLight10.SetActive(false);
+            clockLight11.SetActive(false);
+            clockLight12.SetActive(false);
+            clockLight13.SetActive(false);
+            clockLight14.SetActive(false);
+            yield return StartCoroutine(ChangeClock(0));
         }
         if (death1 != null)
         {
@@ -242,7 +284,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
         feedback += messages;;
         conversationHistory += "\n" + userMessage + "\n";
         counter++;
-        ChangeClock(counter);
+        StartCoroutine(ChangeClock(counter));
         Debug.Log("Counter: " + counter);
 
         if (counter >= 7)
@@ -303,7 +345,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
                     Debug.Log("Feedback: " + feedback);
                     StartCoroutine(SendPromptRequestToGemini(feedback, 2));
 
-                    feedback = "Giudica la risposta con un voto da 1 a 3 dove 1 vuol dire che l'anima è meritevole e 3 non meritevole. Scrivi solo il numero.\n";
+                    feedback = "Giudica la risposta con un voto da 1 a 3 dove 1 vuol dire che l'anima è meritevole e 3 non meritevole. Considera anche il senso della frase. Se scrive solo una parola senza senso o ripete sempre la stessa allora non è meritevole! Scrivi solo il numero.\n";
 
                     yield return StartCoroutine(AdjustTextBoxSize());
                     yield return RunTypingEffect(reply);
@@ -313,7 +355,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
                     conversationHistory += "\n%" + reply + "%\n";
 
                     // Controllo sull'output di Gemini
-                    if (reply.Contains("BASTA LA TUA VITA FINISCE QUI") || reply.Contains("Basta la tua vita finisce qui"))
+                    if (reply.Contains("NON AVRAI ALTRE POSSIBILITA'") || reply.Contains("Non avrai altre possibilità"))
                     {
 
                         PLBox.SetActive(false);
@@ -326,7 +368,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
 
 
                     }
-                    else if (reply.Contains("NON AVRAI ALTRE POSSIBILITA'") || reply.Contains("non avrai altre possibilità"))
+                    else if (reply.Contains("HAI UN'ALTRA POSSIBILITA'") || reply.Contains("Hai un'altra possibilità"))
                     {
 
                         PLBox.SetActive(false);
@@ -355,61 +397,111 @@ public class UnityAndGeminiV3 : MonoBehaviour
         }
     }
 
-    public void ChangeClock(int count){
+    IEnumerator ChangeClock(int count){
         switch (count)
         {
             case 0:
                 clock1.SetActive(true);
-                clock2.SetActive(false);
-                clock3.SetActive(false);
-                clock4.SetActive(false);
-                clock5.SetActive(false);
-                clock6.SetActive(false);
-                clock7.SetActive(false);
-                clock8.SetActive(false);
-                clock9.SetActive(false);
-                clock10.SetActive(false);
-                clock11.SetActive(false);
-                clock12.SetActive(false);
-                clock13.SetActive(false);
+                
+                Debug.Log("Clock activated");
                 
                 break;
 
             case 2:
                 clock2.SetActive(true);
+
+                clockLight2.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                clockLight2.SetActive(false);
+
                 break;
             case 3:
                 clock3.SetActive(true);
+
+                clockLight3.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                clockLight3.SetActive(false);
+
                 break;
             case 4:
                 clock4.SetActive(true);
+
+                clockLight4.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                clockLight4.SetActive(false);
+
                 break;
             case 5:
                 clock5.SetActive(true);
+
+                clockLight5.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                clockLight5.SetActive(false);
+
                 break;
             case 6:
                 clock6.SetActive(true);
+
+                clockLight6.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                clockLight6.SetActive(false);
+
                 break;
             case 7:
                 clock7.SetActive(true);
+
+                clockLight7.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                clockLight7.SetActive(false);
+
                 break;
             case 8:
                 clock8.SetActive(true);
+
+                clockLight8.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                clockLight8.SetActive(false);
+
                 break;
             case 9:
                 clock9.SetActive(true);
+
+                clockLight9.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                clockLight9.SetActive(false);
+
                 break;
             case 10:
                 clock10.SetActive(true);
+
+                clockLight10.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                clockLight10.SetActive(false);
+
                 break;
             case 11:
                 clock11.SetActive(true);
+
+                clockLight11.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                clockLight11.SetActive(false);
+
                 break;
             case 12:
                 clock12.SetActive(true);
+
+                clockLight12.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                clockLight12.SetActive(false);
+
                 break;
             case 13:
                 clock13.SetActive(true);
+
+                clockLight13.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                clockLight13.SetActive(false);
+
                 break;
         }
     }
