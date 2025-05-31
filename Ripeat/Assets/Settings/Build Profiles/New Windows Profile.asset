@@ -26,16 +26,12 @@ MonoBehaviour:
     m_path: Assets/Scenes/BNwrite.unity
   - m_enabled: 1
     m_path: Assets/Scenes/NewIntro.unity
-  - m_enabled: 0
-    m_path: Assets/Scenes/FightingScene_Try.unity
   - m_enabled: 1
     m_path: Assets/Scenes/NewCombatScene.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Elevator.unity
   - m_enabled: 1
     m_path: Assets/Scenes/DialogueWithAI.unity
-  - m_enabled: 0
-    m_path: Assets/Scenes/NewCombatScene_2FightersTest.unity
   - m_enabled: 1
     m_path: Assets/Scenes/FinalVideo.unity
   - m_enabled: 1
