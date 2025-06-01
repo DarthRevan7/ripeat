@@ -11981,7 +11981,7 @@ Animator:
   m_GameObject: {fileID: 3460311879780869859}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8873ddeeab63b4d4e8a44fc8a3a27b20, type: 3}
-  m_Controller: {fileID: 9100000, guid: 6074d68e6764ea64c826209ecdfaf203, type: 2}
+  m_Controller: {fileID: 9100000, guid: b64a6cfe3f7a4604e8fd74727a689455, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -12559,7 +12559,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3460311879780869859}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dcf4bc65d02882240b445ffe0e227360, type: 3}
   m_Name: 
@@ -13328,6 +13328,7 @@ GameObject:
   - component: {fileID: 8149015970357012322}
   - component: {fileID: 5094194222961264475}
   - component: {fileID: 4331446036606478131}
+  - component: {fileID: 9106626689637374446}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -14742,7 +14743,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3460311879780869859}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e8ec0d4979b11f44b52136c99b107cf, type: 3}
   m_Name: 
@@ -16711,7 +16712,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2935643575315932868}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4411c60c9978e5d42b322763b43abfc4, type: 3}
   m_Name: 
@@ -17173,7 +17174,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3460311879780869859}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 436e95c26f5581f4ea3d2b009d3d3191, type: 3}
   m_Name: 
@@ -17879,6 +17880,27 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &9106626689637374446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460311879780869859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962ab32a2138ab74fa9abc4952508eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatState: 0
+  animator: {fileID: 0}
+  punchAnimName: Punch
+  kickAnimName: Kick
+  blockAnimName: 
+  deadAnimName: 
+  idleAnimName: 
+  runAnimName: 
+  animState: 0
 --- !u!1 &9118968118512397699
 GameObject:
   m_ObjectHideFlags: 0
