@@ -64,6 +64,18 @@ public class CombatAnimSystem : MonoBehaviour
         {
             RequestStateChange(CombatAnimState.PUNCH);
         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            RequestStateChange(CombatAnimState.BLOCK);
+        }
+        if (Input.GetKey(KeyCode.F))
+        {
+            animator.SetBool("Blocking", true);
+        }
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            animator.SetBool("Blocking", false);
+        }
     }
 
     public void RequestStateChange(CombatAnimState state)
