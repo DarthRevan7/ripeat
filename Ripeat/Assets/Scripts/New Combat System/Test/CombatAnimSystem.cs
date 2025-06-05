@@ -40,6 +40,11 @@ public class CombatAnimSystem : MonoBehaviour
         AnimationTest();
     }
 
+    public int GetAnimState()
+    {
+        return animState;
+    }
+
 
 
     void Awake()

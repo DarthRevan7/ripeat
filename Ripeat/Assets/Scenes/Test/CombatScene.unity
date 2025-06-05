@@ -13329,6 +13329,7 @@ GameObject:
   - component: {fileID: 5094194222961264475}
   - component: {fileID: 4331446036606478131}
   - component: {fileID: 9106626689637374446}
+  - component: {fileID: 9106626689637374447}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -17174,7 +17175,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3460311879780869859}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 436e95c26f5581f4ea3d2b009d3d3191, type: 3}
   m_Name: 
@@ -17901,6 +17902,26 @@ MonoBehaviour:
   idleAnimName: 
   runAnimName: 
   animState: 0
+--- !u!114 &9106626689637374447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460311879780869859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 093f4c1e548519946b18a0a0297157bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatSystem: {fileID: 0}
+  inputAction: {fileID: 0}
+  inputPathPC: InputActions\InputSystem_PC
+  inputPathController: InputActions\InputSystem_Controller
+  inputActionMapName: Player
+  inputActionMovementName: Move
+  inputPC: 1
+  canMove: 1
 --- !u!1 &9118968118512397699
 GameObject:
   m_ObjectHideFlags: 0
