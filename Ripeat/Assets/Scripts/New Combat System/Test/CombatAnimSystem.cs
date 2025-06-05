@@ -45,6 +45,11 @@ public class CombatAnimSystem : MonoBehaviour
         return animState;
     }
 
+    public void SetBlockBool(bool block)
+    {
+        animator.SetBool("Blocking", block);
+    }
+
 
 
     void Awake()
@@ -61,26 +66,31 @@ public class CombatAnimSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            RequestStateChange(CombatAnimState.KICK);
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RequestStateChange(CombatAnimState.PUNCH);
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            RequestStateChange(CombatAnimState.BLOCK);
-        }
-        if (Input.GetKey(KeyCode.F))
-        {
-            animator.SetBool("Blocking", true);
-        }
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            animator.SetBool("Blocking", false);
-        }
+        // if (Input.GetKeyDown(KeyCode.E))
+        // {
+        //     RequestStateChange(CombatAnimState.KICK);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.R))
+        // {
+        //     RequestStateChange(CombatAnimState.PUNCH);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.F))
+        // {
+        //     RequestStateChange(CombatAnimState.BLOCK);
+        // }
+        // else if (Input.GetKey(KeyCode.F))
+        // {
+        //     animator.SetBool("Blocking", true);
+        // }
+        // else if (Input.GetKeyUp(KeyCode.F))
+        // {
+        //     animator.SetBool("Blocking", false);
+        // }
+        // else
+        // {
+        //     RequestStateChange(CombatAnimState.IDLE);
+        // }
+
     }
 
     public void RequestStateChange(CombatAnimState state)

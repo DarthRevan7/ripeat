@@ -13,39 +13,58 @@ public class InputPlayer : MonoBehaviour
     [SerializeField] private string inputActionMapName = "Player", inputActionMovementName = "Move";
     [SerializeField] private bool inputPC = true;
 
-    #region Variables
+    #region Exposed Vars
 
     [SerializeField] private bool canMove = true;
 
+
     #endregion
 
+    #region Private Vars
+
+    private bool punch, kick, block;
+    private Vector3 movement;
+
+    #endregion
+
+    public void OnBlockStarted(InputAction.CallbackContext callbackContext)
+    {
+        combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.BLOCK);
+        combatSystem.SetBlockBool(true);
+        canMove = false;
+    }
+
+    public void OnBlockCanceled(InputAction.CallbackContext callbackContext)
+    {
+        combatSystem.SetBlockBool(false);
+        canMove = true;
+    }
 
     public void HandleCharacterState()
     {
-        bool punch, kick, block;
+
 
         //Ricavo i booleani che indicano se il pulsante è stato premuto
         punch = inputAction.FindActionMap("Player").FindAction("Punch").IsPressed();
         kick = inputAction.FindActionMap("Player").FindAction("Kick").IsPressed();
-        block = inputAction.FindActionMap("Player").FindAction("Block").IsPressed();
+        // block = inputAction.FindActionMap("Player").FindAction("Block").WasPerformedThisFrame();
 
         //In ordine, faccio ritornare lo stato del character
         if (block)
         {
             combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.BLOCK);
         }
-        if (punch)
+        else if (punch)
         {
             combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.PUNCH);
         }
-        if (kick)
+        else if (kick)
         {
             combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.KICK);
         }
     }
     public void CharacterMovement()
     {
-        Vector3 movement;
         //Ricavo il Vector2 del movimento sul controller
         Vector2 inputMovement = inputAction.FindActionMap(inputActionMapName).FindAction(inputActionMovementName).ReadValue<Vector2>();
         //Imposto il vettore movimento nel mondo
@@ -60,12 +79,26 @@ public class InputPlayer : MonoBehaviour
             transform.forward = movement;
             //Ricava la velocità di movimento
             float movementSpeed = GetComponent<FighterStats>().movementSpeed;
+            //Aggiorna lo stato del combat system
+            combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.MOVING);
             //Fa muovere il personaggio
             GetComponent<CharacterController>().Move(movement * Time.deltaTime * movementSpeed);
-            combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.MOVING);
+            
+        }
+        else
+        {
+            combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.IDLE);
         }
         
         
+    }
+    public void CleanInputs()
+    {
+        bool inputs = block || punch || kick || (movement.magnitude > 0.2f && canMove);
+        if (!inputs)
+        {
+            combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.IDLE);
+        }
     }
 
     private void Awake()
@@ -80,6 +113,8 @@ public class InputPlayer : MonoBehaviour
         {
             inputAction = Resources.Load<InputActionAsset>(inputPathController);
         }
+        inputAction.FindActionMap("Player").FindAction("Block").started += OnBlockStarted;
+        inputAction.FindActionMap("Player").FindAction("Block").canceled += OnBlockCanceled;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -92,5 +127,7 @@ public class InputPlayer : MonoBehaviour
     void Update()
     {
         HandleCharacterState();
+        CharacterMovement();
+        CleanInputs();
     }
 }

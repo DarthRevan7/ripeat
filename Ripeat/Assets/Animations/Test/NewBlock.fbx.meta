@@ -76,7 +76,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 3
         messageOptions: 0
-      - time: 0.9909504
+      - time: 0.95405006
         functionName: SetAnimState
         data: 
         objectReferenceParameter: {instanceID: 0}
