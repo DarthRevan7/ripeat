@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -54,7 +55,8 @@ public class UnityAndGeminiV3 : MonoBehaviour
     public TMP_Text uiText;
     public GameObject AIBox;
     public GameObject PLBox;
-    
+    public ScrollRect alboxScrollRect;
+
     [Header("Prompt Function")]
     [TextArea] public string testPrompt = "";
     [SerializeField] private bool isDead = false;
@@ -97,6 +99,12 @@ public class UnityAndGeminiV3 : MonoBehaviour
     private TypewriterEffect typewriterEffect;
     private GeminiPrompt geminiPrompt;
     private DialogueUI dialogueUI;
+
+    // MODIFICA / Aggiungi queste variabili per il controllo dell'altezza del box
+    [Header("Dialog Box Sizing")]
+    [SerializeField] private float maxHeight = 500f; // Altezza massima desiderata per l'Albox
+    [SerializeField] private float minHeight = 200f; // Altezza minima per l'Albox
+    [SerializeField] private float verticalPadding = 70f; // Padding totale (es. 90 Top + 90 Bottom del Viewport)
 
     // Memorizza la cronologia della conversazione (parte fissa con il prompt iniziale + messaggi successivi)
     public static string conversationHistory;
@@ -516,17 +524,70 @@ public class UnityAndGeminiV3 : MonoBehaviour
                 break;
         }
     }
+    // MODIFICA QUI: La coroutine AdjustTextBoxSize() ora gestirà il clamping
     IEnumerator AdjustTextBoxSize()
+{
+    yield return new WaitForEndOfFrame(); // Diamo a Unity un frame per aggiornare il layout
+
+    if (uiText == null || AIBox == null || alboxScrollRect == null) // <--- AGGIUNGI CONTROLLO PER alboxScrollRect
     {
-    yield return new WaitForEndOfFrame();
-    if(uiText != null && AIBox != null) {
-        uiText.ForceMeshUpdate();
-        RectTransform rt = AIBox.GetComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(rt.sizeDelta.x, uiText.preferredHeight+50);
-        Debug.Log("Box size adjusted with: " + uiText.preferredHeight);
+        Debug.LogError("[UnityAndGeminiV3] Riferimenti mancanti per AdjustTextBoxSize! Assicurati che uiText, AIBox e alboxScrollRect siano assegnati nell'Inspector.");
+        yield break;
     }
-    
+
+    RectTransform alboxRectTransform = AIBox.GetComponent<RectTransform>();
+    if (alboxRectTransform == null)
+    {
+        Debug.LogError("[UnityAndGeminiV3] AIBox does not have a RectTransform!");
+        yield break;
     }
+
+    // Forza un rebuild layout per TextMeshPro
+    uiText.ForceMeshUpdate(true);
+
+    float preferredTextHeight = uiText.GetPreferredValues(uiText.text, uiText.rectTransform.rect.width, 0).y;
+
+    // Calcola l'altezza desiderata dell'Albox (altezza testo + padding)
+    float desiredAlboxHeight = preferredTextHeight + verticalPadding;
+
+    // Applica il clamping per l'altezza del box
+    float newAlboxHeight = Mathf.Clamp(desiredAlboxHeight, minHeight, maxHeight);
+
+    // Imposta l'altezza dell'Albox
+    alboxRectTransform.sizeDelta = new Vector2(alboxRectTransform.sizeDelta.x, newAlboxHeight);
+
+    // --- NUOVA LOGICA: Attiva/Disattiva lo Scroll Rect ---
+    // Lo scroll è necessario SOLO se la desired height era maggiore della maxHeight
+    if (desiredAlboxHeight > maxHeight)
+    {
+        alboxScrollRect.enabled = true; // Abilita lo Scroll Rect
+        // Opzionale: puoi anche voler attivare/disattivare le scrollbar visibili qui
+        // if (alboxScrollRect.verticalScrollbar != null)
+        // {
+        //     alboxScrollRect.verticalScrollbar.gameObject.SetActive(true);
+        // }
+        Debug.Log("[UnityAndGeminiV3] Scroll Rect Abilitato (testo lungo).");
+    }
+    else
+    {
+        alboxScrollRect.enabled = false; // Disabilita lo Scroll Rect
+        // Opzionale: disabilita le scrollbar visibili
+        // if (alboxScrollRect.verticalScrollbar != null)
+        // {
+        //     alboxScrollRect.verticalScrollbar.gameObject.SetActive(false);
+        // }
+        Debug.Log("[UnityAndGeminiV3] Scroll Rect Disabilitato (testo corto).");
+    }
+
+    // DEBUG LOGS
+    Debug.Log($"[UnityAndGeminiV3] Current Text: '{uiText.text.Replace('\n', ' ').Substring(0, Mathf.Min(uiText.text.Length, 30))}...'");
+    Debug.Log($"[UnityAndGeminiV3] Width for preferred: {uiText.rectTransform.rect.width}");
+    Debug.Log($"[UnityAndGeminiV3] Calculated Preferred Text Height: {preferredTextHeight}");
+    Debug.Log($"[UnityAndGeminiV3] Desired Albox Height (before clamp): {desiredAlboxHeight}");
+    Debug.Log($"[UnityAndGeminiV3] New Albox Height (after clamp): {newAlboxHeight}");
+    Debug.Log($"[UnityAndGeminiV3] Actual Albox Height after setting: {alboxRectTransform.sizeDelta.y}");
+}
+
     IEnumerator RunTypingEffect(string text)
     {
         if (uiText != null)
