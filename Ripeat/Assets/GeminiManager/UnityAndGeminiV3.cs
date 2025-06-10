@@ -221,6 +221,12 @@ public class UnityAndGeminiV3 : MonoBehaviour
                             }
                             yield return StartCoroutine(AdjustTextBoxSize());
                             yield return RunTypingEffect(text0);
+
+                            // --- MODIFICA ---
+                            // L'AI ha finito di parlare per la prima volta. Attivo Input field.
+                            if (inputField != null) inputField.ActivateInputField();
+
+
                             break;
                         case 1:
                             string text1 = response.candidates[0].content.parts[0].text;
@@ -349,6 +355,11 @@ public class UnityAndGeminiV3 : MonoBehaviour
 
                     yield return StartCoroutine(AdjustTextBoxSize());
                     yield return RunTypingEffect(reply);
+
+                    // --- MODIFICA ---
+                    // L'AI ha finito di parlare per la prima volta. Attivo Input field.
+                    if (inputField != null) inputField.ActivateInputField();
+
                     // Appena impostato il testo:
                     //uiText.text = reply
                     // Aggiorna la cronologia aggiungendo anche la risposta del modello

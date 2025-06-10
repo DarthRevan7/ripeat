@@ -9432,10 +9432,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Torna al menu'
+  m_text: "Torna al men\xF9"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 00d5e53d4c9cdf148bacf952d2ebb392, type: 2}
-  m_sharedMaterial: {fileID: 4874348941259099112, guid: 00d5e53d4c9cdf148bacf952d2ebb392, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2ecfdaf8c3094994e949822f7dc66f7c, type: 2}
+  m_sharedMaterial: {fileID: 5084661341643398478, guid: 2ecfdaf8c3094994e949822f7dc66f7c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9933,8 +9933,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Torna al gioco
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 00d5e53d4c9cdf148bacf952d2ebb392, type: 2}
-  m_sharedMaterial: {fileID: 4874348941259099112, guid: 00d5e53d4c9cdf148bacf952d2ebb392, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2ecfdaf8c3094994e949822f7dc66f7c, type: 2}
+  m_sharedMaterial: {fileID: 5084661341643398478, guid: 2ecfdaf8c3094994e949822f7dc66f7c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
