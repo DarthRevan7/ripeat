@@ -116,18 +116,22 @@ public class CombatAnimSystem : MonoBehaviour
             switch (CurrentState)
             {
                 case CombatAnimState.PUNCH:
+                    animator.SetBool("Run", false);
                     animator.Play(punchAnimName);
                     break;
                 case CombatAnimState.KICK:
+                    animator.SetBool("Run", false);
                     animator.Play(kickAnimName);
                     break;
                 case CombatAnimState.BLOCK:
+                    animator.SetBool("Run", false);
                     animator.Play(blockAnimName);
                     break;
                 case CombatAnimState.MOVING:
                     animator.SetBool("Run", true);
                     break;
                 case CombatAnimState.DEAD:
+                    animator.SetBool("Run", false);
                     animator.SetTrigger("Die");
                     break;
                 default:

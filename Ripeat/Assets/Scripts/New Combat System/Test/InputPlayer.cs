@@ -4,102 +4,101 @@ using UnityEngine.InputSystem;
 
 public class InputPlayer : MonoBehaviour
 {
-
     [SerializeField] private CombatAnimSystem combatSystem;
 
     [SerializeField] private InputActionAsset inputAction;
     [SerializeField] private string inputPathPC = "InputActions\\InputSystem_PC",
-    inputPathController = "InputActions\\InputSystem_Controller";
-    [SerializeField] private string inputActionMapName = "Player", inputActionMovementName = "Move";
+                                    inputPathController = "InputActions\\InputSystem_Controller";
+    [SerializeField] private string inputActionMapName = "Player",
+                                    inputActionMovementName = "Move",
+                                    inputActionPunchName = "Punch",
+                                    inputActionKickName = "Kick",
+                                    inputActionBlockName = "Block";
+
     [SerializeField] private bool inputPC = true;
 
     #region Exposed Vars
-
     [SerializeField] private bool canMove = true;
-
-
     #endregion
 
     #region Private Vars
-
-    private bool punch, kick, block;
     private Vector3 movement;
-
     #endregion
 
+    // Callback per il blocco
     public void OnBlockStarted(InputAction.CallbackContext callbackContext)
     {
+        // Se si inizia il blocco, richiedi lo stato BLOCK.
         combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.BLOCK);
-        combatSystem.SetBlockBool(true);
-        canMove = false;
+        combatSystem.SetBlockBool(true); // Imposta il parametro booleano nell'Animator
+        canMove = false; // Blocca il movimento durante il blocco
     }
 
     public void OnBlockCanceled(InputAction.CallbackContext callbackContext)
     {
-        combatSystem.SetBlockBool(false);
+        combatSystem.SetBlockBool(false); // Disattiva il parametro booleano nell'Animator
+        canMove = true; // Permetti di nuovo il movimento
+
+        // Quando il blocco viene rilasciato, torna a IDLE solo se era effettivamente in BLOCK
+        // Questo è importante per non interrompere altre animazioni (es. attacchi).
+        if (combatSystem.CurrentState == CombatAnimSystem.CombatAnimState.BLOCK)
+        {
+            combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.IDLE);
+        }
+    }
+
+    // Callback per il pugno
+    public void OnPunchPerformed(InputAction.CallbackContext callbackContext)
+    {
+        combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.PUNCH);
+        canMove = false; // Blocca il movimento durante l'attacco
+    }
+
+    // Callback per il calcio
+    public void OnKickPerformed(InputAction.CallbackContext callbackContext)
+    {
+        combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.KICK);
+        canMove = false; 
+    }
+
+    //Chiamato da un evento dell'Animazione, in modo da consentire il movimento.
+    public void EnableMovement()
+    {
         canMove = true;
     }
 
-    public void HandleCharacterState()
-    {
 
 
-        //Ricavo i booleani che indicano se il pulsante è stato premuto
-        punch = inputAction.FindActionMap("Player").FindAction("Punch").IsPressed();
-        kick = inputAction.FindActionMap("Player").FindAction("Kick").IsPressed();
-        // block = inputAction.FindActionMap("Player").FindAction("Block").WasPerformedThisFrame();
-
-        //In ordine, faccio ritornare lo stato del character
-        if (block)
-        {
-            combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.BLOCK);
-        }
-        else if (punch)
-        {
-            combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.PUNCH);
-        }
-        else if (kick)
-        {
-            combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.KICK);
-        }
-    }
     public void CharacterMovement()
     {
-        //Ricavo il Vector2 del movimento sul controller
         Vector2 inputMovement = inputAction.FindActionMap(inputActionMapName).FindAction(inputActionMovementName).ReadValue<Vector2>();
-        //Imposto il vettore movimento nel mondo
         movement = new Vector3(inputMovement.x, 0, inputMovement.y);
 
-
-        //Se ho un movimento maggiore di 0.2f, come in CombatSystem.cs
-        //E se posso muovere il personaggio
-        if (movement.magnitude > 0.2f && canMove)
+        if (canMove && movement.magnitude > 0.2f)
         {
-            //Aggiorno il forward del personaggio (lo ruota violentemente in una direzione)
+            // Aggiorna il forward del personaggio 
             transform.forward = movement;
-            //Ricava la velocità di movimento
+            // Ricava la velocità di movimento
             float movementSpeed = GetComponent<FighterStats>().movementSpeed;
-            //Aggiorna lo stato del combat system
-            combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.MOVING);
-            //Fa muovere il personaggio
+            // Fa muovere il personaggio
             GetComponent<CharacterController>().Move(movement * Time.deltaTime * movementSpeed);
-            
+
+
+            if (combatSystem.GetAnimState() < 2 && combatSystem.CurrentState != CombatAnimSystem.CombatAnimState.BLOCK) // Non muoverti se in esecuzione attacco o blocco
+            {
+                combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.MOVING);
+            }
         }
-        else
+        else if (combatSystem.CurrentState == CombatAnimSystem.CombatAnimState.MOVING && canMove)
         {
-            combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.IDLE);
-        }
-        
-        
-    }
-    public void CleanInputs()
-    {
-        bool inputs = block || punch || kick || (movement.magnitude > 0.2f && canMove);
-        if (!inputs)
-        {
-            combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.IDLE);
+            if (combatSystem.GetAnimState() < 2 && combatSystem.CurrentState != CombatAnimSystem.CombatAnimState.BLOCK)
+            {
+                combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.IDLE);
+            }
         }
     }
+
+    #region Awake & Update
 
     private void Awake()
     {
@@ -113,21 +112,19 @@ public class InputPlayer : MonoBehaviour
         {
             inputAction = Resources.Load<InputActionAsset>(inputPathController);
         }
-        inputAction.FindActionMap("Player").FindAction("Block").started += OnBlockStarted;
-        inputAction.FindActionMap("Player").FindAction("Block").canceled += OnBlockCanceled;
+
+        // Sottoscrivo i callback
+        inputAction.FindActionMap(inputActionMapName).FindAction(inputActionBlockName).started += OnBlockStarted;
+        inputAction.FindActionMap(inputActionMapName).FindAction(inputActionBlockName).canceled += OnBlockCanceled;
+        inputAction.FindActionMap(inputActionMapName).FindAction(inputActionPunchName).performed += OnPunchPerformed; // Uso Performed
+        inputAction.FindActionMap(inputActionMapName).FindAction(inputActionKickName).performed += OnKickPerformed;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        HandleCharacterState();
+        // L'unica chiamata che deve rimanere qui è la gestione del movimento.
+        // Gli attacchi e il blocco sono gestiti dai callback.
         CharacterMovement();
-        CleanInputs();
     }
+    #endregion
 }
