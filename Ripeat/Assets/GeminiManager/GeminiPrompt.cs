@@ -25,7 +25,7 @@ public class GeminiPrompt : MonoBehaviour
         eventHandler = GetComponent<EventHandler>();
     }
     
-    private int SwitchImplementation()
+    public int SwitchImplementation()
     {
         if(FightEventController.Instance == null)
         {

@@ -115,6 +115,9 @@ public class UnityAndGeminiV3 : MonoBehaviour
     
     private int counter = 1;
     private int sum = 0;
+    private int[] counterArray = new int[4] {10, 7, 5, 3}; // Array per i contatori delle risposte
+    private int[] sumArray = new int[4] {20, 14, 10, 6}; // Array per i contatori delle somme
+    private int index = 0; // Indice corrente dell'array
 
     IEnumerator Start()
     {
@@ -173,8 +176,12 @@ public class UnityAndGeminiV3 : MonoBehaviour
             StartCoroutine(SendPromptRequestToGemini(prompt, 0));
             feedback = "Tu sei la morte. Giudica la risposta con un voto da 1 a 3 dove 1 vuol dire che l'anima è meritevole e 3 non meritevole. Scrivi solo il numero.\n";
         }
-    
-        if(inputField != null)
+
+        //prende il numero dell'interazione
+        index = geminiPrompt.SwitchImplementation();
+        Debug.Log("Index: " + index);
+
+        if (inputField != null)
             inputField.onSubmit.AddListener((string text) => { SendChat(); });
     }
 
@@ -301,10 +308,10 @@ public class UnityAndGeminiV3 : MonoBehaviour
         StartCoroutine(ChangeClock(counter));
         Debug.Log("Counter: " + counter);
 
-        if (counter >= 7)
+        if (counter >= counterArray[index])
         {
             string finalRequest = "";
-            if (sum < 15)
+            if (sum < sumArray[index])
             {
                 finalRequest = "\nPROMPT: Ora scrivi HAI UN'ALTRA POSSIBILITA'\n";
             }
