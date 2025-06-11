@@ -2723,7 +2723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 30}
+  m_Softness: {x: 0, y: 20}
 --- !u!1001 &767282300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2912,7 +2912,7 @@ PrefabInstance:
       objectReference: {fileID: 1498772773}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: verticalPadding
-      value: 70
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: typewriterEffect
@@ -6246,7 +6246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1667898930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6945,7 +6945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1970760923
 RectTransform:
   m_ObjectHideFlags: 0

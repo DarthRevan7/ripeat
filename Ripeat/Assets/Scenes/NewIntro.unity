@@ -1405,6 +1405,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: verticalPadding
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: typewriterEffect
       value: 
       objectReference: {fileID: 0}
@@ -2587,6 +2591,7 @@ MonoBehaviour:
   uiText: {fileID: 0}
   AIBox: {fileID: 0}
   PLBox: {fileID: 0}
+  alboxScrollRect: {fileID: 0}
   testPrompt: 
   isDead: 0
   negativeFinalImage: {fileID: 0}
@@ -2622,6 +2627,9 @@ MonoBehaviour:
   death2: {fileID: 0}
   death3: {fileID: 0}
   menuScript: {fileID: 0}
+  maxHeight: 500
+  minHeight: 200
+  verticalPadding: 70
 --- !u!114 &1202691647
 MonoBehaviour:
   m_ObjectHideFlags: 0
