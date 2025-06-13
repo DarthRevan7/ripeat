@@ -37,7 +37,7 @@ public class CombatAnimSystem : MonoBehaviour
     public void SetAnimState(int numState)
     {
         animState = numState;
-        AnimationTest();
+        // AnimationTest();
     }
 
     public int GetAnimState()
@@ -82,7 +82,7 @@ public class CombatAnimSystem : MonoBehaviour
     */
     public bool StateChangeCheck()
     {
-        return animState < 2;
+        return animState < 2 && CurrentState != CombatAnimState.DEAD;
     }
     public void ExecuteAnimationChange()
     {
@@ -114,6 +114,15 @@ public class CombatAnimSystem : MonoBehaviour
                     animator.SetBool("Run", false);
                     break;
             }
+    }
+
+    public void Die()
+    {
+        animator.SetBool("Run", false);
+        animator.SetBool("Blocking", false);
+        combatState = CombatAnimState.DEAD;
+        animator.SetTrigger("Die");
+        animator.SetBool("Dead", true);
     }
     
     #region Test

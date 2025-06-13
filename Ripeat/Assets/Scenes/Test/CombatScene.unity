@@ -4063,6 +4063,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 39.585, y: 37.856, z: 0.902}
+--- !u!1 &772958652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 787797369814387340, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+  m_PrefabInstance: {fileID: 966030218581590478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &780386105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5049,8 +5054,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Torna al menu'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 00d5e53d4c9cdf148bacf952d2ebb392, type: 2}
-  m_sharedMaterial: {fileID: 4874348941259099112, guid: 00d5e53d4c9cdf148bacf952d2ebb392, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8255,8 +8260,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Torna al gioco
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 00d5e53d4c9cdf148bacf952d2ebb392, type: 2}
-  m_sharedMaterial: {fileID: 4874348941259099112, guid: 00d5e53d4c9cdf148bacf952d2ebb392, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10331,6 +10336,7 @@ MonoBehaviour:
   comingBackCoord: 7
   secondaryEnemyHealthBar: {fileID: 186906761}
   boundaryName: Right
+  playerStats: {fileID: 0}
   streetlamp: {fileID: 0}
   brokenStreetlampPrefab: {fileID: 6032444477516088360, guid: 3ceab3eb5c2018e43a9d0649fbe4e9fd, type: 3}
   remainingTime: 0
@@ -10341,7 +10347,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060060773}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a738fdcb6844c8444a6f409fa5d766fb, type: 3}
   m_Name: 
@@ -10889,12 +10895,38 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8796176278940899912, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
   m_PrefabInstance: {fileID: 966030218581590478}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 772958652}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e8ec0d4979b11f44b52136c99b107cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &529120302868048058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772958652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf4bc65d02882240b445ffe0e227360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementInput: {x: 0, y: 0, z: 0}
+  currentState: 0
+  animator: {fileID: 0}
+  punchAnimationName: 
+  kickAnimationName: 
+  blockAnimationName: 
+  movingParameterName: Run
+  deathAnimationName: 
+  canMove: 1
+  isDead: 0
+  isBlocked: 0
+  pauseBlock: 0
+  blockHeld: 0
+  isScriptActive: 0
 --- !u!224 &597969035408385680
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11037,10 +11069,17 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 7421187598868427351}
+    - target: {fileID: 8796176278940899912, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+      propertyPath: targetName
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 787797369814387340, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 529120302868048058}
   m_SourcePrefab: {fileID: 100100000, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
 --- !u!1 &1034781345239635384
 GameObject:
@@ -11388,6 +11427,10 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3159480349801863540, guid: c3b80feffbe08704fa0fecccb16e1218, type: 3}
+      propertyPath: targetName
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5101989333627918933, guid: c3b80feffbe08704fa0fecccb16e1218, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -11444,6 +11487,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8800909618575173483, guid: c3b80feffbe08704fa0fecccb16e1218, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7421187598868427359}
+    - targetCorrespondingSourceObject: {fileID: 8800909618575173483, guid: c3b80feffbe08704fa0fecccb16e1218, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7421187598868427360}
   m_SourcePrefab: {fileID: 100100000, guid: c3b80feffbe08704fa0fecccb16e1218, type: 3}
 --- !u!224 &3019406734767006532
 RectTransform:
@@ -12390,6 +12436,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2, z: 0.5318454}
   m_Center: {x: 1.968513e-16, y: 1, z: 0.13885215}
+--- !u!114 &7421187598868427360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912245433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf4bc65d02882240b445ffe0e227360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementInput: {x: 0, y: 0, z: 0}
+  currentState: 0
+  animator: {fileID: 0}
+  punchAnimationName: 
+  kickAnimationName: 
+  blockAnimationName: 
+  movingParameterName: Run
+  deathAnimationName: 
+  canMove: 1
+  isDead: 0
+  isBlocked: 0
+  pauseBlock: 0
+  blockHeld: 0
+  isScriptActive: 0
 --- !u!224 &7606017379181445865
 RectTransform:
   m_ObjectHideFlags: 0

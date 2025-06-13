@@ -52,6 +52,8 @@ public class CombatSystem : MonoBehaviour
 
     private MenuScript menuScript;
     private InputManager inputManager;
+
+    public bool isScriptActive = false;
     
     
 
@@ -143,6 +145,10 @@ public class CombatSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isScriptActive)
+        {
+            return;
+        }
         UpdateAnimationState();
     }
 }

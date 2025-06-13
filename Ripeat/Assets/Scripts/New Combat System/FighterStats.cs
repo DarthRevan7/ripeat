@@ -14,19 +14,19 @@ public class FighterStats : MonoBehaviour
     public static string lastKiller = "";
     [SerializeField] private float colliderRadiusPunch = 0.7f, colliderRadiusKick = 0.9f;
     [SerializeField] private string targetName = "MyEnemyNew";
-    [SerializeField] private CombatSystem combatSystem;
+    [SerializeField] private CombatAnimSystem combatSystem;
     [SerializeField] private int hitCount = 0;
 
     private bool hitted = false;
-   
     
+    //Animation event fire this method!!
     public void Hit()
     {
-        if(isDead) return;
+        if (isDead) return;
 
         float colliderRadius;
-        
-        if(combatSystem.CurrentState == CombatSystem.CharacterState.KICK)
+
+        if (combatSystem.CurrentState == CombatAnimSystem.CombatAnimState.KICK)
         {
             colliderRadius = colliderRadiusKick;
         }
@@ -41,49 +41,51 @@ public class FighterStats : MonoBehaviour
         {
             //Controllo che il collider del combattente non sia rilevato nella stessa sfera
             //In questo caso impersono il giocatore che non deve colpire sè stesso
-            if(gameObject.tag.Equals("Player"))
+            if (gameObject.tag.Equals("Player"))
             {
-                if(collider.gameObject.tag.Equals("Player"))
+                if (collider.gameObject.tag.Equals("Player"))
                 {
                     continue;
                 }
                 else
                 {
                     FighterStats other = collider.GetComponent<FighterStats>();
-                    if(other != null)
+                    if (other != null)
                     {
                         //Controllo di essere nella direzione del nemico
                         Vector3 direzioneNemico = (other.transform.position - transform.position).normalized;
-                        if(Vector3.Dot(transform.forward, direzioneNemico) < 0.5f)
+                        if (Vector3.Dot(transform.forward, direzioneNemico) < 0.5f)
                         {
                             break;
                         }
                         // La vita viene diminuita solo se non è in stato di block
-                        if(!other.combatSystem.isBlocked)
+                        if (other.combatSystem.CurrentState != CombatAnimSystem.CombatAnimState.BLOCK)
                         {
                             other.vita -= attacco;
                             hitted = true;
                             // Debug.Log("Hitted: " + hitted);
                             other.hitCount = 0;
                         }
-                        else{
-                            if(other.hitCount >= 3){
+                        else
+                        {
+                            if (other.hitCount >= 3)
+                            {
                                 other.vita -= attacco;
                                 other.hitCount = 0;
-                                other.combatSystem.isBlocked = false;
-                                other.combatSystem.canMove = true;
-                                other.combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
-                                other.combatSystem.blockHeld = false;
-                                other.combatSystem.animator.speed = 1;
+                                // other.combatSystem.isBlocked = false;
+                                // other.combatSystem.canMove = true;
+                                other.combatSystem.CurrentState = CombatAnimSystem.CombatAnimState.IDLE;
+                                // other.combatSystem.blockHeld = false;
+                                // other.combatSystem.animator.speed = 1;
                             }
                             other.hitCount++;
                             // Debug.Log("HitCount: " + hitCount);
                         }
-                        
-                        
+
+
                         lastKiller = collider.gameObject.name;
                         // Debug.Log("Last killer: " + lastKiller);
-                        
+
                         //Senza questo break si potrebbero colpire più nemici alla volta
                         break;
                     }
@@ -93,31 +95,33 @@ public class FighterStats : MonoBehaviour
             //oppure altri nemici
             else
             {
-                if(!collider.gameObject.tag.Equals("Player"))
+                if (!collider.gameObject.tag.Equals("Player"))
                 {
                     continue;
                 }
                 else
                 {
                     FighterStats other = collider.GetComponent<FighterStats>();
-                    if(other != null)
+                    if (other != null)
                     {
-                        if(!other.combatSystem.isBlocked)
+                        if (other.combatSystem.CurrentState != CombatAnimSystem.CombatAnimState.BLOCK)
                         {
                             other.vita -= attacco;
                             hitted = true;
                             // Debug.Log("Hitted: " + hitted);
                             other.hitCount = 0;
                         }
-                        else{
-                            if(other.hitCount >= 2){
+                        else
+                        {
+                            if (other.hitCount >= 2)
+                            {
                                 other.vita -= attacco;
                                 other.hitCount = 0;
-                                other.combatSystem.isBlocked = false;
-                                other.combatSystem.canMove = true;
-                                other.combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
-                                other.combatSystem.blockHeld = false;
-                                other.combatSystem.animator.speed = 1;
+                                // other.combatSystem.isBlocked = false;
+                                // other.combatSystem.canMove = true;
+                                other.combatSystem.CurrentState = CombatAnimSystem.CombatAnimState.IDLE;
+                                // other.combatSystem.blockHeld = false;
+                                // other.combatSystem.animator.speed = 1;
                             }
                             other.hitCount++;
                             Debug.Log("HitCount: " + hitCount);
@@ -129,12 +133,12 @@ public class FighterStats : MonoBehaviour
                 }
             }
         }
-        combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
+        combatSystem.CurrentState = CombatAnimSystem.CombatAnimState.IDLE;
     }
 
     void Awake()
     {
-        combatSystem = GetComponent<CombatSystem>();
+        combatSystem = GetComponent<CombatAnimSystem>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -158,7 +162,7 @@ public class FighterStats : MonoBehaviour
                     lastKiller = "MyEnemyNew";
                     // Debug.Log("Last killer: " + lastKiller);
                 }
-                combatSystem.CurrentState = CombatSystem.CharacterState.DEAD;
+                combatSystem.Die();
             }
             
         }

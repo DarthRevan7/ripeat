@@ -19,6 +19,13 @@ public class InputPlayer : MonoBehaviour
 
     #region Exposed Vars
     [SerializeField] private bool canMove = true;
+    public bool isScriptActive = true;
+
+
+
+
+
+    
     #endregion
 
     #region Private Vars
@@ -28,6 +35,10 @@ public class InputPlayer : MonoBehaviour
     // Callback per il blocco
     public void OnBlockStarted(InputAction.CallbackContext callbackContext)
     {
+        if (!isScriptActive)
+        {
+            return;
+        }
         // Se si inizia il blocco, richiedi lo stato BLOCK.
         combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.BLOCK);
         combatSystem.SetBlockBool(true); // Imposta il parametro booleano nell'Animator
@@ -36,6 +47,10 @@ public class InputPlayer : MonoBehaviour
 
     public void OnBlockCanceled(InputAction.CallbackContext callbackContext)
     {
+        if (!isScriptActive)
+        {
+            return;
+        }
         combatSystem.SetBlockBool(false); // Disattiva il parametro booleano nell'Animator
         canMove = true; // Permetti di nuovo il movimento
 
@@ -50,6 +65,10 @@ public class InputPlayer : MonoBehaviour
     // Callback per il pugno
     public void OnPunchPerformed(InputAction.CallbackContext callbackContext)
     {
+        if (!isScriptActive)
+        {
+            return;
+        }
         combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.PUNCH);
         canMove = false; // Blocca il movimento durante l'attacco
     }
@@ -57,6 +76,10 @@ public class InputPlayer : MonoBehaviour
     // Callback per il calcio
     public void OnKickPerformed(InputAction.CallbackContext callbackContext)
     {
+        if (!isScriptActive)
+        {
+            return;
+        }
         combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.KICK);
         canMove = false; 
     }
@@ -122,9 +145,13 @@ public class InputPlayer : MonoBehaviour
 
     void Update()
     {
+        if (!isScriptActive)
+        {
+            return;
+        }
         // L'unica chiamata che deve rimanere qui è la gestione del movimento.
-        // Gli attacchi e il blocco sono gestiti dai callback.
-        CharacterMovement();
+            // Gli attacchi e il blocco sono gestiti dai callback.
+            CharacterMovement();
     }
     #endregion
 }
