@@ -10349,6 +10349,7 @@ MonoBehaviour:
   comingBackCoord: 7
   secondaryEnemyHealthBar: {fileID: 186906761}
   boundaryName: Right
+  playerStats: {fileID: 0}
   streetlamp: {fileID: 0}
   brokenStreetlampPrefab: {fileID: 6032444477516088360, guid: 3ceab3eb5c2018e43a9d0649fbe4e9fd, type: 3}
   remainingTime: 0
@@ -15533,12 +15534,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1ab7e88b726fbd74fb95bc8d6344bd20, type: 2}
-  - {fileID: 2100000, guid: 67e6c4d66fbb46641b643b59716e69a8, type: 2}
-  - {fileID: 2100000, guid: ba37f31748589b34784ea0df92a5589c, type: 2}
-  - {fileID: 2100000, guid: 2b7a235b63a9d8f4c848b12381397513, type: 2}
-  - {fileID: 2100000, guid: ff07c4981ddb9ff4b81a1d9345c55fce, type: 2}
-  - {fileID: -1898866065923900264, guid: 8873ddeeab63b4d4e8a44fc8a3a27b20, type: 3}
+  - {fileID: 2100000, guid: 9608e353064ada64dabca6455cc6ede1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15563,7 +15559,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 820212240424993665, guid: 8873ddeeab63b4d4e8a44fc8a3a27b20, type: 3}
+  m_Mesh: {fileID: 820212240424993665, guid: 739a283b999a95c42962cb09a36836c6, type: 3}
   m_Bones:
   - {fileID: 5494071408273259461}
   - {fileID: 4417010805031297046}
