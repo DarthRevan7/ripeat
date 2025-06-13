@@ -1,5 +1,6 @@
 using UnityEngine;
-using System.Collections; // Necessario per le Coroutine se vuoi usare delay tra le azioni
+using System.Collections;
+using System.Linq; // Necessario per le Coroutine se vuoi usare delay tra le azioni
 
 public class CustomizableAI : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class CustomizableAI : MonoBehaviour
     [Header("Setup")]
     public string playerTag = "Player"; // Usiamo un tag per trovare il player
     public float attackRange = 1.5f;
-    public float moveSpeed = 2.0f;
+    public float moveSpeed = 3.0f;
     public float stopMovingDistance = 1.0f;
     [Header("Difficulty")]
     [Tooltip("Tempo minimo (in secondi) tra una decisione e l'altra dell'IA.")]
@@ -25,12 +26,13 @@ public class CustomizableAI : MonoBehaviour
     private GameObject playerGameObject;
     private CombatAnimSystem playerCombatSystem;
     private CombatAnimSystem enemyCombatSystem;
-    private CharacterController characterController; // Aggiunto per il movimento
+    // private CharacterController characterController; // Aggiunto per il movimento
 
     private float lastDecisionTime;
-    public bool isScriptActive = true;
+    public bool isScriptActive = true, thinking = true, collided = false;
 
     [SerializeField] private CombatAnimSystem.CombatAnimState nextState;
+
 
     #endregion
 
@@ -42,9 +44,10 @@ public class CustomizableAI : MonoBehaviour
         CombatAnimSystem.CombatAnimState playerState = playerCombatSystem.CurrentState;
         float distanceToPlayer = Vector3.Distance(playerGameObject.transform.position, transform.position);
 
-        // Se l'IA sta già eseguendo un'animazione di attacco/blocco (animState >= 2),
+        // Se l'IA sta già eseguendo un'animazione di attacco/blocco (animState > 0),
+        // oppure se sto correndo verso il player
         // non può cambiare la sua azione attuale. Resta nello stato corrente.
-        if (enemyCombatSystem.GetAnimState() >= 2)
+        if (enemyCombatSystem.GetAnimState() > 1 && enemyCombatSystem.CurrentState != CombatAnimSystem.CombatAnimState.MOVING)
         {
             nextState = enemyCombatSystem.CurrentState; // Mantiene lo stato attuale
             return; // L'IA è occupata, non prendere altre decisioni per ora.
@@ -60,6 +63,8 @@ public class CustomizableAI : MonoBehaviour
             {
                 nextState = CombatAnimSystem.CombatAnimState.BLOCK;
                 Debug.Log("IA: Decido di BLOCcare (probabilità superata)!");
+                GetComponent<Animator>().SetBool("Blocking", true);
+                StartCoroutine(EndBlock());
                 return; // Decisione presa, esci.
             }
         }
@@ -79,7 +84,7 @@ public class CustomizableAI : MonoBehaviour
 
         // PRIORITÀ 3: Movimento (se il player è troppo lontano)
         // Se non ha bloccato o attaccato, e il giocatore è lontano, l'IA si muove.
-        if (distanceToPlayer > stopMovingDistance)
+        if (distanceToPlayer > stopMovingDistance && !collided)
         {
             nextState = CombatAnimSystem.CombatAnimState.MOVING;
             Debug.Log("IA: Decido di MUOVERMI!");
@@ -104,22 +109,32 @@ public class CustomizableAI : MonoBehaviour
 
         // Muovi solo se l'IA è nello stato MOVING e non sta eseguendo un'azione di attacco/blocco
         // (animState < 2)
-        if (enemyCombatSystem.CurrentState == CombatAnimSystem.CombatAnimState.MOVING && enemyCombatSystem.GetAnimState() < 2)
+        // if (enemyCombatSystem.CurrentState == CombatAnimSystem.CombatAnimState.MOVING && enemyCombatSystem.GetAnimState() < 2)
+        if(enemyCombatSystem.CurrentState == CombatAnimSystem.CombatAnimState.MOVING)
         {
             // Calcola la direzione verso il player (solo sull'asse XZ)
-            Vector3 directionToPlayer = (playerGameObject.transform.position - transform.position);
+            Vector3 directionToPlayer = playerGameObject.transform.position - transform.position;
             directionToPlayer.y = 0; // Ignora l'altezza
             directionToPlayer.Normalize(); // Normalizza per ottenere solo la direzione
             directionToPlayer.y = 0;
 
             // Muovi il personaggio usando il CharacterController
-            transform.Translate(directionToPlayer * moveSpeed * Time.deltaTime);
+            transform.Translate(directionToPlayer * moveSpeed * Time.deltaTime, Space.World);
         }
     }
 
     #endregion
 
     #region Utility Methods
+
+    IEnumerator EndBlock()
+    {
+        thinking = false;
+        yield return new WaitForSeconds(1f);
+        GetComponent<Animator>().SetBool("Blocking", false);
+        enemyCombatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.IDLE);
+        thinking = true;
+    }
 
     // Ritorna un'azione casuale NON DISTRUTTIVA per il combattimento tra le 4 possibili
     // (potrebbe non essere più necessaria con la logica di EvaluateDecision)
@@ -178,9 +193,25 @@ public class CustomizableAI : MonoBehaviour
         return CombatAnimSystem.CombatAnimState.IDLE;
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == playerTag)
+        {
+            collided = true;
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.tag == playerTag)
+        {
+            collided = false;
+        }
+    }
+
     #endregion
 
-    #region Awake & Update
+    #region Awake&Update
     void Awake()
     {
         playerGameObject = GameObject.FindGameObjectWithTag(playerTag);
@@ -211,13 +242,13 @@ public class CustomizableAI : MonoBehaviour
         }
 
         // Ottieni il CharacterController del nemico
-        characterController = GetComponent<CharacterController>();
-        if (characterController == null)
-        {
-            Debug.LogError("CustomizableAI: CharacterController component is missing! Disabling AI.");
-            enabled = false;
-            return;
-        }
+        // characterController = GetComponent<CharacterController>();
+        // if (characterController == null)
+        // {
+        //     Debug.LogError("CustomizableAI: CharacterController component is missing! Disabling AI.");
+        //     enabled = false;
+        //     return;
+        // }
 
         if (stopMovingDistance > attackRange)
         {
@@ -236,6 +267,11 @@ public class CustomizableAI : MonoBehaviour
             return;
         }
 
+        if (!thinking)
+        {
+            return;
+        }
+
         // Se il player è morto o se sei morto, non fare nulla
         if (enemyCombatSystem.CurrentState == CombatAnimSystem.CombatAnimState.DEAD)
         {
@@ -248,10 +284,10 @@ public class CustomizableAI : MonoBehaviour
         }
 
         // Punta verso il Player
-        transform.LookAt(new Vector3(playerGameObject.transform.position.x, transform.position.y, playerGameObject.transform.position.z));
+        // transform.LookAt();
 
         // Gestione del movimento dell'IA
-        // HandleMovement();
+        HandleMovement();
 
         // Ciclo di decisione dell'IA
         if (Time.time - lastDecisionTime >= decisionResponseTime)
