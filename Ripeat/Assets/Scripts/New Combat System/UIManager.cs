@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
 
 
 
-    private void UpdateUI(RectTransform healthBarRect, FighterStats stats)
+    public void UpdateUI(RectTransform healthBarRect, FighterStats stats)
     {
         int vita = stats.vita;
         // Calcola il rapporto tra vita corrente e vita massima

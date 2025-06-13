@@ -18,28 +18,38 @@ public class EventHandler : MonoBehaviour
 
     [SerializeField] private GameObject mainEnemy, player;
     [SerializeField] private GameObject[] secondaryEnemies;
-    [SerializeField] private string playerTag = "Player", enemyTag = "Main Enemy",
+    [SerializeField]
+    private string playerTag = "Player", enemyTag = "Main Enemy",
     secondaryEnemyTag = "Secondary Enemy";
     [SerializeField] private float mainEnemyXCoord = 20f, newEnemyXCoord = 6f, comingBackCoord = 7f;
     [SerializeField] private GameObject secondaryEnemyHealthBar;
     [SerializeField] private string boundaryName;
+    [SerializeField] public FighterStats playerStats;
 
     public GameObject streetlamp, brokenStreetlampPrefab;
+    
+    private UIManager uIManager;
+
 
     [SerializeField] private float remainingTime = 0;
-    
 
-    
+
+    void Start()
+    {
+        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<FighterStats>();
+        Debug.Log("Player Stats: " + playerStats.vita.ToString());
+    }
 
     void Awake()
     {
-
-        if(Instance != null && Instance != this)
+        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<FighterStats>();
+        Debug.Log("Player Stats: " + playerStats.vita.ToString());
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
@@ -81,10 +91,17 @@ public class EventHandler : MonoBehaviour
         return !FightEventController.Instance.triggeredEventIndices.Contains(FightEventController.Instance.actualEventIndex);
     }
 
+    public void UpdatePlayerHealth()
+    {
+        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<FighterStats>();
+        Debug.Log("Player Stats: " + playerStats.vita.ToString());  
+        playerStats.vita = playerStats.vita + 40 > 100 ? 100 : playerStats.vita + 40;
+    }
+
     private void AssignStats(GameObject newEnemy, FightEvent fightEvent)
     {
         FighterStats stats = newEnemy.GetComponent<FighterStats>();
-        if(FirstEncounter())
+        if (FirstEncounter())
         {
             stats.attacco = fightEvent.firstEncounterAttack;
         }
@@ -104,13 +121,13 @@ public class EventHandler : MonoBehaviour
 
         //Instantiate the Particle System
         Vector3 instancePosition = streetlamp.transform.position;
-        instancePosition.y=2f;
+        instancePosition.y = 2f;
         ParticleSystem explosionPS =
         GameObject.Instantiate(fightEvent.explosionEffect, instancePosition, Quaternion.identity);
 
         //Play the particle system explosion
         explosionPS.Play();
-        
+
         //Instantiate prefab of broken streetlamp and disable the normal one.
         GameObject brokenInstance = GameObject.Instantiate(brokenStreetlampPrefab, streetlamp.transform.position, Quaternion.identity);
         streetlamp.SetActive(false);
@@ -118,7 +135,7 @@ public class EventHandler : MonoBehaviour
 
         //First time -> Kill player and halve enemy life
         //Other times -> Halve both character's life
-        if(isFirstEncounter)
+        if (isFirstEncounter)
         {
             Debug.Log("Explosion Killer");
             player.GetComponent<FighterStats>().vita = 0;
@@ -137,15 +154,15 @@ public class EventHandler : MonoBehaviour
         player.GetComponent<InputManager>().isScriptActive = true;
 
 
-        if(isFirstEncounter)
+        if (isFirstEncounter)
         {
             FightEventController.Instance.triggeredEventIndices.Add(FightEventController.Instance.actualEventIndex);
         }
 
         FightEventController.Instance.isTriggered = false;
         FightEventController.Instance.actualEventIndex++;
-        
-        
+
+
     }
 
     public void TakeBackMainEnemy()
@@ -156,23 +173,26 @@ public class EventHandler : MonoBehaviour
         player.GetComponent<InputManager>().isScriptActive = false;
         //Disable boundary in that direction
         Collider colliderToDisable;
-        bool colliderFound = 
+        bool colliderFound =
         entryPointColliders.TryGetValue(boundaryName, out colliderToDisable);
         colliderToDisable.gameObject.SetActive(false);
 
         //Coroutine to finish the job
+        UpdatePlayerHealth();
         StartCoroutine(BringMainEnemyBack(colliderToDisable));
     }
 
     IEnumerator BringMainEnemyBack(Collider colliderToDisable)
     {
         //Make the main enemy come back
+        
+
         mainEnemy.transform.LookAt(player.transform.position);
         mainEnemy.GetComponent<CombatSystem>().canMove = true;
         mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
         mainEnemy.GetComponent<CombatSystem>().enabled = true;
 
-        while(mainEnemy.transform.position.x >= comingBackCoord)
+        while (mainEnemy.transform.position.x >= comingBackCoord)
         {
             mainEnemy.GetComponent<CombatSystem>().canMove = true;
             mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
@@ -206,19 +226,19 @@ public class EventHandler : MonoBehaviour
         //Disable boundary in that direction
         GameObject colliderParent = GameObject.Find("EnvironmentColliders");
         Collider colliderToDisable = null;
-        for(int i = 0; i < colliderParent.transform.childCount; i++)
+        for (int i = 0; i < colliderParent.transform.childCount; i++)
         {
-            if(colliderParent.transform.GetChild(i).gameObject.name.Equals(boundaryName))
+            if (colliderParent.transform.GetChild(i).gameObject.name.Equals(boundaryName))
             {
                 colliderToDisable = colliderParent.transform.GetChild(i).gameObject.GetComponent<Collider>();
             }
         }
         // bool colliderFound = entryPointColliders.TryGetValue(boundaryName, out colliderToDisable);
-        
 
-        if(colliderToDisable != null)
+
+        if (colliderToDisable != null)
         {
-            if(fightEvent != null)
+            if (fightEvent != null)
             {
                 //Call a Coroutine to complete the task
                 StartCoroutine(SpawnHandler(fightEvent, colliderToDisable));
@@ -242,9 +262,9 @@ public class EventHandler : MonoBehaviour
         mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
         mainEnemy.GetComponent<CombatSystem>().enabled = true;
 
-        
 
-        while(mainEnemy.transform.position.x <= mainEnemyXCoord)
+
+        while (mainEnemy.transform.position.x <= mainEnemyXCoord)
         {
             mainEnemy.GetComponent<CombatSystem>().canMove = true;
             mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
@@ -260,7 +280,7 @@ public class EventHandler : MonoBehaviour
         newEnemy.transform.LookAt(player.transform.position);
 
         //Bring the secondary enemy in the scene
-        while(Vector3.Distance(player.transform.position, newEnemy.transform.position) >= 2.0f)
+        while (Vector3.Distance(player.transform.position, newEnemy.transform.position) >= 2.0f)
         {
             newEnemy.GetComponent<CombatSystem>().canMove = true;
             newEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
@@ -286,26 +306,28 @@ public class EventHandler : MonoBehaviour
         colliderToDisable.gameObject.SetActive(true);
 
         FightEventController.Instance.secondaryEnemy = newEnemy;
-        
+
         Debug.Log("Is 1st encounter = " + FirstEncounter().ToString());
-        
+
         //Update Global Event Index
-        if(FirstEncounter())
+        if (FirstEncounter())
         {
             FightEventController.globalEventIndex++;
             Debug.Log("GlobalEventIndex = " + FightEventController.globalEventIndex.ToString());
             FightEventController.Instance.triggeredEventIndices.Add(FightEventController.Instance.actualEventIndex);
         }
-        
+
         FightEventController.Instance.isTriggered = false;
         FightEventController.Instance.actualEventIndex++;
 
         yield return null;
     }
 
-    public void HandleStorm(FightEvent fightEvent) {
+    public void HandleStorm(FightEvent fightEvent)
+    {
         //Set remaining time
-        if(remainingTime <= 0.0 && fightEvent.triggerTime != -1) {
+        if (remainingTime <= 0.0 && fightEvent.triggerTime != -1)
+        {
             remainingTime = fightEvent.triggerTime;
         }
 
@@ -313,7 +335,7 @@ public class EventHandler : MonoBehaviour
         ParticleSystem stormPS = Instantiate(fightEvent.stormParticle).GetComponent<ParticleSystem>();
         //Play the storm PS
         stormPS.Play();
-        
+
         StartCoroutine(StormHandler(fightEvent));
     }
 
@@ -353,6 +375,8 @@ public class EventHandler : MonoBehaviour
         }
         else
         {
+            UpdatePlayerHealth();
+
             //Obtain the player position and instantiate the lightning FX
             Vector3 position = new Vector3(player.transform.position.x, fightEvent.spawnPosition.y, player.transform.position.z);
             ParticleSystem lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);
@@ -360,7 +384,7 @@ public class EventHandler : MonoBehaviour
             //Activate signal so the player knows where the lightning bolt will land
             float timer = 0;
             lightningLight.transform.position = new Vector3(player.transform.position.x, lightningLight.transform.position.y, player.transform.position.z);
-            
+
 
             //Wait for some seconds
             // yield return new WaitForSeconds(secondsToWait);
@@ -395,16 +419,18 @@ public class EventHandler : MonoBehaviour
             //Otherwise the strike will fall to the ground and the battle will continue.
             Debug.Log("Lightning Strike N_th Time!");
         }
-        
-        
+
+
         if (FirstEncounter())
         {
             FightEventController.globalEventIndex++;
             Debug.Log("GlobalEventIndex = " + FightEventController.globalEventIndex.ToString());
             FightEventController.Instance.triggeredEventIndices.Add(FightEventController.Instance.actualEventIndex);
         }
-        
+
         FightEventController.Instance.isTriggered = false;
         FightEventController.Instance.actualEventIndex++;
     }
+
+    
 }

@@ -49,6 +49,7 @@ MonoBehaviour:
   uiText: {fileID: 0}
   AIBox: {fileID: 0}
   PLBox: {fileID: 0}
+  alboxScrollRect: {fileID: 0}
   testPrompt: 
   isDead: 1
   negativeFinalImage: {fileID: 0}
@@ -66,7 +67,24 @@ MonoBehaviour:
   clock11: {fileID: 0}
   clock12: {fileID: 0}
   clock13: {fileID: 0}
+  clockLight1: {fileID: 0}
+  clockLight2: {fileID: 0}
+  clockLight3: {fileID: 0}
+  clockLight4: {fileID: 0}
+  clockLight5: {fileID: 0}
+  clockLight6: {fileID: 0}
+  clockLight7: {fileID: 0}
+  clockLight8: {fileID: 0}
+  clockLight9: {fileID: 0}
+  clockLight10: {fileID: 0}
+  clockLight11: {fileID: 0}
+  clockLight12: {fileID: 0}
+  clockLight13: {fileID: 0}
+  clockLight14: {fileID: 0}
   death1: {fileID: 0}
   death2: {fileID: 0}
   death3: {fileID: 0}
   menuScript: {fileID: 0}
+  maxHeight: 500
+  minHeight: 200
+  verticalPadding: 140
