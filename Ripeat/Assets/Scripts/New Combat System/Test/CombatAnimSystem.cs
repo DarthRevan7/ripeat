@@ -66,30 +66,6 @@ public class CombatAnimSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.E))
-        // {
-        //     RequestStateChange(CombatAnimState.KICK);
-        // }
-        // else if (Input.GetKeyDown(KeyCode.R))
-        // {
-        //     RequestStateChange(CombatAnimState.PUNCH);
-        // }
-        // else if (Input.GetKeyDown(KeyCode.F))
-        // {
-        //     RequestStateChange(CombatAnimState.BLOCK);
-        // }
-        // else if (Input.GetKey(KeyCode.F))
-        // {
-        //     animator.SetBool("Blocking", true);
-        // }
-        // else if (Input.GetKeyUp(KeyCode.F))
-        // {
-        //     animator.SetBool("Blocking", false);
-        // }
-        // else
-        // {
-        //     RequestStateChange(CombatAnimState.IDLE);
-        // }
 
     }
 
@@ -116,18 +92,22 @@ public class CombatAnimSystem : MonoBehaviour
             switch (CurrentState)
             {
                 case CombatAnimState.PUNCH:
+                    animator.SetBool("Run", false);
                     animator.Play(punchAnimName);
                     break;
                 case CombatAnimState.KICK:
+                    animator.SetBool("Run", false);
                     animator.Play(kickAnimName);
                     break;
                 case CombatAnimState.BLOCK:
+                    animator.SetBool("Run", false);
                     animator.Play(blockAnimName);
                     break;
                 case CombatAnimState.MOVING:
                     animator.SetBool("Run", true);
                     break;
                 case CombatAnimState.DEAD:
+                    animator.SetBool("Run", false);
                     animator.SetTrigger("Die");
                     break;
                 default:

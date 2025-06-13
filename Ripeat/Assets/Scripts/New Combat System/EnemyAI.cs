@@ -3,18 +3,19 @@ using System.Collections; // Necessario per le Coroutine se vuoi usare delay tra
 
 public class EnemyAi : MonoBehaviour
 {
+    #region Variables
     [Header("Setup")]
     public string playerTag = "Player"; // Usiamo un tag per trovare il player
     public float attackRange = 1.5f;
     public float moveSpeed = 2.0f;
-    public float stopMovingDistance = 1.0f; 
+    public float stopMovingDistance = 1.0f;
     [Header("Difficulty")]
     [Tooltip("Tempo minimo (in secondi) tra una decisione e l'altra dell'IA.")]
     [SerializeField]
-    private float decisionResponseTime = 0.5f; 
+    private float decisionResponseTime = 0.5f;
     [Tooltip("Probabilità (da 0 a 1) di attaccare quando il player è a distanza di attacco.")]
     [SerializeField, Range(0f, 1f)]
-    private float attackChance = 0.8f; 
+    private float attackChance = 0.8f;
 
     [Tooltip("Probabilità (da 0 a 1) di provare a bloccare quando il player sta attaccando.")]
     [SerializeField, Range(0f, 1f)]
@@ -23,88 +24,15 @@ public class EnemyAi : MonoBehaviour
     // Riferimenti privati
     private GameObject playerGameObject;
     private CombatSystem playerCombatSystem;
-    private CombatSystem enemyCombatSystem; 
+    private CombatSystem enemyCombatSystem;
 
     private float lastDecisionTime;
     public bool isScriptActive = true;
 
-    
-
-    void Awake()
-    {
-        // Trova il player all'inizio
-        playerGameObject = GameObject.FindGameObjectWithTag(playerTag);
-
-        if (playerGameObject == null)
-        {
-            Debug.LogError($"NewEnemyAI: Player GameObject with tag '{playerTag}' not found! Disabling AI.");
-            enabled = false; // Disabilita lo script se il player non viene trovato
-            return;
-        }
-
-        // Ottieni il CombatSystem del player
-        playerCombatSystem = playerGameObject.GetComponent<CombatSystem>();
-        if (playerCombatSystem == null)
-        {
-            Debug.LogError("NewEnemyAI: Player GameObject found, but CombatSystem component is missing! Disabling AI.");
-            enabled = false;
-            return;
-        }
-
-        // Ottieni il CombatSystem del nemico stesso
-        enemyCombatSystem = GetComponent<CombatSystem>();
-        if (enemyCombatSystem == null)
-        {
-            Debug.LogError("NewEnemyAI: Enemy GameObject found, but its own CombatSystem component is missing! Disabling AI.");
-            enabled = false;
-            return;
-        }
-
-        if (stopMovingDistance > attackRange) // <-- AGGIUNGERE QUESTE RIGHE
-        {
-            Debug.LogWarning("NewEnemyAI: stopMovingDistance should not be greater than attackRange. Adjusting stopMovingDistance to equal attackRange.");
-            stopMovingDistance = attackRange;
-        }
+    #endregion
 
 
-        // Inizia il tempo per la prima decisione
-        lastDecisionTime = Time.time;
-    }
 
-    void Update()
-    {
-        if(!isScriptActive) {
-            return;
-        }
-
-        // Se il nemico è morto, non fare nulla
-        if (enemyCombatSystem.currentState == CombatSystem.CharacterState.DEAD)
-        {
-            return;
-        }
-        if (playerCombatSystem.CurrentState == CombatSystem.CharacterState.DEAD)
-        {
-            enemyCombatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
-            return;
-        }
-
-        //Punta verso il Player
-        transform.LookAt(new Vector3(playerGameObject.transform.position.x, transform.position.y, playerGameObject.transform.position.z));
-
-        // Controlla se è passato abbastanza tempo dall'ultima decisione
-        if (Time.time - lastDecisionTime >= decisionResponseTime)
-        {
-            MakeDecision();
-            lastDecisionTime = Time.time; // Resetta il timer
-        }
-
-        ExecuteDecision();
-
-        // Debug visuale delle sfere di range
-        Debug.DrawLine(transform.position, transform.position + transform.forward * attackRange, Color.red);
-        Debug.DrawLine(transform.position, transform.position + transform.forward * stopMovingDistance, Color.blue);
-        
-    }
 
     void ExecuteDecision()
     {
@@ -126,7 +54,9 @@ public class EnemyAi : MonoBehaviour
         if (directionToPlayer.magnitude > 0.01f)
         {
             directionToPlayer.Normalize();
-        } else {
+        }
+        else
+        {
             directionToPlayer = Vector3.forward; // O Vector3.zero
         }
 
@@ -248,4 +178,82 @@ public class EnemyAi : MonoBehaviour
 
     // Puoi aggiungere qui altre funzioni helper se necessario
     // Es. bool IsAttackIncoming(Player player) per una logica di blocco più sofisticata
+
+    #region Awake & Update
+    void Awake()
+    {
+        // Trova il player all'inizio
+        playerGameObject = GameObject.FindGameObjectWithTag(playerTag);
+
+        if (playerGameObject == null)
+        {
+            Debug.LogError($"NewEnemyAI: Player GameObject with tag '{playerTag}' not found! Disabling AI.");
+            enabled = false; // Disabilita lo script se il player non viene trovato
+            return;
+        }
+
+        // Ottieni il CombatSystem del player
+        playerCombatSystem = playerGameObject.GetComponent<CombatSystem>();
+        if (playerCombatSystem == null)
+        {
+            Debug.LogError("NewEnemyAI: Player GameObject found, but CombatSystem component is missing! Disabling AI.");
+            enabled = false;
+            return;
+        }
+
+        // Ottieni il CombatSystem del nemico stesso
+        enemyCombatSystem = GetComponent<CombatSystem>();
+        if (enemyCombatSystem == null)
+        {
+            Debug.LogError("NewEnemyAI: Enemy GameObject found, but its own CombatSystem component is missing! Disabling AI.");
+            enabled = false;
+            return;
+        }
+
+        if (stopMovingDistance > attackRange) // <-- AGGIUNGERE QUESTE RIGHE
+        {
+            Debug.LogWarning("NewEnemyAI: stopMovingDistance should not be greater than attackRange. Adjusting stopMovingDistance to equal attackRange.");
+            stopMovingDistance = attackRange;
+        }
+
+
+        // Inizia il tempo per la prima decisione
+        lastDecisionTime = Time.time;
+    }
+
+    void Update()
+    {
+        if(!isScriptActive) {
+            return;
+        }
+
+        // Se il nemico è morto, non fare nulla
+        if (enemyCombatSystem.currentState == CombatSystem.CharacterState.DEAD)
+        {
+            return;
+        }
+        if (playerCombatSystem.CurrentState == CombatSystem.CharacterState.DEAD)
+        {
+            enemyCombatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
+            return;
+        }
+
+        //Punta verso il Player
+        transform.LookAt(new Vector3(playerGameObject.transform.position.x, transform.position.y, playerGameObject.transform.position.z));
+
+        // Controlla se è passato abbastanza tempo dall'ultima decisione
+        if (Time.time - lastDecisionTime >= decisionResponseTime)
+        {
+            MakeDecision();
+            lastDecisionTime = Time.time; // Resetta il timer
+        }
+
+        ExecuteDecision();
+
+        // Debug visuale delle sfere di range
+        Debug.DrawLine(transform.position, transform.position + transform.forward * attackRange, Color.red);
+        Debug.DrawLine(transform.position, transform.position + transform.forward * stopMovingDistance, Color.blue);
+        
+    }
+    #endregion
 }
