@@ -592,6 +592,7 @@ MonoBehaviour:
   targetImage: {fileID: 0}
   fadeDuration: 1.45
   characterStats: {fileID: 0}
+  enemyStats: {fileID: 0}
   fading: 0
 --- !u!114 &1308935608
 MonoBehaviour:
@@ -918,7 +919,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2073535929}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: baefdf50411a7a84db7e854c4b66f04d, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 88521ca65f4110a4aa07fac43dc5b89c, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
