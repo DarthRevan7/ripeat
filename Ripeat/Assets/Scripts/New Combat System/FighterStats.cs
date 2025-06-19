@@ -14,7 +14,7 @@ public class FighterStats : MonoBehaviour
     public static string lastKiller = "";
     [SerializeField] private float colliderRadiusPunch = 0.7f, colliderRadiusKick = 0.9f;
     [SerializeField] private string targetName = "MyEnemyNew";
-    [SerializeField] private CombatSystem combatSystem;
+    [SerializeField] private CombatAnimSystem combatSystem;
     [SerializeField] private int hitCount = 0;
 
     private bool hitted = false;
@@ -26,7 +26,7 @@ public class FighterStats : MonoBehaviour
 
         float colliderRadius;
         
-        if(combatSystem.CurrentState == CombatSystem.CharacterState.KICK)
+        if(combatSystem.CurrentState == CombatAnimSystem.CombatAnimState.KICK)
         {
             colliderRadius = colliderRadiusKick;
         }
@@ -59,7 +59,7 @@ public class FighterStats : MonoBehaviour
                             break;
                         }
                         // La vita viene diminuita solo se non è in stato di block
-                        if(!other.combatSystem.isBlocked)
+                        if(!other.combatSystem.GetBlockBool())
                         {
                             other.vita -= attacco;
                             hitted = true;
@@ -67,14 +67,21 @@ public class FighterStats : MonoBehaviour
                             other.hitCount = 0;
                         }
                         else{
-                            if(other.hitCount >= 3){
+                            //Break the guard
+                            if (other.hitCount >= 3)
+                            {
                                 other.vita -= attacco;
                                 other.hitCount = 0;
-                                other.combatSystem.isBlocked = false;
-                                other.combatSystem.canMove = true;
-                                other.combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
-                                other.combatSystem.blockHeld = false;
-                                other.combatSystem.animator.speed = 1;
+
+                                other.combatSystem.SetBlockBool(false);
+                                other.combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.IDLE);
+
+
+                                // other.combatSystem.isBlocked = false;
+                                // other.combatSystem.canMove = true;
+                                // other.combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
+                                // other.combatSystem.blockHeld = false;
+                                // other.combatSystem.animator.speed = 1;
                             }
                             other.hitCount++;
                             // Debug.Log("HitCount: " + hitCount);
@@ -102,7 +109,7 @@ public class FighterStats : MonoBehaviour
                     FighterStats other = collider.GetComponent<FighterStats>();
                     if(other != null)
                     {
-                        if(!other.combatSystem.isBlocked)
+                        if(!other.combatSystem.GetBlockBool())
                         {
                             other.vita -= attacco;
                             hitted = true;
@@ -110,14 +117,19 @@ public class FighterStats : MonoBehaviour
                             other.hitCount = 0;
                         }
                         else{
-                            if(other.hitCount >= 2){
+                            if (other.hitCount >= 2)
+                            {
                                 other.vita -= attacco;
                                 other.hitCount = 0;
-                                other.combatSystem.isBlocked = false;
-                                other.combatSystem.canMove = true;
-                                other.combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
-                                other.combatSystem.blockHeld = false;
-                                other.combatSystem.animator.speed = 1;
+                                
+                                other.combatSystem.SetBlockBool(false);
+                                other.combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.IDLE);
+                                
+                                // other.combatSystem.isBlocked = false;
+                                // other.combatSystem.canMove = true;
+                                // other.combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
+                                // other.combatSystem.blockHeld = false;
+                                // other.combatSystem.animator.speed = 1;
                             }
                             other.hitCount++;
                             Debug.Log("HitCount: " + hitCount);
@@ -129,12 +141,12 @@ public class FighterStats : MonoBehaviour
                 }
             }
         }
-        combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
+        // combatSystem.CurrentState = CombatSystem.CharacterState.IDLE;
     }
 
     void Awake()
     {
-        combatSystem = GetComponent<CombatSystem>();
+        combatSystem = GetComponent<CombatAnimSystem>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -158,7 +170,8 @@ public class FighterStats : MonoBehaviour
                     lastKiller = "MyEnemyNew";
                     // Debug.Log("Last killer: " + lastKiller);
                 }
-                combatSystem.CurrentState = CombatSystem.CharacterState.DEAD;
+                combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.DEAD);
+                combatSystem.CurrentState = CombatAnimSystem.CombatAnimState.DEAD;
             }
             
         }

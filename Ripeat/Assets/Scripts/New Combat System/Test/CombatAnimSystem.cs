@@ -37,7 +37,13 @@ public class CombatAnimSystem : MonoBehaviour
     public void SetAnimState(int numState)
     {
         animState = numState;
-        AnimationTest();
+        if (animState == 3 && CurrentState != CombatAnimState.IDLE)
+        {
+            Debug.Log("Request for IDLE");
+            RequestStateChange(CombatAnimState.IDLE);
+            CurrentState = CombatAnimState.IDLE;
+        }
+        // AnimationTest();
     }
 
     public int GetAnimState()
@@ -48,6 +54,11 @@ public class CombatAnimSystem : MonoBehaviour
     public void SetBlockBool(bool block)
     {
         animator.SetBool("Blocking", block);
+    }
+
+    public bool GetBlockBool()
+    {
+        return animator.GetBool("Blocking");
     }
 
 
@@ -66,7 +77,10 @@ public class CombatAnimSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // if (animState == 3 && CurrentState != CombatAnimState.IDLE)
+        // {
+        //     RequestStateChange(CombatAnimState.IDLE);
+        // }
     }
 
     public void RequestStateChange(CombatAnimState state)
