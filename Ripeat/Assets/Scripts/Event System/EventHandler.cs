@@ -186,7 +186,7 @@ public class EventHandler : MonoBehaviour
         player.GetComponent<InputPlayer>().isScriptActive = true;
         // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
         //Enable secondary Enemy AI
-        mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
+        // mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
         mainEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
         //Enable Boundary again
         colliderToDisable.gameObject.SetActive(true);
@@ -258,7 +258,7 @@ public class EventHandler : MonoBehaviour
 
         while (mainEnemy.transform.position.x <= mainEnemyXCoord)
         {
-            mainEnemy.transform.Translate(transform.forward * 2f * Time.deltaTime);
+            mainEnemy.transform.Translate(transform.forward * 4f * Time.deltaTime);
             // mainEnemy.GetComponent<CombatSystem>().canMove = true;
             // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
             yield return null;
@@ -286,7 +286,7 @@ public class EventHandler : MonoBehaviour
             // newEnemy.GetComponent<CombatSystem>().canMove = true;
             // newEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
             newEnemy.transform.LookAt(player.transform.position);
-            newEnemy.transform.Translate(transform.forward * 2f * Time.deltaTime);
+            newEnemy.transform.Translate(transform.forward * 4f * Time.deltaTime);
             // newEnemy.GetComponent<LookAtPlayer>().enabled = true;
             yield return null;
         }
@@ -305,7 +305,7 @@ public class EventHandler : MonoBehaviour
         player.GetComponent<InputPlayer>().isScriptActive = true;
         // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
         //Enable secondary Enemy AI
-        newEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
+        // newEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
         newEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
         // newEnemy.GetComponent<LookAtPlayer>().enabled = false;
         //Enable Boundary again

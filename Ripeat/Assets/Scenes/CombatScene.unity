@@ -10989,6 +10989,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+      propertyPath: moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+      propertyPath: blockChance
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+      propertyPath: attackChance
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 787797369814387340, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
       propertyPath: m_Name
       value: Main Enemy
