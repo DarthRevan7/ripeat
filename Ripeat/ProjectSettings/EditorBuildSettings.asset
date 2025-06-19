@@ -16,7 +16,7 @@ EditorBuildSettings:
     guid: a172a724889888640ac0929954c115e0
   - enabled: 1
     path: Assets/Scenes/NewCombatScene.unity
-    guid: 8e442795f713d534aa81306934ceef53
+    guid: 70331fac99493bd4c8d618d0e4febe62
   - enabled: 1
     path: Assets/Scenes/Elevator.unity
     guid: 949384823c3f7be4e878606892737e8a
