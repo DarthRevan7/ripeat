@@ -29,25 +29,13 @@ public class FightEventController : MonoBehaviour {
     {
 
         //If player is dead
-        if(playerStats.gameObject.GetComponent<CombatSystem>().isDead && !loading)
+        if(playerStats.gameObject.GetComponent<CombatAnimSystem>().CurrentState == CombatAnimSystem.CombatAnimState.DEAD && !loading)
         {
             loading = true;
-            // //If player dead because of the event
-            // if(actualEventIndex > globalEventIndex)
-            // {
-            //     //Update the global event index
-            //     globalEventIndex = actualEventIndex;
-            // }
-
-            // Registra l'evento come già visto
-            
-
-            
 
             //Load Elevator Scene
             GameObject.Find("FadingImage").GetComponent<MenuScript>().LoadScene();
             Debug.Log("Loading elevator Scene");
-
         }
     }
 
@@ -68,7 +56,7 @@ public class FightEventController : MonoBehaviour {
 
         eventHandler = EventHandler.Instance;
 
-        enemyStats = GameObject.Find("Enemy").GetComponent<FighterStats>();
+        enemyStats = GameObject.Find("Main Enemy").GetComponent<FighterStats>();
         playerStats = GameObject.Find("Player").GetComponent<FighterStats>();
 
         LoadAllEvents();
@@ -85,11 +73,11 @@ public class FightEventController : MonoBehaviour {
 
             eventHandler = EventHandler.Instance;
 
-            enemyStats = GameObject.Find("Enemy").GetComponent<FighterStats>();
+            enemyStats = GameObject.Find("Main Enemy").GetComponent<FighterStats>();
             playerStats = GameObject.Find("Player").GetComponent<FighterStats>();
 
             //Get the references to player and enemy stats
-            enemyStats = GameObject.Find("Enemy").GetComponent<FighterStats>();
+            enemyStats = GameObject.Find("Main Enemy").GetComponent<FighterStats>();
             playerStats = GameObject.Find("Player").GetComponent<FighterStats>();
 
             isTriggered = false;

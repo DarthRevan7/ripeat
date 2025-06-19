@@ -18,7 +18,7 @@ public class InputPlayer : MonoBehaviour
     [SerializeField] private bool inputPC = true;
 
     #region Exposed Vars
-    [SerializeField] private bool canMove = true;
+    public bool canMove = true, isScriptActive = true;
     #endregion
 
     #region Private Vars
@@ -122,6 +122,10 @@ public class InputPlayer : MonoBehaviour
 
     void Update()
     {
+        if (!isScriptActive)
+        {
+            return;
+        }
         // L'unica chiamata che deve rimanere qui è la gestione del movimento.
         // Gli attacchi e il blocco sono gestiti dai callback.
         CharacterMovement();

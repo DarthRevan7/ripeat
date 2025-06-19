@@ -98,9 +98,9 @@ public class EventHandler : MonoBehaviour
     {
         bool isFirstEncounter = FirstEncounter();
         //Disable Enemy AI
-        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
+        mainEnemy.GetComponent<CustomizableAI>().isScriptActive = false;
         //Disable Player Input
-        player.GetComponent<InputManager>().isScriptActive = false;
+        player.GetComponent<InputPlayer>().isScriptActive = false;
 
         //Instantiate the Particle System
         Vector3 instancePosition = streetlamp.transform.position;
@@ -132,9 +132,9 @@ public class EventHandler : MonoBehaviour
         }
 
         //Enable Enemy AI
-        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
+        mainEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
         //Enable Player Input
-        player.GetComponent<InputManager>().isScriptActive = true;
+        player.GetComponent<InputPlayer>().isScriptActive = true;
 
 
         if(isFirstEncounter)
@@ -151,9 +151,9 @@ public class EventHandler : MonoBehaviour
     public void TakeBackMainEnemy()
     {
         //Disable Enemy AI
-        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
+        mainEnemy.GetComponent<CustomizableAI>().isScriptActive = false;
         //Disable Player Input
-        player.GetComponent<InputManager>().isScriptActive = false;
+        player.GetComponent<InputPlayer>().isScriptActive = false;
         //Disable boundary in that direction
         Collider colliderToDisable;
         bool colliderFound = 
@@ -180,10 +180,10 @@ public class EventHandler : MonoBehaviour
         }
 
         //Enable Player Input
-        player.GetComponent<InputManager>().isScriptActive = true;
+        player.GetComponent<InputPlayer>().isScriptActive = true;
         // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
         //Enable secondary Enemy AI
-        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
+        mainEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
         //Enable Boundary again
         colliderToDisable.gameObject.SetActive(true);
     }
@@ -200,9 +200,9 @@ public class EventHandler : MonoBehaviour
         mainEnemy = GameObject.FindGameObjectWithTag(enemyTag);
 
         //Disable Enemy AI
-        mainEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
+        mainEnemy.GetComponent<CustomizableAI>().isScriptActive = false;
         //Disable Player Input
-        player.GetComponent<InputManager>().isScriptActive = false;
+        player.GetComponent<InputPlayer>().isScriptActive = false;
         //Disable boundary in that direction
         GameObject colliderParent = GameObject.Find("EnvironmentColliders");
         Collider colliderToDisable = null;
@@ -277,10 +277,10 @@ public class EventHandler : MonoBehaviour
         uIManager.secondEnemyActive = true;
 
         //Enable Player Input
-        player.GetComponent<InputManager>().isScriptActive = true;
+        player.GetComponent<InputPlayer>().isScriptActive = true;
         // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
         //Enable secondary Enemy AI
-        newEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
+        newEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
         // newEnemy.GetComponent<LookAtPlayer>().enabled = false;
         //Enable Boundary again
         colliderToDisable.gameObject.SetActive(true);
