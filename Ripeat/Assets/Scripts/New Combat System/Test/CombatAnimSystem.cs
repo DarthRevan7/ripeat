@@ -19,7 +19,8 @@ public class CombatAnimSystem : MonoBehaviour
     }
 
     [SerializeField] private Animator animator;
-    [SerializeField] private string punchAnimName, kickAnimName, blockAnimName, deadAnimName, idleAnimName, runAnimName;
+    [SerializeField] private string punchAnimName = "Punch", kickAnimName = "Kick", blockAnimName = "Block",
+    deadAnimName = "Die", idleAnimName = "Fight Stance", runAnimName = "Moving";
 
     /*
     
@@ -33,6 +34,40 @@ public class CombatAnimSystem : MonoBehaviour
     
     */
     [SerializeField] private int animState = 0;
+
+
+    #region Force Animation State
+
+    public void ChangeState(CombatAnimState state)
+    {
+        switch (state)
+            {
+                case CombatAnimState.PUNCH:
+                    animator.SetBool("Run", false);
+                    animator.Play(punchAnimName);
+                    break;
+                case CombatAnimState.KICK:
+                    animator.SetBool("Run", false);
+                    animator.Play(kickAnimName);
+                    break;
+                case CombatAnimState.BLOCK:
+                    animator.SetBool("Run", false);
+                    animator.Play(blockAnimName);
+                    break;
+                case CombatAnimState.MOVING:
+                    animator.SetBool("Run", true);
+                    break;
+                case CombatAnimState.DEAD:
+                    animator.SetBool("Run", false);
+                    animator.SetTrigger("Die");
+                    break;
+                default:
+                    animator.SetBool("Run", false);
+                    break;
+            }
+    }
+
+    #endregion
 
     public void SetAnimState(int numState)
     {
@@ -85,7 +120,7 @@ public class CombatAnimSystem : MonoBehaviour
 
     public void RequestStateChange(CombatAnimState state)
     {
-        if (StateChangeCheck())
+        if (StateChangeCheck() && state != CurrentState)
         {
             CurrentState = state;
             ExecuteAnimationChange();

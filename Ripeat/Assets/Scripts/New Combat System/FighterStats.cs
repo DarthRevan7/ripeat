@@ -2,6 +2,7 @@ using System.Net.Mail;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using FreeflowCombatSpace;
 
 public class FighterStats : MonoBehaviour
 {
@@ -164,14 +165,30 @@ public class FighterStats : MonoBehaviour
         if(vita < 0) vita = 0;
         if(isDead)
         {
-            if(combatSystem != null){
+            
+            if (combatSystem != null)
+            {
+                if (combatSystem.CurrentState != CombatAnimSystem.CombatAnimState.DEAD)
+                {
+                    combatSystem.CurrentState = CombatAnimSystem.CombatAnimState.DEAD;
+                    combatSystem.ChangeState(CombatAnimSystem.CombatAnimState.DEAD);
+                }
+                if (gameObject.tag == "Player")
+                {
+                    combatSystem.gameObject.GetComponent<InputPlayer>().isScriptActive = false;
+                }
+                else
+                {
+                    combatSystem.gameObject.GetComponent<CustomizableAI>().isScriptActive = false;
+                    combatSystem.gameObject.GetComponent<LookAtPlayer>().enabled = false;
+                }
                 if (!hitted)
                 {
                     lastKiller = "MyEnemyNew";
                     // Debug.Log("Last killer: " + lastKiller);
                 }
-                combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.DEAD);
-                combatSystem.CurrentState = CombatAnimSystem.CombatAnimState.DEAD;
+                // combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.DEAD);
+                
             }
             
         }

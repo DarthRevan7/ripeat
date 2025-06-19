@@ -1,21 +1,20 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CombatSystem))]
 public class SpawnedEnemyBehaviour : MonoBehaviour
 {
 
-    [SerializeField] private CombatSystem combatSystem;
+    [SerializeField] private CombatAnimSystem combatSystem;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    
+    void Awake()
     {
-        combatSystem = GetComponent<CombatSystem>();
+        combatSystem = GetComponent<CombatAnimSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(combatSystem.isDead)
+        if(combatSystem.CurrentState == CombatAnimSystem.CombatAnimState.DEAD)
         {
             FightEventController.globalEventIndex++;
             this.enabled = false;

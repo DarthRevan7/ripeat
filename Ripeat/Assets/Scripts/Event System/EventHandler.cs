@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using FreeflowCombatSpace;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -168,14 +169,16 @@ public class EventHandler : MonoBehaviour
     {
         //Make the main enemy come back
         mainEnemy.transform.LookAt(player.transform.position);
-        mainEnemy.GetComponent<CombatSystem>().canMove = true;
-        mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
-        mainEnemy.GetComponent<CombatSystem>().enabled = true;
 
-        while(mainEnemy.transform.position.x >= comingBackCoord)
+        mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.MOVING);
+
+        // mainEnemy.GetComponent<CombatSystem>().canMove = true;
+        // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
+        // mainEnemy.GetComponent<CombatSystem>().enabled = true;
+
+        while (mainEnemy.transform.position.x >= comingBackCoord)
         {
-            mainEnemy.GetComponent<CombatSystem>().canMove = true;
-            mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
+            mainEnemy.transform.Translate(transform.forward * 4f * Time.deltaTime);
             yield return null;
         }
 
@@ -183,6 +186,7 @@ public class EventHandler : MonoBehaviour
         player.GetComponent<InputPlayer>().isScriptActive = true;
         // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
         //Enable secondary Enemy AI
+        mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
         mainEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
         //Enable Boundary again
         colliderToDisable.gameObject.SetActive(true);
@@ -236,34 +240,53 @@ public class EventHandler : MonoBehaviour
 
     IEnumerator SpawnHandler(FightEvent fightEvent, Collider colliderToDisable)
     {
+        LookAtPlayer mainEnemyLookAt = mainEnemy.GetComponent<LookAtPlayer>();
+        mainEnemyLookAt.enabled = false;
         //Make the main enemy go away
         mainEnemy.transform.LookAt(fightEvent.spawnPosition);
-        mainEnemy.GetComponent<CombatSystem>().canMove = true;
-        mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
-        mainEnemy.GetComponent<CombatSystem>().enabled = true;
+        mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.MOVING);
 
-        
 
-        while(mainEnemy.transform.position.x <= mainEnemyXCoord)
+
+
+
+        // mainEnemy.GetComponent<CombatSystem>().canMove = true;
+        // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
+        // mainEnemy.GetComponent<CombatSystem>().enabled = true;
+
+
+
+        while (mainEnemy.transform.position.x <= mainEnemyXCoord)
         {
-            mainEnemy.GetComponent<CombatSystem>().canMove = true;
-            mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
+            mainEnemy.transform.Translate(transform.forward * 2f * Time.deltaTime);
+            // mainEnemy.GetComponent<CombatSystem>().canMove = true;
+            // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
             yield return null;
         }
 
+        //Ora che sei a destinazione puoi guardare verso il giocatore
+        mainEnemyLookAt.enabled = true;
+        mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
+
         //Movement Input Vector Equals Zero
-        mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
+        // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
 
         //Spawn secondary enemy in position
         GameObject newEnemy = GameObject.Instantiate(fightEvent.prefabToSpawn, fightEvent.spawnPosition, Quaternion.identity);
         AssignStats(newEnemy, fightEvent);
-        newEnemy.transform.LookAt(player.transform.position);
+
+        //newEnemy.transform.LookAt(player.transform.position);
+        // LookAtPlayer lookAtPlayerNewEnemy = newEnemy.GetComponent<LookAtPlayer>();
+        // lookAtPlayerNewEnemy.enabled = true;
+        newEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.MOVING);
 
         //Bring the secondary enemy in the scene
-        while(Vector3.Distance(player.transform.position, newEnemy.transform.position) >= 2.0f)
+        while (Vector3.Distance(player.transform.position, newEnemy.transform.position) >= 2.0f)
         {
-            newEnemy.GetComponent<CombatSystem>().canMove = true;
-            newEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
+            // newEnemy.GetComponent<CombatSystem>().canMove = true;
+            // newEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
+            newEnemy.transform.LookAt(player.transform.position);
+            newEnemy.transform.Translate(transform.forward * 2f * Time.deltaTime);
             // newEnemy.GetComponent<LookAtPlayer>().enabled = true;
             yield return null;
         }
@@ -276,10 +299,13 @@ public class EventHandler : MonoBehaviour
         uIManager.healthBarRectSecondEnemy = GameObject.Find("HealthUI_EN2").GetComponent<RectTransform>();
         uIManager.secondEnemyActive = true;
 
+
+
         //Enable Player Input
         player.GetComponent<InputPlayer>().isScriptActive = true;
         // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
         //Enable secondary Enemy AI
+        newEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
         newEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
         // newEnemy.GetComponent<LookAtPlayer>().enabled = false;
         //Enable Boundary again
@@ -344,7 +370,7 @@ public class EventHandler : MonoBehaviour
 
             //Kill the player.
             player.GetComponent<FighterStats>().vita = 0;
-            player.GetComponent<CombatSystem>().CurrentState = CombatSystem.CharacterState.DEAD;
+            player.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.DEAD);
 
             //Badly injure the enemy
             mainEnemy.GetComponent<FighterStats>().vita = 10;

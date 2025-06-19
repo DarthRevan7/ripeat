@@ -28,14 +28,22 @@ public class InputPlayer : MonoBehaviour
     // Callback per il blocco
     public void OnBlockStarted(InputAction.CallbackContext callbackContext)
     {
+        if (!isScriptActive)
+        {
+            return;
+        }
         // Se si inizia il blocco, richiedi lo stato BLOCK.
-        combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.BLOCK);
+            combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.BLOCK);
         combatSystem.SetBlockBool(true); // Imposta il parametro booleano nell'Animator
         canMove = false; // Blocca il movimento durante il blocco
     }
 
     public void OnBlockCanceled(InputAction.CallbackContext callbackContext)
     {
+        if (!isScriptActive)
+        {
+            return;
+        }
         combatSystem.SetBlockBool(false); // Disattiva il parametro booleano nell'Animator
         canMove = true; // Permetti di nuovo il movimento
 
@@ -50,6 +58,10 @@ public class InputPlayer : MonoBehaviour
     // Callback per il pugno
     public void OnPunchPerformed(InputAction.CallbackContext callbackContext)
     {
+        if (!isScriptActive)
+        {
+            return;
+        }
         combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.PUNCH);
         canMove = false; // Blocca il movimento durante l'attacco
     }
@@ -57,6 +69,10 @@ public class InputPlayer : MonoBehaviour
     // Callback per il calcio
     public void OnKickPerformed(InputAction.CallbackContext callbackContext)
     {
+        if (!isScriptActive)
+        {
+            return;
+        }
         combatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.KICK);
         canMove = false; 
     }

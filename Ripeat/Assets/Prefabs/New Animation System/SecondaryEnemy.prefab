@@ -1456,8 +1456,8 @@ GameObject:
   - component: {fileID: 1668544700706876099}
   - component: {fileID: 4610392323404088718}
   - component: {fileID: 1034383930656064974}
-  - component: {fileID: 4992915010542667309}
-  - component: {fileID: -8485659198762577731}
+  - component: {fileID: -9115820925166553440}
+  - component: {fileID: 7712166253812915472}
   - component: {fileID: 417598531851272170}
   - component: {fileID: 6847616837217230240}
   m_Layer: 0
@@ -1494,10 +1494,10 @@ Animator:
   m_GameObject: {fileID: 6030350152631332872}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a9fba87220f82e44699bbf5392a25ab7, type: 3}
-  m_Controller: {fileID: 9100000, guid: 54aae92468d8f2d4281d00772acd69c5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 36e2ee45afa6d9f4689d239d103125e7, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -1536,7 +1536,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6030350152631332872}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e189f70868418142a72c2d1e9cac5f2, type: 3}
   m_Name: 
@@ -1563,7 +1563,7 @@ MonoBehaviour:
   targetName: MyPlayerNew
   combatSystem: {fileID: 0}
   hitCount: 0
---- !u!114 &4992915010542667309
+--- !u!114 &-9115820925166553440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1572,45 +1572,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 6030350152631332872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf4bc65d02882240b445ffe0e227360, type: 3}
+  m_Script: {fileID: 11500000, guid: 962ab32a2138ab74fa9abc4952508eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementInput: {x: 0, y: 0, z: 0}
-  currentState: 0
+  combatState: 0
   animator: {fileID: 0}
-  punchAnimationName: New Punch
-  kickAnimationName: New Kick
-  blockAnimationName: 
-  movingParameterName: Run
-  deathAnimationName: Die
-  canMove: 1
-  isDead: 0
-  isBlocked: 0
-  pauseBlock: 0
-  blockHeld: 0
---- !u!114 &-8485659198762577731
+  punchAnimName: Punch
+  kickAnimName: Kick
+  blockAnimName: Block
+  deadAnimName: Die
+  idleAnimName: Fight Stance
+  runAnimName: Moving
+  animState: 0
+--- !u!114 &7712166253812915472
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6030350152631332872}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dbce7a533669c74389d06da4f2ae37c, type: 3}
+  m_Script: {fileID: 11500000, guid: dee563c6a591fe54d92281d6533486f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
   attackRange: 1.5
-  moveSpeed: 2
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
+  moveSpeed: 1.5
   stopMovingDistance: 1
-  decisionResponseTime: 1
-  attackChance: 0.9
-  blockChance: 0.3
-  isScriptActive: 0
+  decisionResponseTime: 0.5
+  attackChance: 0.5
+  blockChance: 0.4
+  isScriptActive: 1
+  thinking: 1
+  collided: 0
+  nextState: 0
 --- !u!114 &417598531851272170
 MonoBehaviour:
   m_ObjectHideFlags: 0
