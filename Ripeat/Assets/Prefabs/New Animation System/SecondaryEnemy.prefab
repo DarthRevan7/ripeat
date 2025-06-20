@@ -1453,13 +1453,14 @@ GameObject:
   m_Component:
   - component: {fileID: 6528761701468224492}
   - component: {fileID: 7246101078576492131}
-  - component: {fileID: 1668544700706876099}
   - component: {fileID: 4610392323404088718}
   - component: {fileID: 1034383930656064974}
   - component: {fileID: -9115820925166553440}
   - component: {fileID: 7712166253812915472}
   - component: {fileID: 417598531851272170}
   - component: {fileID: 6847616837217230240}
+  - component: {fileID: 4556026790126996733}
+  - component: {fileID: 4270388978261867648}
   m_Layer: 0
   m_Name: SecondaryEnemy
   m_TagString: Secondary Enemy
@@ -1506,29 +1507,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &1668544700706876099
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6030350152631332872}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.8
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &4610392323404088718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1558,8 +1536,8 @@ MonoBehaviour:
   movementSpeed: 5
   attacco: 1
   isDead: 0
-  colliderRadiusPunch: 0.8
-  colliderRadiusKick: 0.8
+  colliderRadiusPunch: 0.9
+  colliderRadiusKick: 0.7
   targetName: MyPlayerNew
   combatSystem: {fileID: 0}
   hitCount: 0
@@ -1597,9 +1575,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
-  attackRange: 1.5
-  moveSpeed: 1.5
-  stopMovingDistance: 1
+  attackRange: 2
+  moveSpeed: 4.5
+  stopMovingDistance: 1.2
   decisionResponseTime: 0.5
   attackChance: 0.5
   blockChance: 0.4
@@ -1642,6 +1620,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatSystem: {fileID: 0}
+--- !u!65 &4556026790126996733
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6030350152631332872}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0989153, y: 2, z: 1.1182891}
+  m_Center: {x: -0.00000008940696, y: 1, z: 0.018385231}
+--- !u!143 &4270388978261867648
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6030350152631332872}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.8
+  m_Radius: 0.3
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6035312168610673376
 GameObject:
   m_ObjectHideFlags: 0

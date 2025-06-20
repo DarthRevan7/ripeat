@@ -19,6 +19,7 @@ public class FightEventController : MonoBehaviour {
     public static int globalEventIndex;
 
     public GameObject secondaryEnemy = null;
+    private bool isMainEnemyReturning = false;
     public bool loading = false, triggered = false;
 
     public HashSet<int> triggeredEventIndices = new HashSet<int>();
@@ -147,12 +148,33 @@ public class FightEventController : MonoBehaviour {
             }
         }
 
-        if (secondaryEnemy != null)
+        if (secondaryEnemy != null && secondaryEnemy.GetComponent<FighterStats>().vita <= 0 && !isMainEnemyReturning)
         {
-            if (secondaryEnemy.GetComponent<FighterStats>().vita <= 0)
-            {
-                EventHandler.Instance.TakeBackMainEnemy();
-            }
+            // Imposta il flag a true per evitare che questo blocco venga eseguito di nuovo
+            isMainEnemyReturning = true;
+
+            //// DISATTIVAZIONE COLLIDER NEMICO 2 ----
+
+            //Debug.Log($"Disattivazione collider per il nemico sconfitto: {secondaryEnemy.name}");
+
+            //// Disattiva il CharacterController
+            //CharacterController cc = secondaryEnemy.GetComponent<CharacterController>();
+            //if (cc != null)
+            //{
+            //    cc.enabled = false;
+            //}
+
+            //// Per sicurezza, disattiva anche qualsiasi altro collider (Box, Capsule, etc.)
+            //foreach (Collider col in secondaryEnemy.GetComponents<Collider>())
+            //{
+            //    col.enabled = false;
+            //}
+
+            //// --------
+
+            // Chiama la funzione UNA SOLA VOLTA
+            EventHandler.Instance.TakeBackMainEnemy();
+            
         }
         
         

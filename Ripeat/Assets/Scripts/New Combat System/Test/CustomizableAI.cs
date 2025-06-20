@@ -17,6 +17,7 @@ public class CustomizableAI : MonoBehaviour
     [Tooltip("Probabilità (da 0 a 1) di attaccare quando il player è a distanza di attacco.")]
     [SerializeField, Range(0f, 1f)]
     private float attackChance = 0.8f;
+    private CharacterController characterController;
 
     [Tooltip("Probabilità (da 0 a 1) di provare a bloccare quando il player sta attaccando.")]
     [SerializeField, Range(0f, 1f)]
@@ -107,10 +108,25 @@ public class CustomizableAI : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(playerGameObject.transform.position, transform.position);
 
+        // ---- INIZIO CONTROLLO DI SICUREZZA AGGIUNTO ----
+        // Se siamo già più vicini (o uguali) alla distanza di stop,
+        // diciamo all'IA di fermarsi (se si stava muovendo) e non eseguiamo il resto del codice.
+        if (distanceToPlayer <= stopMovingDistance)
+        {
+            if (enemyCombatSystem.CurrentState == CombatAnimSystem.CombatAnimState.MOVING)
+            {
+                // Richiedi un cambio di stato a IDLE per fermare l'animazione di movimento.
+                enemyCombatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.IDLE);
+            }
+            // Interrompe l'esecuzione del metodo qui, per non chiamare .Move() inutilmente.
+            return;
+        }
+        // ---- FINE CONTROLLO DI SICUREZZA AGGIUNTO ----
+
         // Muovi solo se l'IA è nello stato MOVING e non sta eseguendo un'azione di attacco/blocco
         // (animState < 2)
         // if (enemyCombatSystem.CurrentState == CombatAnimSystem.CombatAnimState.MOVING && enemyCombatSystem.GetAnimState() < 2)
-        if(enemyCombatSystem.CurrentState == CombatAnimSystem.CombatAnimState.MOVING)
+        if (enemyCombatSystem.CurrentState == CombatAnimSystem.CombatAnimState.MOVING)
         {
             // Calcola la direzione verso il player (solo sull'asse XZ)
             Vector3 directionToPlayer = playerGameObject.transform.position - transform.position;
@@ -119,7 +135,8 @@ public class CustomizableAI : MonoBehaviour
             directionToPlayer.y = 0;
 
             // Muovi il personaggio usando il CharacterController
-            transform.Translate(directionToPlayer * moveSpeed * Time.deltaTime, Space.World);
+            //transform.Translate(directionToPlayer * moveSpeed * Time.deltaTime, Space.World);
+            characterController.Move(directionToPlayer * moveSpeed * Time.deltaTime);
         }
     }
 
@@ -241,14 +258,14 @@ public class CustomizableAI : MonoBehaviour
             return;
         }
 
-        // Ottieni il CharacterController del nemico
-        // characterController = GetComponent<CharacterController>();
-        // if (characterController == null)
-        // {
-        //     Debug.LogError("CustomizableAI: CharacterController component is missing! Disabling AI.");
-        //     enabled = false;
-        //     return;
-        // }
+         //Ottieni il CharacterController del nemico
+         characterController = GetComponent<CharacterController>();
+         if (characterController == null)
+         {
+             Debug.LogError("CustomizableAI: CharacterController component is missing! Disabling AI.");
+             enabled = false;
+             return;
+         }
 
         if (stopMovingDistance > attackRange)
         {

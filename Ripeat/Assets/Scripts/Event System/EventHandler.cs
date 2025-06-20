@@ -22,6 +22,8 @@ public class EventHandler : MonoBehaviour
     [SerializeField] private string playerTag = "Player", enemyTag = "Main Enemy",
     secondaryEnemyTag = "Secondary Enemy";
     [SerializeField] private float mainEnemyXCoord = 20f, newEnemyXCoord = 6f, comingBackCoord = 7f;
+    [SerializeField] private float enemyExitSpeed = 4f;
+    [SerializeField] private float enemyEntrySpeed = 5f;
     [SerializeField] private GameObject secondaryEnemyHealthBar;
     [SerializeField] private string boundaryName;
 
@@ -148,49 +150,101 @@ public class EventHandler : MonoBehaviour
         
         
     }
+    //VECCHIO CODICE
+    //public void TakeBackMainEnemy()
+    //{
+    //    //Disable Enemy AI
+    //    mainEnemy.GetComponent<CustomizableAI>().isScriptActive = false;
+    //    //Disable Player Input
+    //    player.GetComponent<InputPlayer>().isScriptActive = false;
+    //    //Disable boundary in that direction
+    //    Collider colliderToDisable;
+    //    bool colliderFound = 
+    //    entryPointColliders.TryGetValue(boundaryName, out colliderToDisable);
+    //    colliderToDisable.gameObject.SetActive(false);
+
+    //    //Coroutine to finish the job
+    //    StartCoroutine(BringMainEnemyBack(colliderToDisable));
+    //}
+
+    //IEnumerator BringMainEnemyBack(Collider colliderToDisable)
+    //{
+    //    //Make the main enemy come back
+    //    mainEnemy.transform.LookAt(player.transform.position);
+
+    //    mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.MOVING);
+
+    //    // mainEnemy.GetComponent<CombatSystem>().canMove = true;
+    //    // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
+    //    // mainEnemy.GetComponent<CombatSystem>().enabled = true;
+
+    //    while (mainEnemy.transform.position.x >= comingBackCoord)
+    //    {
+    //        mainEnemy.transform.Translate(transform.forward * 4f * Time.deltaTime);
+    //        yield return null;
+    //    }
+
+    //    //Enable Player Input
+    //    player.GetComponent<InputPlayer>().isScriptActive = true;
+    //    // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
+    //    //Enable secondary Enemy AI
+    //    mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
+    //    mainEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
+    //    //Enable Boundary again
+    //    colliderToDisable.gameObject.SetActive(true);
+    //}
+
+    // In EventHandler.cs
+
+    // In EventHandler.cs
+
+    // In EventHandler.cs
 
     public void TakeBackMainEnemy()
     {
-        //Disable Enemy AI
-        mainEnemy.GetComponent<CustomizableAI>().isScriptActive = false;
-        //Disable Player Input
+        // Disattiviamo l'input del player temporaneamente. L'IA del nemico
+        // verrà disattivata all'inizio della coroutine.
         player.GetComponent<InputPlayer>().isScriptActive = false;
-        //Disable boundary in that direction
-        Collider colliderToDisable;
-        bool colliderFound = 
-        entryPointColliders.TryGetValue(boundaryName, out colliderToDisable);
-        colliderToDisable.gameObject.SetActive(false);
 
-        //Coroutine to finish the job
-        StartCoroutine(BringMainEnemyBack(colliderToDisable));
+        // Avviamo la coroutine di rientro che ora imita quella del secondo nemico.
+        // Passiamo 'null' al collider perché questa logica non lo usa.
+        StartCoroutine(BringMainEnemyBack(null));
     }
 
-    IEnumerator BringMainEnemyBack(Collider colliderToDisable)
+    // QUESTA È LA VERSIONE CHE REPLICA LA LOGICA FUNZIONANTE
+    IEnumerator BringMainEnemyBack(Collider colliderToDisable_non_usato)
     {
-        //Make the main enemy come back
-        mainEnemy.transform.LookAt(player.transform.position);
+        // --- Passaggio 1: L'IA del nemico principale viene spenta ---
+        mainEnemy.GetComponent<CustomizableAI>().isScriptActive = false;
 
+        // Attiviamo l'animazione di movimento
         mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.MOVING);
+        Debug.Log("Inizio rientro del nemico principale, replicando la logica del secondo nemico.");
 
-        // mainEnemy.GetComponent<CombatSystem>().canMove = true;
-        // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
-        // mainEnemy.GetComponent<CombatSystem>().enabled = true;
-
-        while (mainEnemy.transform.position.x >= comingBackCoord)
+        // --- Passaggio 2, 3, 4: Movimento manuale verso il giocatore ---
+        // Questo ciclo è una copia di quello che funziona per il secondo nemico.
+        while (Vector3.Distance(player.transform.position, mainEnemy.transform.position) >= 2.0f)
         {
-            mainEnemy.transform.Translate(transform.forward * 4f * Time.deltaTime);
+            mainEnemy.transform.LookAt(player.transform.position);
+
+            // Usiamo lo stesso identico metodo di movimento del secondo nemico.
+            // La velocità è presa dalla tua variabile, sentiti libero di regolarla.
+            mainEnemy.transform.Translate(mainEnemy.transform.forward * enemyExitSpeed * Time.deltaTime, Space.World);
+
             yield return null;
         }
 
-        //Enable Player Input
-        player.GetComponent<InputPlayer>().isScriptActive = true;
-        // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
-        //Enable secondary Enemy AI
+        // --- Passaggio 5: L'IA viene riaccesa ---
+        // Una volta arrivato a destinazione, fermiamo l'animazione e riattiviamo l'IA.
         mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
         mainEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
-        //Enable Boundary again
-        colliderToDisable.gameObject.SetActive(true);
+
+        // Infine, riattiviamo l'input del giocatore.
+        player.GetComponent<InputPlayer>().isScriptActive = true;
+
+        Debug.Log("Rientro del nemico completato. Controllo restituito all'IA.");
     }
+
 
     public void HandleSpawnEvent(FightEvent fightEvent)
     {
@@ -239,95 +293,126 @@ public class EventHandler : MonoBehaviour
     }
 
     IEnumerator SpawnHandler(FightEvent fightEvent, Collider colliderToDisable)
+{
+    LookAtPlayer mainEnemyLookAt = mainEnemy.GetComponent<LookAtPlayer>();
+    mainEnemyLookAt.enabled = false;
+    //Make the main enemy go away
+    mainEnemy.transform.LookAt(fightEvent.spawnPosition);
+    mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.MOVING);
+
+
+
+
+
+    // mainEnemy.GetComponent<CombatSystem>().canMove = true;
+    // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
+    // mainEnemy.GetComponent<CombatSystem>().enabled = true;
+
+
+
+    while (mainEnemy.transform.position.x <= mainEnemyXCoord)
     {
-        LookAtPlayer mainEnemyLookAt = mainEnemy.GetComponent<LookAtPlayer>();
-        mainEnemyLookAt.enabled = false;
-        //Make the main enemy go away
-        mainEnemy.transform.LookAt(fightEvent.spawnPosition);
-        mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.MOVING);
-
-
-
-
-
+        mainEnemy.transform.Translate(transform.forward * enemyExitSpeed * Time.deltaTime);
         // mainEnemy.GetComponent<CombatSystem>().canMove = true;
         // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
-        // mainEnemy.GetComponent<CombatSystem>().enabled = true;
-
-
-
-        while (mainEnemy.transform.position.x <= mainEnemyXCoord)
-        {
-            mainEnemy.transform.Translate(transform.forward * 2f * Time.deltaTime);
-            // mainEnemy.GetComponent<CombatSystem>().canMove = true;
-            // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
-            yield return null;
-        }
-
-        //Ora che sei a destinazione puoi guardare verso il giocatore
-        mainEnemyLookAt.enabled = true;
-        mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
-
-        //Movement Input Vector Equals Zero
-        // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
-
-        //Spawn secondary enemy in position
-        GameObject newEnemy = GameObject.Instantiate(fightEvent.prefabToSpawn, fightEvent.spawnPosition, Quaternion.identity);
-        AssignStats(newEnemy, fightEvent);
-
-        //newEnemy.transform.LookAt(player.transform.position);
-        // LookAtPlayer lookAtPlayerNewEnemy = newEnemy.GetComponent<LookAtPlayer>();
-        // lookAtPlayerNewEnemy.enabled = true;
-        newEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.MOVING);
-
-        //Bring the secondary enemy in the scene
-        while (Vector3.Distance(player.transform.position, newEnemy.transform.position) >= 2.0f)
-        {
-            // newEnemy.GetComponent<CombatSystem>().canMove = true;
-            // newEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
-            newEnemy.transform.LookAt(player.transform.position);
-            newEnemy.transform.Translate(transform.forward * 2f * Time.deltaTime);
-            // newEnemy.GetComponent<LookAtPlayer>().enabled = true;
-            yield return null;
-        }
-
-
-        //Enable Secondary Enemy Health Bar
-        UIManager uIManager = GameObject.FindAnyObjectByType<UIManager>();
-        secondaryEnemyHealthBar.SetActive(true);
-        uIManager.secondEnemyStats = newEnemy.GetComponent<FighterStats>();
-        uIManager.healthBarRectSecondEnemy = GameObject.Find("HealthUI_EN2").GetComponent<RectTransform>();
-        uIManager.secondEnemyActive = true;
-
-
-
-        //Enable Player Input
-        player.GetComponent<InputPlayer>().isScriptActive = true;
-        // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
-        //Enable secondary Enemy AI
-        newEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
-        newEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
-        // newEnemy.GetComponent<LookAtPlayer>().enabled = false;
-        //Enable Boundary again
-        colliderToDisable.gameObject.SetActive(true);
-
-        FightEventController.Instance.secondaryEnemy = newEnemy;
-        
-        Debug.Log("Is 1st encounter = " + FirstEncounter().ToString());
-        
-        //Update Global Event Index
-        if(FirstEncounter())
-        {
-            FightEventController.globalEventIndex++;
-            Debug.Log("GlobalEventIndex = " + FightEventController.globalEventIndex.ToString());
-            FightEventController.Instance.triggeredEventIndices.Add(FightEventController.Instance.actualEventIndex);
-        }
-        
-        FightEventController.Instance.isTriggered = false;
-        FightEventController.Instance.actualEventIndex++;
-
         yield return null;
     }
+
+    //Ora che sei a destinazione puoi guardare verso il giocatore
+    mainEnemyLookAt.enabled = true;
+    mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
+
+    //Movement Input Vector Equals Zero
+    // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
+
+    // ---- INIZIO MODIFICA: Trova il muro "Right" ----
+    GameObject rightBoundaryWall = GameObject.Find("Right");
+    Collider wallCollider = null;
+    if (rightBoundaryWall != null)
+    {
+        wallCollider = rightBoundaryWall.GetComponent<Collider>();
+    }
+    else
+    {
+        Debug.LogError("[EventHandler] Non è stato trovato nessun oggetto con il nome 'Right'!");
+    }
+    // ---- FINE MODIFICA ----
+
+    //Spawn secondary enemy in position
+    GameObject newEnemy = GameObject.Instantiate(fightEvent.prefabToSpawn, fightEvent.spawnPosition, Quaternion.identity);
+    AssignStats(newEnemy, fightEvent);
+
+    // ---- INIZIO MODIFICA: Ignora la collisione ----
+    // Ottiene il collider del nemico (come CharacterController) e disattiva la collisione con il muro.
+    Collider enemyCollider = newEnemy.GetComponent<CharacterController>();
+    if (wallCollider != null && enemyCollider != null)
+    {
+        Physics.IgnoreCollision(enemyCollider, wallCollider, true);
+        Debug.Log($"[EventHandler] Collisione tra {newEnemy.name} e {rightBoundaryWall.name} IGNORATA.");
+    }
+    // ---- FINE MODIFICA ----
+
+    //newEnemy.transform.LookAt(player.transform.position);
+    // LookAtPlayer lookAtPlayerNewEnemy = newEnemy.GetComponent<LookAtPlayer>();
+    // lookAtPlayerNewEnemy.enabled = true;
+    newEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.MOVING);
+
+    //Bring the secondary enemy in the scene
+    while (Vector3.Distance(player.transform.position, newEnemy.transform.position) >= 2.0f)
+    {
+        // newEnemy.GetComponent<CombatSystem>().canMove = true;
+        // newEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
+        newEnemy.transform.LookAt(player.transform.position);
+        newEnemy.transform.Translate(transform.forward * enemyEntrySpeed * Time.deltaTime);
+        // newEnemy.GetComponent<LookAtPlayer>().enabled = true;
+        yield return null;
+    }
+
+    // ---- INIZIO MODIFICA: Riattiva la collisione ----
+    // Una volta che il nemico è in posizione, la collisione con il muro viene ripristinata.
+    if (wallCollider != null && enemyCollider != null)
+    {
+        Physics.IgnoreCollision(enemyCollider, wallCollider, false);
+        Debug.Log($"[EventHandler] Collisione tra {newEnemy.name} e {rightBoundaryWall.name} RI-ATTIVATA.");
+    }
+    // ---- FINE MODIFICA ----
+
+    //Enable Secondary Enemy Health Bar
+    UIManager uIManager = GameObject.FindAnyObjectByType<UIManager>();
+    secondaryEnemyHealthBar.SetActive(true);
+    uIManager.secondEnemyStats = newEnemy.GetComponent<FighterStats>();
+    uIManager.healthBarRectSecondEnemy = GameObject.Find("HealthUI_EN2").GetComponent<RectTransform>();
+    uIManager.secondEnemyActive = true;
+
+
+
+    //Enable Player Input
+    player.GetComponent<InputPlayer>().isScriptActive = true;
+    // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
+    //Enable secondary Enemy AI
+    newEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
+    newEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
+    // newEnemy.GetComponent<LookAtPlayer>().enabled = false;
+    //Enable Boundary again
+    colliderToDisable.gameObject.SetActive(true);
+
+    FightEventController.Instance.secondaryEnemy = newEnemy;
+    
+    Debug.Log("Is 1st encounter = " + FirstEncounter().ToString());
+    
+    //Update Global Event Index
+    if(FirstEncounter())
+    {
+        FightEventController.globalEventIndex++;
+        Debug.Log("GlobalEventIndex = " + FightEventController.globalEventIndex.ToString());
+        FightEventController.Instance.triggeredEventIndices.Add(FightEventController.Instance.actualEventIndex);
+    }
+    
+    FightEventController.Instance.isTriggered = false;
+    FightEventController.Instance.actualEventIndex++;
+
+    yield return null;
+}
 
     public void HandleStorm(FightEvent fightEvent) {
         //Set remaining time
