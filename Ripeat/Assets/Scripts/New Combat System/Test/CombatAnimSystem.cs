@@ -19,7 +19,8 @@ public class CombatAnimSystem : MonoBehaviour
     }
 
     [SerializeField] private Animator animator;
-    [SerializeField] private string punchAnimName, kickAnimName, blockAnimName, deadAnimName, idleAnimName, runAnimName;
+    [SerializeField] private string punchAnimName = "Punch", kickAnimName = "Kick", blockAnimName = "Block",
+    deadAnimName = "Die", idleAnimName = "Fight Stance", runAnimName = "Moving";
 
     /*
     
@@ -34,10 +35,50 @@ public class CombatAnimSystem : MonoBehaviour
     */
     [SerializeField] private int animState = 0;
 
+
+    #region Force Animation State
+
+    public void ChangeState(CombatAnimState state)
+    {
+        switch (state)
+            {
+                case CombatAnimState.PUNCH:
+                    animator.SetBool("Run", false);
+                    animator.Play(punchAnimName);
+                    break;
+                case CombatAnimState.KICK:
+                    animator.SetBool("Run", false);
+                    animator.Play(kickAnimName);
+                    break;
+                case CombatAnimState.BLOCK:
+                    animator.SetBool("Run", false);
+                    animator.Play(blockAnimName);
+                    break;
+                case CombatAnimState.MOVING:
+                    animator.SetBool("Run", true);
+                    break;
+                case CombatAnimState.DEAD:
+                    animator.SetBool("Run", false);
+                    animator.SetTrigger("Die");
+                    break;
+                default:
+                    animator.SetBool("Run", false);
+                    break;
+            }
+    }
+
+    #endregion
+
     public void SetAnimState(int numState)
     {
         animState = numState;
-        AnimationTest();
+        if (animState == 3 && CurrentState != CombatAnimState.IDLE)
+        {
+            Debug.Log("Request for IDLE");
+            RequestStateChange(CombatAnimState.IDLE);
+            CurrentState = CombatAnimState.IDLE;
+        }
+        // AnimationTest();
     }
 
     public int GetAnimState()
@@ -48,6 +89,11 @@ public class CombatAnimSystem : MonoBehaviour
     public void SetBlockBool(bool block)
     {
         animator.SetBool("Blocking", block);
+    }
+
+    public bool GetBlockBool()
+    {
+        return animator.GetBool("Blocking");
     }
 
 
@@ -66,36 +112,15 @@ public class CombatAnimSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.E))
-        // {
-        //     RequestStateChange(CombatAnimState.KICK);
-        // }
-        // else if (Input.GetKeyDown(KeyCode.R))
-        // {
-        //     RequestStateChange(CombatAnimState.PUNCH);
-        // }
-        // else if (Input.GetKeyDown(KeyCode.F))
-        // {
-        //     RequestStateChange(CombatAnimState.BLOCK);
-        // }
-        // else if (Input.GetKey(KeyCode.F))
-        // {
-        //     animator.SetBool("Blocking", true);
-        // }
-        // else if (Input.GetKeyUp(KeyCode.F))
-        // {
-        //     animator.SetBool("Blocking", false);
-        // }
-        // else
+        // if (animState == 3 && CurrentState != CombatAnimState.IDLE)
         // {
         //     RequestStateChange(CombatAnimState.IDLE);
         // }
-
     }
 
     public void RequestStateChange(CombatAnimState state)
     {
-        if (StateChangeCheck())
+        if (StateChangeCheck() && state != CurrentState)
         {
             CurrentState = state;
             ExecuteAnimationChange();
@@ -116,18 +141,22 @@ public class CombatAnimSystem : MonoBehaviour
             switch (CurrentState)
             {
                 case CombatAnimState.PUNCH:
+                    animator.SetBool("Run", false);
                     animator.Play(punchAnimName);
                     break;
                 case CombatAnimState.KICK:
+                    animator.SetBool("Run", false);
                     animator.Play(kickAnimName);
                     break;
                 case CombatAnimState.BLOCK:
+                    animator.SetBool("Run", false);
                     animator.Play(blockAnimName);
                     break;
                 case CombatAnimState.MOVING:
                     animator.SetBool("Run", true);
                     break;
                 case CombatAnimState.DEAD:
+                    animator.SetBool("Run", false);
                     animator.SetTrigger("Die");
                     break;
                 default:

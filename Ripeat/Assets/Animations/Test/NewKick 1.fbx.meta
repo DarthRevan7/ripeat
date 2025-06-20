@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4c6d417e8df8f50468971c04abb91814
+guid: b36c35f1cbb3de946a01b90fe8cc00b8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable:
@@ -395,7 +395,7 @@ ModelImporter:
     second: STYLIZED-BASEMESH-BIGMALE-OBJ
   - first:
       74: 7400000
-    second: combo_01_1
+    second: combo_01_4
   - first:
       95: 9500000
     second: //RootNode
@@ -430,11 +430,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: combo_01_1
-      takeName: combo_01_1
+      name: combo_01_4
+      takeName: combo_01_4
       internalID: 0
-      firstFrame: 5.2
-      lastFrame: 20
+      firstFrame: 12
+      lastFrame: 28
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -448,39 +448,32 @@ ModelImporter:
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.14774774
+      - time: 0
         functionName: SetAnimState
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
-      - time: 0.3031675
+      - time: 0.12612607
         functionName: SetAnimState
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
-      - time: 0.6018019
+      - time: 0.64705884
         functionName: SetAnimState
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 3
-        messageOptions: 0
-      - time: 0.971564
-        functionName: EnableMovement
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
         messageOptions: 0
       - time: 1
         functionName: SetAnimState
@@ -489,7 +482,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.36683413
+      - time: 0.33165833
         functionName: Hit
         data: 
         objectReferenceParameter: {instanceID: 0}

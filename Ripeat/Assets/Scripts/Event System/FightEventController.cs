@@ -19,6 +19,7 @@ public class FightEventController : MonoBehaviour {
     public static int globalEventIndex;
 
     public GameObject secondaryEnemy = null;
+    private bool isMainEnemyReturning = false;
     public bool loading = false, triggered = false;
 
     public HashSet<int> triggeredEventIndices = new HashSet<int>();
@@ -29,25 +30,13 @@ public class FightEventController : MonoBehaviour {
     {
 
         //If player is dead
-        if(playerStats.gameObject.GetComponent<CombatSystem>().isDead && !loading)
+        if(playerStats.gameObject.GetComponent<CombatAnimSystem>().CurrentState == CombatAnimSystem.CombatAnimState.DEAD && !loading)
         {
             loading = true;
-            // //If player dead because of the event
-            // if(actualEventIndex > globalEventIndex)
-            // {
-            //     //Update the global event index
-            //     globalEventIndex = actualEventIndex;
-            // }
-
-            // Registra l'evento come già visto
-            
-
-            
 
             //Load Elevator Scene
             GameObject.Find("FadingImage").GetComponent<MenuScript>().LoadScene();
             Debug.Log("Loading elevator Scene");
-
         }
     }
 
@@ -68,7 +57,7 @@ public class FightEventController : MonoBehaviour {
 
         eventHandler = EventHandler.Instance;
 
-        enemyStats = GameObject.Find("Enemy").GetComponent<FighterStats>();
+        enemyStats = GameObject.Find("Main Enemy").GetComponent<FighterStats>();
         playerStats = GameObject.Find("Player").GetComponent<FighterStats>();
 
         LoadAllEvents();
@@ -85,11 +74,11 @@ public class FightEventController : MonoBehaviour {
 
             eventHandler = EventHandler.Instance;
 
-            enemyStats = GameObject.Find("Enemy").GetComponent<FighterStats>();
+            enemyStats = GameObject.Find("Main Enemy").GetComponent<FighterStats>();
             playerStats = GameObject.Find("Player").GetComponent<FighterStats>();
 
             //Get the references to player and enemy stats
-            enemyStats = GameObject.Find("Enemy").GetComponent<FighterStats>();
+            enemyStats = GameObject.Find("Main Enemy").GetComponent<FighterStats>();
             playerStats = GameObject.Find("Player").GetComponent<FighterStats>();
 
             isTriggered = false;
@@ -159,12 +148,33 @@ public class FightEventController : MonoBehaviour {
             }
         }
 
-        if (secondaryEnemy != null)
+        if (secondaryEnemy != null && secondaryEnemy.GetComponent<FighterStats>().vita <= 0 && !isMainEnemyReturning)
         {
-            if (secondaryEnemy.GetComponent<FighterStats>().vita <= 0)
-            {
-                EventHandler.Instance.TakeBackMainEnemy();
-            }
+            // Imposta il flag a true per evitare che questo blocco venga eseguito di nuovo
+            isMainEnemyReturning = true;
+
+            //// DISATTIVAZIONE COLLIDER NEMICO 2 ----
+
+            //Debug.Log($"Disattivazione collider per il nemico sconfitto: {secondaryEnemy.name}");
+
+            //// Disattiva il CharacterController
+            //CharacterController cc = secondaryEnemy.GetComponent<CharacterController>();
+            //if (cc != null)
+            //{
+            //    cc.enabled = false;
+            //}
+
+            //// Per sicurezza, disattiva anche qualsiasi altro collider (Box, Capsule, etc.)
+            //foreach (Collider col in secondaryEnemy.GetComponents<Collider>())
+            //{
+            //    col.enabled = false;
+            //}
+
+            //// --------
+
+            // Chiama la funzione UNA SOLA VOLTA
+            EventHandler.Instance.TakeBackMainEnemy();
+            
         }
         
         

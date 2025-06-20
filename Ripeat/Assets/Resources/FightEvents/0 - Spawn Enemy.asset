@@ -17,7 +17,7 @@ MonoBehaviour:
   triggerHealthPercentage: 60
   triggerTime: -1
   targetReference: {fileID: 0}
-  prefabToSpawn: {fileID: 6030350152631332872, guid: 9d27fffd13dc15043baae90e1cf86ee2, type: 3}
+  prefabToSpawn: {fileID: 6030350152631332872, guid: 560f69cc4afa6934f94cfc6799ec1356, type: 3}
   spawnPosition: {x: 21.7, y: 0.71078897, z: -8.01}
   boundaryDirection: 0
   firstEncounterAttack: 30

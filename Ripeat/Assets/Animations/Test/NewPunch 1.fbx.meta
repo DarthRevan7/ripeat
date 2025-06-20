@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4c6d417e8df8f50468971c04abb91814
+guid: 9841ee1a8f1dfdb418dc92744fed675e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable:
@@ -475,13 +475,6 @@ ModelImporter:
         floatParameter: 0
         intParameter: 3
         messageOptions: 0
-      - time: 0.971564
-        functionName: EnableMovement
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 1
         functionName: SetAnimState
         data: 
@@ -489,7 +482,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.36683413
+      - time: 0.3517588
         functionName: Hit
         data: 
         objectReferenceParameter: {instanceID: 0}
