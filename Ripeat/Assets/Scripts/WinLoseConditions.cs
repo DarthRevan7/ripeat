@@ -3,14 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class WinLoseConditions : MonoBehaviour
 {
-    [SerializeField] private CombatSystem player, enemy;
+    [SerializeField] private CombatAnimSystem player, enemy;
     [SerializeField] private bool isLoading = false;
     [SerializeField] private string winningScene = "", losingScene = "";
     [SerializeField] private MenuScript menuScript;
 
     private void Awake() {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<CombatSystem>();
-        enemy = GameObject.FindGameObjectWithTag("Main Enemy").GetComponent<CombatSystem>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<CombatAnimSystem>();
+        enemy = GameObject.FindGameObjectWithTag("Main Enemy").GetComponent<CombatAnimSystem>();
         menuScript = GameObject.FindAnyObjectByType<MenuScript>();
     }
 
@@ -23,12 +23,12 @@ public class WinLoseConditions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.isDead && !isLoading)
+        if(player.CurrentState == CombatAnimSystem.CombatAnimState.DEAD && !isLoading)
         {
             menuScript.LoadScene();
             isLoading = true;
         }
-        else if(enemy.isDead && !isLoading)
+        else if(enemy.CurrentState == CombatAnimSystem.CombatAnimState.DEAD && !isLoading)
         {
             if(winningScene != "")
             {
