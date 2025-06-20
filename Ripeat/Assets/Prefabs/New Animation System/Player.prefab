@@ -2231,7 +2231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vita: 600
   movementSpeed: 5
-  attacco: 5
+  attacco: 10
   isDead: 0
   colliderRadiusPunch: 0.7
   colliderRadiusKick: 0.9
@@ -2309,6 +2309,7 @@ MonoBehaviour:
   inputActionBlockName: Block
   inputPC: 1
   canMove: 1
+  isScriptActive: 1
 --- !u!1 &8819467142656187025
 GameObject:
   m_ObjectHideFlags: 0

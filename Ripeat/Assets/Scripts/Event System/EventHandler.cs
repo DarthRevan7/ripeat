@@ -203,15 +203,15 @@ public class EventHandler : MonoBehaviour
     public void TakeBackMainEnemy()
     {
         // Disattiviamo l'input del player temporaneamente. L'IA del nemico
-        // verrà disattivata all'inizio della coroutine.
+        // verrï¿½ disattivata all'inizio della coroutine.
         player.GetComponent<InputPlayer>().isScriptActive = false;
 
         // Avviamo la coroutine di rientro che ora imita quella del secondo nemico.
-        // Passiamo 'null' al collider perché questa logica non lo usa.
+        // Passiamo 'null' al collider perchï¿½ questa logica non lo usa.
         StartCoroutine(BringMainEnemyBack(null));
     }
 
-    // QUESTA È LA VERSIONE CHE REPLICA LA LOGICA FUNZIONANTE
+    // QUESTA ï¿½ LA VERSIONE CHE REPLICA LA LOGICA FUNZIONANTE
     IEnumerator BringMainEnemyBack(Collider colliderToDisable_non_usato)
     {
         // --- Passaggio 1: L'IA del nemico principale viene spenta ---
@@ -222,13 +222,13 @@ public class EventHandler : MonoBehaviour
         Debug.Log("Inizio rientro del nemico principale, replicando la logica del secondo nemico.");
 
         // --- Passaggio 2, 3, 4: Movimento manuale verso il giocatore ---
-        // Questo ciclo è una copia di quello che funziona per il secondo nemico.
+        // Questo ciclo ï¿½ una copia di quello che funziona per il secondo nemico.
         while (Vector3.Distance(player.transform.position, mainEnemy.transform.position) >= 2.0f)
         {
             mainEnemy.transform.LookAt(player.transform.position);
 
             // Usiamo lo stesso identico metodo di movimento del secondo nemico.
-            // La velocità è presa dalla tua variabile, sentiti libero di regolarla.
+            // La velocitï¿½ ï¿½ presa dalla tua variabile, sentiti libero di regolarla.
             mainEnemy.transform.Translate(mainEnemy.transform.forward * enemyExitSpeed * Time.deltaTime, Space.World);
 
             yield return null;
@@ -334,7 +334,7 @@ public class EventHandler : MonoBehaviour
     }
     else
     {
-        Debug.LogError("[EventHandler] Non è stato trovato nessun oggetto con il nome 'Right'!");
+        Debug.LogError("[EventHandler] Non ï¿½ stato trovato nessun oggetto con il nome 'Right'!");
     }
     // ---- FINE MODIFICA ----
 
@@ -369,7 +369,7 @@ public class EventHandler : MonoBehaviour
     }
 
     // ---- INIZIO MODIFICA: Riattiva la collisione ----
-    // Una volta che il nemico è in posizione, la collisione con il muro viene ripristinata.
+    // Una volta che il nemico ï¿½ in posizione, la collisione con il muro viene ripristinata.
     if (wallCollider != null && enemyCollider != null)
     {
         Physics.IgnoreCollision(enemyCollider, wallCollider, false);
