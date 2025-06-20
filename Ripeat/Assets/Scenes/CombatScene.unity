@@ -11040,7 +11040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
       propertyPath: attackRange
-      value: 2.5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
       propertyPath: stopMovingDistance
