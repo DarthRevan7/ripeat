@@ -10679,7 +10679,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8796176278940899912, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
   m_PrefabInstance: {fileID: 966030218581590478}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 966030218581590479}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e8ec0d4979b11f44b52136c99b107cf, type: 3}
@@ -10780,8 +10780,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+      propertyPath: thinking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
       propertyPath: moveSpeed
-      value: 4
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+      propertyPath: attackRange
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
       propertyPath: blockChance
@@ -10789,7 +10797,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
       propertyPath: attackChance
-      value: 0.9
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+      propertyPath: stopMovingDistance
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 787797369814387340, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
       propertyPath: m_Name
@@ -10847,11 +10859,52 @@ PrefabInstance:
       propertyPath: targetName
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8796176278940899912, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+      propertyPath: colliderRadiusKick
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796176278940899912, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+      propertyPath: colliderRadiusPunch
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 787797369814387340, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 966030218581590480}
   m_SourcePrefab: {fileID: 100100000, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+--- !u!1 &966030218581590479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 787797369814387340, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+  m_PrefabInstance: {fileID: 966030218581590478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &966030218581590480
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966030218581590479}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.8
+  m_Radius: 0.3
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1034781345239635384
 GameObject:
   m_ObjectHideFlags: 0
