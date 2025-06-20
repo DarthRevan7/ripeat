@@ -181,6 +181,8 @@ public class FighterStats : MonoBehaviour
                 {
                     combatSystem.gameObject.GetComponent<CustomizableAI>().isScriptActive = false;
                     combatSystem.gameObject.GetComponent<LookAtPlayer>().enabled = false;
+                    combatSystem.gameObject.GetComponent<Collider>().enabled = false;
+                    combatSystem.gameObject.GetComponent<CharacterController>().enabled = false;
                 }
                 if (!hitted)
                 {
