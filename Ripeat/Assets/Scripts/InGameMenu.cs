@@ -20,8 +20,8 @@ public class InGameMenu : MonoBehaviour
     void Awake()
     {
         escPanel = GameObject.Find("EscPanel");
-        escPanel.transform.Find("BackGameButton").GetComponent<Button>().onClick.AddListener(() => { Debug.Log("Menu triggerato"); TriggerMenu(); });
-        escPanel.transform.Find("BackMenuButton").GetComponent<Button>().onClick.AddListener(() => BackToMainMenu());
+        escPanel.transform.Find("Riprendi").GetComponent<Button>().onClick.AddListener(() => { Debug.Log("Menu triggerato"); TriggerMenu(); });
+        escPanel.transform.Find("Menu").GetComponent<Button>().onClick.AddListener(() => BackToMainMenu());
         escPanel.SetActive(false);
 
         eventSystem = EventSystem.current;
