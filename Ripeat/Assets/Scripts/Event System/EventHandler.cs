@@ -23,8 +23,8 @@ public class EventHandler : MonoBehaviour
     private string playerTag = "Player", enemyTag = "Main Enemy",
     secondaryEnemyTag = "Secondary Enemy";
     [SerializeField] private float mainEnemyXCoord = 20f, newEnemyXCoord = 6f, comingBackCoord = 7f;
-    [SerializeField] private float enemyExitSpeed = 4f;
-    [SerializeField] private float enemyEntrySpeed = 5f;
+    [SerializeField] private float enemyExitSpeed = 5f;
+    [SerializeField] private float enemyEntrySpeed = 4f;
     [SerializeField] private GameObject secondaryEnemyHealthBar;
     [SerializeField] private string boundaryName;
     [SerializeField] public FighterStats playerStats;
@@ -228,7 +228,6 @@ public class EventHandler : MonoBehaviour
         StartCoroutine(BringMainEnemyBack(null));
     }
 
-    // QUESTA � LA VERSIONE CHE REPLICA LA LOGICA FUNZIONANTE
     IEnumerator BringMainEnemyBack(Collider colliderToDisable_non_usato)
     {
         // --- Passaggio 1: L'IA del nemico principale viene spenta ---
@@ -236,10 +235,8 @@ public class EventHandler : MonoBehaviour
 
         // Attiviamo l'animazione di movimento
         mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.MOVING);
-        Debug.Log("Inizio rientro del nemico principale, replicando la logica del secondo nemico.");
 
         // --- Passaggio 2, 3, 4: Movimento manuale verso il giocatore ---
-        // Questo ciclo � una copia di quello che funziona per il secondo nemico.
         while (Vector3.Distance(player.transform.position, mainEnemy.transform.position) >= 2.0f)
         {
             mainEnemy.transform.LookAt(player.transform.position);
@@ -317,15 +314,9 @@ public class EventHandler : MonoBehaviour
     mainEnemy.transform.LookAt(fightEvent.spawnPosition);
     mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.MOVING);
 
-
-
-
-
     // mainEnemy.GetComponent<CombatSystem>().canMove = true;
     // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
     // mainEnemy.GetComponent<CombatSystem>().enabled = true;
-
-
 
     while (mainEnemy.transform.position.x <= mainEnemyXCoord)
     {
@@ -342,24 +333,24 @@ public class EventHandler : MonoBehaviour
     //Movement Input Vector Equals Zero
     // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
 
-    // ---- INIZIO MODIFICA: Trova il muro "Right" ----
+    //Trova il muro "Right"----
     GameObject rightBoundaryWall = GameObject.Find("Right");
     Collider wallCollider = null;
-    if (rightBoundaryWall != null)
-    {
-        wallCollider = rightBoundaryWall.GetComponent<Collider>();
-    }
-    else
-    {
-        Debug.LogError("[EventHandler] Non � stato trovato nessun oggetto con il nome 'Right'!");
-    }
-    // ---- FINE MODIFICA ----
+        if (rightBoundaryWall != null)
+        {
+            wallCollider = rightBoundaryWall.GetComponent<Collider>();
+        }
+        else
+        {
+            Debug.LogError("[EventHandler] Non � stato trovato nessun oggetto con il nome 'Right'!");
+        }
+        //-----
 
-    //Spawn secondary enemy in position
-    GameObject newEnemy = GameObject.Instantiate(fightEvent.prefabToSpawn, fightEvent.spawnPosition, Quaternion.identity);
+        //Spawn secondary enemy in position
+        GameObject newEnemy = GameObject.Instantiate(fightEvent.prefabToSpawn, fightEvent.spawnPosition, Quaternion.identity);
     AssignStats(newEnemy, fightEvent);
 
-    // ---- INIZIO MODIFICA: Ignora la collisione ----
+    // ---- Ignora la collisione ----
     // Ottiene il collider del nemico (come CharacterController) e disattiva la collisione con il muro.
     Collider enemyCollider = newEnemy.GetComponent<CharacterController>();
     if (wallCollider != null && enemyCollider != null)
@@ -367,7 +358,7 @@ public class EventHandler : MonoBehaviour
         Physics.IgnoreCollision(enemyCollider, wallCollider, true);
         Debug.Log($"[EventHandler] Collisione tra {newEnemy.name} e {rightBoundaryWall.name} IGNORATA.");
     }
-    // ---- FINE MODIFICA ----
+    // --------
 
     //newEnemy.transform.LookAt(player.transform.position);
     // LookAtPlayer lookAtPlayerNewEnemy = newEnemy.GetComponent<LookAtPlayer>();
@@ -385,14 +376,14 @@ public class EventHandler : MonoBehaviour
         yield return null;
     }
 
-    // ---- INIZIO MODIFICA: Riattiva la collisione ----
+    // ---- Riattiva la collisione ----
     // Una volta che il nemico � in posizione, la collisione con il muro viene ripristinata.
     if (wallCollider != null && enemyCollider != null)
     {
         Physics.IgnoreCollision(enemyCollider, wallCollider, false);
         Debug.Log($"[EventHandler] Collisione tra {newEnemy.name} e {rightBoundaryWall.name} RI-ATTIVATA.");
     }
-    // ---- FINE MODIFICA ----
+    // --------
 
     //Enable Secondary Enemy Health Bar
     UIManager uIManager = GameObject.FindAnyObjectByType<UIManager>();

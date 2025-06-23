@@ -69,6 +69,8 @@ public class FightEventController : MonoBehaviour {
     {
         if (scene.name.Equals("CombatScene"))
         {
+            // Resettiamo il flag del rientro del nemico principale ogni volta che la scena di combattimento inizia.
+            isMainEnemyReturning = false;
             //Index for current event system
             actualEventIndex = 0;
 

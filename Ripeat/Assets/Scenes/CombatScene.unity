@@ -5641,7 +5641,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &994153981
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10376,6 +10376,7 @@ MonoBehaviour:
   enemyEntrySpeed: 5
   secondaryEnemyHealthBar: {fileID: 186906761}
   boundaryName: Right
+  playerStats: {fileID: 0}
   streetlamp: {fileID: 0}
   brokenStreetlampPrefab: {fileID: 6032444477516088360, guid: 3ceab3eb5c2018e43a9d0649fbe4e9fd, type: 3}
   remainingTime: 0
@@ -11021,6 +11022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Elevator
+  ImageControl: {fileID: 0}
   targetImage: {fileID: 3562987153163072735}
   fadeDuration: 2
   characterStats: {fileID: 0}
@@ -11040,11 +11042,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
       propertyPath: attackRange
-      value: 2.5
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+      propertyPath: blockChance
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+      propertyPath: attackChance
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
       propertyPath: stopMovingDistance
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 470536722056579877, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
+      propertyPath: decisionResponseTime
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 787797369814387340, guid: d6e2b95c44534124a872b3230dfde96b, type: 3}
       propertyPath: m_Name
@@ -11696,6 +11710,7 @@ MonoBehaviour:
   menuSceneName: Menu
   menuTriggered: 0
   escPanel: {fileID: 994153980}
+  ControllerPanel: {fileID: 0}
   eventSystem: {fileID: 0}
   inputActions: {fileID: 0}
   player: {fileID: 0}
