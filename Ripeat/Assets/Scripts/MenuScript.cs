@@ -9,7 +9,7 @@ public class MenuScript : MonoBehaviour
 {
     private Button button;
     [SerializeField] public string sceneToLoad = "FightingScene_Try"; 
-
+    [SerializeField] private GameObject ImageControl;   
     [SerializeField] private Image targetImage;
     [SerializeField] private float fadeDuration = 2f;
 
@@ -82,10 +82,16 @@ public class MenuScript : MonoBehaviour
                 StartCoroutine(FadeIn());
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ImageControl.SetActive(false);
+        }
     }
 
     public void QuitGame()
     {
+        Debug.Log("QuitGame() called");
         Application.Quit();
     }
 
@@ -99,11 +105,17 @@ public class MenuScript : MonoBehaviour
 
     // private IEnumerator LoadSceneAfterDelay(string sceneName)
     // {
-        
+
     //     yield return new WaitForSeconds(2f);
     //     // Carica la nuova scena
     //     SceneManager.LoadScene(sceneName);
     // }
+
+    public void Control()
+    {
+        Debug.Log("Control() called");
+        ImageControl.SetActive(true);
+    }
 
     public IEnumerator FadeIn()
     {
@@ -121,8 +133,8 @@ public class MenuScript : MonoBehaviour
             yield return null;
         }
 
-        
-        if(SceneManager.GetSceneByName(sceneToLoad).isLoaded)
+
+        if (SceneManager.GetSceneByName(sceneToLoad).isLoaded)
         {
             Debug.Log("Cambiamento di scena: " + SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneToLoad)).ToString());
         }

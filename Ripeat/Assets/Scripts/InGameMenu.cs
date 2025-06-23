@@ -10,6 +10,7 @@ public class InGameMenu : MonoBehaviour
     [SerializeField] private string menuSceneName = "Menu";
     [SerializeField] private bool menuTriggered = false;
     [SerializeField] private GameObject escPanel;
+    [SerializeField] private GameObject ControllerPanel;
 
     [SerializeField] private EventSystem eventSystem;
 
@@ -50,8 +51,15 @@ public class InGameMenu : MonoBehaviour
 
     public void MenuTrigger(InputAction.CallbackContext context)
     {
-        TriggerMenu();
-        Debug.Log("Menu triggerato");
+        if(!ControllerPanel.activeSelf)
+        {
+            TriggerMenu();
+            Debug.Log("Menu triggerato");
+        }
+        else
+        {
+            Debug.Log("ControllerPanel is active");
+        }
     }
 
     public void BackToMainMenu()
