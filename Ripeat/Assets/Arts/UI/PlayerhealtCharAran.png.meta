@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8354ca553808ebf4985be9d58fde0365
+guid: 23d1c7ae872a1e34a99cfefcbcaa58c8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerhealtEnemy1-export_0
+      name: PlayerhealtCharAran_0
       rect:
         serializedVersion: 2
         x: 23
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81070783eb9c28046bf48f3925495acb
-      internalID: -752219574
+      spriteID: 01843e96abc363c44bae7d70d86b86a0
+      internalID: -978801837
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 43cd3ae3b1fc68e4e8592c38004d5a4b
+    spriteID: 6586117d0eb52434e922b3bf4f0b9f69
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PlayerhealtEnemy1-export_0: -752219574
+      PlayerhealtCharAran_0: -978801837
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
