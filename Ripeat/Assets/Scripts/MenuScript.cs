@@ -113,6 +113,11 @@ public class MenuScript : MonoBehaviour
     //     SceneManager.LoadScene(sceneName);
     // }
 
+    public void TriggerControls()
+    {
+        ImageControl.SetActive(!ImageControl.activeInHierarchy);
+    }
+
     public void Control()
     {
         Debug.Log("Control() called");
