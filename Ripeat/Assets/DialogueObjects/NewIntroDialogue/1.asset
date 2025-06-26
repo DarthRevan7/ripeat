@@ -19,7 +19,7 @@ MonoBehaviour:
   - responseText: Voglio solo bere.
     dialogueObject: {fileID: 11400000, guid: 5ff81c10e95d379408d2bf308970990a, type: 2}
     pointValue: 0
-  - responseText: Whisky buono, azione.
+  - responseText: Un po' di azione.
     dialogueObject: {fileID: 11400000, guid: 5ff81c10e95d379408d2bf308970990a, type: 2}
     pointValue: 0
   - responseText: Amici, buona compagnia.

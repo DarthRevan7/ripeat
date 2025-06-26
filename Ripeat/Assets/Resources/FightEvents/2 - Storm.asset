@@ -15,7 +15,7 @@ MonoBehaviour:
   eventName: Storm
   eventType: 3
   triggerHealthPercentage: -1
-  triggerTime: 3
+  triggerTime: 6
   targetReference: {fileID: 0}
   prefabToSpawn: {fileID: 0}
   spawnPosition: {x: -3.65, y: 6.1, z: -6.82}

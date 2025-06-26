@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 
 public class ResponseHandler : MonoBehaviour
 {
@@ -17,8 +18,8 @@ public class ResponseHandler : MonoBehaviour
     private ScoreManager scoreManager; // Riferimento allo ScoreManager
     private UnityAndGeminiV3 unityAndGeminiV3; // Riferimento a UnityAndGeminiV3
 
-    public static string history = "Utilizzando le parole scelte dal giocatore, descrivi brevemente un inizio di combattimento tra un uomo al bar e un'altra persona casuale, descrivila parlando all'uomo. Il contesto è 'america anni 20'. Utilizza le parole che il giocatore ha scelto per capire la sua indole. Stampa solo la breve descrizione spiegando cosa succede nel bar senza niente altro.\n"; // Storia delle risposte
-
+    public static string history1 = "Utilizzando le parole scelte dal giocatore, descrivi brevemente un inizio di combattimento tra un uomo al bar e un'altra persona casuale, descrivila parlando al protagonista. Il contesto è 'america anni 20'. Utilizza le parole che il giocatore ha scelto per capire la sua indole ma non dirlo. Scrivi solo l'inizio, ovvero quando il nemico apre la porta ed entra al bar. Scrivi pochissime frasi senza descrizioni tra parentesi. Solo quello che accade.\n"; // Storia delle risposte
+    public static string history2 = "Continua la frase descrivendo il combattimento. Non scrivere tanto. Frase da continuare: \n"; 
     private void Start()
     {
         dialogueUI = GetComponent<DialogueUI>(); // Ottiene il componente DialogueUI
@@ -29,7 +30,8 @@ public class ResponseHandler : MonoBehaviour
 
     public void Restart()
     {
-        history = "Utilizzando le parole scelte dal giocatore, descrivi brevemente un inizio di combattimento tra un uomo al bar e un'altra persona casuale. Il contesto è 'america anni 20'. Utilizza le parole che il giocatore ha scelto per capire la sua indole. Stampa solo la breve descrizione spiegando cosa succede nel bar senza niente altro.\n"; // Inizializza la storia delle risposte
+        history1 = "Utilizzando le parole scelte dal giocatore, descrivi brevemente un inizio di combattimento tra un uomo al bar e un'altra persona casuale, descrivila parlando all'uomo. Il contesto è 'america anni 20'. Utilizza le parole che il giocatore ha scelto per capire la sua indole non scriverle subito. Scrivi solo l'inizio, ovvero quando il nemico apre la porta ed entra al bar. Scrivi pochissime frasi.\n"; // Storia delle risposte
+        history2 = "Continua la frase descrivendo il combattimento. Non scrivere tanto. Frase da continuare: \n";
     }
 
     public void AddResponseEvents(ResponseEvent[] responseEvents)
@@ -75,8 +77,8 @@ public class ResponseHandler : MonoBehaviour
 
     private void OnPickedResponse(Response response, int responseIndex, Vector2 initialPos)
     {
-        history = history + response.ResponseText + ", "; // Aggiunge la risposta selezionata alla storia
-        Debug.Log(history); // Stampa la storia delle risposte selezionate
+        history1 = history1 + response.ResponseText + ", "; // Aggiunge la risposta selezionata alla storia
+        
         
         responseBox.gameObject.SetActive(false); // Nasconde il box delle risposte
         
@@ -105,13 +107,22 @@ public class ResponseHandler : MonoBehaviour
 
     public void SendHistoryToGemini()
     {
-        unityAndGeminiV3 = GetComponent<UnityAndGeminiV3>(); // Ottiene il componente UnityAndGeminiV3
+        unityAndGeminiV3 = GetComponent<UnityAndGeminiV3>();
         if (unityAndGeminiV3 == null)
         {
-            Debug.LogError("UnityAndGeminiV3 non trovato!"); // Avvisa se UnityAndGeminiV3 non è trovato
+            Debug.LogError("UnityAndGeminiV3 non trovato!");
             return;
         }
-        StartCoroutine(unityAndGeminiV3.SendPromptRequestToGemini(history, 1)); // Invia la storia a Gemini
-        Debug.Log("Storia inviata a Gemini: " + history);
+        StartCoroutine(SendHistoryCoroutine());
+    }
+
+    IEnumerator SendHistoryCoroutine()
+    {
+        // Prima parte
+        yield return StartCoroutine(unityAndGeminiV3.SendPromptRequestToGemini(history1, 1));
+        history2 = history2 + " " + unityAndGeminiV3.backStory1;
+        // Seconda parte
+        yield return StartCoroutine(unityAndGeminiV3.SendPromptRequestToGemini(history2, 3));
+        Debug.Log("Storia inviata a Gemini");
     }
 }
