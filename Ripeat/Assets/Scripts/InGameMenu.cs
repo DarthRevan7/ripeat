@@ -76,6 +76,7 @@ public class InGameMenu : MonoBehaviour
         if (menuTriggered)
         {
             Time.timeScale = 0;
+            /*
             if (SceneManager.GetActiveScene().name.Equals("CombatScene"))
             {
                 player.GetComponent<InputManager>().isScriptActive = false;
@@ -87,10 +88,12 @@ public class InGameMenu : MonoBehaviour
                     secondEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
                 }
             }
+            */
         }
         else
             {
             Time.timeScale = 1;
+            /*
             if (SceneManager.GetActiveScene().name.Equals("CombatScene"))
             {
                 player.GetComponent<InputManager>().isScriptActive = true;
@@ -100,6 +103,7 @@ public class InGameMenu : MonoBehaviour
                     secondEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
                 }
             }
+            */
         }
         escPanel.SetActive(menuTriggered);
 

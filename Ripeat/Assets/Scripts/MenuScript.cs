@@ -83,7 +83,7 @@ public class MenuScript : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && ImageControl.activeSelf && ImageControl != null)
         {
             ImageControl.SetActive(false);
         }
@@ -115,6 +115,11 @@ public class MenuScript : MonoBehaviour
     {
         Debug.Log("Control() called");
         ImageControl.SetActive(true);
+    }
+    public void BackControl()
+    {
+        Debug.Log("BackControl() called");
+        ImageControl.SetActive(false);
     }
 
     public IEnumerator FadeIn()

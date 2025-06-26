@@ -930,9 +930,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 448157464}
+        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
+        m_MethodName: BackControl
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1874,6 +1874,7 @@ GameObject:
   - component: {fileID: 448157463}
   - component: {fileID: 448157462}
   - component: {fileID: 448157461}
+  - component: {fileID: 448157464}
   m_Layer: 5
   m_Name: backButton
   m_TagString: Untagged
@@ -1983,6 +1984,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448157459}
   m_CullTransparentMesh: 1
+--- !u!114 &448157464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448157459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5631b7d3481224a829c3bfb6556d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: FightingScene_Try
+  ImageControl: {fileID: 420820913}
+  targetImage: {fileID: 0}
+  fadeDuration: 2
+  characterStats: {fileID: 0}
+  enemyStats: {fileID: 0}
+  fading: 0
 --- !u!1 &458677076
 GameObject:
   m_ObjectHideFlags: 0
@@ -4548,6 +4568,7 @@ GameObject:
   - component: {fileID: 1202691640}
   - component: {fileID: 1202691644}
   - component: {fileID: 1202691645}
+  - component: {fileID: 1202691646}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4638,7 +4659,6 @@ RectTransform:
   - {fileID: 830559517}
   - {fileID: 1970760923}
   - {fileID: 1667898932}
-  - {fileID: 1637930967}
   - {fileID: 420820914}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4697,12 +4717,31 @@ MonoBehaviour:
   menuSceneName: Menu
   menuTriggered: 0
   escPanel: {fileID: 1667898929}
-  ControllerPanel: {fileID: 1637930966}
+  ControllerPanel: {fileID: 420820913}
   eventSystem: {fileID: 0}
   inputActions: {fileID: 0}
   player: {fileID: 0}
   enemy: {fileID: 0}
   secondEnemy: {fileID: 0}
+--- !u!114 &1202691646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202691635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5631b7d3481224a829c3bfb6556d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: FightingScene_Try
+  ImageControl: {fileID: 420820913}
+  targetImage: {fileID: 0}
+  fadeDuration: 2
+  characterStats: {fileID: 0}
+  enemyStats: {fileID: 0}
+  fading: 0
 --- !u!1 &1252212214
 GameObject:
   m_ObjectHideFlags: 0
@@ -6293,81 +6332,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1637930966
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1637930967}
-  - component: {fileID: 1637930969}
-  - component: {fileID: 1637930968}
-  m_Layer: 5
-  m_Name: SchermataControlli
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1637930967
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1637930966}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.03125, y: 1.03125, z: 1.03125}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1202691639}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
-  m_SizeDelta: {x: -60, y: -33.75}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1637930968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1637930966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: -594025775, guid: 070b4db40bb80c343bebe54d0a4ee802, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1637930969
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1637930966}
-  m_CullTransparentMesh: 1
 --- !u!1 &1667898929 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1969859886944879354, guid: 2b73450ce34f564469ff93f951626392, type: 3}
@@ -7221,7 +7185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: FightingScene_Try
-  ImageControl: {fileID: 1637930966}
+  ImageControl: {fileID: 420820913}
   targetImage: {fileID: 0}
   fadeDuration: 2
   characterStats: {fileID: 0}
