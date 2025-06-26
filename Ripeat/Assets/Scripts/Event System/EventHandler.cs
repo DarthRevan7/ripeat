@@ -180,7 +180,7 @@ public class EventHandler : MonoBehaviour
 
     IEnumerator waitS()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
     }
     //VECCHIO CODICE
     //public void TakeBackMainEnemy()
