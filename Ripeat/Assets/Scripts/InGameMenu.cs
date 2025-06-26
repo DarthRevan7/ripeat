@@ -18,6 +18,13 @@ public class InGameMenu : MonoBehaviour
 
     [SerializeField] private GameObject player, enemy, secondEnemy;
 
+    [SerializeField] private GameObject controlPanel;
+
+    public void TriggerControlPanel()
+    {
+        controlPanel.SetActive(!controlPanel.activeInHierarchy);
+    }
+
     void Awake()
     {
         escPanel = GameObject.Find("EscPanel");
@@ -47,12 +54,12 @@ public class InGameMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void MenuTrigger(InputAction.CallbackContext context)
     {
-        if(!ControllerPanel.activeSelf)
+        if (!ControllerPanel.activeInHierarchy)
         {
             TriggerMenu();
             Debug.Log("Menu triggerato");
@@ -92,7 +99,7 @@ public class InGameMenu : MonoBehaviour
             */
         }
         else
-            {
+        {
             Time.timeScale = 1;
             /*
             if (SceneManager.GetActiveScene().name.Equals("CombatScene"))
@@ -111,4 +118,6 @@ public class InGameMenu : MonoBehaviour
         eventSystem.firstSelectedGameObject = GameObject.Find("BackGameButton");
         // eventSystem.currentSelectedGameObject.GetComponent<Button>()
     }
+
+    
 }

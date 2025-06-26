@@ -407,9 +407,9 @@
                     "name": "Click",
                     "type": "PassThrough",
                     "id": "3c7022bf-7922-4f7c-a998-c437916075ad",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": true
                 },
                 {
@@ -435,6 +435,15 @@
                     "type": "PassThrough",
                     "id": "0489e84a-4833-4c40-bfae-cea84b696689",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "f46badc7-2160-40b9-a148-14a36c626392",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -577,9 +586,9 @@
                     "name": "",
                     "id": "4faf7dc9-b979-4210-aa8c-e808e1ef89f5",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
+                    "groups": "",
                     "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -614,6 +623,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "MiddleClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc88d912-90bc-4e73-994a-47a50751a1f4",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

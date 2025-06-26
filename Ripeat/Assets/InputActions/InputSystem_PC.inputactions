@@ -416,6 +416,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "TrackedDeviceOrientation",
+                    "type": "Button",
+                    "id": "27959892-388c-4a3e-ab1c-78ff3245102d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -554,7 +563,7 @@
                 {
                     "name": "",
                     "id": "4faf7dc9-b979-4210-aa8c-e808e1ef89f5",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<VirtualMouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -592,6 +601,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "MiddleClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ed49e098-e534-4b71-aa2b-789a62b76b45",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TrackedDeviceOrientation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
