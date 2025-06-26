@@ -63,7 +63,7 @@ public class CustomizableAI : MonoBehaviour
             if (Random.Range(0f, 1f) <= blockChance) // Controlla la probabilità di bloccare
             {
                 nextState = CombatAnimSystem.CombatAnimState.BLOCK;
-                Debug.Log("IA: Decido di BLOCcare (probabilità superata)!");
+                // Debug.Log("IA: Decido di BLOCcare (probabilità superata)!");
                 GetComponent<Animator>().SetBool("Blocking", true);
                 StartCoroutine(EndBlock());
                 return; // Decisione presa, esci.
@@ -78,7 +78,7 @@ public class CustomizableAI : MonoBehaviour
             {
                 // Se decide di attaccare, sceglie casualmente tra PUNCH e KICK
                 nextState = (Random.Range(0f, 1f) <= 0.5f) ? CombatAnimSystem.CombatAnimState.PUNCH : CombatAnimSystem.CombatAnimState.KICK;
-                Debug.Log($"IA: Decido di ATTACCARE: {nextState} (probabilità superata)!");
+                // Debug.Log($"IA: Decido di ATTACCARE: {nextState} (probabilità superata)!");
                 return; // Decisione presa, esci.
             }
         }
@@ -88,20 +88,20 @@ public class CustomizableAI : MonoBehaviour
         if (distanceToPlayer > stopMovingDistance && !collided)
         {
             nextState = CombatAnimSystem.CombatAnimState.MOVING;
-            Debug.Log("IA: Decido di MUOVERMI!");
+            // Debug.Log("IA: Decido di MUOVERMI!");
             return; // Decisione presa, esci.
         }
 
         // PRIORITÀ 4: IDLE (se nessuna delle condizioni precedenti è vera)
         // Se l'IA è vicina, il player non sta attaccando e l'IA non ha attaccato, allora sta ferma.
         nextState = CombatAnimSystem.CombatAnimState.IDLE;
-        Debug.Log("IA: Decido di stare IDLE.");
+        // Debug.Log("IA: Decido di stare IDLE.");
     }
 
     private void ExecuteDecision()
     {
         enemyCombatSystem.RequestStateChange(nextState);
-        Debug.Log($"Request State {nextState}\n");
+        // Debug.Log($"Request State {nextState}\n");
     }
 
     private void HandleMovement()
@@ -235,7 +235,7 @@ public class CustomizableAI : MonoBehaviour
 
         if (playerGameObject == null)
         {
-            Debug.LogError($"CustomizableAI: Player GameObject with tag '{playerTag}' not found! Disabling AI.");
+            // Debug.LogError($"CustomizableAI: Player GameObject with tag '{playerTag}' not found! Disabling AI.");
             enabled = false;
             return;
         }
@@ -244,7 +244,7 @@ public class CustomizableAI : MonoBehaviour
         playerCombatSystem = playerGameObject.GetComponent<CombatAnimSystem>();
         if (playerCombatSystem == null)
         {
-            Debug.LogError("CustomizableAI: Player GameObject found, but CombatSystem component is missing! Disabling AI.");
+            // Debug.LogError("CustomizableAI: Player GameObject found, but CombatSystem component is missing! Disabling AI.");
             enabled = false;
             return;
         }
@@ -253,23 +253,23 @@ public class CustomizableAI : MonoBehaviour
         enemyCombatSystem = GetComponent<CombatAnimSystem>();
         if (enemyCombatSystem == null)
         {
-            Debug.LogError("CustomizableAI: Enemy GameObject found, but its own CombatSystem component is missing! Disabling AI.");
+            // Debug.LogError("CustomizableAI: Enemy GameObject found, but its own CombatSystem component is missing! Disabling AI.");
             enabled = false;
             return;
         }
 
          //Ottieni il CharacterController del nemico
-         characterController = GetComponent<CharacterController>();
-         if (characterController == null)
-         {
-             Debug.LogError("CustomizableAI: CharacterController component is missing! Disabling AI.");
-             enabled = false;
-             return;
-         }
+        characterController = GetComponent<CharacterController>();
+        if (characterController == null)
+        {
+            //  Debug.LogError("CustomizableAI: CharacterController component is missing! Disabling AI.");
+            enabled = false;
+            return;
+        }
 
         if (stopMovingDistance > attackRange)
         {
-            Debug.LogWarning("CustomizableAI: stopMovingDistance should not be greater than attackRange. Adjusting stopMovingDistance to equal attackRange.");
+            // Debug.LogWarning("CustomizableAI: stopMovingDistance should not be greater than attackRange. Adjusting stopMovingDistance to equal attackRange.");
             stopMovingDistance = attackRange;
         }
 

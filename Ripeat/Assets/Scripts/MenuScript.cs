@@ -13,7 +13,7 @@ public class MenuScript : MonoBehaviour
     [SerializeField] private Image targetImage;
     [SerializeField] private float fadeDuration = 2f;
 
-    [SerializeField] private CharacterStats characterStats;
+    [SerializeField] private FighterStats characterStats;
     [SerializeField] private FighterStats enemyStats;
     [SerializeField] private UnityAndGeminiV3 unityAndGeminiV3;
     [SerializeField] private bool fading = false;
@@ -40,8 +40,6 @@ public class MenuScript : MonoBehaviour
         {
             StartCoroutine(FadeOut());
         }
-
-        characterStats = GameObject.FindAnyObjectByType<CharacterStats>();
         
 
         SceneManager.sceneLoaded += OnLoadScene;
@@ -57,6 +55,7 @@ public class MenuScript : MonoBehaviour
         if (SceneManager.GetActiveScene().name.Equals("CombatScene"))
         {
             enemyStats = GameObject.FindGameObjectWithTag("Main Enemy").GetComponent<FighterStats>();
+            characterStats = GameObject.FindGameObjectWithTag("Player").GetComponent<FighterStats>();
         }
     }
 

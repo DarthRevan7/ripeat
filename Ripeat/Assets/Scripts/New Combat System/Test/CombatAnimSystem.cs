@@ -74,7 +74,7 @@ public class CombatAnimSystem : MonoBehaviour
         animState = numState;
         if (animState == 3 && CurrentState != CombatAnimState.IDLE)
         {
-            Debug.Log("Request for IDLE");
+            // Debug.Log("Request for IDLE");
             RequestStateChange(CombatAnimState.IDLE);
             CurrentState = CombatAnimState.IDLE;
         }
@@ -168,7 +168,7 @@ public class CombatAnimSystem : MonoBehaviour
     #region Test
     void AnimationTest()
     {
-        Debug.Log(animState.ToString() + " State");
+        // Debug.Log(animState.ToString() + " State");
     }
     #endregion
 }
