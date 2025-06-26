@@ -27,19 +27,7 @@ public class GeminiPrompt : MonoBehaviour
     
     public int SwitchImplementation()
     {
-        if(FightEventController.Instance == null)
-        {
-            return 0;
-        }
-
-        if(FightEventController.Instance.triggeredEventIndices.Count == 0)
-        {
-            return 1;
-        }
-        else
-        {
-            return FightEventController.Instance.triggeredEventIndices.Count%FightEventController.Instance.loadedEvents.Count +1;
-        }
+        return FightEventController.globalEventIndex;
     }
 
     public void SetName(string name)
@@ -65,6 +53,9 @@ public class GeminiPrompt : MonoBehaviour
                 prompt += prompt3;
                 break;
             case 3:
+                prompt += prompt4;
+                break;
+            case 4:
                 prompt += prompt4;
                 break;
             default:

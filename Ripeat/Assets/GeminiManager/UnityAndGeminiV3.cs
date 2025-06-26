@@ -115,8 +115,8 @@ public class UnityAndGeminiV3 : MonoBehaviour
     
     private int counter = 1;
     private int sum = 0;
-    private int[] counterArray = new int[4] {10, 7, 5, 3}; // Array per i contatori delle risposte
-    private int[] sumArray = new int[4] {20, 14, 10, 6}; // Array per i contatori delle somme
+    private int[] counterArray = new int[5] {10, 7, 5, 3, 1}; // Array per i contatori delle risposte
+    private int[] sumArray = new int[5] {20, 14, 10, 6, 1}; // Array per i contatori delle somme
     private int index = 0; // Indice corrente dell'array
 
     IEnumerator Start()
@@ -616,7 +616,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
         }
     }
 
-    private void ShowPositiveFinalImage()
+    public void ShowPositiveFinalImage()
     {
         if (positiveFinalImage != null)
         {

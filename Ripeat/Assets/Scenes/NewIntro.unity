@@ -4032,7 +4032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: NewCombatScene
-  ImageControl: {fileID: 0}
+  ImageControl: {fileID: 659445602}
   targetImage: {fileID: 2116976045}
   fadeDuration: 2
   characterStats: {fileID: 0}

@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using AI;
+using AI; 
+using System.Collections;
 
 public class FightEventController : MonoBehaviour {
     public static FightEventController Instance { get; private set; }
@@ -29,15 +30,19 @@ public class FightEventController : MonoBehaviour {
     private void CheckEventFlow()
     {
 
-        //If player is dead
-        if(playerStats.gameObject.GetComponent<CombatAnimSystem>().CurrentState == CombatAnimSystem.CombatAnimState.DEAD && !loading)
+        // If player is dead
+        if (playerStats.gameObject.GetComponent<CombatAnimSystem>().CurrentState == CombatAnimSystem.CombatAnimState.DEAD && !loading)
         {
             loading = true;
-
-            //Load Elevator Scene
-            GameObject.Find("FadingImage").GetComponent<MenuScript>().LoadScene();
+            // Avvia la coroutine che aspetta 2 secondi prima di cambiare scena
+            StartCoroutine(LoadSceneWithDelay());
             Debug.Log("Loading elevator Scene");
         }
+    }
+
+    IEnumerator LoadSceneWithDelay() {
+        yield return new WaitForSeconds(2f);
+        GameObject.Find("FadingImage").GetComponent<MenuScript>().LoadScene();
     }
 
     private void Awake() {

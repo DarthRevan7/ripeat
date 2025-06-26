@@ -101,6 +101,11 @@ public class EventHandler : MonoBehaviour
         playerStats.vita = playerStats.vita + 40 > 100 ? 100 : playerStats.vita + 40;
     }
 
+    public void UpdateEnemyHealth()
+    {
+        var enemyStats = mainEnemy.GetComponent<FighterStats>();
+        enemyStats.vita = enemyStats.vita + 40 > 100 ? 100 : enemyStats.vita + 40;
+    }
     private void AssignStats(GameObject newEnemy, FightEvent fightEvent)
     {
         FighterStats stats = newEnemy.GetComponent<FighterStats>();
@@ -147,8 +152,13 @@ public class EventHandler : MonoBehaviour
         else
         {
             Debug.Log("Explosion halver");
-            player.GetComponent<FighterStats>().vita /= 2;
-            mainEnemy.GetComponent<FighterStats>().vita /= 2;
+            player.GetComponent<FighterStats>().vita = (int)(player.GetComponent<FighterStats>().vita / 1.5f);
+            mainEnemy.GetComponent<FighterStats>().vita =  (int)(mainEnemy.GetComponent<FighterStats>().vita/ 1.5f) ;
+            StartCoroutine(waitS());
+
+            UpdatePlayerHealth();
+            UpdateEnemyHealth();
+
         }
 
         //Enable Enemy AI
@@ -166,6 +176,11 @@ public class EventHandler : MonoBehaviour
         FightEventController.Instance.actualEventIndex++;
 
 
+    }
+
+    IEnumerator waitS()
+    {
+        yield return new WaitForSeconds(10f);
     }
     //VECCHIO CODICE
     //public void TakeBackMainEnemy()
@@ -230,6 +245,12 @@ public class EventHandler : MonoBehaviour
 
     IEnumerator BringMainEnemyBack(Collider colliderToDisable_non_usato)
     {
+        if (!FirstEncounter())
+        {
+            // Aumenta la vita del nemico di 50, ma non oltre 100
+            UpdateEnemyHealth();
+        }
+
         // --- Passaggio 1: L'IA del nemico principale viene spenta ---
         mainEnemy.GetComponent<CustomizableAI>().isScriptActive = false;
 
@@ -432,6 +453,7 @@ public class EventHandler : MonoBehaviour
         //Instantiate the storm PS
         ParticleSystem stormPS = Instantiate(fightEvent.stormParticle).GetComponent<ParticleSystem>();
         //Play the storm PS
+        
         stormPS.Play();
 
         StartCoroutine(StormHandler(fightEvent));
@@ -473,8 +495,7 @@ public class EventHandler : MonoBehaviour
         }
         else
         {
-            UpdatePlayerHealth();
-
+            
             //Obtain the player position and instantiate the lightning FX
             Vector3 position = new Vector3(player.transform.position.x, fightEvent.spawnPosition.y, player.transform.position.z);
             ParticleSystem lightningPS = Instantiate(fightEvent.lightningStrikeFX, position, Quaternion.identity);

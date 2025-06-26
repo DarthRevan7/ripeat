@@ -26,7 +26,7 @@ MonoBehaviour:
     m_path: Assets/Scenes/BNwrite.unity
   - m_enabled: 1
     m_path: Assets/Scenes/NewIntro.unity
-  - m_enabled: 0
+  - m_enabled: 1
     m_path: Assets/Scenes/NewCombatScene.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Elevator.unity

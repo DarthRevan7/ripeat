@@ -15,6 +15,7 @@ public class MenuScript : MonoBehaviour
 
     [SerializeField] private CharacterStats characterStats;
     [SerializeField] private FighterStats enemyStats;
+    [SerializeField] private UnityAndGeminiV3 unityAndGeminiV3;
     [SerializeField] private bool fading = false;
     
     private GeminiPrompt geminiPrompt;
@@ -41,6 +42,7 @@ public class MenuScript : MonoBehaviour
         }
 
         characterStats = GameObject.FindAnyObjectByType<CharacterStats>();
+        
 
         SceneManager.sceneLoaded += OnLoadScene;
         
@@ -78,7 +80,8 @@ public class MenuScript : MonoBehaviour
         {
             if (enemyStats.isDead && !fading)
             {
-                sceneToLoad = "FinalVideo";
+                unityAndGeminiV3 = GameObject.FindAnyObjectByType<UnityAndGeminiV3>();
+                unityAndGeminiV3.ShowPositiveFinalImage();
                 StartCoroutine(FadeIn());
             }
         }

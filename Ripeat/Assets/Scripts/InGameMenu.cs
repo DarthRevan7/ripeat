@@ -32,13 +32,14 @@ public class InGameMenu : MonoBehaviour
         inputActions.FindActionMap("Player").FindAction("Start").performed += MenuTrigger;
         enabled = true;
 
+        /*
         if (SceneManager.GetActiveScene().name.Equals("CombatScene"))
         {
             player = GameObject.FindGameObjectWithTag("Player");
             enemy = GameObject.FindGameObjectWithTag("Main Enemy");
             secondEnemy = GameObject.FindGameObjectWithTag("Secondary Enemy");
         }
-
+        */
 
     }
 

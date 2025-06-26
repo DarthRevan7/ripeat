@@ -10745,7 +10745,7 @@ MonoBehaviour:
   sceneToLoad: Elevator
   ImageControl: {fileID: 1653558974}
   targetImage: {fileID: 3562987153163072735}
-  fadeDuration: 2
+  fadeDuration: 4
   characterStats: {fileID: 0}
   enemyStats: {fileID: 0}
   fading: 0
