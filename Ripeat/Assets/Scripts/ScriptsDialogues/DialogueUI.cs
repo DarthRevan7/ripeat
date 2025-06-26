@@ -8,8 +8,13 @@ public class DialogueUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text speakerText;
     [SerializeField] private TMP_Text textLabel;
-    [SerializeField] private TMP_Text finalStringText;
+    [SerializeField] private TMP_Text finalStringText1;
+    [SerializeField] private TMP_Text finalStringText2;
+    [SerializeField] private TMP_Text finalStringText3;
     [SerializeField] private GameObject finalImage;
+    [SerializeField] private GameObject string1;
+    [SerializeField] private GameObject string2;
+
     [SerializeField] private DialogueObject testDialogue;
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private GameObject negativeFinalImage;
@@ -27,6 +32,7 @@ public class DialogueUI : MonoBehaviour
     private GeminiPrompt geminiPrompt;
 
     private string risposteLibere = "";
+    private string finalString = "Che il combattimento abbia inizio!";
 
     private void Start()
     {
@@ -153,12 +159,37 @@ public class DialogueUI : MonoBehaviour
         }
     }
 
-    public IEnumerator ShowFinalString(string finalString)
+    public IEnumerator ShowFinalString(string finalString1, string finalString2)
     {
         finalImage.SetActive(true);
-        typewriterEffect.Run(finalString, finalStringText);
-
+        Debug.Log("Final string: " + finalString1);
+        typewriterEffect.Run(finalString1, finalStringText1);
+        while (typewriterEffect.IsRunning)
+        {
+            yield return null;
+        }
+        // Attendi click prima di mostrare la seconda stringa
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+
+        string1.SetActive(true);
+        Debug.Log("Final string 2: " + finalString2);
+        typewriterEffect.Run(finalString2, finalStringText2);
+        while (typewriterEffect.IsRunning)
+        {
+            yield return null;
+        }
+        // Attendi click prima di mostrare la terza stringa
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+
+        string2.SetActive(true);
+        typewriterEffect.Run(finalString, finalStringText3);
+        while (typewriterEffect.IsRunning)
+        {
+            yield return null;
+        }
+        // Attendi click prima di cambiare scena
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+
         SceneManager.LoadScene("NewCombatScene");
     }
 }

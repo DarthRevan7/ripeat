@@ -111,7 +111,8 @@ public class UnityAndGeminiV3 : MonoBehaviour
     private string prompt = "";
     private string feedback = "";
     private string messages = "";
-    public static string backStory = "";
+    public string backStory1 = "";
+    public string backStory2 = "";
     
     private int counter = 1;
     private int sum = 0;
@@ -169,7 +170,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
         if(isDead){
             prompt = "NON SCRIVERE MAI questo simbolo %. \n";
             prompt += geminiPrompt.getPrompt();
-            prompt += "\nBackstory dell' anima: " + backStory + "\n";
+            prompt += "\nBackstory dell' anima: " + backStory2 + "\n";
             
             conversationHistory = "PROMPT: " + prompt + "\n\nCronologia della conversazione:";
             Debug.Log("Prompt preso: " + prompt);
@@ -245,9 +246,9 @@ public class UnityAndGeminiV3 : MonoBehaviour
                             break;
                         case 1:
                             string text1 = response.candidates[0].content.parts[0].text;
-                            backStory = text1;
-                            Debug.Log("\nText: " + text1);
-                            StartCoroutine(dialogueUI.ShowFinalString(text1));
+                            backStory1 = text1;
+                            Debug.Log("\nText1: " + text1);
+                            //StartCoroutine(dialogueUI.ShowFinalString(text1));
                             break;
                         case 2:
                             string text2 = response.candidates[0].content.parts[0].text;
@@ -279,6 +280,12 @@ public class UnityAndGeminiV3 : MonoBehaviour
                             {
                                 Debug.Log("Risposta non valida: " + text2);
                             }
+                            break;
+                        case 3:
+                            string text3 = response.candidates[0].content.parts[0].text;
+                            backStory2 = text3;
+                            Debug.Log("\nText3: " + text3);
+                            StartCoroutine(dialogueUI.ShowFinalString(backStory1, backStory2));
                             break;
                         default:
                             break;
