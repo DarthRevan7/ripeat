@@ -11,7 +11,7 @@ public class MenuScript : MonoBehaviour
     [SerializeField] public string sceneToLoad = "FightingScene_Try"; 
     [SerializeField] private GameObject ImageControl;   
     [SerializeField] private Image targetImage;
-    [SerializeField] private float fadeDuration = 2f;
+    [SerializeField] private float fadeDuration = 2f, fadeDelay = 0f;
 
     [SerializeField] private FighterStats characterStats;
     [SerializeField] private FighterStats enemyStats;
@@ -126,6 +126,8 @@ public class MenuScript : MonoBehaviour
 
     public IEnumerator FadeIn()
     {
+        yield return new WaitForSeconds(fadeDelay);
+
         // Debug.Log("Started Coroutine FadeIn()");
         float elapsedTime = 0f;
         Color color = targetImage.color;

@@ -154,7 +154,6 @@ public class EventHandler : MonoBehaviour
             Debug.Log("Explosion halver");
             player.GetComponent<FighterStats>().vita = (int)(player.GetComponent<FighterStats>().vita / 1.5f);
             mainEnemy.GetComponent<FighterStats>().vita =  (int)(mainEnemy.GetComponent<FighterStats>().vita/ 1.5f) ;
-            StartCoroutine(waitS());
 
             UpdatePlayerHealth();
             UpdateEnemyHealth();
@@ -176,11 +175,6 @@ public class EventHandler : MonoBehaviour
         FightEventController.Instance.actualEventIndex++;
 
 
-    }
-
-    IEnumerator waitS()
-    {
-        yield return new WaitForSeconds(5f);
     }
     //VECCHIO CODICE
     //public void TakeBackMainEnemy()

@@ -10631,6 +10631,7 @@ MonoBehaviour:
   ImageControl: {fileID: 2111814682}
   targetImage: {fileID: 0}
   fadeDuration: 2
+  fadeDelay: 0
   characterStats: {fileID: 0}
   enemyStats: {fileID: 0}
   unityAndGeminiV3: {fileID: 0}
@@ -10937,6 +10938,7 @@ MonoBehaviour:
   ImageControl: {fileID: 2111814682}
   targetImage: {fileID: 3562987153163072735}
   fadeDuration: 2
+  fadeDelay: 2.5
   characterStats: {fileID: 0}
   enemyStats: {fileID: 0}
   unityAndGeminiV3: {fileID: 0}
