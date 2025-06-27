@@ -4911,11 +4911,11 @@ RectTransform:
   - {fileID: 1342055736}
   - {fileID: 1354284164}
   - {fileID: 377267925}
+  - {fileID: 1970760923}
   - {fileID: 145225038}
   - {fileID: 830559517}
   - {fileID: 1667898932}
   - {fileID: 420820914}
-  - {fileID: 1970760923}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
