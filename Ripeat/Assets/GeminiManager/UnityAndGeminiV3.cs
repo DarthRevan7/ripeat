@@ -407,7 +407,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
 
                         PLBox.SetActive(false);
                         yield return new WaitForSeconds(8f);
-                        if (FightEventController.globalEventIndex > 3)
+                        if (FightEventController.Instance.globalEventIndex > 3)
                         {
                             ShowPositiveFinalImage();
                             yield return new WaitForSeconds(3f);

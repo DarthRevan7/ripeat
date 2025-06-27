@@ -27,7 +27,7 @@ public class GeminiPrompt : MonoBehaviour
     
     public int SwitchImplementation()
     {
-        return FightEventController.globalEventIndex;
+        return FightEventController.Instance.globalEventIndex;
     }
 
     public void SetName(string name)
@@ -41,7 +41,7 @@ public class GeminiPrompt : MonoBehaviour
         string prompt = "Il nome dell'anima è: " + mainName + "\n\n";
     
         
-        switch(FightEventController.globalEventIndex)
+        switch(FightEventController.Instance.globalEventIndex)
         {
             case 0:
                 prompt += prompt1;

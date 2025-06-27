@@ -36,6 +36,8 @@ public class EventHandler : MonoBehaviour
 
     [SerializeField] private float remainingTime = 0;
 
+    [SerializeField] private int healingAmount = 40;
+
 
     void Start()
     {
@@ -94,11 +96,11 @@ public class EventHandler : MonoBehaviour
         return !FightEventController.Instance.triggeredEventIndices.Contains(FightEventController.Instance.actualEventIndex);
     }
 
-    public void UpdatePlayerHealth()
+    public void HealPlayer()
     {
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<FighterStats>();
         Debug.Log("Player Stats: " + playerStats.vita.ToString());  
-        playerStats.vita = playerStats.vita + 40 > 100 ? 100 : playerStats.vita + 40;
+        playerStats.vita = playerStats.vita + healingAmount > 100 ? 100 : playerStats.vita + healingAmount;
     }
 
     public void UpdateEnemyHealth()
@@ -153,9 +155,9 @@ public class EventHandler : MonoBehaviour
         {
             Debug.Log("Explosion halver");
             player.GetComponent<FighterStats>().vita = (int)(player.GetComponent<FighterStats>().vita / 1.5f);
-            mainEnemy.GetComponent<FighterStats>().vita =  (int)(mainEnemy.GetComponent<FighterStats>().vita/ 1.5f) ;
+            mainEnemy.GetComponent<FighterStats>().vita = (int)(mainEnemy.GetComponent<FighterStats>().vita / 1.5f);
 
-            UpdatePlayerHealth();
+            HealPlayer();
             UpdateEnemyHealth();
 
         }
@@ -168,63 +170,17 @@ public class EventHandler : MonoBehaviour
 
         if (isFirstEncounter)
         {
+            FightEventController.Instance.globalEventIndex++;
             FightEventController.Instance.triggeredEventIndices.Add(FightEventController.Instance.actualEventIndex);
         }
 
         FightEventController.Instance.isTriggered = false;
         FightEventController.Instance.actualEventIndex++;
 
+        FightEventController.Instance.SetTimeSnapshot();
+
 
     }
-    //VECCHIO CODICE
-    //public void TakeBackMainEnemy()
-    //{
-    //    //Disable Enemy AI
-    //    mainEnemy.GetComponent<CustomizableAI>().isScriptActive = false;
-    //    //Disable Player Input
-    //    player.GetComponent<InputPlayer>().isScriptActive = false;
-    //    //Disable boundary in that direction
-    //    Collider colliderToDisable;
-    //    bool colliderFound = 
-    //    entryPointColliders.TryGetValue(boundaryName, out colliderToDisable);
-    //    colliderToDisable.gameObject.SetActive(false);
-
-    //    //Coroutine to finish the job
-    //    StartCoroutine(BringMainEnemyBack(colliderToDisable));
-    //}
-
-    //IEnumerator BringMainEnemyBack(Collider colliderToDisable)
-    //{
-    //    //Make the main enemy come back
-    //    mainEnemy.transform.LookAt(player.transform.position);
-
-    //    mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.MOVING);
-
-    //    // mainEnemy.GetComponent<CombatSystem>().canMove = true;
-    //    // mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
-    //    // mainEnemy.GetComponent<CombatSystem>().enabled = true;
-
-    //    while (mainEnemy.transform.position.x >= comingBackCoord)
-    //    {
-    //        mainEnemy.transform.Translate(transform.forward * 4f * Time.deltaTime);
-    //        yield return null;
-    //    }
-
-    //    //Enable Player Input
-    //    player.GetComponent<InputPlayer>().isScriptActive = true;
-    //    // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
-    //    //Enable secondary Enemy AI
-    //    mainEnemy.GetComponent<CombatAnimSystem>().ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
-    //    mainEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
-    //    //Enable Boundary again
-    //    colliderToDisable.gameObject.SetActive(true);
-    //}
-
-    // In EventHandler.cs
-
-    // In EventHandler.cs
-
-    // In EventHandler.cs
 
     public void TakeBackMainEnemy()
     {
@@ -426,8 +382,8 @@ public class EventHandler : MonoBehaviour
     //Update Global Event Index
     if(FirstEncounter())
     {
-        FightEventController.globalEventIndex++;
-        Debug.Log("GlobalEventIndex = " + FightEventController.globalEventIndex.ToString());
+        FightEventController.Instance.globalEventIndex++;
+        Debug.Log("GlobalEventIndex = " + FightEventController.Instance.globalEventIndex.ToString());
         FightEventController.Instance.triggeredEventIndices.Add(FightEventController.Instance.actualEventIndex);
     }
     
@@ -536,8 +492,8 @@ public class EventHandler : MonoBehaviour
 
         if (FirstEncounter())
         {
-            FightEventController.globalEventIndex++;
-            Debug.Log("GlobalEventIndex = " + FightEventController.globalEventIndex.ToString());
+            FightEventController.Instance.globalEventIndex++;
+            Debug.Log("GlobalEventIndex = " + FightEventController.Instance.globalEventIndex.ToString());
             FightEventController.Instance.triggeredEventIndices.Add(FightEventController.Instance.actualEventIndex);
         }
 

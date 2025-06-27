@@ -16,7 +16,7 @@ public class SpawnedEnemyBehaviour : MonoBehaviour
     {
         if(combatSystem.CurrentState == CombatAnimSystem.CombatAnimState.DEAD)
         {
-            FightEventController.globalEventIndex++;
+            // FightEventController.Instance.globalEventIndex++;
             this.enabled = false;
         }
     }
