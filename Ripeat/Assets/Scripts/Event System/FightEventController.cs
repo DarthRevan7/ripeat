@@ -8,7 +8,7 @@ public class FightEventController : MonoBehaviour {
     public static FightEventController Instance { get; private set; }
 
     public List<FightEvent> loadedEvents = new List<FightEvent>();
-    [SerializeField] private float fightTimer;
+    [SerializeField] private float fightTimer, fightTimerSnapshot = float.MaxValue;
     [SerializeField] private bool fightTimerActive = false;
     [SerializeField] private string resourcesDirectory = "FightEvents";
 
@@ -17,7 +17,7 @@ public class FightEventController : MonoBehaviour {
     [SerializeField] private EventHandler eventHandler;
 
     public int actualEventIndex;
-    public static int globalEventIndex;
+    public int globalEventIndex = 0;
 
     public GameObject secondaryEnemy = null;
     private bool isMainEnemyReturning = false;
@@ -25,7 +25,11 @@ public class FightEventController : MonoBehaviour {
 
     public HashSet<int> triggeredEventIndices = new HashSet<int>();
 
-    
+    //Usa questo per fotografare il tempo quando serve, in modo da lanciare l'evento nel momento giusto!
+    public void SetTimeSnapshot()
+    {
+        fightTimerSnapshot = fightTimer;
+    }
 
     private void CheckEventFlow()
     {
@@ -160,25 +164,6 @@ public class FightEventController : MonoBehaviour {
             // Imposta il flag a true per evitare che questo blocco venga eseguito di nuovo
             isMainEnemyReturning = true;
 
-            //// DISATTIVAZIONE COLLIDER NEMICO 2 ----
-
-            //Debug.Log($"Disattivazione collider per il nemico sconfitto: {secondaryEnemy.name}");
-
-            //// Disattiva il CharacterController
-            //CharacterController cc = secondaryEnemy.GetComponent<CharacterController>();
-            //if (cc != null)
-            //{
-            //    cc.enabled = false;
-            //}
-
-            //// Per sicurezza, disattiva anche qualsiasi altro collider (Box, Capsule, etc.)
-            //foreach (Collider col in secondaryEnemy.GetComponents<Collider>())
-            //{
-            //    col.enabled = false;
-            //}
-
-            //// --------
-
             // Chiama la funzione UNA SOLA VOLTA
             EventHandler.Instance.TakeBackMainEnemy();
             
@@ -207,7 +192,7 @@ public class FightEventController : MonoBehaviour {
             healthCondition = fightEvent.triggerHealthPercentage >= 0f && CheckHealthCondition(enemyStats, fightEvent.triggerHealthPercentage);
 
 
-        bool timeCondition = fightEvent.triggerTime >= 0f && fightTimer >= fightEvent.triggerTime;
+        bool timeCondition = fightEvent.triggerTime >= 0f && (fightTimer - fightTimerSnapshot) >= fightEvent.triggerTime;
 
         return (healthCondition || timeCondition) && !triggered;
     }

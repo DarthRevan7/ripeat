@@ -1458,7 +1458,6 @@ GameObject:
   - component: {fileID: -9115820925166553440}
   - component: {fileID: 7712166253812915472}
   - component: {fileID: 417598531851272170}
-  - component: {fileID: 6847616837217230240}
   - component: {fileID: 4556026790126996733}
   - component: {fileID: 4270388978261867648}
   m_Layer: 0
@@ -1607,19 +1606,6 @@ MonoBehaviour:
   targetPositionVectorY: 0.4659995
   targetPositionVectorZ: -6.81
   isPausedEnemy: 1
---- !u!114 &6847616837217230240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6030350152631332872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e42b540b2cc3d640ba38907a826ad29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combatSystem: {fileID: 0}
 --- !u!65 &4556026790126996733
 BoxCollider:
   m_ObjectHideFlags: 0
