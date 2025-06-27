@@ -628,7 +628,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
     {
         if (positiveFinalImage != null)
         {
-            positiveFinalImage.SetActive(false);
+            positiveFinalImage.SetActive(true);
         }
     }
 

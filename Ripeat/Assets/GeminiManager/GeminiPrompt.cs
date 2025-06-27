@@ -54,7 +54,7 @@ public class GeminiPrompt : MonoBehaviour
                 prompt += prompt2;
                 break;
             case 1:
-                prompt += prompt3;
+                prompt += prompt2;
                 break;
             case 2:
                 prompt += prompt3;
@@ -65,7 +65,6 @@ public class GeminiPrompt : MonoBehaviour
             case 4:
                 prompt += prompt4;
                 break;
-
             default:
                 break;
         }
