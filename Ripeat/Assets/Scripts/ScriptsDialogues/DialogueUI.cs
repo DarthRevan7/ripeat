@@ -162,18 +162,20 @@ public class DialogueUI : MonoBehaviour
     public IEnumerator ShowFinalString(string finalString1, string finalString2)
     {
         finalImage.SetActive(true);
-        Debug.Log("Final string: " + finalString1);
-        typewriterEffect.Run(finalString1, finalStringText1);
-        while (typewriterEffect.IsRunning)
-        {
-            yield return null;
-        }
-        // Attendi click prima di mostrare la seconda stringa
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+/*
 
-        string1.SetActive(true);
-        Debug.Log("Final string 2: " + finalString2);
-        typewriterEffect.Run(finalString2, finalStringText2);
+                Debug.Log("Final string: " + finalString1);
+                typewriterEffect.Run(finalString1, finalStringText1);
+                while (typewriterEffect.IsRunning)
+                {
+                    yield return null;
+                }
+                // Attendi click prima di mostrare la seconda stringa
+                //yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        */
+        //string1.SetActive(true);
+        Debug.Log("Final string 2: " + finalString1);
+        typewriterEffect.Run(finalString1, finalStringText2);
         while (typewriterEffect.IsRunning)
         {
             yield return null;
@@ -182,7 +184,8 @@ public class DialogueUI : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
 
         string2.SetActive(true);
-        typewriterEffect.Run(finalString, finalStringText3);
+        Debug.Log("Final string 3: " + finalString2);
+        typewriterEffect.Run(finalString2, finalStringText3);
         while (typewriterEffect.IsRunning)
         {
             yield return null;
