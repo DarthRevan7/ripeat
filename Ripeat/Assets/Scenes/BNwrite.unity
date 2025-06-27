@@ -1126,11 +1126,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   write1: {fileID: 1327394175}
   write2: {fileID: 2031785792}
-  string1: '"Un odore denso di whisky di contrabbando, fumo stantio e profumo a buon
-    mercato si addensava nel vicolo angusto, fuoriuscendo da una porta socchiusa
-    da cui provenivano anche le note sincopate di un pianoforte e un chiacchiericcio
-    vivace: un bar, o meglio, uno speakeasy, pulsava vita illecita nell''ombra dell''America
-    proibizionista degli anni ''20. Proprio qui inizia la tua avventura!"'
+  string1: 'Un odore denso di whisky di contrabbando, fumo stantio e profumo a buon
+    mercato si addensava nel vicolo. Da una porta socchiusa, note di pianoforte e
+    un chiacchiericcio vivace svelavano un bar, uno speakeasy, che pulsava vita illecita
+    nell''America proibizionista degli anni ''20. La tua avventura inizia qui! '
   string2: 
 --- !u!114 &1795600841
 MonoBehaviour:
