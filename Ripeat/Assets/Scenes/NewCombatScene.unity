@@ -7163,8 +7163,10 @@ MonoBehaviour:
   ImageControl: {fileID: 1653558974}
   targetImage: {fileID: 0}
   fadeDuration: 2
+  fadeDelay: 0
   characterStats: {fileID: 0}
   enemyStats: {fileID: 0}
+  unityAndGeminiV3: {fileID: 0}
   fading: 0
 --- !u!1001 &1340506205
 PrefabInstance:
@@ -8690,8 +8692,10 @@ MonoBehaviour:
   ImageControl: {fileID: 1653558974}
   targetImage: {fileID: 0}
   fadeDuration: 2
+  fadeDelay: 0
   characterStats: {fileID: 0}
   enemyStats: {fileID: 0}
+  unityAndGeminiV3: {fileID: 0}
   fading: 0
 --- !u!1 &1729518655
 GameObject:
@@ -8878,17 +8882,17 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_PointAction: {fileID: 1233328560386171548, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_MoveAction: {fileID: -8784545083839296357, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_SubmitAction: {fileID: 392368643174621059, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_CancelAction: {fileID: 7727032971491509709, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_LeftClickAction: {fileID: -9138040386803664654, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_MiddleClickAction: {fileID: -2330250123100426174, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_RightClickAction: {fileID: 6546597815137758985, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 0}
-  m_TrackedDeviceOrientationAction: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
@@ -10746,8 +10750,10 @@ MonoBehaviour:
   ImageControl: {fileID: 1653558974}
   targetImage: {fileID: 3562987153163072735}
   fadeDuration: 4
+  fadeDelay: 0
   characterStats: {fileID: 0}
   enemyStats: {fileID: 0}
+  unityAndGeminiV3: {fileID: 0}
   fading: 0
 --- !u!1001 &966030218581590478
 PrefabInstance:
@@ -11437,6 +11443,7 @@ MonoBehaviour:
   player: {fileID: 0}
   enemy: {fileID: 0}
   secondEnemy: {fileID: 0}
+  controlPanel: {fileID: 0}
 --- !u!224 &3849109817368803389
 RectTransform:
   m_ObjectHideFlags: 0
