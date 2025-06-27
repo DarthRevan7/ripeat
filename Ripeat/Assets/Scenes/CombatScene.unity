@@ -4733,6 +4733,111 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6232777129446320130, guid: 940df653a59281c4c848d9b4ca3fbf08, type: 3}
   m_PrefabInstance: {fileID: 972996587}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1111554879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1111554883}
+  - component: {fileID: 1111554882}
+  - component: {fileID: 1111554881}
+  - component: {fileID: 1111554880}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1111554880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111554879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d580a77fb4e86f46b61b985ba933cbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  mainEnemy: {fileID: 0}
+  secondaryEnemy: {fileID: 0}
+  playerGameObjectTag: Player
+  mainEnemyGameObjectTag: Main Enemy
+  secondaryEnemyGameObjectTag: Secondary Enemy
+  debugActive: 0
+--- !u!114 &1111554881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111554879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d613d863392eeb4ca1b3371ad99d95d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <playerFootsteps>k__BackingField:
+    Guid:
+      Data1: 1020387519
+      Data2: 1246091433
+      Data3: 916312745
+      Data4: 1311324220
+    Path: event:/PlayerFootsteps
+  <mainEnemyFootsteps>k__BackingField:
+    Guid:
+      Data1: 1118979050
+      Data2: 1163332082
+      Data3: 854549901
+      Data4: 1324253625
+    Path: event:/EnemyFootsteps
+  <playerPunch>k__BackingField:
+    Guid:
+      Data1: 1229047539
+      Data2: 1122829542
+      Data3: 982045853
+      Data4: -1534570641
+    Path: event:/Sfx/PlayerFist
+  <mainEnemyPunch>k__BackingField:
+    Guid:
+      Data1: -266311066
+      Data2: 1140532056
+      Data3: -24018526
+      Data4: 417141112
+    Path: event:/Sfx/EnemyFist
+--- !u!114 &1111554882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111554879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc7389016fb6c2409fe63e05cd724d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1111554883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111554879}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1115096276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7876,6 +7981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadedEvents: []
   fightTimer: 0
+  fightTimerSnapshot: 3.4028235e+38
   fightTimerActive: 0
   resourcesDirectory: FightEvents
   playerStats: {fileID: 0}
@@ -7884,6 +7990,7 @@ MonoBehaviour:
   eventFinished: 0
   eventHandler: {fileID: 0}
   actualEventIndex: 0
+  globalEventIndex: 0
   secondaryEnemy: {fileID: 0}
   loading: 0
   triggered: 0
@@ -10667,3 +10774,4 @@ SceneRoots:
   - {fileID: 187117073}
   - {fileID: 1886937287}
   - {fileID: 7606017379181445865}
+  - {fileID: 1111554883}

@@ -2,14 +2,14 @@
 [LOG] Manager::init                            : maxchannels = 256 studioflags = 00000006 flags 00000000 extradriverdata 0000000000000000.
 [LOG] SystemI::init                            : Initialize version=20306 (149358), maxchannels=256, flags=0x00020000
 [LOG] SystemI::setOutputInternal               : Setting output to 'FMOD WASAPI Output'
-[LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEX): wFormatTag=0xFFFE, nChannels=2, nSamplesPerSec=48000, nAvgBytesPerSec=384000, nBlockAlign=8, wBitsPerSample=32, cbSize=22.
+[LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEX): wFormatTag=0xFFFE, nChannels=2, nSamplesPerSec=44100, nAvgBytesPerSec=352800, nBlockAlign=8, wBitsPerSample=32, cbSize=22.
 [LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEXTENSIBLE): wValidBitsPerSample=32, dwChannelMask=0x00000003, SubFormat=00000003-0000-0010-8000-00AA00389B71.
-[LOG] OutputWASAPI::init                       : Output buffer size: 2048 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 512 * 4
+[LOG] OutputWASAPI::init                       : Output buffer size: 1880 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 512 * 4
+[LOG] SystemI::init                            : Output requires a sample rate of 44100Hz, resampling will occur.
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 0
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[WRN] OutputWASAPI::mixerThread                : Starvation detected in WASAPI output buffer!
-[LOG] AsyncManager::init                       : manager 00000216DA15A798 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000029DE515A508 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -19,9 +19,873 @@
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
-[LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] Thread::initThread                       : Init FMOD nonblocking thread (0). Affinity: 0x4000000000000003, Priority: 0xFFFF7FFC, Stack Size: 114688, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029E1E833768, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E1E833768
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 15029568
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 23264
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C99E8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 760800
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 10496
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000D020D0F298
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->useropen           = 00007FFF1286D3E0
+[LOG] SystemI::createSoundInternal             :     exinfo->userclose          = 00007FFF1286D3A0
+[LOG] SystemI::createSoundInternal             :     exinfo->userread           = 00007FFF1286D4C0
+[LOG] SystemI::createSoundInternal             :     exinfo->userseek           = 00007FFF1286D580
+[LOG] SystemI::createSoundInternal             :     exinfo->fileuserdata       = 0000029AA699DA48
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='1.0 intro', format=5, channels=2, frequency=48000, lengthbytes=59680, lengthpcm=486000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.685272.
+[LOG] SystemI::DSPCodecPoolRegister            :     register codec pool for pool type 4
+[LOG] SystemI::createSoundInternal             :     Sample 0/1: name='footsteps_player_wood_02', format=5, channels=1, frequency=48000, lengthbytes=2912, lengthpcm=23980, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.257935.
+[LOG] SystemI::createSoundInternal             :     Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 760800
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 10496
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000D020D0F298
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->useropen           = 00007FFF1286D3E0
+[LOG] SystemI::createSoundInternal             :     exinfo->userclose          = 00007FFF1286D3A0
+[LOG] SystemI::createSoundInternal             :     exinfo->userread           = 00007FFF1286D4C0
+[LOG] SystemI::createSoundInternal             :     exinfo->userseek           = 00007FFF1286D580
+[LOG] SystemI::createSoundInternal             :     exinfo->fileuserdata       = 0000029AA699DA48
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            :     register codec pool for pool type 4
+[LOG] SystemI::createSoundInternal             :     Sample 0/1: name='footsteps_player_wood_03', format=5, channels=1, frequency=48000, lengthbytes=2720, lengthpcm=23998, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.503265.
+[LOG] SystemI::createSoundInternal             :     Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 760800
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 10496
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000D020D0F298
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->useropen           = 00007FFF1286D3E0
+[LOG] SystemI::createSoundInternal             :     exinfo->userclose          = 00007FFF1286D3A0
+[LOG] SystemI::createSoundInternal             :     exinfo->userread           = 00007FFF1286D4C0
+[LOG] SystemI::createSoundInternal             :     exinfo->userseek           = 00007FFF1286D580
+[LOG] SystemI::createSoundInternal             :     exinfo->fileuserdata       = 0000029AA699DA48
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            :     register codec pool for pool type 4
+[LOG] SystemI::createSoundInternal             :     Sample 0/1: name='footsteps_player_wood_01', format=5, channels=1, frequency=48000, lengthbytes=2368, lengthpcm=24064, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.486694.
+[LOG] SystemI::createSoundInternal             :     Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 760800
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 10496
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000D020D0F298
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->useropen           = 00007FFF1286D3E0
+[LOG] SystemI::createSoundInternal             :     exinfo->userclose          = 00007FFF1286D3A0
+[LOG] SystemI::createSoundInternal             :     exinfo->userread           = 00007FFF1286D4C0
+[LOG] SystemI::createSoundInternal             :     exinfo->userseek           = 00007FFF1286D580
+[LOG] SystemI::createSoundInternal             :     exinfo->fileuserdata       = 0000029AA699DA48
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] Thread::initThread                       :     Init FMOD file thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFC, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
+[LOG] SystemI::DSPCodecPoolRegister            :     register codec pool for pool type 4
+[LOG] SystemI::createSoundInternal             :     Sample 0/1: name='footsteps_player_wood_04', format=5, channels=1, frequency=48000, lengthbytes=2816, lengthpcm=23607, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.503662.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E1E833768
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029E1D36E548, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E1D36E548
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C7A48
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 30781
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI', format=5, channels=2, frequency=48000, lengthbytes=66016, lengthpcm=1878580, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=1.000000.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E1D36E548
+[LOG] SoundI::release                          : PUGNI (0000029E1D36E548)
+[LOG] SoundI::release                          :     PUGNI (0000029DC2182D98)
+[LOG] SoundI::release                          :     PUGNI (0000029DE4DCC9F8)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029DF2897038, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029DF2897038
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 15029568
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 23264
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C7628
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='1.1 lev 1', format=5, channels=2, frequency=48000, lengthbytes=117216, lengthpcm=486000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.637665.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029DF2897038
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029DF289B818, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029DF289B818
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C9B48
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 30781
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI', format=5, channels=2, frequency=48000, lengthbytes=66016, lengthpcm=1878580, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=1.000000.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029DF289B818
+[LOG] SoundI::release                          : 1.0 intro (0000029E1E833768)
+[LOG] SoundI::release                          :     1.0 intro (0000029E1D8BF788)
+[LOG] SoundI::release                          :     1.0 intro (0000029CFDC40B08)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029CFDD81448, queue head = 0000029E1E833D68, queue count = 0
+[LOG] SoundI::release                          : PUGNI (0000029DF289B818)
+[LOG] SoundI::release                          :     PUGNI (0000029E3F764628)
+[LOG] SoundI::release                          :     PUGNI (0000029DE4DCCB88)
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029CFDD81448
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43CBAE8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029CFDD81448
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029E3F764668, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E3F764668
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C7A48
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E3F764668
+[LOG] SoundI::release                          : PUGNI playert (0000029CFDD81448)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E4A8319E8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029DF289B818)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029D9DDB4698, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029D9DDB4698
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C99E8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029D9DDB4698
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029D9DDB4508, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029D9DDB4508
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43CA0C8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 30781
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI', format=5, channels=2, frequency=48000, lengthbytes=66016, lengthpcm=1878580, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=1.000000.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029D9DDB4508
+[LOG] SoundI::release                          : PUGNI playert (0000029E3F764668)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E4A830068)
+[LOG] SoundI::release                          :     PUGNI playert (0000029DF289BB38)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029D9DDB4378, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029D9DDB4378
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C9B48
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029D9DDB4378
+[LOG] SoundI::release                          : PUGNI (0000029D9DDB4508)
+[LOG] SoundI::release                          :     PUGNI (0000029E1D8BF908)
+[LOG] SoundI::release                          :     PUGNI (0000029D5B98CA28)
+[LOG] SoundI::release                          : PUGNI playert (0000029D9DDB4698)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1D8BF788)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1CB533F8)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029D9DDB4058, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029D9DDB4058
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43CBAE8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029D9DDB4058
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029D9DDB41E8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029D9DDB41E8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C7A48
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 30781
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI', format=5, channels=2, frequency=48000, lengthbytes=66016, lengthpcm=1878580, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=1.000000.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029D9DDB41E8
+[LOG] SoundI::release                          : PUGNI playert (0000029D9DDB4378)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1D8BFA88)
+[LOG] SoundI::release                          :     PUGNI playert (0000029D5B98C578)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029D9DDB4B48, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029D9DDB4B48
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C99E8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029D9DDB4B48
+[LOG] SoundI::release                          : PUGNI playert (0000029D9DDB4058)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E3F764328)
+[LOG] SoundI::release                          :     PUGNI playert (0000029DE4DCC098)
+[LOG] SoundI::release                          : PUGNI (0000029D9DDB41E8)
+[LOG] SoundI::release                          :     PUGNI (0000029E4A830068)
+[LOG] SoundI::release                          :     PUGNI (0000029DF2881EB8)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029D9DDB4CD8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029D9DDB4CD8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C9B48
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029D9DDB4CD8
+[LOG] SoundI::release                          : PUGNI playert (0000029D9DDB4B48)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E4A8313E8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029DF28816E8)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029DE4DCC9F8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029DE4DCC9F8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C99E8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029DE4DCC9F8
+[LOG] SoundI::release                          : PUGNI playert (0000029D9DDB4CD8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1E1FE9C8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFD5D73A8)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029DE4DCC098, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029DE4DCC098
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C9B48
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 30781
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI', format=5, channels=2, frequency=48000, lengthbytes=66016, lengthpcm=1878580, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=1.000000.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029DE4DCC098
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029DE4DCC868, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029DE4DCC868
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C9F68
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029DE4DCC868
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029DE4DCCB88, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029DE4DCCB88
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 15029568
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 23264
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43CBAE8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='1.1 lev 1', format=5, channels=2, frequency=48000, lengthbytes=117216, lengthpcm=486000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.637665.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029DE4DCCB88
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029CFB2A1D98, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029CFB2A1D98
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029CFB2A1D98
+[LOG] SoundI::release                          : PUGNI playert (0000029DE4DCC9F8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E4A830068)
+[LOG] SoundI::release                          :     PUGNI playert (0000029DF2881EB8)
+[LOG] SoundI::release                          : 1.1 lev 1 (0000029DF2897038)
+[LOG] SoundI::release                          :     1.1 lev 1 (0000029DC2182D98)
+[LOG] SoundI::release                          :     1.1 lev 1 (0000029DE4DCCD18)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029DE4DCC228, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029DE4DCC228
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C7628
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029DE4DCC228
+[LOG] SoundI::release                          : PUGNI (0000029DE4DCC098)
+[LOG] SoundI::release                          :     PUGNI (0000029E1D8BF788)
+[LOG] SoundI::release                          :     PUGNI (0000029CFB2A1438)
+[LOG] SoundI::release                          : PUGNI playert (0000029DE4DCC868)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1D8BF908)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFB2A1C08)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029DE4DCCD18, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029DE4DCCD18
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C99E8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029DE4DCCD18
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029DE4DCC098, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029DE4DCC098
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C9B48
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 30781
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI', format=5, channels=2, frequency=48000, lengthbytes=66016, lengthpcm=1878580, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=1.000000.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029DE4DCC098
+[LOG] SoundI::release                          : PUGNI playert (0000029DE4DCC228)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFD910608)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFB2A1F28)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029DE4DCC228, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029DE4DCC228
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43CA0C8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029DE4DCC228
+[LOG] SoundI::release                          : PUGNI (0000029DE4DCC098)
+[LOG] SoundI::release                          :     PUGNI (0000029CFDCB5BE8)
+[LOG] SoundI::release                          :     PUGNI (0000029D9E63F2B8)
+[LOG] SoundI::release                          : PUGNI playert (0000029DE4DCCD18)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFDCB6068)
+[LOG] SoundI::release                          :     PUGNI playert (0000029D9E63F128)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029E1D36E548, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E1D36E548
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C9F68
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E1D36E548
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029E1D36EB88, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E1D36EB88
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C7628
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 30781
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI', format=5, channels=2, frequency=48000, lengthbytes=66016, lengthpcm=1878580, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=1.000000.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E1D36EB88
+[LOG] SoundI::release                          : PUGNI playert (0000029DE4DCC228)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFDCB61E8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFD910668)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029E1D36ED18, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E1D36ED18
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C99E8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E1D36ED18
+[LOG] SoundI::release                          : PUGNI playert (0000029E1D36E548)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFDCB6068)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFD9101B8)
+[LOG] SoundI::release                          : PUGNI (0000029E1D36EB88)
+[LOG] SoundI::release                          :     PUGNI (0000029DC2182D98)
+[LOG] SoundI::release                          :     PUGNI (0000029DE4DCC9F8)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029E1D36E6D8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E1D36E6D8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C7628
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E1D36E6D8
+[LOG] SoundI::release                          : PUGNI playert (0000029E1D36ED18)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFD910E98)
+[LOG] SoundI::release                          :     PUGNI playert (0000029DE4DCC3B8)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029E3F7647F8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E3F7647F8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C99E8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E3F7647F8
+[LOG] SoundI::release                          : PUGNI playert (0000029E1D36E6D8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFCDA2ED8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CF9F58CA8)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029E1E833DA8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E1E833DA8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C7628
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E1E833DA8
+[LOG] SoundI::release                          : PUGNI playert (0000029E3F7647F8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E4A830F68)
+[LOG] SoundI::release                          :     PUGNI playert (0000029DF287EFD8)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029E1E8343E8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E1E8343E8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C9F68
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E1E8343E8
+[LOG] SoundI::release                          : PUGNI playert (0000029E1E833DA8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1D8BF908)
+[LOG] SoundI::release                          :     PUGNI playert (0000029D5B98BF38)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029E1E833768, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E1E833768
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 0000029E1E833DA8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 15029568
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 23264
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43CA0C8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='1.1 lev 1', format=5, channels=2, frequency=48000, lengthbytes=117216, lengthpcm=486000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.637665.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E1E833768
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E1E833DA8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C7628
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E1E833DA8
+[LOG] SoundI::release                          : PUGNI playert (0000029E1E8343E8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1E1FE9C8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFD5D73A8)
+[LOG] SoundI::release                          : 1.1 lev 1 (0000029DE4DCCB88)
+[LOG] SoundI::release                          :     1.1 lev 1 (0000029E1D8BFA88)
+[LOG] SoundI::release                          :     1.1 lev 1 (0000029CFB2A1D98)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029E1E834258, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E1E834258
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43CBAE8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E1E834258
+[LOG] SoundI::release                          : PUGNI playert (0000029E1E833DA8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E4A830F68)
+[LOG] SoundI::release                          :     PUGNI playert (0000029DF2881EB8)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029E1E833DA8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E1E833DA8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C99E8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E1E833DA8
+[LOG] SoundI::release                          : PUGNI playert (0000029E1E834258)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1D8BF788)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1D6465C8)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029E1E8340C8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029E1E8340C8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C9B48
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029E1E8340C8
+[LOG] SoundI::release                          : PUGNI playert (0000029E1E833DA8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1D8BFA88)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1D646A78)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029CF9F58CA8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029CF9F58CA8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C99E8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029CF9F58CA8
+[LOG] SoundI::release                          : PUGNI playert (0000029E1E8340C8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E4A8313E8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029DF2882B38)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029CF9F58FC8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029CF9F58FC8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C7628
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029CF9F58FC8
+[LOG] SoundI::release                          : PUGNI playert (0000029CF9F58CA8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E4A8319E8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029DF28824F8)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029CF9F58E38, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029CF9F58E38
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43CBAE8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029CF9F58E38
+[LOG] SoundI::release                          : PUGNI playert (0000029CF9F58FC8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1E1FEB48)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFD5D73A8)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029CD74D6FC8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029CD74D6FC8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C7628
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029CD74D6FC8
+[LOG] SoundI::release                          : PUGNI playert (0000029CF9F58E38)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1D36CE08)
+[LOG] SoundI::release                          :     PUGNI playert (0000029DF5E48028)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029DE4DCC098, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029DE4DCC098
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43CBAE8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029DE4DCC098
+[LOG] SoundI::release                          : PUGNI playert (0000029CD74D6FC8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1D36C808)
+[LOG] SoundI::release                          :     PUGNI playert (0000029DF5E481B8)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029DF5E481B8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029DF5E481B8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43C7628
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029DF5E481B8
+[LOG] SoundI::release                          : PUGNI playert (0000029DE4DCC098)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1D36C688)
+[LOG] SoundI::release                          :     PUGNI playert (0000029DF5E48028)
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029D9DDB4CD8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029D9DDB4CD8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 15029568
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 23264
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43CC748
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='1.2 transition 1', format=5, channels=2, frequency=48000, lengthbytes=57792, lengthpcm=486000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.828949.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029D9DDB4CD8
+[LOG] SystemI::createSound                     : filename = Assets/FMODBanks/Desktop/Sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029D9DDB41E8, queue head = 0000029E1E833D68, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029D9DDB41E8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/FMODBanks/Desktop/Sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4994944
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 20448
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CD43CBAE8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 6845
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='PUGNI playert', format=5, channels=2, frequency=48000, lengthbytes=27616, lengthpcm=1901950, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.170679.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029D9DDB41E8
+[LOG] SoundI::release                          : PUGNI playert (0000029D9DDB41E8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029E1E1FE548)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFD5D73A8)
+[LOG] SoundI::release                          : PUGNI playert (0000029DF5E481B8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029CFDCB5BE8)
+[LOG] SoundI::release                          :     PUGNI playert (0000029D9E63F128)
+[LOG] SoundI::release                          : 1.2 transition 1 (0000029D9DDB4CD8)
+[LOG] SoundI::release                          :     1.2 transition 1 (0000029E1D8BFA88)
+[LOG] SoundI::release                          :     1.2 transition 1 (0000029D5B98C578)
+[LOG] SoundI::release                          : 1.1 lev 1 (0000029E1E833768)
+[LOG] SoundI::release                          :     1.1 lev 1 (0000029E4A831268)
+[LOG] SoundI::release                          :     1.1 lev 1 (0000029DF28816E8)
+[LOG] SoundI::release                          :  (0000029CD43C7648)
+[LOG] SoundI::release                          :     footsteps_player_wood_01 (0000029CFC3811E8)
+[LOG] SoundI::release                          :  (0000029CD43CA508)
+[LOG] SoundI::release                          :     footsteps_player_wood_02 (0000029CFC381968)
+[LOG] SoundI::release                          :  (0000029CD43CA0E8)
+[LOG] SoundI::release                          :     footsteps_player_wood_03 (0000029CFC381068)
+[LOG] SoundI::release                          :  (0000029CD43CA668)
+[LOG] SoundI::release                          :     footsteps_player_wood_04 (0000029CFC381AE8)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::closeInternal                   : Closed.
+[LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
@@ -30,3 +894,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::closeInternal                   : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.
