@@ -5,6 +5,7 @@ using System.Collections;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
+
 public class MenuScript : MonoBehaviour
 {
     private Button button;
@@ -79,8 +80,7 @@ public class MenuScript : MonoBehaviour
         {
             if (enemyStats.isDead && !fading)
             {
-                ShowPositiveFinalImage();
-                StartCoroutine(FadeIn());
+                StartCoroutine(ShowPositiveFinalImage());
             }
         }
 
@@ -190,11 +190,13 @@ public class MenuScript : MonoBehaviour
 
     [SerializeField] private GameObject positiveFinalImage;
 
-    public void ShowPositiveFinalImage()
+    IEnumerator ShowPositiveFinalImage()
     {
         if (positiveFinalImage != null)
         {
             positiveFinalImage.SetActive(true);
+            yield return new WaitForSeconds(8f); // Attendi 2 secondi prima di cambiare scena
+            SceneManager.LoadScene("Menu");
         }
     }
 
