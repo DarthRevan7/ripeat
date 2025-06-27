@@ -416,6 +416,7 @@ GameObject:
   - component: {fileID: 114125078}
   - component: {fileID: 114125080}
   - component: {fileID: 114125079}
+  - component: {fileID: 114125081}
   m_Layer: 5
   m_Name: Clock4
   m_TagString: Untagged
@@ -480,6 +481,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114125077}
   m_CullTransparentMesh: 1
+--- !u!114 &114125081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114125077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -850464102
+      Data2: 1184042655
+      Data3: -1167749754
+      Data4: -1284677500
+    Path: event:/Sfx/UI/Orologio
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &143643323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,6 +1156,7 @@ GameObject:
   - component: {fileID: 255805448}
   - component: {fileID: 255805450}
   - component: {fileID: 255805449}
+  - component: {fileID: 255805451}
   m_Layer: 5
   m_Name: Clock9
   m_TagString: Untagged
@@ -1188,6 +1221,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255805447}
   m_CullTransparentMesh: 1
+--- !u!114 &255805451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255805447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -850464102
+      Data2: 1184042655
+      Data3: -1167749754
+      Data4: -1284677500
+    Path: event:/Sfx/UI/Orologio
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &270980188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1338,7 @@ GameObject:
   - component: {fileID: 287199995}
   - component: {fileID: 287199997}
   - component: {fileID: 287199996}
+  - component: {fileID: 287199998}
   m_Layer: 5
   m_Name: Clock2
   m_TagString: Untagged
@@ -1338,6 +1403,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287199994}
   m_CullTransparentMesh: 1
+--- !u!114 &287199998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287199994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -850464102
+      Data2: 1184042655
+      Data3: -1167749754
+      Data4: -1284677500
+    Path: event:/Sfx/UI/Orologio
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &342485180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,6 +2101,7 @@ MonoBehaviour:
   enemyStats: {fileID: 0}
   unityAndGeminiV3: {fileID: 0}
   fading: 0
+  positiveFinalImage: {fileID: 0}
 --- !u!1 &458677076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,6 +2188,7 @@ GameObject:
   - component: {fileID: 478573860}
   - component: {fileID: 478573862}
   - component: {fileID: 478573861}
+  - component: {fileID: 478573863}
   m_Layer: 5
   m_Name: Clock6
   m_TagString: Untagged
@@ -2155,6 +2253,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478573859}
   m_CullTransparentMesh: 1
+--- !u!114 &478573863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478573859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -850464102
+      Data2: 1184042655
+      Data3: -1167749754
+      Data4: -1284677500
+    Path: event:/Sfx/UI/Orologio
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &482360539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,6 +2445,7 @@ GameObject:
   - component: {fileID: 537665740}
   - component: {fileID: 537665742}
   - component: {fileID: 537665741}
+  - component: {fileID: 537665743}
   m_Layer: 5
   m_Name: Clock12
   m_TagString: Untagged
@@ -2380,6 +2510,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537665739}
   m_CullTransparentMesh: 1
+--- !u!114 &537665743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537665739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -850464102
+      Data2: 1184042655
+      Data3: -1167749754
+      Data4: -1284677500
+    Path: event:/Sfx/UI/Orologio
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &615106474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,6 +2874,7 @@ GameObject:
   - component: {fileID: 690182792}
   - component: {fileID: 690182794}
   - component: {fileID: 690182793}
+  - component: {fileID: 690182795}
   m_Layer: 5
   m_Name: Clock10
   m_TagString: Untagged
@@ -2777,6 +2939,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690182791}
   m_CullTransparentMesh: 1
+--- !u!114 &690182795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690182791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -850464102
+      Data2: 1184042655
+      Data3: -1167749754
+      Data4: -1284677500
+    Path: event:/Sfx/UI/Orologio
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &694857762
 GameObject:
   m_ObjectHideFlags: 0
@@ -3338,6 +3531,7 @@ GameObject:
   - component: {fileID: 792917295}
   - component: {fileID: 792917297}
   - component: {fileID: 792917296}
+  - component: {fileID: 792917298}
   m_Layer: 5
   m_Name: Clock7
   m_TagString: Untagged
@@ -3402,6 +3596,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792917294}
   m_CullTransparentMesh: 1
+--- !u!114 &792917298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792917294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -850464102
+      Data2: 1184042655
+      Data3: -1167749754
+      Data4: -1284677500
+    Path: event:/Sfx/UI/Orologio
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &820222125
 GameObject:
   m_ObjectHideFlags: 0
@@ -4008,6 +4233,7 @@ GameObject:
   - component: {fileID: 1050543976}
   - component: {fileID: 1050543978}
   - component: {fileID: 1050543977}
+  - component: {fileID: 1050543979}
   m_Layer: 5
   m_Name: Clock3
   m_TagString: Untagged
@@ -4072,6 +4298,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050543975}
   m_CullTransparentMesh: 1
+--- !u!114 &1050543979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050543975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -850464102
+      Data2: 1184042655
+      Data3: -1167749754
+      Data4: -1284677500
+    Path: event:/Sfx/UI/Orologio
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1092733804
 GameObject:
   m_ObjectHideFlags: 0
@@ -4748,6 +5005,7 @@ MonoBehaviour:
   enemyStats: {fileID: 0}
   unityAndGeminiV3: {fileID: 0}
   fading: 0
+  positiveFinalImage: {fileID: 0}
 --- !u!1 &1252212214
 GameObject:
   m_ObjectHideFlags: 0
@@ -5121,6 +5379,7 @@ GameObject:
   - component: {fileID: 1324624724}
   - component: {fileID: 1324624726}
   - component: {fileID: 1324624725}
+  - component: {fileID: 1324624727}
   m_Layer: 5
   m_Name: Clock8
   m_TagString: Untagged
@@ -5185,6 +5444,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324624723}
   m_CullTransparentMesh: 1
+--- !u!114 &1324624727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324624723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -850464102
+      Data2: 1184042655
+      Data3: -1167749754
+      Data4: -1284677500
+    Path: event:/Sfx/UI/Orologio
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1337998485
 GameObject:
   m_ObjectHideFlags: 0
@@ -5927,6 +6217,7 @@ GameObject:
   - component: {fileID: 1435932708}
   - component: {fileID: 1435932710}
   - component: {fileID: 1435932709}
+  - component: {fileID: 1435932711}
   m_Layer: 5
   m_Name: Clock11
   m_TagString: Untagged
@@ -5991,6 +6282,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435932707}
   m_CullTransparentMesh: 1
+--- !u!114 &1435932711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435932707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -850464102
+      Data2: 1184042655
+      Data3: -1167749754
+      Data4: -1284677500
+    Path: event:/Sfx/UI/Orologio
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1498772767
 GameObject:
   m_ObjectHideFlags: 0
@@ -6274,6 +6596,7 @@ GameObject:
   - component: {fileID: 1617833023}
   - component: {fileID: 1617833022}
   - component: {fileID: 1617833021}
+  - component: {fileID: 1617833024}
   m_Layer: 5
   m_Name: Clock13
   m_TagString: Untagged
@@ -6338,6 +6661,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1617833024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617833020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -850464102
+      Data2: 1184042655
+      Data3: -1167749754
+      Data4: -1284677500
+    Path: event:/Sfx/UI/Orologio
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1667898929 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1969859886944879354, guid: 2b73450ce34f564469ff93f951626392, type: 3}
@@ -6422,6 +6776,7 @@ GameObject:
   - component: {fileID: 1770809797}
   - component: {fileID: 1770809799}
   - component: {fileID: 1770809798}
+  - component: {fileID: 1770809800}
   m_Layer: 5
   m_Name: Clock5
   m_TagString: Untagged
@@ -6486,6 +6841,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770809796}
   m_CullTransparentMesh: 1
+--- !u!114 &1770809800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770809796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -850464102
+      Data2: 1184042655
+      Data3: -1167749754
+      Data4: -1284677500
+    Path: event:/Sfx/UI/Orologio
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1863431514
 GameObject:
   m_ObjectHideFlags: 0
@@ -6895,6 +7281,7 @@ MonoBehaviour:
   enemyStats: {fileID: 0}
   unityAndGeminiV3: {fileID: 0}
   fading: 0
+  positiveFinalImage: {fileID: 0}
 --- !u!114 &1970760925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7201,6 +7588,7 @@ MonoBehaviour:
   enemyStats: {fileID: 0}
   unityAndGeminiV3: {fileID: 0}
   fading: 0
+  positiveFinalImage: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
