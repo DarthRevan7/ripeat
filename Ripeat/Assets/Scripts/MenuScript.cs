@@ -8,8 +8,8 @@ using UnityEngine.EventSystems;
 public class MenuScript : MonoBehaviour
 {
     private Button button;
-    [SerializeField] public string sceneToLoad = "FightingScene_Try"; 
-    [SerializeField] private GameObject ImageControl;   
+    [SerializeField] public string sceneToLoad = "FightingScene_Try";
+    [SerializeField] private GameObject ImageControl;
     [SerializeField] private Image targetImage;
     [SerializeField] private float fadeDuration = 2f, fadeDelay = 0f;
 
@@ -17,7 +17,7 @@ public class MenuScript : MonoBehaviour
     [SerializeField] private FighterStats enemyStats;
     [SerializeField] private UnityAndGeminiV3 unityAndGeminiV3;
     [SerializeField] private bool fading = false;
-    
+
     private GeminiPrompt geminiPrompt;
     private ResponseHandler responseHandler;
 
@@ -40,11 +40,11 @@ public class MenuScript : MonoBehaviour
         {
             StartCoroutine(FadeOut());
         }
-        
+
 
         SceneManager.sceneLoaded += OnLoadScene;
-        
-        
+
+
         // Time.timeScale = 1;
 
 
@@ -79,8 +79,7 @@ public class MenuScript : MonoBehaviour
         {
             if (enemyStats.isDead && !fading)
             {
-                unityAndGeminiV3 = GameObject.FindAnyObjectByType<UnityAndGeminiV3>();
-                unityAndGeminiV3.ShowPositiveFinalImage();
+                ShowPositiveFinalImage();
                 StartCoroutine(FadeIn());
             }
         }
@@ -180,13 +179,24 @@ public class MenuScript : MonoBehaviour
         }
 
         // Time.timeScale = 1f;
-    
 
-        if(SceneManager.GetActiveScene().name.Equals("FightingScene_Try"))
+
+        if (SceneManager.GetActiveScene().name.Equals("FightingScene_Try"))
         {
             GameObject.FindAnyObjectByType<EnemyBehaviour>().WaitBeforeFight();
         }
 
     }
+
+    [SerializeField] private GameObject positiveFinalImage;
+
+    public void ShowPositiveFinalImage()
+    {
+        if (positiveFinalImage != null)
+        {
+            positiveFinalImage.SetActive(true);
+        }
+    }
+
 }
 
