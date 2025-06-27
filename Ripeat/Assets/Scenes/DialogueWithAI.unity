@@ -2005,6 +2005,7 @@ MonoBehaviour:
   enemyStats: {fileID: 0}
   unityAndGeminiV3: {fileID: 0}
   fading: 0
+  positiveFinalImage: {fileID: 0}
 --- !u!1 &458677076
 GameObject:
   m_ObjectHideFlags: 0
@@ -4656,9 +4657,9 @@ RectTransform:
   - {fileID: 377267925}
   - {fileID: 145225038}
   - {fileID: 830559517}
-  - {fileID: 1970760923}
   - {fileID: 1667898932}
   - {fileID: 420820914}
+  - {fileID: 1970760923}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4748,6 +4749,7 @@ MonoBehaviour:
   enemyStats: {fileID: 0}
   unityAndGeminiV3: {fileID: 0}
   fading: 0
+  positiveFinalImage: {fileID: 0}
 --- !u!1 &1252212214
 GameObject:
   m_ObjectHideFlags: 0
@@ -6895,6 +6897,7 @@ MonoBehaviour:
   enemyStats: {fileID: 0}
   unityAndGeminiV3: {fileID: 0}
   fading: 0
+  positiveFinalImage: {fileID: 0}
 --- !u!114 &1970760925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7201,6 +7204,7 @@ MonoBehaviour:
   enemyStats: {fileID: 0}
   unityAndGeminiV3: {fileID: 0}
   fading: 0
+  positiveFinalImage: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
