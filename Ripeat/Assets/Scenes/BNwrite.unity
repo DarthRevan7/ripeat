@@ -981,7 +981,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -2.7070007, y: 0.5346378, z: 0.0007630297, w: -4.639923}
+  m_margin: {x: -2.7070007, y: 5.505707, z: 0.0007630297, w: -4.639923}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1011,8 +1011,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 387.61798, y: 52.09007}
-  m_SizeDelta: {x: 859.8421, y: 639.2938}
+  m_AnchoredPosition: {x: 392.5889, y: 27.2351}
+  m_SizeDelta: {x: 849.9001, y: 589.5837}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1542717168
 GameObject:

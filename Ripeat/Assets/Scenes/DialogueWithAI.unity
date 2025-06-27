@@ -2000,8 +2000,10 @@ MonoBehaviour:
   ImageControl: {fileID: 420820913}
   targetImage: {fileID: 0}
   fadeDuration: 2
+  fadeDelay: 0
   characterStats: {fileID: 0}
   enemyStats: {fileID: 0}
+  unityAndGeminiV3: {fileID: 0}
   fading: 0
 --- !u!1 &458677076
 GameObject:
@@ -3279,16 +3281,13 @@ MonoBehaviour:
     tuo speakeasy \xE8 ormai rotto, instabile, un\u2019eco della tua stessa condizione.
     L'anima  continua a tornare. E tu sai cosa significa: non \xE8 pi\xF9 solo un\u2019anima.
     \xC8 una minaccia. Il tuo compito \xE8 affrontarlo. Ma se lui si rifiuta di capire\u2026
-    Se finge di essere ancora confuso\u2026 Allora rivelagli ci\xF2 che va detto
-    solo una volta. Solo alla fine. Pronuncia una profezia antica, nascosta nel tempo,
-    che spieghi cosa succede a chi rompe il ciclo: \u201CIl primo che muore per caso\u2026
-    Il secondo che ritorna per errore\u2026 Il terzo che muore sapendo\u2026 Il quarto
-    che torna scegliendo\u2026 Il quinto non \xE8 pi\xF9 uomo. \xC8 colui che prende
-    il mio posto.\u201D Spiegagli che ha superato il numero di ritorni, che ha imparato
-    abbastanza, e che ora la Morte vuole essere sostituita, consapevolmente o no.
-    Il tuo tono \xE8 grave, definitivo. Se lui insiste nel voler vivere\u2026 Se
-    chiede ancora \u201Cuna possibilit\xE0\u201D\u2026 infuriati!!!\r\nNon scrivere
-    messaggi troppo lunghi, sii conciso.\r\n"
+    Spiegagli che ha superato il numero di ritorni, che ha imparato abbastanza, e
+    che ora la Morte vuole essere sostituita, consapevolmente o no. Il tuo tono \xE8
+    grave, definitivo. Se lui insiste nel voler vivere\u2026 Se chiede ancora \u201Cuna
+    possibilit\xE0\u201D\u2026 infuriati!!!\r\nScrivi poco, sii conciso. Non usare
+    parentesi o fornire spiegazioni. Usa solo il discorso diretto.. Non inventare
+    frasi per altri personaggi ma scrivi solo ci\xF2 che dice la morte e aspetta
+    la risposta dell\u2019utente. "
   promptBonus: "L\u2019uomo di prima torna di nuovo, ma \xE8 stato stupido, si \xE8
     fatto uccidere e non ha superato il nuovo stadio. Prendilo in giro e rincara
     la dose. sii pi\xF9 cattivo perch\xE8 \xE8 stato stupido.\r\n"
@@ -4681,8 +4680,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerText: {fileID: 57999382}
   textLabel: {fileID: 969823561}
-  finalStringText: {fileID: 0}
+  finalStringText1: {fileID: 0}
+  finalStringText2: {fileID: 0}
+  finalStringText3: {fileID: 0}
   finalImage: {fileID: 0}
+  string1: {fileID: 0}
+  string2: {fileID: 0}
   testDialogue: {fileID: 11400000, guid: 21a27695f278bad4c97975ca26b44cee, type: 2}
   dialogueBox: {fileID: 377267924}
   negativeFinalImage: {fileID: 145225035}
@@ -4723,6 +4726,7 @@ MonoBehaviour:
   player: {fileID: 0}
   enemy: {fileID: 0}
   secondEnemy: {fileID: 0}
+  controlPanel: {fileID: 0}
 --- !u!114 &1202691646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4739,8 +4743,10 @@ MonoBehaviour:
   ImageControl: {fileID: 420820913}
   targetImage: {fileID: 0}
   fadeDuration: 2
+  fadeDelay: 0
   characterStats: {fileID: 0}
   enemyStats: {fileID: 0}
+  unityAndGeminiV3: {fileID: 0}
   fading: 0
 --- !u!1 &1252212214
 GameObject:
@@ -6884,8 +6890,10 @@ MonoBehaviour:
   ImageControl: {fileID: 0}
   targetImage: {fileID: 1970760925}
   fadeDuration: 2
+  fadeDelay: 0
   characterStats: {fileID: 0}
   enemyStats: {fileID: 0}
+  unityAndGeminiV3: {fileID: 0}
   fading: 0
 --- !u!114 &1970760925
 MonoBehaviour:
@@ -7188,8 +7196,10 @@ MonoBehaviour:
   ImageControl: {fileID: 420820913}
   targetImage: {fileID: 0}
   fadeDuration: 2
+  fadeDelay: 0
   characterStats: {fileID: 0}
   enemyStats: {fileID: 0}
+  unityAndGeminiV3: {fileID: 0}
   fading: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

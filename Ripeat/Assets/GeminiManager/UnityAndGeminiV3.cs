@@ -116,8 +116,8 @@ public class UnityAndGeminiV3 : MonoBehaviour
     
     private int counter = 1;
     private int sum = 0;
-    private int[] counterArray = new int[5] {10, 7, 5, 3, 1}; // Array per i contatori delle risposte
-    private int[] sumArray = new int[5] {20, 14, 10, 6, 1}; // Array per i contatori delle somme
+    private int[] counterArray = new int[6] {10, 7, 5, 3, 1,1}; // Array per i contatori delle risposte
+    private int[] sumArray = new int[6] {20, 14, 10, 6, 2,1}; // Array per i contatori delle somme
     private int index = 0; // Indice corrente dell'array
 
     IEnumerator Start()
@@ -318,6 +318,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
         if (counter >= counterArray[index])
         {
             string finalRequest = "";
+            Debug.Log("Counter d: " + sumArray[index]);
             if (sum < sumArray[index])
             {
                 finalRequest = "\nPROMPT: Ora scrivi HAI UN'ALTRA POSSIBILITA'\n";
