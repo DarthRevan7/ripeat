@@ -27,6 +27,10 @@ public class GeminiPrompt : MonoBehaviour
     
     public int SwitchImplementation()
     {
+        if (FightEventController.Instance== null)    
+        {
+            return 0;
+        }
         return FightEventController.Instance.globalEventIndex;
     }
 
@@ -39,28 +43,29 @@ public class GeminiPrompt : MonoBehaviour
     {
         
         string prompt = "Il nome dell'anima è: " + mainName + "\n\n";
-    
-        
-        switch(FightEventController.Instance.globalEventIndex)
+
+        if (FightEventController.Instance == null)
+        {
+            return prompt+= prompt1;
+        }
+        switch (FightEventController.Instance.globalEventIndex)
         {
             case 0:
-                prompt += prompt1;
+                prompt += prompt2;
                 break;
             case 1:
-                prompt += prompt2;
+                prompt += prompt3;
                 break;
             case 2:
                 prompt += prompt3;
                 break;
             case 3:
-                prompt += prompt3;
+                prompt += prompt4;
                 break;
             case 4:
                 prompt += prompt4;
                 break;
-            case 5:
-                prompt += prompt4;
-                break;
+
             default:
                 break;
         }
