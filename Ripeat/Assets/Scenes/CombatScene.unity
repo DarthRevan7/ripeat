@@ -10109,6 +10109,7 @@ MonoBehaviour:
   streetlamp: {fileID: 0}
   brokenStreetlampPrefab: {fileID: 6032444477516088360, guid: 3ceab3eb5c2018e43a9d0649fbe4e9fd, type: 3}
   remainingTime: 0
+  healingAmount: 50
 --- !u!114 &2060060775
 MonoBehaviour:
   m_ObjectHideFlags: 0

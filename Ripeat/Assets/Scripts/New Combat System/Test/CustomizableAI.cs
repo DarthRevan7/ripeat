@@ -296,7 +296,7 @@ public class CustomizableAI : MonoBehaviour
         }
         if (playerCombatSystem.CurrentState == CombatAnimSystem.CombatAnimState.DEAD)
         {
-            enemyCombatSystem.RequestStateChange(CombatAnimSystem.CombatAnimState.IDLE);
+            enemyCombatSystem.ChangeState(CombatAnimSystem.CombatAnimState.IDLE);
             return;
         }
 

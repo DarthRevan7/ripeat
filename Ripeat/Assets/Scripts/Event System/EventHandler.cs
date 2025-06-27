@@ -36,6 +36,8 @@ public class EventHandler : MonoBehaviour
 
     [SerializeField] private float remainingTime = 0;
 
+    [SerializeField] private int healingAmount = 40;
+
 
     void Start()
     {
@@ -94,11 +96,11 @@ public class EventHandler : MonoBehaviour
         return !FightEventController.Instance.triggeredEventIndices.Contains(FightEventController.Instance.actualEventIndex);
     }
 
-    public void UpdatePlayerHealth()
+    public void HealPlayer()
     {
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<FighterStats>();
         Debug.Log("Player Stats: " + playerStats.vita.ToString());  
-        playerStats.vita = playerStats.vita + 40 > 100 ? 100 : playerStats.vita + 40;
+        playerStats.vita = playerStats.vita + healingAmount > 100 ? 100 : playerStats.vita + healingAmount;
     }
 
     public void UpdateEnemyHealth()
@@ -155,7 +157,7 @@ public class EventHandler : MonoBehaviour
             player.GetComponent<FighterStats>().vita = (int)(player.GetComponent<FighterStats>().vita / 1.5f);
             mainEnemy.GetComponent<FighterStats>().vita =  (int)(mainEnemy.GetComponent<FighterStats>().vita/ 1.5f) ;
 
-            UpdatePlayerHealth();
+            HealPlayer();
             UpdateEnemyHealth();
 
         }
