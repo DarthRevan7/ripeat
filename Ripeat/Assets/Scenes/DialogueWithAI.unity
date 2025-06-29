@@ -416,7 +416,6 @@ GameObject:
   - component: {fileID: 114125078}
   - component: {fileID: 114125080}
   - component: {fileID: 114125079}
-  - component: {fileID: 114125081}
   m_Layer: 5
   m_Name: Clock4
   m_TagString: Untagged
@@ -481,37 +480,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114125077}
   m_CullTransparentMesh: 1
---- !u!114 &114125081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114125077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -850464102
-      Data2: 1184042655
-      Data3: -1167749754
-      Data4: -1284677500
-    Path: event:/Sfx/UI/Orologio
-  Event: 
-  EventPlayTrigger: 11
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 1
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &143643323
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,6 +859,7 @@ GameObject:
   - component: {fileID: 195689672}
   - component: {fileID: 195689671}
   - component: {fileID: 195689670}
+  - component: {fileID: 195689673}
   m_Layer: 5
   m_Name: indietro
   m_TagString: Untagged
@@ -962,9 +931,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 448157464}
-        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
-        m_MethodName: BackControl
+      - m_Target: {fileID: 1202691645}
+        m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
+        m_MethodName: TriggerControlPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -974,6 +943,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 195689673}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &195689671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1012,6 +993,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195689668}
   m_CullTransparentMesh: 1
+--- !u!114 &195689673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195689668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 758333652
+      Data2: 1217908997
+      Data3: 1932087733
+      Data4: -1914890694
+    Path: event:/Sfx/UI/GenericButton
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &211820225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,7 +1168,6 @@ GameObject:
   - component: {fileID: 255805448}
   - component: {fileID: 255805450}
   - component: {fileID: 255805449}
-  - component: {fileID: 255805451}
   m_Layer: 5
   m_Name: Clock9
   m_TagString: Untagged
@@ -1221,37 +1232,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255805447}
   m_CullTransparentMesh: 1
---- !u!114 &255805451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255805447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -850464102
-      Data2: 1184042655
-      Data3: -1167749754
-      Data4: -1284677500
-    Path: event:/Sfx/UI/Orologio
-  Event: 
-  EventPlayTrigger: 11
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 1
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &270980188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,7 +1318,6 @@ GameObject:
   - component: {fileID: 287199995}
   - component: {fileID: 287199997}
   - component: {fileID: 287199996}
-  - component: {fileID: 287199998}
   m_Layer: 5
   m_Name: Clock2
   m_TagString: Untagged
@@ -1403,37 +1382,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287199994}
   m_CullTransparentMesh: 1
---- !u!114 &287199998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 287199994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -850464102
-      Data2: 1184042655
-      Data3: -1167749754
-      Data4: -1284677500
-    Path: event:/Sfx/UI/Orologio
-  Event: 
-  EventPlayTrigger: 11
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 1
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &342485180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1970,7 +1918,6 @@ GameObject:
   - component: {fileID: 448157463}
   - component: {fileID: 448157462}
   - component: {fileID: 448157461}
-  - component: {fileID: 448157464}
   m_Layer: 5
   m_Name: backButton
   m_TagString: Untagged
@@ -2080,28 +2027,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448157459}
   m_CullTransparentMesh: 1
---- !u!114 &448157464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448157459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc5631b7d3481224a829c3bfb6556d0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: FightingScene_Try
-  ImageControl: {fileID: 420820913}
-  targetImage: {fileID: 0}
-  fadeDuration: 2
-  fadeDelay: 0
-  characterStats: {fileID: 0}
-  enemyStats: {fileID: 0}
-  unityAndGeminiV3: {fileID: 0}
-  fading: 0
-  positiveFinalImage: {fileID: 0}
 --- !u!1 &458677076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2188,7 +2113,6 @@ GameObject:
   - component: {fileID: 478573860}
   - component: {fileID: 478573862}
   - component: {fileID: 478573861}
-  - component: {fileID: 478573863}
   m_Layer: 5
   m_Name: Clock6
   m_TagString: Untagged
@@ -2253,37 +2177,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478573859}
   m_CullTransparentMesh: 1
---- !u!114 &478573863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478573859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -850464102
-      Data2: 1184042655
-      Data3: -1167749754
-      Data4: -1284677500
-    Path: event:/Sfx/UI/Orologio
-  Event: 
-  EventPlayTrigger: 11
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 1
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &482360539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,7 +2338,6 @@ GameObject:
   - component: {fileID: 537665740}
   - component: {fileID: 537665742}
   - component: {fileID: 537665741}
-  - component: {fileID: 537665743}
   m_Layer: 5
   m_Name: Clock12
   m_TagString: Untagged
@@ -2510,37 +2402,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537665739}
   m_CullTransparentMesh: 1
---- !u!114 &537665743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537665739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -850464102
-      Data2: 1184042655
-      Data3: -1167749754
-      Data4: -1284677500
-    Path: event:/Sfx/UI/Orologio
-  Event: 
-  EventPlayTrigger: 11
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 1
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &615106474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2874,7 +2735,6 @@ GameObject:
   - component: {fileID: 690182792}
   - component: {fileID: 690182794}
   - component: {fileID: 690182793}
-  - component: {fileID: 690182795}
   m_Layer: 5
   m_Name: Clock10
   m_TagString: Untagged
@@ -2939,37 +2799,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690182791}
   m_CullTransparentMesh: 1
---- !u!114 &690182795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690182791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -850464102
-      Data2: 1184042655
-      Data3: -1167749754
-      Data4: -1284677500
-    Path: event:/Sfx/UI/Orologio
-  Event: 
-  EventPlayTrigger: 11
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 1
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &694857762
 GameObject:
   m_ObjectHideFlags: 0
@@ -3531,7 +3360,6 @@ GameObject:
   - component: {fileID: 792917295}
   - component: {fileID: 792917297}
   - component: {fileID: 792917296}
-  - component: {fileID: 792917298}
   m_Layer: 5
   m_Name: Clock7
   m_TagString: Untagged
@@ -3596,37 +3424,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792917294}
   m_CullTransparentMesh: 1
---- !u!114 &792917298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 792917294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -850464102
-      Data2: 1184042655
-      Data3: -1167749754
-      Data4: -1284677500
-    Path: event:/Sfx/UI/Orologio
-  Event: 
-  EventPlayTrigger: 11
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 1
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &820222125
 GameObject:
   m_ObjectHideFlags: 0
@@ -4233,7 +4030,6 @@ GameObject:
   - component: {fileID: 1050543976}
   - component: {fileID: 1050543978}
   - component: {fileID: 1050543977}
-  - component: {fileID: 1050543979}
   m_Layer: 5
   m_Name: Clock3
   m_TagString: Untagged
@@ -4298,37 +4094,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050543975}
   m_CullTransparentMesh: 1
---- !u!114 &1050543979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050543975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -850464102
-      Data2: 1184042655
-      Data3: -1167749754
-      Data4: -1284677500
-    Path: event:/Sfx/UI/Orologio
-  Event: 
-  EventPlayTrigger: 11
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 1
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &1092733804
 GameObject:
   m_ObjectHideFlags: 0
@@ -4598,6 +4363,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106678570}
   m_CullTransparentMesh: 1
+--- !u!1 &1124309197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1732284913867775749, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+  m_PrefabInstance: {fileID: 1011264418719701196}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1124309199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124309197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 758333652
+      Data2: 1217908997
+      Data3: 1932087733
+      Data4: -1914890694
+    Path: event:/Sfx/UI/GenericButton
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1156842352
 GameObject:
   m_ObjectHideFlags: 0
@@ -4824,7 +4625,6 @@ GameObject:
   - component: {fileID: 1202691640}
   - component: {fileID: 1202691644}
   - component: {fileID: 1202691645}
-  - component: {fileID: 1202691646}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4983,29 +4783,7 @@ MonoBehaviour:
   player: {fileID: 0}
   enemy: {fileID: 0}
   secondEnemy: {fileID: 0}
-  controlPanel: {fileID: 0}
---- !u!114 &1202691646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202691635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc5631b7d3481224a829c3bfb6556d0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: FightingScene_Try
-  ImageControl: {fileID: 420820913}
-  targetImage: {fileID: 0}
-  fadeDuration: 2
-  fadeDelay: 0
-  characterStats: {fileID: 0}
-  enemyStats: {fileID: 0}
-  unityAndGeminiV3: {fileID: 0}
-  fading: 0
-  positiveFinalImage: {fileID: 0}
+  controlPanel: {fileID: 420820913}
 --- !u!1 &1252212214
 GameObject:
   m_ObjectHideFlags: 0
@@ -5379,7 +5157,6 @@ GameObject:
   - component: {fileID: 1324624724}
   - component: {fileID: 1324624726}
   - component: {fileID: 1324624725}
-  - component: {fileID: 1324624727}
   m_Layer: 5
   m_Name: Clock8
   m_TagString: Untagged
@@ -5444,37 +5221,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324624723}
   m_CullTransparentMesh: 1
---- !u!114 &1324624727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1324624723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -850464102
-      Data2: 1184042655
-      Data3: -1167749754
-      Data4: -1284677500
-    Path: event:/Sfx/UI/Orologio
-  Event: 
-  EventPlayTrigger: 11
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 1
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &1337998485
 GameObject:
   m_ObjectHideFlags: 0
@@ -6217,7 +5963,6 @@ GameObject:
   - component: {fileID: 1435932708}
   - component: {fileID: 1435932710}
   - component: {fileID: 1435932709}
-  - component: {fileID: 1435932711}
   m_Layer: 5
   m_Name: Clock11
   m_TagString: Untagged
@@ -6282,37 +6027,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435932707}
   m_CullTransparentMesh: 1
---- !u!114 &1435932711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435932707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -850464102
-      Data2: 1184042655
-      Data3: -1167749754
-      Data4: -1284677500
-    Path: event:/Sfx/UI/Orologio
-  Event: 
-  EventPlayTrigger: 11
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 1
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &1498772767
 GameObject:
   m_ObjectHideFlags: 0
@@ -6596,7 +6310,6 @@ GameObject:
   - component: {fileID: 1617833023}
   - component: {fileID: 1617833022}
   - component: {fileID: 1617833021}
-  - component: {fileID: 1617833024}
   m_Layer: 5
   m_Name: Clock13
   m_TagString: Untagged
@@ -6661,37 +6374,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1617833024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617833020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -850464102
-      Data2: 1184042655
-      Data3: -1167749754
-      Data4: -1284677500
-    Path: event:/Sfx/UI/Orologio
-  Event: 
-  EventPlayTrigger: 11
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 1
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &1667898929 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1969859886944879354, guid: 2b73450ce34f564469ff93f951626392, type: 3}
@@ -6776,7 +6458,6 @@ GameObject:
   - component: {fileID: 1770809797}
   - component: {fileID: 1770809799}
   - component: {fileID: 1770809798}
-  - component: {fileID: 1770809800}
   m_Layer: 5
   m_Name: Clock5
   m_TagString: Untagged
@@ -6841,37 +6522,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770809796}
   m_CullTransparentMesh: 1
---- !u!114 &1770809800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1770809796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -850464102
-      Data2: 1184042655
-      Data3: -1167749754
-      Data4: -1284677500
-    Path: event:/Sfx/UI/Orologio
-  Event: 
-  EventPlayTrigger: 11
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 1
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &1863431514
 GameObject:
   m_ObjectHideFlags: 0
@@ -6951,6 +6601,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1876059591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6385814640729496794, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+  m_PrefabInstance: {fileID: 1011264418719701196}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1876059593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876059591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 758333652
+      Data2: 1217908997
+      Data3: 1932087733
+      Data4: -1914890694
+    Path: event:/Sfx/UI/GenericButton
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1895938327
 GameObject:
   m_ObjectHideFlags: 0
@@ -7273,14 +6959,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Menu
-  ImageControl: {fileID: 0}
+  ImageControl: {fileID: 420820913}
   targetImage: {fileID: 1970760925}
   fadeDuration: 2
   fadeDelay: 0
   characterStats: {fileID: 0}
   enemyStats: {fileID: 0}
   unityAndGeminiV3: {fileID: 0}
-  fading: 0
+  fading: 1
   positiveFinalImage: {fileID: 0}
 --- !u!114 &1970760925
 MonoBehaviour:
@@ -7295,7 +6981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7320,6 +7006,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970760922}
   m_CullTransparentMesh: 1
+--- !u!1 &2016225782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7352177958525276957, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+  m_PrefabInstance: {fileID: 1011264418719701196}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2085246665
 GameObject:
   m_ObjectHideFlags: 0
@@ -7403,6 +7094,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1202691639}
     m_Modifications:
+    - target: {fileID: 1310151713356229764, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1124309199}
+    - target: {fileID: 1310151713356229764, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310151713356229764, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FMODUnity.StudioEventEmitter, FMODUnity
+      objectReference: {fileID: 0}
     - target: {fileID: 1969859886944879354, guid: 2b73450ce34f564469ff93f951626392, type: 3}
       propertyPath: m_Name
       value: EscPanel
@@ -7489,7 +7192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -7497,16 +7200,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1011264418719701199}
+      objectReference: {fileID: 0}
     - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1011264418719701198}
+      objectReference: {fileID: 1202691645}
+    - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1011264418719701205}
     - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 1
@@ -7516,12 +7227,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Control
       objectReference: {fileID: 0}
     - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: set_interactable
+      value: TriggerControlPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Play
       objectReference: {fileID: 0}
     - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -7529,10 +7248,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: InGameMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: FMODUnity.StudioEventEmitter, FMODUnity
       objectReference: {fileID: 0}
     - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
@@ -7543,52 +7270,67 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266933215310456024, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1876059593}
+    - target: {fileID: 5266933215310456024, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266933215310456024, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FMODUnity.StudioEventEmitter, FMODUnity
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5198381131581128963, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 1732284913867775749, guid: 2b73450ce34f564469ff93f951626392, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1011264418719701199}
+      addedObject: {fileID: 1124309199}
+    - targetCorrespondingSourceObject: {fileID: 6385814640729496794, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1876059593}
+    - targetCorrespondingSourceObject: {fileID: 7352177958525276957, guid: 2b73450ce34f564469ff93f951626392, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1011264418719701205}
   m_SourcePrefab: {fileID: 100100000, guid: 2b73450ce34f564469ff93f951626392, type: 3}
---- !u!1 &1011264418719701197 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5198381131581128963, guid: 2b73450ce34f564469ff93f951626392, type: 3}
-  m_PrefabInstance: {fileID: 1011264418719701196}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1011264418719701198 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3374056533348110810, guid: 2b73450ce34f564469ff93f951626392, type: 3}
-  m_PrefabInstance: {fileID: 1011264418719701196}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1011264418719701199
+--- !u!114 &1011264418719701205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011264418719701197}
+  m_GameObject: {fileID: 2016225782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc5631b7d3481224a829c3bfb6556d0d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: FightingScene_Try
-  ImageControl: {fileID: 420820913}
-  targetImage: {fileID: 0}
-  fadeDuration: 2
-  fadeDelay: 0
-  characterStats: {fileID: 0}
-  enemyStats: {fileID: 0}
-  unityAndGeminiV3: {fileID: 0}
-  fading: 0
-  positiveFinalImage: {fileID: 0}
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 758333652
+      Data2: 1217908997
+      Data3: 1932087733
+      Data4: -1914890694
+    Path: event:/Sfx/UI/GenericButton
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
