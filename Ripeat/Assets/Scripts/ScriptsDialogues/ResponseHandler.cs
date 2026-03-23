@@ -2,6 +2,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using GeminiAPI;
+
 
 public class ResponseHandler : MonoBehaviour
 {
@@ -15,15 +17,14 @@ public class ResponseHandler : MonoBehaviour
 
     private List<GameObject> tempResponseButtons = new List<GameObject>(); // Lista temporanea di pulsanti di risposta
     private ScoreManager scoreManager; // Riferimento allo ScoreManager
-    private UnityAndGeminiV3 unityAndGeminiV3; // Riferimento a UnityAndGeminiV3
-
+    
     public static string history = "Utilizzando le parole scelte dal giocatore, descrivi brevemente un inizio di combattimento tra un uomo al bar e un'altra persona casuale, descrivila parlando all'uomo. Il contesto è 'america anni 20'. Utilizza le parole che il giocatore ha scelto per capire la sua indole. Stampa solo la breve descrizione spiegando cosa succede nel bar senza niente altro.\n"; // Storia delle risposte
 
     private void Start()
     {
         dialogueUI = GetComponent<DialogueUI>(); // Ottiene il componente DialogueUI
         scoreManager = FindObjectOfType<ScoreManager>(); // Trova lo ScoreManager in scena
-        unityAndGeminiV3 = GetComponent<UnityAndGeminiV3>(); // Ottiene il componente UnityAndGeminiV3
+        
         
     }
 
@@ -80,7 +81,7 @@ public class ResponseHandler : MonoBehaviour
         
         responseBox.gameObject.SetActive(false); // Nasconde il box delle risposte
         
-         responseBox.anchoredPosition = initialPos;
+        responseBox.anchoredPosition = initialPos;
 
         foreach (GameObject button in tempResponseButtons)
         {
@@ -105,13 +106,41 @@ public class ResponseHandler : MonoBehaviour
 
     public void SendHistoryToGemini()
     {
-        unityAndGeminiV3 = GetComponent<UnityAndGeminiV3>(); // Ottiene il componente UnityAndGeminiV3
-        if (unityAndGeminiV3 == null)
+
+        // 1. Controllo di sicurezza: il Core deve essere attivo
+        if (GeminiCore.Instance == null)
         {
-            Debug.LogError("UnityAndGeminiV3 non trovato!"); // Avvisa se UnityAndGeminiV3 non è trovato
+            Debug.LogError("ERRORE: GeminiCore non trovato in scena! L'API non può partire.");
             return;
         }
-        StartCoroutine(unityAndGeminiV3.SendPromptRequestToGemini(history, 1)); // Invia la storia a Gemini
-        Debug.Log("Storia inviata a Gemini: " + history);
+
+        Debug.Log("<color=green>Ponte API attivato:</color> Invio storia all'endpoint Gemini: " + GeminiCore.Instance.apiEndpoint);
+
+        // 2. Chiamata al nuovo Requester (molto più pulito!)
+        StartCoroutine(GeminiRequester.SendRequest(history, 
+            (response) => {
+                // SUCCESS: Gemini ha risposto correttamente
+                Debug.Log("Gemini ha generato la scena di combattimento!");
+                
+                if (dialogueUI != null)
+                {
+                    // Mostriamo la risposta finale usando la tua logica esistente
+                    StartCoroutine(dialogueUI.ShowFinalString(response)); 
+                }
+            },
+            (errorCode) => {
+                // ERROR: Gestione pulita dei codici errore (404, 429, 503)
+                Debug.LogError($"Errore API Gemini: {errorCode}. Controlla la chiave o l'URL nel Core.");
+            }
+        ));
+
+        // unityAndGeminiV3 = GetComponent<UnityAndGeminiV3>(); // Ottiene il componente UnityAndGeminiV3
+        // if (unityAndGeminiV3 == null)
+        // {
+        //     Debug.LogError("UnityAndGeminiV3 non trovato!"); // Avvisa se UnityAndGeminiV3 non è trovato
+        //     return;
+        // }
+        // StartCoroutine(unityAndGeminiV3.SendPromptRequestToGemini(history, 1)); // Invia la storia a Gemini
+        // Debug.Log("Storia inviata a Gemini: " + history);
     }
 }

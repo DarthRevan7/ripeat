@@ -2196,7 +2196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &899788030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2883,7 +2883,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202691635}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bbefbae7c562845a1d075366bfc9e3, type: 3}
   m_Name: 
@@ -3789,7 +3789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GeminiAPI.GeminiCore
   apiKey: AIzaSyA_a4h7hinwAgpe0-0AG6ohlqMK8lllzUc
-  apiEndpoint: https://generativelanguage.googleapis.com/v1/models/gemini-3.1-flash:generateContent
+  apiEndpoint: https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent
 --- !u!4 &1534600047
 Transform:
   m_ObjectHideFlags: 0

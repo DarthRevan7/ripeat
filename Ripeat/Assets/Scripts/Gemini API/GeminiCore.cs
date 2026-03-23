@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO;
+using System.Collections;
 
 
 namespace GeminiAPI
@@ -17,7 +18,7 @@ namespace GeminiAPI
 
         [Header("Settings")]
         public string apiKey;
-        public string apiEndpoint = "https://generativelanguage.googleapis.com/v1/models/gemini-3.1-flash:generateContent";
+        public string apiEndpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
 
         void Awake()
         {
@@ -31,6 +32,27 @@ namespace GeminiAPI
             else
             {
                 Destroy(gameObject);
+            }
+        }
+
+        void Start()
+        {
+            CheckModels();
+        }
+
+        public void CheckModels() {
+            StartCoroutine(GetModelsRoutine());
+        }
+
+        IEnumerator GetModelsRoutine() {
+            string url = $"https://generativelanguage.googleapis.com/v1beta/models?key={apiKey}";
+            using (UnityEngine.Networking.UnityWebRequest geminiRequest = UnityEngine.Networking.UnityWebRequest.Get(url)) {
+                yield return geminiRequest.SendWebRequest();
+                if (geminiRequest.result == UnityEngine.Networking.UnityWebRequest.Result.Success) {
+                    Debug.Log("<color=white>MODELLI DISPONIBILI:</color> " + geminiRequest.downloadHandler.text);
+                } else {
+                    Debug.LogError("Errore nel recupero modelli: " + geminiRequest.error);
+                }
             }
         }
 
