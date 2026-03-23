@@ -48,7 +48,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
     [Header("JSON API Configuration")]
     public TextAsset jsonApi;
     private string apiKey = "";
-    [SerializeField] private string apiEndpoint = "https://generativelanguage.googleapis.com/v1/models/gemini-3.1-flash:generateContent";
+    [SerializeField] private string apiEndpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
 
     [Header("ChatBot Function")]
     public TMP_InputField inputField;

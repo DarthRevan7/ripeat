@@ -119,10 +119,10 @@ public class CombatAnimSystem : MonoBehaviour
     public void Die()
     {
         animator.SetBool("Run", false);
-        animator.SetBool("Blocking", false);
+        // animator.SetBool("Blocking", false);
         combatState = CombatAnimState.DEAD;
         animator.SetTrigger("Die");
-        animator.SetBool("Dead", true);
+        animator.SetBool("IsDead", true);
     }
     
     #region Test

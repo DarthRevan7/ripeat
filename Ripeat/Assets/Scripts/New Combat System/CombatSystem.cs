@@ -136,6 +136,14 @@ public class CombatSystem : MonoBehaviour
         
     }
 
+    public void Die()
+    {
+        if (!isDead)
+        {
+            CurrentState = CharacterState.DEAD;
+        }
+    }
+
     void Awake()
     {
         animator = GetComponent<Animator>();
