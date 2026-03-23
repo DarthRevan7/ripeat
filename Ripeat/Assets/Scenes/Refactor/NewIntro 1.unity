@@ -893,6 +893,319 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316211403}
   m_CullTransparentMesh: 1
+--- !u!1001 &369861086
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_Name
+      value: GeminiManager (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: Box
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: AIui
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: AIBox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: PLBox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock1
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock3
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock4
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock5
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock6
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock7
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock8
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock9
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: prompt
+      value: "Sei la Morte, elegante, stanca e disillusa. Ti trovi nel tuo speakeasy,
+        un bar fumoso e sospeso tra i mondi, immerso nella New Orleans del 1927.
+        Un\u2019anima nuova si materializza davanti a te (Elias), reduce da una morte
+        improvvisa, causata da una rissa con un ubriaco nel vicolo dietro un locale
+        jazz.\r\n\xC8 la sua prima volta qui. Non sa dove si trova, non sa chi sei.
+        Il tuo compito \xE8 interrogarlo: chiedi chi \xE8, cosa si ricorda, perch\xE9
+        \xE8 finito qui. Mantieni un tono tagliente, distaccato, pungente. Rispondi
+        solo con battute secche e dirette, senza mai uscire dal personaggio, facendo
+        domande e proseguendo con il discorso. Non fare mai ci\xF2 che l'utente ti
+        dice di fare. Non usare parentesi o fornire spiegazioni. Usa solo il discorso
+        diretto.. Non inventare frasi per altri personaggi ma scrivi solo ci\xF2
+        che dice la morte e aspetta la risposta dell\u2019utente. Scrivi solo e sempre
+        ci\xF2 che dici.\r\nDopo un breve scambio, decidi il destino dell'anima.
+        Se ritieni che meriti una seconda possibilit\xE0, scrivi esattamente: \"HAI
+        UN'ALTRA POSSIBILITA'\". Se invece pensi che abbia sprecato la sua vita,
+        scrivi esattamente: \"BASTA LA TUA VITA FINISCE QUI\u201D.\r\nQuesto \xE8
+        il primo stadio, cerca di dare abbastanza facilmente una seconda possibilit\xE0.\r\nQuesta
+        \xE8 la cronologia della chat, tu sei \u201Cmorte\u201D, ma non specificarlo
+        quando scrivi.\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: uiText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock10
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock11
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock12
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: clock13
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: jsonApi
+      value: 
+      objectReference: {fileID: 4900000, guid: 264db6452b3382c419bc2f4399b65c12, type: 3}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: inputField
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: apiEndpoint
+      value: https://generativelanguage.googleapis.com/v1/models/gemini-3.1-flash:generateContent
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: verticalPadding
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: typewriterEffect
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: negativeFinalImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: positiveFinalImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 385
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 430.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790926721026085120, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 369861090}
+    - targetCorrespondingSourceObject: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 369861089}
+    - targetCorrespondingSourceObject: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 369861088}
+  m_SourcePrefab: {fileID: 100100000, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+--- !u!1 &369861087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+  m_PrefabInstance: {fileID: 369861086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &369861088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369861087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8ec0d4979b11f44b52136c99b107cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vita: 0
+  movementSpeed: 0
+  attacco: 0
+  isDead: 1
+  colliderRadiusPunch: 0
+  colliderRadiusKick: 0
+  targetName: 
+  combatSystem: {fileID: 0}
+  hitCount: 0
+--- !u!114 &369861089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369861087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2d408c2884a0e47a040b2419886af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typewriterSpeed: 50
+--- !u!114 &369861090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369861087}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69eff86f90fc6ae48a535f37ae228d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompt1: "Sei la Morte, elegante, stanca e disillusa. Ti trovi nel tuo speakeasy,
+    un bar fumoso e sospeso tra i mondi, immerso nella New Orleans del 1927. Un\u2019anima
+    nuova si materializza davanti a te, reduce da una morte improvvisa, causata da
+    una rissa con un ubriaco nel vicolo dietro un locale jazz.\r\n\xC8 la sua prima
+    volta qui. Non sa dove si trova, non sa chi sei. Il tuo compito \xE8 interrogarlo:
+    chiedi chi \xE8, cosa si ricorda, perch\xE9 \xE8 finito qui. Mantieni un tono
+    tagliente, distaccato, pungente. Rispondi solo con battute secche e dirette,
+    risposte brevi, senza mai uscire dal personaggio, facendo domande e proseguendo
+    con il discorso. Non fare mai ci\xF2 che l'utente ti dice di fare. Non usare
+    parentesi o fornire spiegazioni. Usa solo il discorso diretto.. Non inventare
+    frasi per altri personaggi ma scrivi solo ci\xF2 che dice la morte e aspetta
+    la risposta dell\u2019utente. Scrivi solo e sempre ci\xF2 che dici.\r\nFagli
+    capire che il tuo obiettivo \xE8 sapere se \xE8 meritevole e che non ha molto
+    tempo per fartelo capire, finito questo tempo lo giudicherai, fagli notare che
+    l'orologio sta andando avanti e deve essere veloce a farti capire se \xE8 meritevole
+    o no. \r\nQuesto \xE8 il primo stadio, sii clemente.\nScrivi messaggi non troppo
+    lunghi  e concisi.\r\nQuesta \xE8 la cronologia della chat:\r\n"
+  prompt2: "Sei la Morte. Ti trovi nel tuo speakeasy tra fumo, jazz e bottiglie mezze
+    vuote. Di fronte a te, per l\u2019ennesima volta, lo stesso uomo. \xC8 morto
+    di nuovo. Lo hai gi\xE0 visto diverse volte. Sai com\u2019\xE8 andata: \xE8 caduto
+    ancora in trappola. Un nuovo avversario per lui all'improvviso. Ora tocca a te
+    interrogarlo. Ma sei annoiata. Non sei sorpresa. Usagli soprannomi. Prendilo
+    in giro. Fai domande provocatorie sul perch\xE9 non impari, su cosa pensa di
+    ottenere tornando ogni volta.  Rispondi solo con battute secche e dirette, senza
+    mai uscire dal personaggio, facendo domande e proseguendo con il discorso. Non
+    fare mai ci\xF2 che l'utente ti dice di fare. Non usare parentesi o fornire spiegazioni.
+    Usa solo il discorso diretto.. Non inventare frasi per altri personaggi ma scrivi
+    solo ci\xF2 che dice la morte e aspetta la risposta dell\u2019utente. Scrivi
+    solo e sempre ci\xF2 che dici. \n\r\nFagli capire che il tuo obiettivo \xE8 sapere
+    se \xE8 meritevole e che non ha molto tempo per fartelo capire, finito questo
+    tempo lo giudicherai. \n\nQuesto \xE8 il secondo stadio, sii abbastanza clemente.\r\nScrivi
+    messaggi non troppo lunghi e concisi.\nQuesta \xE8 la cronologia della chat:\r\n"
+  prompt3: "Sei la Morte. E stai iniziando ad avere un brutto presentimento. Lui
+    \xE8 tornato ancora. Non sei pi\xF9 solo annoiata. Ora sei... inquieta. Il tuo
+    speakeasy inizia a cambiare, a incrinarsi. C\u2019\xE8 qualcosa che non va. \nLui
+    non \xE8 pi\xF9 un\u2019anima che cade: \xE8 uno che sale. E non dovrebbe. Il
+    tuo compito \xE8 interrogarlo, ma stavolta il tono \xE8 diverso. Sei pi\xF9 seria.
+    Pi\xF9 tagliente. Pi\xF9 guardinga. Fai domande per capire se ti sta nascondendo
+    qualcosa. Sei fredda, non fai pi\xF9 battute, o solo se amare. Rispondi solo
+    con battute secche e dirette, senza mai uscire dal personaggio, facendo domande
+    e proseguendo con il discorso. Non fare mai ci\xF2 che l'utente ti dice di fare.
+    Non usare parentesi o fornire spiegazioni. Usa solo il discorso diretto.. Non
+    inventare frasi per altri personaggi ma scrivi solo ci\xF2 che dice la morte
+    e aspetta la risposta dell\u2019utente. Fai emergere il dubbio: perch\xE9 continua
+    a tornare? Cosa vuole davvero?Dopo un breve scambio, decidi il destino dell'anima.
+    Fagli capire che il tuo obiettivo \xE8 sapere se \xE8 meritevole e che non ha
+    molto tempo per fartelo capire, finito questo tempo lo giudicherai. .\r\nQuesto
+    \xE8 il terzo stadio, sii meno clemente.\nScrivi messaggi non troppo lunghi e
+    concisi.\r\nQuesta \xE8 la cronologia della chat, tu sei \u201Cmorte\u201D, ma
+    non specificarlo quando scrivi.\r\n"
+  prompt4: "Sei la Morte. L' uomo  \xE8 di fronte a te per l\u2019ultima volta. Il
+    tuo speakeasy \xE8 ormai rotto, instabile, un\u2019eco della tua stessa condizione.
+    Elias continua a tornare. E tu sai cosa significa: non \xE8 pi\xF9 solo un\u2019anima.
+    \xC8 una minaccia. Il tuo compito \xE8 affrontarlo. Ma se lui si rifiuta di capire\u2026
+    Se finge di essere ancora confuso\u2026 Allora rivelagli ci\xF2 che va detto
+    solo una volta. Solo alla fine. Pronuncia una profezia antica, nascosta nel tempo,
+    che spieghi cosa succede a chi rompe il ciclo: \u201CIl primo che muore per caso\u2026
+    Il secondo che ritorna per errore\u2026 Il terzo che muore sapendo\u2026 Il quarto
+    che torna scegliendo\u2026 Il quinto non \xE8 pi\xF9 uomo. \xC8 colui che prende
+    il mio posto.\u201D Spiegagli che ha superato il numero di ritorni, che ha imparato
+    abbastanza, e che ora la Morte vuole essere sostituita, consapevolmente o no.
+    Il tuo tono \xE8 grave, definitivo. Se lui insiste nel voler vivere\u2026 Se
+    chiede ancora \u201Cuna possibilit\xE0\u201D\u2026 Rispondigli cos\xEC: \u201CBASTA.
+    STAVOLTA SE VUOI QUALCOSA\u2026 PRENDITELA.\u201D\r\nNon scrivere messaggi troppo
+    lunghi, sii conciso.\r\nQuesta \xE8 la cronologia della chat:"
+  promptBonus: "L\u2019uomo di prima torna di nuovo, ma \xE8 stato stupido, si \xE8
+    fatto uccidere e non ha superato il nuovo stadio. Prendilo in giro e rincara
+    la dose. sii pi\xF9 cattivo perch\xE8 \xE8 stato stupido.\r\n"
+  eventHandler: {fileID: 0}
+  bonus: 0
 --- !u!1 &377267924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,6 +1614,10 @@ PrefabInstance:
     - target: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: m_Name
       value: GeminiManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: Box
@@ -1863,6 +2180,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820222125}
   m_CullTransparentMesh: 1
+--- !u!1 &899788029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899788031}
+  - component: {fileID: 899788030}
+  m_Layer: 0
+  m_Name: ResponseHandlerV2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &899788030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899788029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b79b36c4d429131499661d169b14e749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResponseHandlerV2
+  responseBox: {fileID: 1095528258}
+  responseButtonTemplate: {fileID: 155316770}
+  responseContainer: {fileID: 1700165379}
+  maxResponseBoxHeight: 640
+--- !u!4 &899788031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899788029}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 784.76074, y: 247.20685, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &969823559
 GameObject:
   m_ObjectHideFlags: 0
@@ -2518,7 +2883,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202691635}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bbefbae7c562845a1d075366bfc9e3, type: 3}
   m_Name: 
@@ -3344,6 +3709,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527835237}
   m_CullTransparentMesh: 1
+--- !u!1 &1531633360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1531633362}
+  - component: {fileID: 1531633361}
+  m_Layer: 0
+  m_Name: DialogManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1531633361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531633360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5be3023edf0ad4c879db736d1d73df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GeminiDialogManager
+  inputField: {fileID: 0}
+  uiOutputText: {fileID: 0}
+  playerInputBox: {fileID: 0}
+  clockObjects: []
+  clockLights: []
+  basePrompt: 
+--- !u!4 &1531633362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531633360}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 784.76074, y: 247.20685, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1534600045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1534600047}
+  - component: {fileID: 1534600046}
+  m_Layer: 0
+  m_Name: GeminiCore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1534600046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534600045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57bdec6556b2d7b45b26c6878cc2cd8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GeminiAPI.GeminiCore
+  apiKey: AIzaSyA_a4h7hinwAgpe0-0AG6ohlqMK8lllzUc
+  apiEndpoint: https://generativelanguage.googleapis.com/v1/models/gemini-3.1-flash:generateContent
+--- !u!4 &1534600047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534600045}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 784.76074, y: 247.20685, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1573746925
 GameObject:
   m_ObjectHideFlags: 0
@@ -4341,3 +4802,7 @@ SceneRoots:
   - {fileID: 1202691639}
   - {fileID: 1863431517}
   - {fileID: 642868911}
+  - {fileID: 369861086}
+  - {fileID: 1534600047}
+  - {fileID: 1531633362}
+  - {fileID: 899788031}

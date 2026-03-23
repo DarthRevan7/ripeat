@@ -48,7 +48,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
     [Header("JSON API Configuration")]
     public TextAsset jsonApi;
     private string apiKey = "";
-    private string apiEndpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+    [SerializeField] private string apiEndpoint = "https://generativelanguage.googleapis.com/v1/models/gemini-3.1-flash:generateContent";
 
     [Header("ChatBot Function")]
     public TMP_InputField inputField;
@@ -89,7 +89,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
     [SerializeField] private GameObject clockLight12;
     [SerializeField] private GameObject clockLight13;
     [SerializeField] private GameObject clockLight14;
-  
+
     [SerializeField] private GameObject death1;
     [SerializeField] private GameObject death2;
     [SerializeField] private GameObject death3;
@@ -201,6 +201,9 @@ public class UnityAndGeminiV3 : MonoBehaviour
         // Invia soltanto il prompt iniziale
         string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"" + EscapeJson(promptText) + "\"}]}]}";
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
+
+        Debug.Log("<color=yellow>DEBUG URL:</color> [" + url + "]");
+        Debug.Log("<color=cyan>DEBUG KEY:</color> [" + apiKey + "]");
 
         using (UnityWebRequest www = new UnityWebRequest(url, "POST"))
         {
