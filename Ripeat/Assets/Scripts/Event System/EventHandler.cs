@@ -21,7 +21,7 @@ public class EventHandler : MonoBehaviour
     [SerializeField]
     private string playerTag = "Player", enemyTag = "Main Enemy",
     secondaryEnemyTag = "Secondary Enemy";
-    [SerializeField] private float mainEnemyXCoord = 20f, newEnemyXCoord = 6f, comingBackCoord = 7f;
+    [SerializeField] private float mainEnemyFinalXCoord = 20f, newEnemyXCoord = 6f, comingBackCoord = 7f;
     [SerializeField] private GameObject secondaryEnemyHealthBar;
     [SerializeField] private string boundaryName;
     [SerializeField] public FighterStats playerStats;
@@ -94,7 +94,7 @@ public class EventHandler : MonoBehaviour
     public void UpdatePlayerHealth()
     {
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<FighterStats>();
-        Debug.Log("Player Stats: " + playerStats.vita.ToString());  
+        // Debug.Log("Player Stats: " + playerStats.vita.ToString());  
         playerStats.vita = playerStats.vita + 40 > 100 ? 100 : playerStats.vita + 40;
     }
 
@@ -115,9 +115,9 @@ public class EventHandler : MonoBehaviour
     {
         bool isFirstEncounter = FirstEncounter();
         //Disable Enemy AI
-        mainEnemy.GetComponent<CustomizableAI>().isScriptActive = false;
+        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = false;
         //Disable Player Input
-        player.GetComponent<InputPlayer>().isScriptActive = false;
+        player.GetComponent<InputManager>().isScriptActive = false;
 
         //Instantiate the Particle System
         Vector3 instancePosition = streetlamp.transform.position;
@@ -135,10 +135,15 @@ public class EventHandler : MonoBehaviour
 
         //First time -> Kill player and halve enemy life
         //Other times -> Halve both character's life
+        Debug.Log("We are here!!");
         if (isFirstEncounter)
         {
             Debug.Log("Explosion Killer");
             player.GetComponent<FighterStats>().vita = 0;
+            player.GetComponent<FighterStats>().isDead = true;
+            player.GetComponent<CombatSystem>().CurrentState = CombatSystem.CharacterState.DEAD;
+            player.GetComponent<CombatSystem>().Die();
+            // player.GetComponent<CombatAnimSystem>().Die();
             mainEnemy.GetComponent<FighterStats>().vita = 20;
         }
         else
@@ -149,9 +154,9 @@ public class EventHandler : MonoBehaviour
         }
 
         //Enable Enemy AI
-        mainEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
+        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = true;
         //Enable Player Input
-        player.GetComponent<InputPlayer>().isScriptActive = true;
+        player.GetComponent<InputManager>().isScriptActive = true;
 
 
         if (isFirstEncounter)
@@ -168,9 +173,9 @@ public class EventHandler : MonoBehaviour
     public void TakeBackMainEnemy()
     {
         //Disable Enemy AI
-        mainEnemy.GetComponent<CustomizableAI>().isScriptActive = false;
+        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = false;
         //Disable Player Input
-        player.GetComponent<InputPlayer>().isScriptActive = false;
+        player.GetComponent<InputManager>().isScriptActive = false;
         //Disable boundary in that direction
         Collider colliderToDisable;
         bool colliderFound =
@@ -200,10 +205,10 @@ public class EventHandler : MonoBehaviour
         }
 
         //Enable Player Input
-        player.GetComponent<InputPlayer>().isScriptActive = true;
+        player.GetComponent<InputManager>().isScriptActive = true;
         // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
         //Enable secondary Enemy AI
-        mainEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
+        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = true;
         //Enable Boundary again
         colliderToDisable.gameObject.SetActive(true);
     }
@@ -220,19 +225,27 @@ public class EventHandler : MonoBehaviour
         mainEnemy = GameObject.FindGameObjectWithTag(enemyTag);
 
         //Disable Enemy AI
-        mainEnemy.GetComponent<CustomizableAI>().isScriptActive = false;
+        mainEnemy.GetComponent<MainEnemyAI>().isScriptActive = false;
         //Disable Player Input
-        player.GetComponent<InputPlayer>().isScriptActive = false;
+        player.GetComponent<InputManager>().isScriptActive = false;
         //Disable boundary in that direction
         GameObject colliderParent = GameObject.Find("EnvironmentColliders");
-        Collider colliderToDisable = null;
-        for (int i = 0; i < colliderParent.transform.childCount; i++)
+
+        Transform child = colliderParent.transform.Find(boundaryName);
+        if(child == null)
         {
-            if (colliderParent.transform.GetChild(i).gameObject.name.Equals(boundaryName))
-            {
-                colliderToDisable = colliderParent.transform.GetChild(i).gameObject.GetComponent<Collider>();
-            }
+            Debug.LogError("Collider not found!!");
+            return;
         }
+        Collider colliderToDisable = child.GetComponent<Collider>();
+        //colliderToDisable.gameObject.SetActive(false);
+        // for (int i = 0; i < colliderParent.transform.childCount; i++)
+        // {
+        //     if (colliderParent.transform.GetChild(i).gameObject.name.Equals(boundaryName))
+        //     {
+        //         colliderToDisable = colliderParent.transform.GetChild(i).gameObject.GetComponent<Collider>();
+        //     }
+        // }
         // bool colliderFound = entryPointColliders.TryGetValue(boundaryName, out colliderToDisable);
 
 
@@ -256,21 +269,29 @@ public class EventHandler : MonoBehaviour
 
     IEnumerator SpawnHandler(FightEvent fightEvent, Collider colliderToDisable)
     {
+
+        //Disable the collider to allow the main enemy to move in that direction
+        colliderToDisable.gameObject.SetActive(false);
+
         //Make the main enemy go away
         mainEnemy.transform.LookAt(fightEvent.spawnPosition);
         mainEnemy.GetComponent<CombatSystem>().canMove = true;
         mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
-        mainEnemy.GetComponent<CombatSystem>().enabled = true;
+        
 
+        float startX = mainEnemy.transform.position.x-1.0f;
+        Debug.Log("StartX = " + startX.ToString());
 
-
-        while (mainEnemy.transform.position.x <= mainEnemyXCoord)
+        while (mainEnemy.transform.position.x <= mainEnemyFinalXCoord)   
         {
+            Debug.Log("Main Enemy is going away!!");
             mainEnemy.GetComponent<CombatSystem>().canMove = true;
+            mainEnemy.GetComponent<CombatSystem>().isScriptActive = true;
             mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.right;
             yield return null;
         }
 
+        Debug.Log("Main Enemy should be out of the scene by now!!");
         //Movement Input Vector Equals Zero
         mainEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
 
@@ -280,10 +301,11 @@ public class EventHandler : MonoBehaviour
         newEnemy.transform.LookAt(player.transform.position);
 
         //Bring the secondary enemy in the scene
-        while (Vector3.Distance(player.transform.position, newEnemy.transform.position) >= 2.0f)
+        while (Vector3.Distance(player.transform.position, newEnemy.transform.position) >= 3.0f)
         {
             newEnemy.GetComponent<CombatSystem>().canMove = true;
             newEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.left;
+            newEnemy.GetComponent<CombatSystem>().isScriptActive = true;
             // newEnemy.GetComponent<LookAtPlayer>().enabled = true;
             yield return null;
         }
@@ -296,11 +318,19 @@ public class EventHandler : MonoBehaviour
         uIManager.healthBarRectSecondEnemy = GameObject.Find("HealthUI_EN2").GetComponent<RectTransform>();
         uIManager.secondEnemyActive = true;
 
+        
         //Enable Player Input
-        player.GetComponent<InputPlayer>().isScriptActive = true;
+        player.GetComponent<InputManager>().isScriptActive = true;
         // Debug.Log("Player Input Manager: " + player.GetComponent<InputManager>().isScriptActive.ToString());
+
+        if(newEnemy.GetComponent<MainEnemyAI>() == null)
+        {
+            Debug.LogError("New Enemy is null!!");
+        }
+
         //Enable secondary Enemy AI
-        newEnemy.GetComponent<CustomizableAI>().isScriptActive = true;
+        newEnemy.GetComponent<MainEnemyAI>().isScriptActive = true;
+        newEnemy.GetComponent<SpawnSetting>().isPausedEnemy = false;
         // newEnemy.GetComponent<LookAtPlayer>().enabled = false;
         //Enable Boundary again
         colliderToDisable.gameObject.SetActive(true);
@@ -367,7 +397,7 @@ public class EventHandler : MonoBehaviour
             //Kill the player.
             player.GetComponent<FighterStats>().vita = 0;
             player.GetComponent<CombatSystem>().CurrentState = CombatSystem.CharacterState.DEAD;
-            player.GetComponent<CombatAnimSystem>().Die();
+            // player.GetComponent<CombatAnimSystem>().Die();
 
             //Badly injure the enemy
             mainEnemy.GetComponent<FighterStats>().vita = 10;
@@ -414,8 +444,10 @@ public class EventHandler : MonoBehaviour
                 if (c.gameObject.tag.Equals("Player"))
                 {
                     player.GetComponent<FighterStats>().vita = 0;
+                    player.GetComponent<FighterStats>().isDead = true;
                     player.GetComponent<CombatSystem>().CurrentState = CombatSystem.CharacterState.DEAD;
-                    player.GetComponent<CombatAnimSystem>().Die();
+                    player.GetComponent<CombatSystem>().Die();
+                    // player.GetComponent<CombatAnimSystem>().Die();
                 }
             }
             //Otherwise the strike will fall to the ground and the battle will continue.
