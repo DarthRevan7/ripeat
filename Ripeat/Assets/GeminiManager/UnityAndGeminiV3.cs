@@ -47,7 +47,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
 {
     [Header("JSON API Configuration")]
     public TextAsset jsonApi;
-    private string apiKey = "";
+    public string apiKey = "";
     [SerializeField] private string apiEndpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
 
     [Header("ChatBot Function")]
@@ -160,7 +160,7 @@ public class UnityAndGeminiV3 : MonoBehaviour
         }
 
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
-        apiKey = jsonApiKey.key;
+        // apiKey = jsonApiKey.key;
         typewriterEffect = GetComponent<TypewriterEffect>();
         geminiPrompt = GetComponent<GeminiPrompt>();
         dialogueUI = GetComponent<DialogueUI>();

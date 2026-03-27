@@ -10697,6 +10697,7 @@ MonoBehaviour:
   secondaryEnemy: {fileID: 6030350152631332872, guid: 9d27fffd13dc15043baae90e1cf86ee2, type: 3}
   loading: 0
   triggered: 0
+  secondaryEnemyBeaten: 0
 --- !u!4 &2060060776
 Transform:
   m_ObjectHideFlags: 0
@@ -12196,11 +12197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9103131793301019539, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
       propertyPath: vita
-      value: 10000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9103131793301019539, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
       propertyPath: attacco
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9194581445670645343, guid: 7c8ac991cb8a422478b8e91ab6ea7641, type: 3}
       propertyPath: m_Layer

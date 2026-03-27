@@ -26,8 +26,7 @@ namespace GeminiAPI
             if (Instance == null)
             {
                 Instance = this;
-                DontDestroyOnLoad(gameObject);
-                LoadSettings();
+                // DontDestroyOnLoad(gameObject);
             }
             else
             {
@@ -37,7 +36,7 @@ namespace GeminiAPI
 
         void Start()
         {
-            CheckModels();
+            LoadSettings();
         }
 
         public void CheckModels() {
@@ -63,6 +62,7 @@ namespace GeminiAPI
             if(apiEndpoint != null && apiEndpoint != "" && apiKey != null && apiKey != "")
             {
                 Debug.Log("Configurazione già presente in memoria, non carico da file.");
+                CheckModels();
                 return;
             }
 

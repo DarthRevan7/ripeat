@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: 6c8f388098e69fb4c896e6154a5d4390
   - enabled: 1
     path: Assets/Scenes/NewIntro.unity
-    guid: a172a724889888640ac0929954c115e0
+    guid: 3c37d8fe0f08c5646909846570ed4c77
   - enabled: 1
     path: Assets/Scenes/NewCombatScene.unity
     guid: 8e442795f713d534aa81306934ceef53

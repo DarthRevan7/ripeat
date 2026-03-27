@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0863b4fd5306d904ebf9c269d3cc7a4e, type: 3}
   m_Name: 1 - Explosion
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: Explosion
   eventType: 2
   triggerHealthPercentage: 20
   triggerTime: -1
@@ -25,3 +25,5 @@ MonoBehaviour:
   explosionEffect: {fileID: 5211884335779849545, guid: a82c58380860f8848b7e3868369a3e60, type: 3}
   explosionRadius: 0
   explosionPosition: {x: 4, y: 2, z: -7}
+  stormParticle: {fileID: 0}
+  lightningStrikeFX: {fileID: 0}

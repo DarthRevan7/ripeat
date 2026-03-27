@@ -185,6 +185,7 @@ public class EventHandler : MonoBehaviour
         //Coroutine to finish the job
         UpdatePlayerHealth();
         StartCoroutine(BringMainEnemyBack(colliderToDisable));
+        Debug.Log("Coroutine BringMainEnemyBack started!!");
     }
 
     IEnumerator BringMainEnemyBack(Collider colliderToDisable)

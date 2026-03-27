@@ -97,6 +97,8 @@ public class FightEventController : MonoBehaviour {
 
             fightTimer = 0;
 
+            secondaryEnemyBeaten = false;
+
             // LoadAllEvents();
         }
         loading = false;
@@ -161,9 +163,10 @@ public class FightEventController : MonoBehaviour {
 
         if (secondaryEnemy != null)
         {
-            if (secondaryEnemy.GetComponent<FighterStats>().vita <= 0)
+            if (secondaryEnemy.GetComponent<FighterStats>().vita <= 0 && !secondaryEnemyBeaten)
             {
                 EventHandler.Instance.TakeBackMainEnemy();
+                secondaryEnemyBeaten = true;
             }
         }
         
@@ -172,6 +175,10 @@ public class FightEventController : MonoBehaviour {
         
         
     }
+
+    [SerializeField] private bool secondaryEnemyBeaten = false;
+
+
     //Controlla che l'evento debba essere triggerato dal tempo
     private bool TriggeredByTime(FightEvent fightEvent)
     {

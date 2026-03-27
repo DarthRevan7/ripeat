@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0863b4fd5306d904ebf9c269d3cc7a4e, type: 3}
   m_Name: 0 - Spawn Enemy
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: Spawn Enemy
   eventType: 0
   triggerHealthPercentage: 60
   triggerTime: -1
