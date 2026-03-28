@@ -2902,9 +2902,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3824402369105330176}
         m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: BackToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6564,7 +6564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7941,7 +7941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -8909,9 +8909,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3824402369105330176}
         m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9335,15 +9335,15 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_PointAction: {fileID: 1233328560386171548, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_MoveAction: {fileID: -8784545083839296357, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_SubmitAction: {fileID: 392368643174621059, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_CancelAction: {fileID: 7727032971491509709, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_LeftClickAction: {fileID: -9138040386803664654, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_MiddleClickAction: {fileID: -2330250123100426174, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_RightClickAction: {fileID: 6546597815137758985, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
-  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: 3a92b1b30dce99047bbfecdb426ace53, type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: e57d84ca062c5b54e8d1952a0a0cc906, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: e57d84ca062c5b54e8d1952a0a0cc906, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: e57d84ca062c5b54e8d1952a0a0cc906, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: e57d84ca062c5b54e8d1952a0a0cc906, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: e57d84ca062c5b54e8d1952a0a0cc906, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: e57d84ca062c5b54e8d1952a0a0cc906, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: e57d84ca062c5b54e8d1952a0a0cc906, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: e57d84ca062c5b54e8d1952a0a0cc906, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: e57d84ca062c5b54e8d1952a0a0cc906, type: 3}
   m_TrackedDevicePositionAction: {fileID: 0}
   m_TrackedDeviceOrientationAction: {fileID: 0}
   m_DeselectOnBackgroundClick: 1
@@ -13044,7 +13044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

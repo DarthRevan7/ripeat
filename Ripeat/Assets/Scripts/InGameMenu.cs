@@ -56,9 +56,24 @@ public class InGameMenu : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        Debug.Log("Menu triggerato");
+        Debug.Log("Ritorno al menù principale.");
         Time.timeScale = 1;
         SceneManager.LoadScene(menuSceneName);
+    }
+
+    public void ResumeGame()
+    {
+        Debug.Log("Menu disabilitato");
+        if (SceneManager.GetActiveScene().name.Equals("CombatScene"))
+        {
+            player.GetComponent<InputManager>().isScriptActive = true;
+            enemy.GetComponent<MainEnemyAI>().isScriptActive = true;
+            if (secondEnemy != null)
+            {
+                secondEnemy.GetComponent<MainEnemyAI>().isScriptActive = true;
+            }
+        }
+        Time.timeScale = 1;
     }
 
     public void TriggerMenu()
@@ -71,11 +86,11 @@ public class InGameMenu : MonoBehaviour
             if (SceneManager.GetActiveScene().name.Equals("CombatScene"))
             {
                 player.GetComponent<InputManager>().isScriptActive = false;
-                enemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
+                enemy.GetComponent<MainEnemyAI>().isScriptActive = false;
                 enemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
                 if (secondEnemy != null)
                 {
-                    secondEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = false;
+                    secondEnemy.GetComponent<MainEnemyAI>().isScriptActive = false;
                     secondEnemy.GetComponent<CombatSystem>().MovementInput = Vector3.zero;
                 }
             }
@@ -86,10 +101,10 @@ public class InGameMenu : MonoBehaviour
             if (SceneManager.GetActiveScene().name.Equals("CombatScene"))
             {
                 player.GetComponent<InputManager>().isScriptActive = true;
-                enemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
+                enemy.GetComponent<MainEnemyAI>().isScriptActive = true;
                 if (secondEnemy != null)
                 {
-                    secondEnemy.GetComponent<AI.MainEnemyAI>().isScriptActive = true;
+                    secondEnemy.GetComponent<MainEnemyAI>().isScriptActive = true;
                 }
             }
         }
