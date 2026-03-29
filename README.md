@@ -1,8 +1,8 @@
-# 🥊 REPEAT – An AI-Driven Beat 'em Up Odyssey
+# 🥊 RIPHIT – An AI-Driven Beat 'em Up Odyssey
 
 English Version Below
 
-**REPEAT** è un picchiaduro narrativo sperimentale sviluppato in **Unity**.
+**RIPHIT** è un picchiaduro narrativo sperimentale sviluppato in **Unity**.
 Il gioco esplora il concetto di fatalità e determinazione attraverso una serie di sfortunate coincidenze e un sistema di dialogo rivoluzionario basato sull'integrazione con **Google Gemini AI**.
 
 ### 🕹️ Il Concept & Gameplay
@@ -17,9 +17,9 @@ Il protagonista è vittima di un destino avverso negli Stati Uniti degli anni '2
 
 ---
 
-# 🥊 REPEAT – An AI-Driven Beat 'em Up Odyssey
+# 🥊 RIPHIT – An AI-Driven Beat 'em Up Odyssey
 
-**REPEAT** is an experimental narrative fighting game developed in **Unity**. The game explores the concepts of fate and willpower through a series of unfortunate coincidences and a revolutionary dialogue system powered by **Google Gemini AI**.
+**RIPHIT** is an experimental narrative fighting game developed in **Unity**. The game explores the concepts of fate and willpower through a series of unfortunate coincidences and a revolutionary dialogue system powered by **Google Gemini AI**.
 
 ### 🕹️ Concept & Gameplay
 Set in 1920s America, the protagonist falls victim to a streak of bad luck. Upon death, the player faces **Death**, personified by Google Gemini.
